@@ -150,3 +150,15 @@ thermal_conductivity_coefficient_of_Al=237
 
 thermal_conductivity_coefficient_of_Cu=385
 'Here, thermal conductivity coefficient of Cu is reported in W/mK'
+
+
+
+R = 8.314                  #Ideal Gas constant (J/mol.K)
+h = 6.626 * (10 ** (-34))  #Plank's constant (J.s)
+NA = 6.022 * (10 ** (23))  #Avagadro's constant (molecules per mole)
+k = 1.381 * (10 ** (-23))  #Boltzman constant (J/K)
+c = 3.00 * (10 ** (8))     #Speed of Light is a Vacuum (m/s)
+G = 6.674 * (10 ** (-11))  #Universal Gravitational constant ((m^3)/(kg.(s^2)))
+F = 96485                  #Faraday's constant (C/mol)
+
+
