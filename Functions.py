@@ -2561,3 +2561,868 @@ def PengRobinson(T = None,P = None,Tc = None,Pc = None,w = None,MW = None,Phases
 
 
 
+def Perm(r,F,P):
+    '''
+    This function is used for membrane permeability calculation 
+    r : membrane radius (cm)
+    F : Flowrate (ml/min)
+    P : applied pressure (Bar)
+    Returns membrane permeability in LMH/Bar Unit 
+    '''
+    Area=PI*(r**2)
+    Flux=F/Area
+    flux=Flux_convertor1(Flux)
+    Perm=flux/P
+    return Perm
+
+def Rejection(CF,CP):
+    '''
+    This function is used for membrane Rejection calculation 
+    CF : Pollutant concentration in Feed (g/l)
+    CP : Pollutant concentration in Permeate (g/l)
+    Returns membrane Rejection (%)  
+    '''
+    Rej=1-(CP/CF)
+    return Rej
+
+def OP(M,T):
+    '''
+    This function is used for membrane Osmotic Pressure calculation 
+    M : NaCl Concentration in Feed (g/l)
+    T : Temperature (c)
+    Returns membrane Osmotic Pressure in Bar
+    '''
+    m=M/(Nacl_MW)
+    t=T+273.15
+    Osmotic_Pressure=1.8*gas_constant*0.01*m*t
+    return Osmotic_Pressure
+
+
+def TB():
+    '''
+    This function is used for bubble temp calculation in mixed solution
+    P : pressure (mmhg)
+    N : number of component
+    Returns bubble temp
+    '''
+    Material=['0=Aceton','1=Acetonitrile','2=Acrylonitrile','3=Ammonia','4=Aniline','5=Benzalehyde','6=Benzene','7=n-Butane','8=n-Butanol','9=iso-Butane','10=iso-Butanol','11=Butylacetate','12=Carbondisulphide','13=Carbontetrachloride','14=Chlorobenzene','15=Chloroform','16=Cyclohexane','17=Cyclohexanol','18=Cyclohexanone','19=Cyclopentane','20=Dioxane','21=Dichloromethane','22=Diethylether','23=Diethylamine','24=Ethanol','25=Ethylacetate','26=Ethylbenzene','27=Ethylamine','28=Formicacid','29=Furfural','30=n-Hexane','31=n-Heptane','32=Methanol','33=Methylacetate','34=Nitrobenzene','35=Nitrogen','36=n-Octane','37=Oxygen','38=Octanol','39=n-Pentane','40=Phenol','41=n-Propanol','42=iso_Propanol','43=Propane','44=Pyridine','45=Styrene','46=Tetrahydrofuran','47=Toluene','48=Trichloroethylene','49=Triethylamine','50=o-Xylene','51=p-Xylene','52=Water']
+    A=[16.39112,16.90395,15.92847,17.51202,16.67784,6.73163,15.9037,15.68151,17.62995,15.77506,18.02933,16.4145,15.77889,15.8434,16.4,16.017,15.7794,19.23534,16.40517,15.8602,17.1151,17.0635,16.5414,15.73382,18.68233,16.35578,16.04305,7.3862,15.9938,15.14517,15.9155,15.877,18.61042,16.58646,16.42172,15.3673,15.9635,15.06244,7.18653,15.8365,15.9614,17.8349,20.4463,15.7277,16.152,15.94618,16.11023,16.00531,15.01158,15.7212,7.00154,6.99052,18.5882]
+    B=[2787.5,3413.1,2782.21,2363.24,3858.22,1369.46,2789.01,2154.9,3367.12,2133.24,3413.34,3293.66,2585.12,2790.78,3485.35,2696.25,2778,5200.53,3677.63,2589.2,3579.78,3053.08,2847.72,2434.73,3667.7,2866.6,3291.66,1137.3,2982.45,2760.09,2738.42,2911.32,3392.57,2839.21,3485.35,648.59,3128.75,674.59,1515.427,2477.07,3183.67,3310.4,4628.95,1872.82,3124.45,3270.26,2768.37,3090.78,2345.48,2674.7,1476.393,1453.43,3984.92]
+    C=[229.67,250.48,222,250.54,200,177.081,220.79,238.74,188.7,245,199.97,210.75,236.46,226.46,224.87,226.24,223.14,251.7,212.7,231.36,240.35,252.6,253,212,226.1,217.9,213.8,235.85,218,162.8,226.2,226.65,230,228,224.84,270.02,209.85,263.07,156.767,233.21,159.5,198.5,252.64,250,212.66,206,226.3,219.14,192.73,205,213.872,215.307,233.43]
+    P=float(input('Pressure='))
+    N=int(input('Number of component='))
+    x=[]
+    T=[]
+    a=[]
+    b=[]
+    c=[]
+    d=len(Material)
+    Index=[]
+    guess=0
+    p=[]
+    U=0
+    import math
+    print(Material)
+    for i in range(0,N):
+        I=[int(input('enter component index='))] 
+        Index=Index+I
+    i=0
+    for e in range(0,d):
+        if i==N:
+            break
+        elif Index[i]==e:
+            a=a+[[A[e]]]
+            b=b+[[B[e]]]
+            c=c+[[C[e]]]
+            i=i+1
+        else:
+            e=e+1
+    for i in range(0,N):
+        X=[float(input('enter component mole fraction='))] 
+        x=x+X
+    for i in range(0,N):
+        t=[(B[Index[i]]/((A[Index[i]])-math.log(P,math.e))-C[Index[i]])]
+        T=T+t
+    n=0
+    while n<100000:
+        if int(U)==int(P):
+            TBP=guess
+        else:
+            guess=guess+0.01
+            p=[]
+            for i in range(0,N):        
+                pr=[math.exp(A[Index[i]]-((B[Index[i]])/((C[Index[i]])+guess)))]
+                p=p+pr
+                U=0
+            for i in range(0,N):           
+                u=p[i]*x[i]
+                U=u+U
+        n=n+1
+    return TBP
+  
+
+def TD():
+    '''
+    This function is used for dew temp calculation in mixed solution
+    P : pressure (mmhg)
+    N : number of component
+    Returns bubble temp
+    '''
+    Material=['0=Aceton','1=Acetonitrile','2=Acrylonitrile','3=Ammonia','4=Aniline','5=Benzalehyde','6=Benzene','7=n-Butane','8=n-Butanol','9=iso-Butane','10=iso-Butanol','11=Butylacetate','12=Carbondisulphide','13=Carbontetrachloride','14=Chlorobenzene','15=Chloroform','16=Cyclohexane','17=Cyclohexanol','18=Cyclohexanone','19=Cyclopentane','20=Dioxane','21=Dichloromethane','22=Diethylether','23=Diethylamine','24=Ethanol','25=Ethylacetate','26=Ethylbenzene','27=Ethylamine','28=Formicacid','29=Furfural','30=n-Hexane','31=n-Heptane','32=Methanol','33=Methylacetate','34=Nitrobenzene','35=Nitrogen','36=n-Octane','37=Oxygen','38=Octanol','39=n-Pentane','40=Phenol','41=n-Propanol','42=iso_Propanol','43=Propane','44=Pyridine','45=Styrene','46=Tetrahydrofuran','47=Toluene','48=Trichloroethylene','49=Triethylamine','50=o-Xylene','51=p-Xylene','52=Water']
+    A=[16.39112,16.90395,15.92847,17.51202,16.67784,6.73163,15.9037,15.68151,17.62995,15.77506,18.02933,16.4145,15.77889,15.8434,16.4,16.017,15.7794,19.23534,16.40517,15.8602,17.1151,17.0635,16.5414,15.73382,18.68233,16.35578,16.04305,7.3862,15.9938,15.14517,15.9155,15.877,18.61042,16.58646,16.42172,15.3673,15.9635,15.06244,7.18653,15.8365,15.9614,17.8349,20.4463,15.7277,16.152,15.94618,16.11023,16.00531,15.01158,15.7212,7.00154,6.99052,18.5882]
+    B=[2787.5,3413.1,2782.21,2363.24,3858.22,1369.46,2789.01,2154.9,3367.12,2133.24,3413.34,3293.66,2585.12,2790.78,3485.35,2696.25,2778,5200.53,3677.63,2589.2,3579.78,3053.08,2847.72,2434.73,3667.7,2866.6,3291.66,1137.3,2982.45,2760.09,2738.42,2911.32,3392.57,2839.21,3485.35,648.59,3128.75,674.59,1515.427,2477.07,3183.67,3310.4,4628.95,1872.82,3124.45,3270.26,2768.37,3090.78,2345.48,2674.7,1476.393,1453.43,3984.92]
+    C=[229.67,250.48,222,250.54,200,177.081,220.79,238.74,188.7,245,199.97,210.75,236.46,226.46,224.87,226.24,223.14,251.7,212.7,231.36,240.35,252.6,253,212,226.1,217.9,213.8,235.85,218,162.8,226.2,226.65,230,228,224.84,270.02,209.85,263.07,156.767,233.21,159.5,198.5,252.64,250,212.66,206,226.3,219.14,192.73,205,213.872,215.307,233.43]
+    P=float(input('Pressure='))
+    N=int(input('Number of component='))
+    x=[]
+    T=[]
+    a=[]
+    b=[]
+    c=[]
+    d=len(Material)
+    Index=[]
+    guess=0
+    p=[]
+    U=0.1
+    import math
+    print(Material)
+    for i in range(0,N):
+        I=[int(input('enter component index='))] 
+        Index=Index+I
+    i=0
+    for e in range(0,d):
+        if i==N:
+            break
+        elif Index[i]==e:
+            a=a+[[A[e]]]
+            b=b+[[B[e]]]
+            c=c+[[C[e]]]
+            i=i+1
+        else:
+            e=e+1
+    for i in range(0,N):
+        X=[float(input('enter component mole fraction='))] 
+        x=x+X
+    for i in range(0,N):
+        t=[(B[Index[i]]/((A[Index[i]])-math.log(P,math.e))-C[Index[i]])]
+        T=T+t
+    n=0
+    while n<100000:
+        if int(1/U)==int(P):
+            TDP=guess
+        else:
+            guess=guess+0.01
+            p=[]
+            for i in range(0,N):        
+                pr=[math.exp(A[Index[i]]-((B[Index[i]])/((C[Index[i]])+guess)))]
+                p=p+pr
+                U=0
+            for i in range(0,N):           
+                u=x[i]/p[i]
+                U=u+U
+        n=n+1
+    return TDP
+
+
+
+
+def Cost_Indicators(ac,ev):
+    
+    global cv,cpi
+    cv=ev-ac
+    cpi=ev/ac
+    
+    return cv,cpi
+
+
+def Burning_Rate(L,t):##L=burning length in mm & t=burning time in sec
+    V=(60*L)/t ##V= burning rate in mm/sec according to the ASTM D3801 UL-94 test
+    return V
+
+def Crystal_Percent(H,W,H100):#H=polymer enthalpy in mJ & W=polymer weight in mg & H100=neede enthalpy for polymer with 100%crystallinity in j/gr
+    Xc=((H/W)/H100)*100 #Xc=polymer crystallinity in %
+    return Xc
+
+def Filler_Weight(M,FR1,FR2,FR3):#M=polymer matrix weight in gr & F1=first flame retardant weight in gr & F2=second flame retardant weight in gr & F3=third flame retardant weight in gr
+    a=[FR1/(FR1+FR2+FR3+M)]#FR1 weight%
+    b=[FR2/(FR1+FR2+FR3+M)]#FR2 weight %
+    c=[FR3/(FR1+FR2+FR3+M)]#FR3 weight %
+    return a,b,c
+
+
+
+def Planks_Fix(y,R,r):
+    '''
+    This formula is used to calculate the wall pressure of bleeding in the veins
+    This function receives the variables y, r, R and returns the variable p
+    p:It indicates the pressure of the bleeding wall.
+    y:Surface coefficient is surface tension
+    R:is the inner radius of the vessel.
+    r:is the thickness of the vessel wall.
+    '''
+    p=2*y*R/r
+    return p
+#test
+
+
+#------------------
+def HeatـTransferـCoefficient(k,A,t1,t2,d):
+    '''
+    
+
+    Parameters
+    ----------
+    This function receives the variables k, A, t1,t2,d and returns the variable Q
+    Q : int
+        It indicates the rate of heat transfer.
+    k : int
+        Heat transfer coefficient
+    A : int
+        is the heat transfer coefficient.
+    t1 : int
+        The area of ​​the surface from which heat is transferred.
+    t2 : int
+        Initial temperature
+    d : int
+        Secondary temperature
+
+    '''
+    Q=k*A*(t2-t1/d)
+    return Q
+#test
+
+def Power_Factor(i,v):
+    '''
+    Parameters
+    ----------
+    This function receives the variables i, v and returns the variable P
+    i : int
+        It is an electric current that passes through a circuit
+    v : int
+        It is an electric current that passes through a circuit
+    p : int
+        It indicates the power used or produced.
+    
+    '''
+    p=i*v
+    return p
+# test
+
+
+#-----------------
+def Electrical_Resistance(v,i):
+    '''
+    Parameters
+    ----------
+    This function receives the variables i, v and returns the variable R
+    v : int
+        Voltage or potential difference between two points
+    i : int
+        I is the electric current that passes through a circuit
+    R : It represents electrical resistance.
+
+    Returns
+    -------
+    '''
+    R =v/i
+    return R
+# test
+
+
+
+def Print_Time(Print_speed,Volume,Printer_efficiency):
+    
+    ''' volume(float)= usually Cm3
+    
+    print_speed(float)= and is speed of print usually cm3 per hour)
+    
+    Printer_efficience(float)= and between 0 -1)
+    
+    Retuen:
+        
+        Print_time=(float)
+        the time of print in hour 
+    
+    '''
+    Print_time=float(Volume)/(float(Print_speed)*float(Printer_efficiency))
+    return Print_time
+#2
+def Lorentz_Lorenz_Constant(n,ro):
+    
+    ''' n(float)=  refrective index
+    ro(float)=density g/cm3 or kg/m3
+    
+    
+    Retuen:
+        
+        R=(float)
+        constant related to light properties of materials(polymers, plstics,...)
+    
+    '''
+    R=float((n**2-1)/(n**2+2)/ro)
+    return R
+
+
+
+
+
+def Polymer_Life_Time(E,T,t=1):
+    
+    ''' E(float)=  activation Energy   J
+   T(float)= absolute temperature in K
+   t(float)= constant time and usually we consider it 1
+    we calculate t and E based on experiences
+    
+    
+    Retuen:
+        
+        Life_Length=(float)
+        the length the life of polymer
+    
+    '''
+    E_kj=E*1000 #because I have math range error I consider this limitation
+    exp=E_kj/(Constant_Numbers(constant_num='K_Boltzman')*T)
+    if exp>709:
+        return float('inf') #if exponent is too large it returns infinity
+    
+    Life_Length=math.exp(exp)
+    return Life_Length
+
+
+def Fick_Sec_Thin(Thickness,Diffusion_coefficient,Time,Thin_layer_Consistency,Position,Thin_Layer_Metal,Second_metal):
+    '''
+    Fick's second law predicts how diffusion causes the concentration to change with respect to time.
+    In the case where a thin film of a different metal is placed between two thick films of another metal,
+    and due to heat and a certain time, the amount of penetration of the first metal into the second metal will be investigated.
+    Parameters
+    ----------
+    Thickness : float 
+        The thickness of the thin layer metal is used. use cm for input
+    Diffusion_coefficient : float
+        It shows the diffusion coefficient of the metal placed in the middle compared to the metal on its side. use cm^2/seconds for input
+    Time : float
+        It shows the duration of the diffusion check. use seconds for input
+    Thin_layer_Consistency : float
+        It shows the initial concentration of thin metal. use gr/cm^3 for input
+    Position :  float
+        Indicates the location required to check the concentration. use cm for input
+    Thin_Layer_Metal : str
+        What is the material of the thin layer used?
+    Second_metal : str
+        What is the metal material in which the primary metal should penetrate?.
+
+    Returns
+    -------
+    C_x_t : float
+        It shows the concentration of the metal separated from the thin layer and moved in a certain time in the desired location. output will be gr/cm^3
+    '''
+    import math
+    pi=3.14
+    if Thin_Layer_Metal=='Cu'and Second_metal=='Ni':
+        Diffusion_coefficient=0.2698 # @Temprature=1000 K
+    if Thin_Layer_Metal=='Cr'and Second_metal=='Ni':
+        Diffusion_coefficient=0.0299 # @Temprature=1000 K
+    C_x_t=((Thickness*Thin_layer_Consistency)/(2*(pi*Diffusion_coefficient*Time)**(0.5)))*math.exp((-(Position)**2)/(4*Diffusion_coefficient*Time))
+    return C_x_t
+'''
+in tabe kheili ja kar dare bara khode Diffusion Coefficient mishe ye tabe tarif kard o edame dad vali goftm dar hadi k data peida kardm flan erae bdm ta badan sare vqt kamelesh knm
+'''
+#F2________________________________________________________________________________________________
+def Final_Temp_Irreversible_Adiabatic(Initial_temperature,External_pressure,Internal_pressure,C_V,C_P,R,Unit_of_measurement,Number_of_gas_atoms):
+    '''
+    Parameters
+    ----------
+  Initial_temperature : float
+      Initial temperature of an ideal gas.
+  External_pressure : float
+      The pressure that enters the system from the environment.
+  Internal_pressure : float
+      The pressure that enters the system wall from the inside.
+  C_V : float
+      The ideal gas constant-pressure specific heat.
+  C_P : float
+      The ideal gas constant-pressure specific heat..
+  R : float
+      The molar gas constant or ideal gas constant.
+  Unit_of_measurement : str
+      DESCRIPTION.
+  Number_of_gas_atoms : str
+      DESCRIPTION.
+
+  Returns
+  -------
+  Final_Temp : float
+      Outputs the final temperature if the system operates adiabatically irreversible.
+    '''
+    if Unit_of_measurement=='Jouls':
+        R=8.314
+        if Number_of_gas_atoms=='one':
+            C_V=1.5*R
+            C_P=2.5*R
+        if Number_of_gas_atoms=='two':
+            C_V=2.5*R
+            C_P=3.5*R
+        if Number_of_gas_atoms=='multi':
+            C_V=3.5*R
+            C_P=4.5*R
+    elif Unit_of_measurement=='Calories':
+        R=1.98
+        if Number_of_gas_atoms=='one':
+            C_V=1.5*R
+            C_P=2.5*R
+        if Number_of_gas_atoms=='two':
+            C_V=2.5*R
+            C_P=3.5*R
+        if Number_of_gas_atoms=='multi':
+            C_V=3.5*R
+            C_P=4.5*R   
+    Final_Temp=Initial_temperature*((C_V+(External_pressure/Internal_pressure)*R)/C_P)
+    return Final_Temp
+#F3________________________________________________________________________________________________
+def Atomic_Percentage(n_1,n_2,n_3,n_4,Entry,output,m_1,m_2,m_3,m_4,M_1,M_2,M_3,M_4,w_1,w_2,w_3,w_4):
+    '''
+    Parameters
+    ----------
+    n_1 : float
+        The number of moles of the first atom.
+    n_2 : float
+        The number of moles of the second atom.
+    n_3 : float
+        The number of moles of the third atom.
+    n_4 : float
+        The number of moles of the fourth atom.
+    Entry : str
+        what type of entery you have?
+    output : str
+        The atomic percentage is based on which atom?
+    m_1 : float
+        The mass of the first atom.
+    m_2 : float
+        The mass of the second atom.
+    m_3 : float
+        The mass of the third atom.
+    m_4 : float
+        The mass of the fourth atom.
+    M_1 : float
+        The atomic mass of the first atom.
+    M_2 : float
+        The atomic mass of the second atom.
+    M_3 : float
+        The atomic mass of the third atom.
+    M_4 : float
+        The atomic mass of the fourth atom.
+    w_1 : float
+        The weight percentage of the first atom.
+    w_2 : float
+        The weight percentage of the second atom.
+    w_3 : float
+        The weight percentage of the third atom.
+    w_4 : float
+        The weight percentage of the fourth atom.
+
+    Returns
+    -------
+    float
+        It will return the atomic percentage based on the given inputs.
+    '''
+    if Entry=='mole':
+        if output=='AP_1': #atomic percent for first atom
+            AP_1=(n_1)/(n_1+n_2+n_3+n_4)
+            return AP_1
+        elif output=='AP_2': #atomic percent for second atom
+            AP_2=(n_2)/(n_1+n_2+n_3+n_4)
+            return AP_2
+        elif output=='AP_3': #atomic percent for third atom
+            AP_3=(n_3)/(n_1+n_2+n_3+n_4)
+            return AP_3
+        elif output=='Ap_4': #atomic percent for fourth atom
+            AP_4=(n_4)/(n_1+n_2+n_3+n_4)
+            return AP_4
+    if Entry=='mass':
+        if output=='AP_1':
+            AP_1=(m_1/M_1)/((m_1/M_1)+(m_2/M_2)+(m_3/M_3)+(m_4/M_4))
+            return AP_1
+        if output=='AP_2':
+            AP_2=(m_2/M_2)/((m_1/M_1)+(m_2/M_2)+(m_3/M_3)+(m_4/M_4))
+            return AP_2
+        if output=='AP_3':
+            AP_3=(m_3/M_3)/((m_1/M_1)+(m_2/M_2)+(m_3/M_3)+(m_4/M_4))
+            return AP_3
+        if output=='AP_4':
+            AP_4=(m_4/M_4)/((m_1/M_1)+(m_2/M_2)+(m_3/M_3)+(m_4/M_4))
+            return AP_4
+    if Entry=='weight':
+        if output=='AP_1':
+            AP_1=(w_1/M_1)/((w_1/M_1)+(w_2/M_2)+(w_3/M_3)+(w_4/M_4))
+            return AP_1
+        if output=='AP_2':
+            AP_2=(w_2/M_2)/((w_1/M_1)+(w_2/M_2)+(w_3/M_3)+(w_4/M_4))
+            return AP_2
+        if output=='AP_3':
+            AP_3=(w_3/M_3)/((w_1/M_1)+(w_2/M_2)+(w_3/M_3)+(w_4/M_4))
+            return AP_3
+        if output=='AP_4':
+            AP_4=(w_4/M_4)/((w_1/M_1)+(w_2/M_2)+(w_3/M_3)+(w_4/M_4))
+            return AP_4
+
+
+
+def Latice_Parameter(structure, r):
+    
+    '''
+    this function calculates Latice parameter based on crystal structure.
+    
+    Parametrs
+    ----------
+    1. structure : str
+    structure includes crystal structures such as FCC, BCC, SC, HCP, and DC.
+    
+    FCC: face centered cubic
+    BCC: body centered cubic
+    SC:  simple cubic
+    HCP: hexagonal close pack
+    DC:  diamond cubic
+    
+    2. r: float ---> (nm)
+    r represents atomic radius.
+
+    Returns --> latice parameter (a)
+        
+    '''
+    
+    
+    
+    if structure == 'FCC' or  'face centered cubic':
+        a = (4*r)/math.sqrt(2)
+        
+    elif structure == 'BCC' or  'body centered cubic':
+        a = (4*r)/math.sqrt(3)
+     
+    elif structure == 'SC' or  'simple cubic':
+        a = 2*r  
+     
+    elif structure == 'HCP' or  'hexagonal close pack':
+        a = 2*r  
+                            
+    elif structure == 'DC 'or  'diamond cubic':
+        a = (8*r)/math.sqrt(3)                        
+    
+    return a  
+
+
+
+
+def Fracture_Toughness(s, c, location):
+    
+    '''
+    this function calculates fracture toughness 
+    based on applied stress, crack length, and location
+    
+     fracture toghness formula:      
+         K1C =  a*s* (math.sqrt(3.14* c))
+         
+    where:
+
+        K1C is the fracture toughness,
+        a is a geometric factor,
+        s is the applied stress,
+        c is the crack length.
+
+         
+    Parameters
+    ----------- 
+    1. s: int ---> (MPa)
+       applied stress 
+       
+    2. c: float ---> (m) 
+       crack length
+       
+    3. location: str
+       represents the location of crack
+
+    Returns --> K1C (fracture toughness)
+    
+    '''
+    
+    if location == 'surface' or 'side':
+        a = 1.12
+        K1C =  a*s* (math.sqrt(3.14* c))
+        
+    elif location == 'centeral':
+        a = 1
+        c = c/2
+        K1C =  a*s* (math.sqrt(3.14* c))
+        
+        
+    return K1C
+
+
+def Wear_Rate(v, f, s):
+    
+    '''
+    this function calculates abrasive wear rate
+    
+    Parametrs
+    ---------
+    1. v : float ---> (mm3)
+    v represents wear volume
+    
+    2. f: int ---> (nm) ---> (N)
+    f represents normal load.
+    
+    3. s: float ---> (m)
+    s represents sliding distance.
+    
+    Returns --> wear rate (w)
+        
+    '''
+    
+    w = v/(f*s)
+    
+    return w
+
+
+def Vicker_Hardness_Calculation (d1,d2,p): 
+    
+    '''
+    this function is utilized for calculating Vickers hardness.
+    in this method, pyramid shape indentor is used.
+    
+    Parameters
+    -----------
+    1. d1: float
+    d1 represents diameter of impress of indentor.
+    
+    2. d2 : float
+    d2 represents diameter of impress of indentor
+    
+    3. p : int
+    applied load 
+    
+    Returns --> VHN (Vickers Hardness Number)
+    '''
+    
+    d= (d1+d2)/2
+    VHN = (1.854*p)/(d**2)
+
+    return VHN
+
+#------------------------------------------------------------------------------
+
+## 5th function calculates Brinell hardness.
+
+def Brinell_Hardness_Calculation (d1,d2,D,p): 
+    
+    '''
+    this function is utilized for calculating Brinell hardness.
+    characterizes the indentation hardness of materials through the
+    scale of penetration of an indenter, loaded on a material test-piece. 
+    It is one of several definitions of hardness in materials science.
+    In this method, steel ball indentor is used.
+    
+     Parameters
+     ----------- 
+            1. d1: float
+            d1 represents diameter of impress of indentor.
+            
+            2. d2 : float
+            d2 represents diameter of impress of indentor
+            
+            3. D : float
+            diameter of indenter
+            
+            3. p : int
+            applied load 
+     
+            Returns --> BHN (Brinell Hardness Number)
+    '''
+    
+    d = (d1+d2)/2
+    BHN = (2*p)/(3.14*D)(D-(math.sqrt(D**2 - d**2)))
+
+    return BHN
+
+
+
+def Gibs_free_energy(H0,T,S0):
+    '''
+    Parameters
+    ----------
+    H0 : float
+        Enthalpy of material in the pressure of 1atm in pure state. The number should be in terms of joul or kilojoul. It must have the same unit as entropy.
+    T : float
+        Temperature of material. The temperature should be in terms of Kelvin.
+    S0 : float
+        Entropy of material. The number should be in terms of joul or kilojoul. It must have the same unit as enthalpy.
+
+    Returns
+    -------
+    G : float
+        This function give us the amount of Gibs free energy of the material at the pressure of 1atm. The terms of this function is joul or kilojoul.
+
+    '''
+    G0=H0-T*S0
+    return G0
+Gibs_free_energy(25,10,2)
+
+
+
+
+    #2-2:
+def Hardness_vickers(F,d):
+    '''
+    Parameters
+    ----------
+    F : float
+        Applied force in terms of kilogram.
+    d : float
+        Medium diameter of indentor effect in terms of milimeter.
+
+    Returns
+    -------
+    HV : Vickers hardness
+        This function give us the amount of hardness of material that evaluated by vickers hardness tester. The terms of this is Kg/mm2.
+
+    '''
+    HV=1.854*F/(d**2)
+    return HV
+Hardness_vickers(20, 2)
+
+
+
+
+
+
+    #2-3:
+def Wear_rate(V,F,S):
+    '''
+    Parameters
+    ----------
+    V : float
+        lost volume during the wear test in terms of cubic milimeters (mm3)
+    F : float
+        Applied force in terms of newton.
+    S : float
+        Sliding distance in terms of meter.
+
+    Returns
+    -------
+    K : Wear rate
+        This function is for claculation of wear rate if material after wear test. It is in terms of (10-6 mm3/N.m) 
+        
+
+    '''
+    K=V/(F*S)
+    return K
+Wear_rate(120, 20, 100)
+
+
+
+
+   #2-4:
+def Lattice_Parameter(r,structure):
+    '''
+    Parameters
+    ----------
+    r : float
+        r is atomic radius of material. It is in terms of angestrom.
+    structure : str
+        Structure of material is face center cubic or body center cubic.
+
+    Returns
+    -------
+    a : float
+        a is lattice parameter of material in unit cell. It is in terms of angestrom.
+
+    '''
+    if structure=='fcc':
+        a=4*r/(2**0.5)
+    if structure=='bcc':
+        a=4*r/(3**0.5)
+    return a
+
+
+def Thermal_Voltage(T1,T2):
+    
+    """
+    
+    Parameters
+    ----------
+    T1 : float
+        Temperature 1 (in Kelvin).
+    T2 : float
+        Temperature 2 (in Kelvin).
+
+    Returns
+    -------
+    V_T : float
+        Thermal Voltage is voltages created by the junction of dissimilar metals when a temperature difference exists between these junctions.
+
+    """
+    
+    V_T=(Boltzmann_Constant*(abs(T2-T1))/Elementary_Charge)
+    return V_T
+        
+
+def Number_of_Particles(n):
+    
+    """
+    
+    Parameters
+    ----------
+    n : float
+        Number of moles.
+
+    Returns
+    -------
+    N : float
+        This function is used to calculate the number of particles or atoms in a substance.
+
+    """
+    
+    N=n*Avogadro_Constant
+    return N
+
+def Faraday_Law_of_Electrolysis(Q,M,z):
+    """
+    
+    Parameters
+    ----------
+    Q : float
+        Total charge (in coulombs).
+    M : float
+        Molar mass of the substance (in grams per mole).
+    z : float
+        Number of moles of electrons transferred per mole of substance.
+
+    Returns
+    -------
+    m : float
+        Mass of substance deposited or liberated (in grams)
+
+    """
+    
+    m=(Q*M)/(z*Faraday_Constant)
+    return m
+    
+def Photon_Energy(f):
+    """
+
+    Parameters
+    ----------
+    f : float
+        Frequency of the photon (in hertz).
+
+    Returns
+    -------
+    E : float
+        Energy of the photon (in Joule).
+
+    """
+    
+    E=Planck_Constant*f
+    return E
+
+
+
+
