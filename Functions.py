@@ -1658,3 +1658,906 @@ def curies_law(magnetic_susceptibility, magnetic_field, temperature):
     return magnetic_susceptibility * magnetic_field - (C / temperature)
 
 
+
+def Convert_Gas_Constant(gas_constant , from_unit , to_unit):
+    
+    conversion_factors = {
+        "J/mol.K": {
+            "J/mol.K": 1 ,
+            "cal/mol.K": 0.239 , 
+            "atm.L/mol.K": 8.314 , 
+            "cm^3.atm/mol.K": 82.057 , 
+        } , 
+        "cal/mol.K": {
+            "J/mol.K": 4.184 ,
+            "cal/mol.K": 1 , 
+            "atm.L/mol.K": 24.205 ,
+            "cm^3/mol.K": 239.006 , 
+        } ,
+        "atm.L/mol.K": {
+            "J/mol.K": 0.0821 ,
+            "cal/mol.K": 0.042 , 
+            "atm.L/mol.K": 1 ,
+            "cm^3/mol.K": 10 
+        } , 
+        "cm^3/mol.K": {
+            "J/mol.K": 0.001987 ,
+            "cal/mol.K": 0.0042 , 
+            "atm.L/mol.K": 0.1 ,
+            "cm^3/mol.K": 1
+        }
+    }
+
+    if from_unit in conversion_factors and to_unit in conversion_factors[from_unit]:
+        conversion_factors = conversion_factors[from_unit][to_unit]
+        converted_value = gas_constant * conversion_factors
+        
+        return converted_value
+    
+    else:
+        return "Invalid"
+    
+
+    
+class Hydrogen_Energy_Level_Calculater:   #defined the class 
+    def Calculate_Energy_Level(sef , n):  #This method is defined with input in n to calculate the energy level
+        energy = -13.6 / (n ** 2)         #The energy level formula
+        return energy                     #Energy value is returned as the output of the function
+    
+    def validate_input(self , n):         #This method gets input n  wich represent th hydrogen energy number and check if it's valide or not
+        if not isinstance(n , int) or n <= 0:
+            raise ValueError("Invalid value!")
+            
+
+    
+    
+
+
+
+class Grain_Growth_Calculater:
+    def __init__(self):
+        
+        self.k = self.validate_input("Enter the growt rate coefficient (k): ")
+        self.grain_size = self.validate_input("Enter the grain size: ")
+        self.time_interval = self.validate_input("Enter the time interval (in second): ")
+        
+    def validate_input(self , prompt):
+        while True:
+            user_input = input(prompt)
+            try:
+                value = float(user_input)
+                    
+                if value <= 0:
+                    print("Value must be +. Try again.")
+                        
+                else:
+                    return value
+                    
+            except ValueError:
+                print("Invalid input.")
+                    
+    def Growth_Rate_Calculation(self):
+        return self.k * self.grain_size / self.time_interval
+        
+
+        
+                    
+                    
+                    
+class Kinetic_Energy:
+    
+    def __init__(self):
+        self.mass = None
+        self.velocity = None
+        
+    def User_Inputs(self):
+        while True:
+            try:
+                self.mass = float(input("Enter the mass of the object(kg): "))    #Get the object mass from user (int or float)
+                self.velocity = float(input("Enter the velocity of the object(m/s): "))    #Get the velocity of the object (int or float)
+                break
+            
+            except ValueError:
+                print("Invalid!")
+                
+    def Kinetic_Energy_Calculater(self):
+        
+        kinetic_energy = 0.5 * self.mass * self.velocity ** 2 
+        return kinetic_energy
+    
+    def Result(self , result):
+        print("Kinetic Energy is: {:.2f} J".format(result))
+
+
+
+
+
+def Carnot_Efficiency(T_c , T_h): 
+    
+    '''
+    Parameters
+    ----------
+    
+    T_hot (float): Hot source temperature (Kelvin)
+    T_cold (float): Cold source temperature (Kelvin)
+    
+    Returns:
+    float : Efficiency of the cycle 
+    
+   '''
+    try:
+        if T_h <= 0 or T_c <=0:
+            raise ValueError("Temperature must be +!")
+        efficiency = 1 - (T_c / T_h)
+        return efficiency 
+        
+    except ValueError as e:
+        print(f"ERROR: {e}")
+        
+
+        
+def Mc_Cabe(F,Zf,Xd,Xw,R,alpha,q):
+    '''This function is used for Mc-Cabe calculation in Distillation Towers
+    F : Feed Rate
+    Zf : volatile composition in Feed
+    Xd : volatile composition in Distillate
+    Xw : volatile composition in Waste
+    R : Reflux
+    alpha : Volatility coefficient
+    q : the quantity of liquid in feed
+    Returns the number of tray'''
+    W=F*(Xd-Zf)/(Xd-Xw)
+    D=F-W
+    L_first=R*D
+    G_first=(R+1)*D
+    L_second=L_first+q*F
+    G_second=G_first-(1-q)*F  
+    # Rmin Calculation
+    guess=0
+    n=0
+    while n<10000:
+        if q==0:
+            Left=np.array([Zf/(1-Zf)])
+            Right=np.array([alpha*((Xd*(q-1)+Zf*(guess+1))/(((1-Xd)*(q-1))+(1-Zf)*(guess+1)))])
+        else:
+            Left=np.array([((Xd*q+Zf*guess)/((1-Xd)*q+(1-Zf)*guess))])
+            Right=np.array([alpha*((Xd*(q-1)+Zf*(guess+1))/(((1-Xd)*(q-1))+(1-Zf)*(guess+1)))])
+        if Left-Right<0:
+            Rmin=guess
+        else:
+            guess=guess+0.001            
+        n=n+1
+        
+    # Nmin Calculation
+    Nmin=np.ceil(math.log((Xd*(1-Xw))/(Xw*(1-Xd)),10)/(math.log(alpha,10))-1)
+    
+    # N Calculation
+    # 1st Operating Line
+    x=np.array([])
+    for i in range(0,101,1):
+        a=np.array([i/100])
+        x=np.concatenate((x,a))
+        
+    yeq=np.array([])
+    for i in range(0,101,1):
+        b=np.array([(alpha*(i/100))/((alpha-1)*(i/100)+1)])
+        yeq=np.concatenate((yeq,b))
+        
+    y_first=np.array([])
+    for i in range(0,101,1):
+        c=np.array([(((R*(i/100))/(R+1))+((Xd)/(R+1)))])
+        y_first=np.concatenate((y_first,c))
+        
+    y_second=np.array([])
+    for i in range(0,101,1):
+        d=np.array([L_second*(i/100)/G_second-W*Xw/G_second])
+        y_second=np.concatenate((y_second,d))
+        
+    xfeed=np.array([])
+    for i in range(0,101,1):
+        if q==1:
+            e=np.array([Zf])
+            xfeed=np.concatenate((xfeed,e))
+        else:
+            e=np.array([i/100])
+            xfeed=np.concatenate((xfeed,e))
+    
+    yfeed=np.array([])
+    for i in range(0,101,1):
+        if q==1:
+            m=np.array([i/100])
+            yfeed=np.concatenate((yfeed,m))
+        else:
+            f=np.array([((q*(i/100))/(q-1))-(Zf/(q-1))])
+            yfeed=np.concatenate((yfeed,f))
+            
+        if q==1:
+         xcrosspoint=Zf
+         ycrosspoint=(L_first*xcrosspoint)/(G_first)+Xd/(R+1)
+        else:       
+         xcrosspoint=((Zf/(q-1))+(Xd/(R+1)))/((q/(q-1))-(L_first/G_first))
+         ycrosspoint=(q*xcrosspoint)/(q-1)-(Zf/(q-1))
+    
+    Xopt=[]
+    x=Xd
+    for i in range(0,100):
+        if ycrosspoint<x:
+            xopt=x/(alpha+x-alpha*x)
+            x=(L_first*xopt/G_first)+(Xd/(R+1))
+            Xopt=Xopt+[xopt]
+            Nfeed=len(Xopt)
+        elif x>Xw:
+            xopt=x/(alpha+x-alpha*x)
+            x=(L_second*xopt/G_second)-W*Xw/G_second
+            Xopt=Xopt+[xopt]
+        else:
+            N=len(Xopt)-1
+    return print('Nmin=',Nmin,'     Rmin=',Rmin,'     N=',N,'     NFeed=',Nfeed,'     W=',W,'     D=',D)
+
+
+def Diffusivity(MA, MB, T, rAB, K, εAB, f, Pt=1.013*10**5):
+    
+    M = { 'Carbon' '(C)': 0.01201, #kg/kmol
+ 'Hydrogen' '(H)': 0.001008, #kg/kmol
+ 'Chlorine' '(Cl)': 0.03545, #kg/kmol
+ 'Bromine' '(Br)': 0.07990, #kg/kmol
+ 'Iodine' '(I)': 0.12690, #kg/kmol
+ 'Sulfur' '(S)': 0.03207, #kg/kmol
+ 'Nitrogen' '(N)': 0.01401, #kg/kmol
+ 'H2': 0.002016, #kg/kmol
+ 'O2': 0.03200, #kg/kmol
+ 'N2': 0.02802, #kg/kmol
+ 'Air': 28.97, #kg/kmol for dry air
+ 'CO': 0.02801, #kg/kmol
+ 'CO2': 0.04401, #kg/kmol
+ 'SO2': 0.06407, #kg/kmol
+ 'NO': 0.03001, #kg/kmol
+ 'N2O': 0.04402, #kg/kmol
+ 'Oxygen': 0.03200, #kg/kmol
+ 'NH3': 0.01703, #kg/kmol
+ 'H2O': 0.01802, #kg/kmol
+ 'H2S': 0.03408, #kg/kmol
+ 'COS': 0.06007, #kg/kmol
+ 'Cl2': 0.07090, #kg/kmol
+ 'Br2': 0.15980, #kg/kmol
+ 'I2': 0.25380, #kg/kmol
+ 'C3H6O':58.08  #kg/kmol
+}
+
+    if MA in M and MB in M:
+        AB = float(((((((1/M[MA])**0.5 + (1/M[MB])**0.5) * 0.249) - 1.084) * (10**-4)) * T**(3/2)) * ((1/M[MA])**0.5 + (1/M[MB])**0.5)) 
+        DAB = float(( AB / (((rAB**2) * Pt) * ((K*T / εAB) * f)))*-1)  #formula hame emtehan shode va ba data bedast amadeh be sorat mohasebeh dasti moghayeseh shodeh va ba deghat balayi javab doroost bodeh.
+    
+        return DAB
+    else:
+        return "Invalid inputs"
+
+
+def Diffusion_in_Gases(Diffusion_Type, Diffusivity, Separate_Panels_Distance, Pressure_in_Panel_A, Pressure_in_Panel_B, PressureBM, Gas_Constant, Total_Pressure=1.013*10**5):
+   
+                                                       
+    DAB = {'H2-CH4': 6.25*10**-5, #M**2/S
+           'O2-N2': 1.81*10**-5,                       
+           'CO-O2': 1.85*10**-5,
+           'CO2-O2': 1.39*10**-5,
+           'Air-NH3': 1.98*10**-5,
+           'Air-H2O': 2.58*10**-5,
+           'Air-ethanol': 1.02*10**-5,
+           'Air-ethyl-acetate': 0.87*10**-5,
+           'Air-aniline': 0.74*10**-5,
+           'Air-chlorobenzene': 0.74*10**-5,
+           'Air-toluene': 0.86*10**-5}
+    
+    Temp = {'H2-CH4': 273.15,     #Kelvin
+            'O2-N2': 273.15,
+            'CO-O2': 273.15,
+            'CO2-O2': 273.15,
+            'Air-NH3': 273.15,
+            'Air-H2O': 299.05,
+            'Air-ethanol': 299.05,
+            'Air-ethyl-acetate': 274.2,
+            'Air-aniline': 299.05,
+            'Air-chlorobenzene': 299.05,
+            'Air-toluene': 299.05}
+   
+    # We can also write like this :
+        
+# if Diffusivity=='H2-CH4':
+#        DAB=6.25*10**-5 
+#       Temp=273.15
+#if Diffusivity=='O2-N2':
+#        DAB=1.81*10**-5 
+#        Temp=273.15
+#if Diffusivity=='CO-O2':
+#        DAB=1.85*10**-5 
+#        Temp=273.15
+#if Diffusivity=='CO2-O2':
+#        DAB=1.39*10**-5 
+#        Temp=273.15
+#if Diffusivity=='Air-NH3':
+#        DAB=1.98*10**-5
+#        Temp=273.15
+#if Diffusivity=='Air-H2O':
+#        DAB=2.58*10**-5 
+#        Temp=299.05
+#if Diffusivity=='Air-ethanol':
+#        DAB=1.02*10**-5
+#        Temp=299.05
+#if Diffusivity=='Air-ethyl-acetate':
+#        DAB=0.87*10**-5
+#        Temp=274.2
+#if Diffusivity=='Air-aniline':
+#        DAB=0.74*10**-5
+#        Temp=299.05
+#if Diffusivity=='Air-chlorobenzene':
+#        DAB=0.74*10**-5
+#        Temp=299.05 
+#if Diffusivity=='Air-toluene':
+#        DAB=0.86*10**-5
+#        Temp=299.05 
+
+        
+    if Diffusion_Type == 'Two_way_equimolal_diffusion':
+        NA_Two = float(DAB[Diffusivity.replace('_', '-' )] / (Gas_Constant * Temp[Diffusivity.replace('_', '-' )] * Separate_Panels_Distance)) * (Pressure_in_Panel_A - Pressure_in_Panel_B) #( [Diffusivity.replace('_', '-' )] )-->>chon khodam eshtebahan az (_) bejaye (-) estephade karadam va error dad in bakhsh ro ezafe kardam ta agar bedalil tashaboh be eshtebah az (_) estefade shod, ba (-) jayegozin kone ta moshkel bartaraf she va edame bedeh. #Air_H2O--->>'Air-H2O'
+        C = NA_Two
+    elif Diffusion_Type == 'one-way_diffusion':
+        NA_One = float((DAB[Diffusivity.replace( '_', '-' )] * Total_Pressure) / (Gas_Constant * Temp[Diffusivity.replace('_', '-' )] * Separate_Panels_Distance * PressureBM)) * (Pressure_in_Panel_A - Pressure_in_Panel_B)
+        C = NA_One
+
+    return C
+                            #(  Diffusion_Type  , Diffusivity,(S_P_D),(P_A),(P_B),(PBM),Gas_Constant, Total_Pressure=1.013*10**5)
+result_1 = Diffusion_in_Gases('one-way_diffusion', 'Air_H2O', 2*10**-3, 0.2, 0.1, 0.849, 8.314*10**3, 1.013*10**5)  #(Air_H2O--->>'Air-H2O') #((Pressure_in_Panel_A, Pressure_in_Panel_B, PressureBM) If these are written in Atmospheric units, there is no need to convert the unit to pa because it is simplified in the formula.). #(Because we want the (NA) unit to be based on ( KMOL/M**2 * S ), so we write the gas constant as (J/KMOL * K) which means we multiply it by 10**3)
+print(result_1,'KMol/M**2 * S') #inja mishe in khat va (result_1) ro hazf kard chon tabe khorojii dareh va faghat mikhastam javabro ba vahedesh benevise:D .                                        
+
+
+
+
+#=====================================================|
+#=====================================================|
+#=====================================================| 
+
+"""       3| 
+           |shedat entegal germ >> """ 
+           
+'''This function is used for Mass Transfer Intensity'''
+           
+#result_1=Diffusion_in_Gases(NA)
+#The unit of (size_of_the_surface) is Meter
+
+def Mass_Transfer_Intensity(result_1, size_of_the_surface): 
+    MTI_ἠ = float(result_1 * size_of_the_surface)    #The size of the surface where mass transfer occurs(unite Meter).
+
+    return MTI_ἠ
+
+result_2 = Mass_Transfer_Intensity(result_1, 1) #inja andaze sathe entegal germ ro 1_square_meter dar nazar greftam
+print(result_2,'KMol/s') #inja ham hamintor mishe in khat ro hazf kard a bejaye (result_1) bezarim (Diffusion_in_Gases).
+
+
+
+
+def Dental_Composite(totalR, totalF, totalC,
+                     percentages_Filler, percentages_Resin, percentages_Colors,
+                     molar_Si_SiO2, molar_O_SiO2,
+                     molar_Ba_BaSiO3, molar_Si_BaSiO3, molar_O_BaSiO3,
+                     molar_Zr_ZrO2, molar_O_ZrO2,
+                     molar_Ti_TiO2, molar_O_TiO2
+                     ):
+    # Calculate the values corresponding to the percentage of each material
+    percentages_dict = {}
+
+    # Calculate the values of resin materials
+    for i in range(len(Resin_Materials)):
+        percentages_dict[Resin_Materials[i]] = totalR * (percentages_Resin[i] / 100)
+
+    # Calculate the values of filler materials
+    for i in range(len(Filler_Materials)):
+        percentages_dict[Filler_Materials[i]] = totalF * (percentages_Filler[i] / 100)
+
+    for i in range(len(Colors_Materials)):
+        percentages_dict[Colors_Materials[i]] = totalC * (percentages_Colors[i] / 100)
+
+    total_molar_SiO2 = molar_Si_SiO2 + 2 * molar_O_SiO2
+    # Calculate the molar percentages of each element
+    silicon_percentage = molar_Si_SiO2 / total_molar_SiO2
+    oxygen_percentage = (2 * molar_O_SiO2) / total_molar_SiO2
+
+    # Calculate the total molar mass of the filler material
+    total_molar_BaSiO3 = molar_Ba_BaSiO3 + molar_Si_BaSiO3 + (3 * molar_O_BaSiO3)
+    # Calculate the molar percentages of barium, silicon, and oxygen in the filler material
+    barium_percentage = molar_Ba_BaSiO3 / total_molar_BaSiO3
+    sil_Ba_percentage = molar_Si_BaSiO3 / total_molar_BaSiO3
+    oxy_Ba_percentage = (3 * molar_O_BaSiO3) / total_molar_BaSiO3
+
+    # Calculate the total molar mass of zirconium dioxide (ZrO2)
+    total_molar_ZrO2 = molar_Zr_ZrO2 + (2 * molar_O_ZrO2)
+    # Calculate the molar percentages of zirconium and oxygen in ZrO2
+    zirconium_percentage = molar_Zr_ZrO2 / total_molar_ZrO2
+    oxy_Zr_percentage = (2 * molar_O_ZrO2) / total_molar_ZrO2
+
+    # Calculate the total molar mass of titanium dioxide (TiO2)
+    total_molar_TiO2 = molar_Ti_TiO2 + (2 * molar_O_TiO2)
+    # Calculate the molar percentages of titanium and oxygen in TiO2
+    titanium_percentage = molar_Ti_TiO2 / total_molar_TiO2
+    oxy_Ti_percentage = (2 * molar_O_TiO2) / total_molar_TiO2
+
+    # Add calculated percentages to the dictionary
+    percentages_dict['Silicon in SiO2'] = silicon_percentage
+    percentages_dict['Oxygen in SiO2'] = oxygen_percentage
+    percentages_dict['Barium in BaSiO3'] = barium_percentage
+    percentages_dict['Silicon in BaSiO3'] = sil_Ba_percentage
+    percentages_dict['Oxygen in BaSiO3'] = oxy_Ba_percentage
+    percentages_dict['Zirconium in ZrO2'] = zirconium_percentage
+    percentages_dict['Oxygen in ZrO2'] = oxy_Zr_percentage
+    percentages_dict['Titanium in TiO2'] = titanium_percentage
+    percentages_dict['Oxygen in TiO2'] = oxy_Ti_percentage
+
+    return percentages_dict
+
+
+#function1
+def Corrosion_Rate(num1,num2,num3,num4):
+    '''
+    
+
+    Parameters
+    ----------
+    num1 : float
+        the weight loss after exposure time(mg).
+    num2 : float
+        density(g/cm3).
+    num3 : float
+        exposed area(inch2).
+    num4 : float
+        time(hour).
+
+    Returns 
+    corrosin rate in mpy unit.
+    
+
+    '''
+    Corrosion_Rate = (k*num1)/(num2*num3*num3)
+    return Corrosion_Rate
+
+
+#function2
+
+def Contact_Angle(num1,num2,num3):
+    '''
+    
+
+    Parameters
+    ----------
+    num1 : float
+        a solid and atmospher surface tenssion.
+    num2 : float
+        a liquid and atmospher surface tension.
+    num3 : float
+        a solid and liquid boundary tension.
+
+    Returns
+    degrees
+
+    '''
+    import math
+    costeta= (num1-num3)/num2
+    teta = math.acos(costeta)
+    teta_degree= teta*180/pi
+    return teta_degree
+
+
+#function3
+def Mass_Plating(num1,num2,num3,num4):
+    '''
+    
+
+    Parameters
+    ----------
+    num1 : float
+        current(A).
+    num2 : float
+        time(s).
+    num3 : floar
+        molar mass(g/mol).
+    num4 : int
+        number of electron.
+
+    Returns
+    precipitation mass in plating in g unit.
+
+    '''
+    m = num1*num2*num3/(num4*F)
+    return m
+
+
+
+
+
+def Heat_Capacity (m,c,T1,T2):
+    '''
+    This function caclulate the amount of heat capacity of a mass
+    Parameters
+    ----------
+    m : Float
+        mass.
+    c : float
+        specific heat coefficient.
+    T1 : float
+        primary temperature.
+    T2 : float
+        secondary temperature.
+
+    '''
+    Q=m*c*(T2-T1)
+    if Q<0:
+        str='The mentioned material has lost heat'
+    if Q==0:
+        str='The mentioned material,s heat has not changed'
+    if Q>0:
+        str='The mentioned material has gained heat'
+    return Q,str
+
+##-----------------------------------------------------------------------------
+import math
+def Bragg_Law (h,k,l,a,y):
+    '''
+    This function calculate the diffraction angle of a incidence wavelenght through a crytal special plate
+
+    Parameters
+    ----------
+    h : int
+        x direction of the plate.
+    k : int
+        y direction of the plate.
+    l : int
+        z direction of the plate.
+    a : float
+        Unit Cell.
+    y : float
+       incidence wavelenght.
+
+    '''
+    square_sin_teta=(((y**2)*((h**2)+(k**2)+(l**2))))/4*a**2
+    teta=math.asin((square_sin_teta)**1/2)
+    
+    return teta*180/math.pi
+##-----------------------------------------------------------------------------
+
+def Beer_Lambert_Law (a,l,I0):
+    '''
+    This function caclculate the output light intensity when a light pass through a material
+    Parameters
+    ----------
+    a : float
+        absorption coefficient.
+    l : float
+        length.
+    I0 : float
+        incomming light intensity.
+
+    Returns
+    -------
+    I : float
+        output light intensity.
+
+    '''
+    I=I0*(10**(-a*l))
+    return I
+    
+##----------------------------------------------------------------------------
+
+def Density_Convertor(d):
+    '''
+    This function change Kg/m3 to g/cm3
+
+    Parameters
+    ----------
+    d : float
+        density in Kg/m3.
+
+    Returns
+    -------
+    d2 : float
+        g/cm3.
+
+    '''
+    d2=d/1000
+    return d2
+
+
+
+def Binomial_Probability(n,k,p):
+    """
+    
+
+    Parameters
+    ----------
+    p :float
+        ehtemal voghoo beyn 0ta 1
+    n:int
+        tedad dafat azmayesh
+    K:int
+        tedad dafaat bord
+
+    return ehtemal rokh dadan pishamad dar fazaye do pishamadi(bord,shekast)
+     ba tedad n azmayesh va tedad k  bord
+
+
+    """
+    q=1-p
+    return p**k*q**(n-k)
+
+#####
+def Pythagorean_Relation(a,b,c):
+    """
+    
+
+    Parameters
+    ----------
+    a : float
+        tool zele aval.
+    b : float
+        tool zele dovom.
+    c : float
+        tool zele sevom.
+
+    Returns be ma mige in adad mitoonan mosalas ghaem alazviye tashkil bedan 
+    ba "mosalas ghaemalzaviye mishe" va" mosalas ghaemalzaviye nemishe"
+    -------
+
+    """
+    if a**2==b**2+c**2 or b**2==a**2+c**2 or c**2==a**2+b**2:
+        return "mosalas ghaemalzaviye mishe"
+    else:
+        return "mosalas ghaemalzaviye nemishe"
+
+######
+def Income_Tax(a):
+    """
+    
+
+    Parameters
+    ----------
+    a : float
+         daramad fard dar yek mah
+
+    Returns maliyat bar daramad fard dar yek mah dar iran
+    -------
+
+
+    """
+    return (a-10000000)*0.09
+
+
+#####
+
+#######
+def Polygonal_Diameters(n):
+    """
+    
+
+    Parameters
+    ----------
+    n : int
+        tedad azlae chand zelei(az 2 ta bishtar).
+
+    Returns tedad ghotrhaye chand zelei
+    -------
+
+    """
+    return((n*(n-3))/2)
+#######
+def Velocity_Equation(V1,V2,a):
+    """
+    
+
+    Parameters
+    ----------
+    V1 : float
+        sorat avaliye moteharek.
+    V2 : float
+        sorat nahayi moteharek.
+    a : floar
+        shetab moteharek dar harekat ba shetab sabet.
+
+    Returns mizan jabejayi dar harekat ba shetab sabet
+    -------
+   
+
+    """
+    return (V2**2-V1**2)/2*a
+
+
+
+ef Diffusion_Coefficient(T):
+    """
+    Parameters
+    ----------
+    T : integer
+        the Temperature for which we require the Coeffiecient.
+    Returns
+    -------
+    Dm : integer
+        Diffusion Coefffecient at the required Temperature.
+
+    """
+    global Dm
+    Dm=Do*2.718**(-Ec/T)
+    return Dm
+
+
+#Function 3
+def Carbon_content(B,x,t):
+    """
+    Parameters
+    ----------
+    B : integer
+        the total available carbon content
+    x : integer
+        the thickness in question
+    t : ineteger
+        time 
+    Returns
+    -------
+    Cxt : integer
+        carbon content at the required time and location according to total carbon provided
+
+    """
+    Cxt=(B/(3.14*Dm*t)**0.5)*2.718**(-(x**2)/4/Dm/t)
+    return Cxt
+
+
+def Incompressible_Fluids_Pressure(d,h):  
+    P_0=101325#(Pa)
+    g=9.81#(m/s^2)
+    P=d*g*h+P_0
+    return P
+
+
+
+
+
+def Bouyancy_Force(d,V):
+    g=9.81#(m/s^2)
+    F_b=d*g*V
+    return F_b
+
+
+
+def Reynolds_Number_Pipe(d,u,vis,D_H):
+    Re=d*u*D_H/vis
+    return Re
+
+#functions
+def Critical_radius(Temp_difference):
+   return (2 * Gama_sl * T_m)/(Latent_heat * Temp_difference)
+
+def Activation_energy(Temp_difference):
+    return (16 * Pi * (Gama_sl ** 3) * (T_m ** 2))/(3 * (Latent_heat ** 2) * (Temp_difference ** 2))
+
+def Number_of_unit_cells(Radius):
+    return (4 * Pi * (Radius ** 3))/(3 * (converted_A ** 3))
+
+def Nucleation(Temprature, activation):
+    return (N_t * math.exp(-(activation/(K * Temprature))))
+
+
+
+def Copolymer_Type(Copolymer, Polymer_num=2):
+    '''
+    Copolymer: str
+    Unit types are shown by charachters which are seperated by a space
+    Example: 'polymer_A polymer_A polymer_B polymer_A polymer_A polymer_B'
+    
+    Polymer_num: int
+    It represents the number of polymers in this structure which could be 2 or 3
+    default = 2
+    '''
+    valid = [2, 3]
+    if Polymer_num not in valid:
+        raise ValueError('Polymer_num should be 2 or 3')
+    
+    co_list = Copolymer.split()
+    change = []
+    unique = 0
+    unique_list = []
+    for i in range(1,len(co_list)):
+        if co_list[i-1] not in unique_list:
+            unique_list.append(co_list[i-1])
+            unique += 1
+        if co_list[i] != co_list[i-1]:
+            change.append(True)
+        else:
+            change.append(False)
+            
+    if change.count(True) == 0:
+        print('Error: It is not a copolymer') 
+    elif Polymer_num != unique:
+        print('Error: The number of unique units in the copolymer is not compatible with the Polymer_num entered')
+    elif Polymer_num == 2:
+        if change.count(False) == 0:
+            copolymer_type = 'Alternative'
+            print(copolymer_type)
+        elif change.count(True)==1:
+            copolymer_type = 'Block'
+            print(copolymer_type)
+        else:
+            copolymer_type = 'Random'
+            print(copolymer_type)
+        return copolymer_type
+    
+    
+
+
+import numpy as np
+    
+def PengRobinson(T = None,P = None,Tc = None,Pc = None,w = None,MW = None,Phases = None):
+    """
+    PengRobinson.m : calculates the compressibility factor,fugacity coefficient and density
+    of a pure compound with the Peng Robinson equation of state (PR EOS)
+
+    Parameters
+    ----------
+    T : float
+        Temperature [=] K
+    P : float
+        Presure [=] Pa
+    Tc : float
+        Critical temperature [=] K
+    Pc : float
+        Critical presure [=] Pa
+    w : float
+        Accentic factor
+    MW : float
+        Molar weigth [=] kg/mol.
+    Phases : int
+        if Phases == 1, then calculates liquid fugacity;
+        if Phases == 0 then calculates vapor fugacity
+
+    Returns
+    -------
+    Z : flout
+        Compressibility factor
+    fhi : float
+        Fugacity coefficient
+    density : float
+        Density
+
+    """
+    R = 8.314
+    
+    # Reduced variables
+    Tr = T / Tc
+    
+    # Parameters of the EOS for a pure component
+    m = 0.37464 + 1.54226 * w - 0.26992 * w ** 2
+    alfa = (1 + m * (1 - np.sqrt(Tr))) ** 2
+    a = 0.45724 * (R * Tc) ** 2 / Pc * alfa
+    b = 0.0778 * R * Tc / Pc
+    A = a * P / (R * T) ** 2
+    B = b * P / (R * T)
+    # Compressibility factor
+    Z = np.roots(np.array([1,- (1 - B),(A - 3 * B ** 2 - 2 * B),- (A * B - B ** 2 - B ** 3)]))
+    ZR = []
+    for i in range(3):
+        if type(Z[i])!='complex':
+            ZR.append(Z[i])
+    
+    if Phases == 1:
+        Z = np.amin(ZR)
+    else:
+        Z = np.amax(ZR)
+    
+    # Fugacity coefficient
+    fhi = np.exp(Z - 1 - np.log(Z - B) - A / (2 * B * np.sqrt(2)) * np.log((Z + (1 + np.sqrt(2)) * B) / (Z + (1 - np.sqrt(2)) * B)))
+    if True:
+        density = P * MW / (Z * R * T)
+        result = np.array([Z,fhi,density])
+    else:
+        'No real solution for "fhi" is available in this phase'
+        result = np.array(['N/A','N/A','N/A'])
+    
+
+    return Z,fhi,density
+
+
+
