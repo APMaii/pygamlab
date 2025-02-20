@@ -3424,6 +3424,1174 @@ def Photon_Energy(f):
     return E
 
 
+#Functions
+def Thermal_Voltage(Temperature, Unit = 'K'):
+    '''    
+    Calulation of thermal voltage value
+    Parameters
+    ----------
+    Temperature : 
+        Temperature.
+    Unit : The unit of temperature
+        K or k: Kelvin
+        F or f: fahrenheit
+        C or c: celsius
+        The default is 'K'.
+    Returns
+    -------
+    Calulated thermal voltage(KT/q)
+    '''
+    if Unit.upper() == 'F':
+       #Temperature = (Temperature - 32) * 5 / 9 + 273.15 
+       Temperature = Fahrenheit_to_Kelvin(Temperature)
+    elif Unit.upper() == 'C':
+      Temperature = Temperature + 273.15
+    #return 1.38066e-23*Temperature/1.60218e-19  
+    return k*Temperature/e  
+
+
+def Diod_Forward_Voltage(Temp, I, Is):
+    '''
+    Calculation of forward voltage of a diode
+    Parameters
+    ----------
+    Temp : float
+        diode temperature in celsius.
+    I : float
+        diode current(A).
+    Is : float
+        the reverse saturation current(A).
+
+    Returns
+    -------
+    the voltage across the diode(V).
+    '''
+    Vt = Thermal_Voltage(Temp, 'C')
+    Vd = Vt*math.log(I/Is+1)
+    return Vd
+
+
+#section two
+def Power_Spectrum_Density(frequency,T):
+    '''
+    Parameters
+    ----------
+    frequency: float
+               the frequency that power spectrum density is required at
+    T: float
+       the temperature of material in kelvin
+
+    Returns
+    -------
+    s: float
+       power spectrum density of thermal noise           
+    '''
+    s=(frequency*h)/2*(2.7**((h*frequency)/(k*T))-1)
+    return s
+    
+
+def Voltage_Standing_Wave_Ratio(Vmax,Vmin):
+    '''
+    Parameters
+    ----------
+    Vmax: float
+          the highest voltage measured in transition line
+    Vmin: float
+              the lowest voltage measured in transition line
+    Returns
+    -------
+    Row: float
+         its the domain of reflection coefficient of transition line
+    '''
+    s=Vmax/Vmin
+    Row=(s-1)/(s+1)
+    return Row
+
+
+def Gravitational_force(G,FT):
+    '''
+    Parameters
+    ----------
+    G : float
+        The gravitational force is a force that attracts any two objects with mass.
+    FT : float
+        The force of gravity varies with latitude and increases from about 9.780 m/s2 at the Equator to about 9.832 m/s2 at the poles.
+
+    Returns
+    -------
+    F : float
+        The force of gravity is also called as Newton's law of gravitation. Mathematically, F = GMmr2.
+        where F = force of gravity, G = gravitational constant, M = mass of one object, m = mass of other object, r = distance between two objects.
+
+    '''
+    if FT=='Force of gravity total':
+        F=G*((5.972*(10**24)*1.989*(10**30))/((1.496*(10**11))**2))
+        return F
+    
+def Gravitational_force_formula(g,m_mars,m_sun,r_mars_sun):
+    '''
+    
+
+    Parameters
+    ----------
+    g : float
+        The gravitational force is a force that attracts any two objects with mass.
+    m_mars : float
+        Mars' mass is 6.42 x 1023 kilograms, about 10 times less than Earth.
+        This affects the force of gravity. Gravity on Mars is 38 percent of Earth's gravity,
+        so a 100-pound person on Earth would weigh 38 pounds on Mars
+    m_sun : float
+        The sun has a mass of 1.9891x1030 kg = 4.384x1030 lb = 2.192x1027 tons, or a mass 333,000 times that of the Earth.
+        The radius of the Sun is 696,265,000 meters = 696,265 km = 432,639 mi or a radius 109 times that of the Earth.
+    r_mars_sun : float
+        Mars is about 128 million miles (206 million km) from the sun,
+        and at its farthest distance (aphelion) Mars is about 154 million miles (249 million km) from the sun.
+
+    Returns
+    -------
+    F2 : float
+        The force of gravity is also called as Newton's law of gravitation.
+        Mathematically, F = GMmr2.
+        where F = force of gravity, G = gravitational constant, M = mass of one object, m = mass of other object, r = distance between two objects.
+
+    '''
+    if g=='gravity':
+       F2=g*((m_mars*m_sun)/r_mars_sun**2)
+       return F2
+
+
+
+
+def Euler_Diff_Solver(a , b, xf , h , x0 =0 ,y0 =0 ):
+    '''
+    This function solve linear differential equation of the following form: 
+        yprim = dy/dx = f(x,y) = a*x^2 + b*x
+    by the Euler's method that is a numerical method for 
+    approximating differential equations.    
+
+    Parameters
+    ----------
+    a : float
+        Polynomial coefficient..
+    b : float
+        Polynomial coefficient.
+    xf : float
+        Independent variable's final value.
+    h : float
+        Step size.        
+    x0 : float, optional
+        Independent variable's initial value. The default is 0.
+    y0 : float, optional
+        Initial function value at x0 (y0 = y(x0)). The default is 0.
+
+    Raises
+    ------
+    TypeError
+        The quadratic coefficient of the equation should not be zero.
+
+    Returns
+    -------
+    y : float
+        Returns function value at desired point (xf) or y(xf).
+
+    '''
+    
+    if a == 0:
+        raise TypeError('The coefficient a should not be zero')
+        return
+    varL =  xf - x0
+    varLL = int(varL/h)
+    for i in range(varLL):
+        y = Euler_Method(a,b,x0,y0,h)
+        y0 = y
+        x0 = x0 +h
+    return y   
+   
+    
+def Euler_Method(a,b, h, x0,y0):
+    
+    '''
+    Euler's method law: y = y0 + h *yprim 
+
+    Parameters
+    ----------
+    a : float
+        Polynomial coefficient.
+    b : float
+        polynomial coefficient.
+    x0 : float
+        Initial value.
+    y0 = y(x0) : float
+        function value.
+    h : float
+        Step size.
+
+    Returns
+    -------
+    This function returns function value (y) at specific value (x).
+
+    '''
+    var1 = x0;
+    yprim = a*(var1**2)+b*var1;
+    y = y0 + h *yprim # Euler's method
+    return y
+
+
+
+def Calculate_Pipe_Heat_Transfer(mu,muW,rho,Cp,Pr,K,u,d,l,Tw,Tb1):
+    '''
+    Parameters
+    ----------
+    mu : float
+        Fluid dynamic viscosity (pa.s).
+    muW : float
+        Dynamic viscosity at wall temperature (pa.s).
+    rho : float
+        fluid density (kg/m³).
+    Cp : float
+        DESCRIPTION.
+    Pr : float
+        Prantel number.
+    K : flout
+        Thermal conductivity(W/m.K).
+    u : float
+       fluid velocity (m/s).
+    d : float
+        Pipe diameter (m).
+    L : float
+        Pipe length (m).
+    Tw : float
+        Pipe wall temperature.
+    Tb1 : float
+        Average fluid temperature().
+
+    Returns
+    Reynolds number, Nusselt number, convective heat transfer coefficient, total heat transfer, and outlet temperature.
+    -------
+    None.
+
+    '''
+########################
+#توضیحات کد: ابتدا عدد رینولدز محاسبه می‌گرد، اگر که کمتر از 2000 باشد در این صورت جریان آرام است .
+# برای جریان آرام داخل لوله اگر لوله طویل باشد عدد ناسلت 3.66 می شود و اکر لوله طویل نباشد از فرمول ناسلت نوشته شده (1) استفاده می گردد . 
+#و اگر عدد رینولدز در بازه ی 2500-1.25ضرب در 10 به توان 5 باشد و عدد پرانتل در بازه ی ذکر شده باشد ،از فرمول 2 استفاده می شود در صورتی که برای n تگر دمای جداره بیشتر از دمای سیال باشد برابر 0.4 .
+# حالا می خواهیم با استفاده از عدد ناسلت ضریب انتقال حرارت جابه جایی را بدست آوریم .
+# و ضریب انتقال حرارنت جابه جایی را حساب نموده و با استفاده از تساوی آخر دمای خروجی سیال بدست می آید .
+########################
+    
+    Re=(rho*u*d)/mu
+    if Re<2000:
+        print('flow type laminar')
+        if (Re*Pr*(d/l))>10:
+            Nu=1.86*(Re*Pr)**(1/3)*(d/l)**(1/3)*(mu/muW)**0.14#####برای لوله های طویل صادق نیست(1) .
+        else:
+            Nu=3.66####برای لوله های طویل و دمای ثابت در جداره لوله 
+    elif 2500<Re<(1.25*(10**5)) and 1.5<Pr<100:
+        print('flow type Turbulent')
+        if Tw>Tb1:
+            n=0.4
+        else:
+            n=0.3
+        Nu=(0.023*(Re**0.8)*(Pr**n))##(2)
+    else:
+        return None
+    h = (Nu * K) / d
+    A=3.14*d*l
+    Tb2 =Tb1+(h*A*(Tw-Tb1))/(rho*Cp*u) 
+    Q=((rho*A*u)*Cp*(Tb2-Tb1))
+    return {Re,Nu,h,Q,Tb2}   
+        
+results=Calculate_Pipe_Heat_Transfer(0.000417,0.00035,985,4.18,3.02,0.651,0.02,0.0254,3,80,60)
+
+
+
+##############################################################
+import math
+def Heat_Exchanger_Transfer(U,Th1,Th2,Tc1,Tc2,C,dot_m):
+    '''
+    
+
+    Parameters
+    ----------
+    U : float
+        Overall heat transfer coefficient.
+    Th1 : float
+        Hot fluid inlet temperature.
+    Th2 : float
+        Hot fluid outlet temperature.
+    Tc1 : float
+        Cold fluid inlet temperature.
+    Tc2 : float
+        Cold fluid outlet temperature.
+    C : float
+        Special heat.
+    dot_m : float
+        Debbie Jeremy.
+        
+
+    Returns(delta_T_LMTD,Q,A)
+    -------
+    None.
+    
+
+    '''
+    
+    delta_T_LMTD=((Th1-Tc2)-(Th2-Tc1))/math.log((Th1-Tc2)/(Th2-Tc1))##Logarithmic mean temperature
+    global Q
+    Q=dot_m*C*(Tc2-Tc1)
+    global A
+    A=Q/(U*delta_T_LMTD)###The heat exchange surface used
+    return delta_T_LMTD,A,Q
+
+
+def Austenite_Martensite_VC(C):
+    '''
+    This function calaculates the volume change of a unit cell in Austenite to Marteniste transformation.
+
+    Parameters
+    ----------
+    C : float
+        C is the percentage of carbon in chemical composition of steel.
+
+    Returns
+    -------
+    VC : float
+        VC is the percentage of volume change of a unit cell in Austenite to Marteniste transformation.
+
+    '''
+    a0 = 3.548 + (0.044 * C)    #Austenite lattice parameter
+    V0 = (a0 ** 3) / 2          #Volume of Austenite unit cell (FCC)
+    a = 2.861 - (0.013 * C)     #Martensite lattice parameter
+    c = 2.861 + (0.116 * C)     #Martensite lattice parameter
+    V=c * (a ** 2)              #Volume of Martensite unit cell (BCT)
+    Delta_V = V - V0 
+    VC = (Delta_V / V0) * 100
+    return VC
+
+
+
+def Standard_Deviation(a):
+    '''
+    This function calculates the standard deviation of a list of numbers.
+
+    Parameters
+    ----------
+    a : list
+        a is a list of numbers.
+
+    Returns
+    -------
+    SD : float
+        SD is the standard deviation of a list of numbers.
+
+    '''
+    E = 0
+    F = 0
+    
+    for i in a:
+        E = E + i       #sum of numbers
+    M = E / len(a)      #Mean
+    
+    for i in a:
+        D = (i - M) ** 2
+        F = F + D
+    SD2 = (F / (len(a) - 1))
+    SD = math.sqrt(SD2)
+    return SD
+
+
+#William, Landel, Ferrry (WLF)
+def WLF(T,Tg,/):
+    '''
+    The WLF equation is a procedure for shifting data for amorphous polymers obtained at elevated temperatures to a reference temperature. 
+
+    Parameters
+    ----------
+    T : int or float
+        Temperature, K or degree celsius, Tg<T<Tg+100..
+    Tg : int or float
+        Glass Transition Temperature, K or degree celsius.
+   
+    Returns
+    -------
+    aT : int or float
+    shift factor.
+
+    '''
+    b=T-Tg 
+    c=-17.44*b
+    d=51.6+b
+    e=c/d
+    aT=math.pow(10,e)
+    return aT
+        
+
+#Cohen Equation
+def Cohen(m,r,/):
+    '''
+  Cohen equation is used to predict the yield stress of a polymeric blend  containing a rubbery dispersion phase. 
+
+    Parameters
+    ----------
+    m : int or float
+        The yield stress of polymeric matrix, N/m^2 or Pa or ...
+    r : float
+        Volume fraction of rubbery phase, 0<r<1.
+
+    Returns
+    -------
+    b : int or float
+    The yield stress of polymeric blend, N/m^2 or Pa or ...
+
+    '''
+    a=(1-1.21*math.pow(r,(2/3)))
+    b=m*a
+    return b
+    
+        
+#Critical diameter of rubbery particles
+def Critical_Diameter(d,r,/):
+    '''
+    This equation predicts the critical diameter of rubber particles toughening a polymeric matrix.
+    Parameters
+    ----------
+    d : int or float
+        critical distance between rubbery particles, angstrom or mm or nm or .....
+    r : float
+        Volume fraction of rubbery phase, 0<r<1.
+
+    Returns
+    -------
+    dc : int or float
+    the critical diameter of rubber particles
+
+    '''
+    a=6*math.pow(r,(1/3))
+    b=a-1
+    c=3.14/b
+    dc=d/c
+    return dc
+
+
+
+
+def Insertion_Sort (non_sorted_list):
+    
+    # key = non_sorted_list[0]
+    for i in range(1, len(non_sorted_list)):
+        key = non_sorted_list[i]
+        # print ('key:',key)
+        # print ('i:',i)
+        j=i-1
+        while j>=0 and key<non_sorted_list[j]:
+            # print ('j:',j)
+            # print ('key:',key)
+            # if non_sorted_list[j]>key :
+            non_sorted_list[j+1]=non_sorted_list[j]
+            j-=1
+        non_sorted_list[j+1]=key
+            
+    print (non_sorted_list)
+    return(non_sorted_list)
+    
+print('*******************************************')    
+my_test_list=[7,1,5,2,6,3,1,9,11,7,23]
+my_sorted_list=Insertion_Sort(my_test_list)
+
+#------------------------------------------------------------
+#second function: 
+#analize of web services performance in infrastructure 
+#architecture (the forth layer of an enterprise architecture)
+#------------------------------------------------------------
+
+def Web_Service_Analyze(services,resp_times,exe_CPU_costs,exe_Mem_costs,exe_Disk_costs,exe_Net_costs):
+    '''
+    
+
+    Parameters
+    ----------
+    services : list pof str
+        the list of services..
+    resp_times : list of int
+        the list of the responce times of specified web services, measured in millisecond.
+    exe_CPU_costs : list of int
+        list of the percent of execution costs in case 
+        of cpu for specified web services.
+    exe_Mem_costs : list of int
+        list of the percent of execution costs in case 
+        of memory for specified web services.
+    exe_Disk_costs : list of int
+        list of the percent of execution costs in case
+        of disk for specified web services.
+    exe_Net_costs : list of int
+        list of the percent of execution costs in case
+        of network for specified web services.
+
+   Returns
+   a list of services with their useful information for easily analyze.
+
+'''
+    web_services_analyze_data=[]
+    for i in range(len(services)):
+        serv_name=services[i]
+        resp_time=resp_times[i]
+        exe_CPU_cost=exe_CPU_costs[i]
+        exe_Mem_cost=exe_Mem_costs[i]
+        exe_Disk_cost=exe_Disk_costs[i]
+        exe_Net_cost=exe_Net_costs[i]
+        
+        
+        
+        if resp_time < 100:
+            resp_time_st='Excellent'
+        elif resp_time >= 100 and resp_time <= 200:
+            resp_time_st='good'
+        elif resp_time > 200 and resp_time <= 1000:
+            resp_time_st='acceptable'
+        elif resp_time > 1000 :
+            resp_time_st='very slow'
+            
+            
+        if exe_CPU_cost >= 0 and exe_CPU_cost < 30:
+                exe_CPU_cost_st='Low Usage'
+        elif exe_CPU_cost >= 30 and exe_CPU_cost <= 70:
+                exe_CPU_cost_st='Optimal'
+        elif exe_CPU_cost > 70 and exe_CPU_cost <= 85:
+               exe_CPU_cost_st='Moderate Pressure'
+        elif exe_CPU_cost > 85 and exe_CPU_cost <= 100:
+                exe_CPU_cost_st='Critical'
+                
+        
+        if exe_Mem_cost >= 0 and exe_Mem_cost < 50:
+                exe_Mem_cost_st='Low Usage'
+        elif exe_Mem_cost >= 50 and exe_Mem_cost <= 75:
+                exe_Mem_cost_st='Optimal'
+        elif exe_Mem_cost > 75 and exe_Mem_cost <= 90:
+               exe_Mem_cost_st='Moderate Pressure'
+        elif exe_Mem_cost > 90 and exe_Mem_cost <= 100:
+                exe_Mem_cost_st='Critical'
+                
+                
+        if exe_Disk_cost >= 0 and exe_Disk_cost < 50:
+                exe_Disk_cost_st='Low Usage'
+        elif exe_Disk_cost >= 50 and exe_Disk_cost <= 75:
+                exe_Disk_cost_st='Optimal'
+        elif exe_Disk_cost > 75 and exe_Disk_cost <= 90:
+               exe_Disk_cost_st='Moderate Pressure'
+        elif exe_Disk_cost > 90 and exe_Disk_cost <= 100: 
+                exe_Disk_cost_st='Critical'
+                
+                
+        if exe_Net_cost >= 0 and exe_Net_cost < 50:
+                exe_Net_cost_st='Low Usage'
+        elif exe_Net_cost >= 50 and exe_Net_cost <= 75:
+                exe_Net_cost_st='Optimal'
+        elif exe_Net_cost > 75 and exe_Net_cost <= 90:
+               exe_Net_cost_st='Moderate Pressure'
+        elif exe_Net_cost > 90 and exe_Net_cost <= 100: 
+                exe_Net_cost_st='Critical'
+                
+                
+       
+        web_services_analyze_data.append(('Service Name: '+ serv_name,'Response Time: '+resp_time_st,'CPU Cost: '+ exe_CPU_cost_st,'Memory Cost: '+ exe_Mem_cost_st,'Disk Cost: '+exe_Disk_cost_st,'Network Cost: '+exe_Net_cost_st))
+        
+    print(web_services_analyze_data)
+    return (web_services_analyze_data)
+
+
+import math
+
+def Defect_Density(Beta,Theta,K=0.9,Landa=1.5406):
+    '''
+    
+    Parameters
+    ----------
+    Beta : Float
+        Full width at half maximum (FWHM).
+    Theta : Float
+        Bragg's Diffraction Angle.
+    K : Float, optional
+        Scherrer Constant. The default = 0.9.
+    Landa : Float, optional
+        X-ray Wavelength. The default = 1.5406.
+    
+
+    Returns
+    -------
+    D : Float
+        Crystallite size (nm)
+    Delta : Float
+        Density of defect for crystallite structures from XED crystallography calculated from reverse the Scherrer Equation.
+
+    '''
+    Theta=math.radians(Theta)
+    D=(K*Landa)/(Beta*math.cos(Theta))
+    Delta=1/(D**2)
+    return D,Delta
+
+Defect_Density(0.6, 90)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#Absorption Coefficient (D) in electrochemical reactions calculates from Randles-Sevcik aquation in Cyclic voltametry technique.
+# D calculation depends on type of electrochemical reaction (reversibility and irreversibility)
+
+def Diffusion_Coefficient_Calculator(Peak_Current,A,C,Scan_Rate,n,is_reversible):
+    '''
+    
+
+    Parameters
+    ----------
+    Peak_Current : Float
+        Peak of current (A).
+    A : Float
+        Electrode area (cm**2).
+    C : Float
+        Concentration of electroactive species (mol/L).
+    Scan_Rate : Float
+    (mV/s)
+    n : int
+    number of transfered electron
+    is_reversible: bool
+        Type of reaction. 'True' is reversible, 'False' is irreversible
+
+    Returns
+    -------
+    Diffusion Coefficient calculates from Randles-Sevcik aquation. type:float
+
+    '''
+    
+    if is_reversible.upper()=='TRUE':
+        Diffusion_Coefficient=(Peak_Current/((2.65*10**5)*(n**(3/2))*A*C*(Scan_Rate**(1/2))))**2
+        
+    elif is_reversible.upper()=='FALSE':
+        Diffusion_Coefficient=(Peak_Current/(0.446*(n**(3/2))*A*C*(Scan_Rate**(1/2))))**2
+        
+    else:
+        raise TypeError ('Please enter a valid answer (yes or not)') 
+    
+    return(Diffusion_Coefficient)
+
+
+#+++++++++++++++++ first +++++++++++++++++++++++++++
+def Component(a,b):
+    '''
+    تصویر اسکالر b بر a  
+(اندازه بردار تصویر)       
+
+    Parameters
+    ----------
+    a : list
+        multi-dimensional vector
+    b : list
+        multi-dimensional vector
+
+    Returns
+    -------
+   c : float
+       The component of b on a
+
+    '''
+    ab=0
+    aa=0
+    for i in range(0,len(a)):
+           ab=ab+a[i]*b[i]
+           aa=aa+a[i]*a[i]
+    aas=math.sqrt(aa)
+    c=(ab/aas)
+    return c
+
+#+++++++++++++++++++++ second +++++++++++++++++++++++++++++++
+def Distance(x,y,z,a,b,c,d):
+    '''
+    The formula of the distance between a point and a plane in
+    three-dimensional space is as follows:
+        D=(abs(a*x+b*y+c*z+d))/sqrt(a**2+b**2+c**2)
+
+    Parameters
+    ----------
+    x : int
+        The x-axis component.
+    y : int
+        The y-axis component.
+    z : int
+        The z-axis component.
+    a : int
+        The coefficient of x in the plane equation.
+    b : int
+        The coefficient of y in the plane equation.
+    c : int
+        The coefficient of z in the plane equation.
+    d : int
+        The constant in the plane equation.
+
+    Returns
+    -------
+    D : float
+        The distance of point-to-plane
+        
+   Example : Distnace between (1,-2,4) and the plane 13*x-6*y-5*z+3=0
+             is    0.527 
+
+    '''
+    if a==b==c==0:
+        return None
+    else:
+        tt=abs(a*x+b*y+c*z+d)
+        ss=math.sqrt(a**2+b**2+c**2)
+        D=tt/ss
+        return D
+
+
+
+def Operation_Choosing(booolean):
+    print("\nWhich sort of Operation would you like?")
+    while(booolean==True):
+        i=input("\n\nfor Choosing Today's past Hours press 1 \nfor Choosing Today's past Minutes press 2\nfor Choosing Today's past second press 3 \nfor Choosing the amount of days has passed since today press 4 : ")
+        if( int(i)==1 or int(i)==2 or int(i)==3 or int(i)==4):
+            booolean=False
+            break
+        print("You have chosen wrong operation! please try again!")
+            
+    return int(i)
+
+
+
+def Change_In_Pressure_Of_a_Mercury_OR_Water_Column_Manometer(Type_Of_Fluid,h,g=9.81):
+    
+ if Type_Of_Fluid.upper()=='water':
+    Delta_P=1*h*g
+    return Delta_P
+     
+ if Type_Of_Fluid.upper()=='mercury':
+    Delta_P=13.6*h*g
+    return Delta_P   
+
+ else:
+     raise ValueError ("Invalid Type of Fluid")
+
+
+def Mass_Of_Rubber_In_Internal_Mixer(filler_percentage,type_of_rotors,V):
+    if filler_percentage>65:
+           if type_of_rotors=='tangential':
+            M=1.3*0.8*V
+            return M
+           
+           if type_of_rotors=='intermix':
+            M=1.3*0.6*V
+            return M
+        
+    if filler_percentage<=65:
+           if type_of_rotors=='tangential':
+            M=1*0.8*V
+            return M
+           
+           if type_of_rotors=='intermix':
+            M=1*0.6*V
+            return M
+
+
+
+
+def Atmosphere_MmHg (P):
+    '''
+    Parameters
+    ----------
+    P : float
+        pressure in atm unit.
+
+    Returns
+    pressure from atm to mmHg
+    '''
+   
+    P_mmHg= P*760
+    return P_mmHg
+    
+# mmHg to atm
+
+def MmHg_Atmosphere (P):
+    '''
+    Parameters
+    ----------
+    P : float
+        pressure in mmHg unit.
+
+    Returns
+    pressure from mmHg to atm
+
+    '''
+    P_atm= P/760
+    return P_atm
+
+
+
+
+def Concentration_Calculator (CA1, unit_CA1, CA2, unit_CA2, Q1, unit_Q1, Q2, unit_Q2):
+    '''
+    Parameters
+    ----------
+    CA1 : float
+        Concentratoion of the first flow
+    unit_CA1: str
+        Unit of concentratoion of the first flow
+    CA2 : float
+        DESCRIPTION.Concentratoion of the second flow
+    unit_CA2: str
+        Unit of concentratoion of the second flow
+    Q1 : float
+        Molar volume of the first flow
+    unit_Q1: str
+        Unit of molar volume of the first flow
+    Q2 : float
+        Molar volume of the second flow
+    unit_Q2: str
+        Unit of molar volume of the second flow
+
+    Returns
+    -------
+    Flowrate and concentration of the output flow
+    '''
+    
+    if unit_CA1== 'mole/lit':
+        CA1= CA1*1000
+    elif unit_CA1== 'mole/ml':
+        CA1= CA1*1000000
+        
+    if unit_CA2== 'mole/lit':
+        CA2= CA2*1000
+    elif unit_CA2== 'mole/ml':
+        CA2= CA2*1000000
+        
+    if unit_Q1== 'lit':
+        Q1= Q1/1000
+    elif unit_Q1== 'ml' or unit_Q1== 'cc':
+        Q1= Q1/1000000 
+        
+    if unit_Q2== 'lit':
+            Q2= Q2/1000
+    elif unit_Q2== 'ml' or unit_Q2== 'cc':
+            Q2= Q2/1000000 
+            
+    V_out = Q1+Q2
+    C_out= (CA1*Q1 + CA2*Q2)/V_out
+    return V_out
+    return C_out
+
+
+
+
+###########################################################################
+'''Section 3-4
+
+    A function that Determines the solubility of substances at different 
+    temperatures using  of the constants related to that substance and 
+    the end of the calculations when the concentration is greater than 1'''
+###########################################################################
+
+
+def Solubility (a,b,c,T, T_unit, T_end):
+    '''
+     Parameters
+    ----------
+    a : float
+        Constant.
+    b : float
+        Constant.
+    c : float
+        Constant.
+    T : float
+        Temperature.
+    T_unit:str
+        Unit of temperature.
+    T_end: float
+        Final temperature
+
+    Returns
+    -------
+    Determination solubility at different temperatures upto solubility< 1
+    '''
+#تبدیل دما به کلوین
+
+    if T_unit=='C':
+        T_unit=T_unit+273.15
+    elif T_unit=='F':
+        T_unit= ((T_unit-32)/1.8)+273.15
+    elif T_unit=='R':
+        T_unit=T_unit*5/9
+        
+# محاسبه حلالیت و توقف محاسبات با رسیدن به غلظت بالاتر از 1  
+  
+    for T in range (T,T_end):
+        S=a*T**2+b*T+c
+        if S<1:
+            continue
+        else:
+            break
+    return S
+
+
+def Tresca_Yield_For_Principal_Stresses(c,hardness,sigma_1,sigma_2,sigma_3,/):
+    '''
+    
+
+     Parameters
+     ----------
+     c : float
+         C is a coefficient that is between 0.3 and 0.4 depending on the type of material.
+     hardness : float
+         brinell and vickers hardness.
+     sigma_y : float
+         Uniaxial tensile yield strength of material.(Mpa)
+     sigma_1 : float
+         Principal Stresses.
+     sigma_2 : float
+         Principal Stresses.
+     sigma_3 : float
+         Principal Stresses.
+
+     Returns
+     -------
+     Tresca : float
+         Tresca Yield(Mpa)
+
+    '''
+    sigma_y = c*hardness 
+    
+    Max=max(sigma_1,sigma_2,sigma_3)
+    Min=min(sigma_1,sigma_2,sigma_3)
+    
+    Tresca=Max-Min
+    
+    if Tresca < sigma_y :
+        print("It is in the elastic area")
+    elif Tresca==sigma_y :
+        print("It is on the verge of plastic deformation")
+    
+    elif Tresca > sigma_y :
+        print("Plastic deformation has occurred")
+        
+    return Tresca
+        
+#==============================================================================   
+#--------->If we have biaxial tension
+def Tresca_Yield_For_Biaxial_Tension(c,hardness,sigma_xx,sigma_yy,tau_xy,/):
+    '''
+    
+
+    Parameters
+    ----------
+    c : float
+        C is a coefficient that is between 0.3 and 0.4 depending on the type of material.
+    hardness : float
+        brinell and vickers hardness.
+    sigma_y : float
+        Uniaxial tensile yield strength of material.(Mpa)
+    sigma_y : float
+        Uniaxial tensile yield strength of material
+    sigma_xx : float
+        
+    sigma_yy : float
+        
+    tau_xy : float
+        
+
+    Returns
+    -------
+    Tresca : TYPE
+        DESCRIPTION.
+
+    '''
+    import math
+    sigma_y = c*hardness
+    sigma_max=(sigma_xx + sigma_yy)/2 + math.sqrt(((sigma_xx-sigma_yy)/2)**2 + tau_xy**2)
+    sigma_min=(sigma_xx + sigma_yy)/2 - math.sqrt(((sigma_xx-sigma_yy)/2)**2 + tau_xy**2)
+
+    Tresca=sigma_max-sigma_min
+    
+    if Tresca < sigma_y :
+        print("It is in the elastic area")
+    elif Tresca==sigma_y :
+        print("It is on the verge of plastic deformation")
+    elif Tresca > sigma_y :
+        print("Deformation is plastic")
+            
+    return Tresca
+    
+#==============================================================================
+#-------->Function 2: Total Solidification Time of Casting
+
+
+def Total_Solidification_Time_of_Casting(volume,surface_area,Cm,n,/):
+    '''
+    
+
+    Parameters
+    ----------
+    volume : float
+        DESCRIPTION.
+    surface_area : float
+        DESCRIPTION.
+    Cm : float
+        It's amount varies depending on the type of material
+    n : float
+        It's amount varies depending on the type of material but is 
+        usually equal to 2
+        
+    Returns
+    -------
+    Total_Solidification_Time : float
+
+    '''
+
+    
+    Total_Solidification_Time = Cm*((volume/surface_area)**2)
+    return Total_Solidification_Time
+
+#==============================================================================
+#--->Function 3: Miner's Rule for Cumulative Damage Theory and Fatigue Failures
+def Miner_Rule_Fatigue(n,N):
+    '''
+    
+
+    Parameters
+    ----------
+    n : list
+        number of cycles at stress level 
+
+    N : list
+        number of cycles to failure at stress level
+
+    Returns
+    -------
+    sigma : float
+
+    '''
+    sigma=0
+    for i in range(0,len(n)):
+        for j in range(0,len(N)):
+            if i==j:
+                sigma=sigma+(n[i]/N[j])
+    
+    if sigma<1:
+        print("There is no fatigue yet")
+    elif sigma>=1:
+        print("Failure occurs at least according to Miner's rule")
+                    
+    return sigma
+
+
+
+
+def Indeterminate_degree_of_truss(m,j):
+    ''' 
+    This function calculates the degree of indeterminacy of the truss by taking 'm' number of truss members and 'j' number of nodes.
+    
+    Parameters
+    ----------
+    m : int
+        Number of members truss.
+    j : int
+        Number truss node members.
+
+    Returns
+    -------
+    n : float
+        The indeterminate degree of truss.
+        
+        if n=0 : The truss is determinate.
+        if n>0 : The truss is statically unstable.
+        if n<0 : The truss is indeterminate.
+        
+    '''
+    Equations=2*j
+    Unknowns=3+m
+    global n
+    if (Equations==Unknowns):
+        n=0
+    if Equations>Unknowns:
+        n=Equations-Unknowns
+    if Equations<Unknowns:
+        n=Equations-Unknowns
+    return n
+    
+
+def Friction_Law(mass,angle,/,MOTCS,moving):
+    '''
+    This function calculates the friction force on the object by taking the mass of the desired object, the material of the two contact surfaces, the angle of the contact surface with the horizon and the movement state of the object.
+    
+    Parameters
+    ----------
+    mass : int
+        The mass of the desired object (KG).
+    angle : int
+        The angle of the contact surface with respect to the horizon (RAD).
+    MOTCS : str
+        Material of two contact surfaces.
+        The contact surfaces considered :
+        STEEL ON STEEL
+        STEEL ON ALUMINUM
+        STEEL ON COPPER
+        COPPER ON CAST IRON
+        COPPER ON GLASS
+        GLASS ON GLASS
+        RUBBER ON DRY CONCRETE
+        RUBBER ON WET CONCRETE
+        TEFLON ON TEFLON
+    moving : str
+        Is the desired object moving? (YES OR NO).
+
+    Returns
+    -------
+    F : float
+        Frictional force applied to the target object (N).
+
+    '''
+    global F
+    m=moving.upper()
+    M=MOTCS.upper()
+    if m=='YES':     
+        if M=='STEEL ON STEEL':
+            F=mass*9.81*math.cos(angle)*0.57
+        if M=='STEEL ON ALUMINUM':
+            F=mass*9.81*math.cos(angle)*0.47
+        if M=='STEEL ON COPPER': 
+            F=mass*9.81*math.cos(angle)*0.36
+        if M=='COPPER ON CAST IRON':
+            F=mass*9.81*math.cos(angle)*0.29
+        if M=='COPPER ON GLASS':
+            F=mass*9.81*math.cos(angle)*0.53
+        if M=='GLASS ON GLASS':
+            F=mass*9.81*math.cos(angle)*0.40
+        if M=='RUBBER ON DRY CONCRETE':  
+            F=mass*9.81*math.cos(angle)*0.8
+        if M=='RUBBER ON WET CONCRETE':   
+            F=mass*9.81*math.cos(angle)*0.25
+        if M=='TEFLON ON TEFLON':   
+            F=mass*9.81*math.cos(angle)*0.04
+        return F
+    if m=='NO':
+        if M=='STEEL ON STEEL':
+            F=mass*9.81*math.cos(angle)*0.74
+        if M=='STEEL ON ALUMINUM':
+            F=mass*9.81*math.cos(angle)*0.61
+        if M=='STEEL ON COPPER': 
+            F=mass*9.81*math.cos(angle)*0.53
+        if M=='COPPER ON CAST IRON':
+            F=mass*9.81*math.cos(angle)*1.05
+        if M=='COPPER ON GLASS':
+           F=mass*9.81*math.cos(angle)*0.68
+        if M=='GLASS ON GLASS':
+           F=mass*9.81*math.cos(angle)*0.94
+        if M=='RUBBER ON DRY CONCRETE':  
+           F=mass*9.81*math.cos(angle)*1
+        if M=='RUBBER ON WET CONCRETE':   
+           F=mass*9.81*math.cos(angle)*0.3
+        if M=='TEFLON ON TEFLON':   
+           F=mass*9.81*math.cos(angle)*0.04
+        return F
+
+
+
 
 
 
