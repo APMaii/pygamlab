@@ -20,6 +20,112 @@ import pandas as pd
 import matplotlib as plt
 
 
+# Define molecular weights of composite materials
+G_Mol_Si = 28.09   #silicium
+G_Mol_O = 16.00    #oxygen
+G_Mol_Ba = 137.33  #barium
+G_Mol_Zr = 91.22   #zirconium
+G_Mol_Ti = 47.87   #titanium
+
+# Define lists of composite materials
+Resin_Materials = ['TEGDMA', 'BIS_GMA', 'UDMA']
+Filler_Materials = ['Silica dioxide', 'Barium silicate', 'Zirconium dioxide']
+Colors_Materials = ['Minerals: Titanium oxide', 'Organic: Photoactive pigments']
+
+
+
+
+#variable
+k= 534.6
+pi= 3.14
+F=96485
+R=8.314
+g=23
+
+F=100
+Zf=0.25
+Xd=0.95
+Xw=0.05
+R=5
+alpha=3
+q=0.7
+
+
+
+#[Haniyeh] رشته مهندسی کامپیوتر
+#dae in ja ma yekseri aadad sabet taeerif kardim
+Avogadro_Number=6.02*10**23
+#(mol) adad avogadro
+
+Speed_Of_Light=2.99*10**8 
+#(m/s) sorat noor--->c
+
+Electron_Charge=1.6*10**19
+#(C) bar electeron
+
+Faraday_Constant=9.64*10**4
+#C/mol sabet faraday
+
+Earth_Accel=9.8
+#(m/s**2) geranesh zamin
+
+        
+Planck_constant=6.626*10**(-34) #js#
+R=8.314 #J/mol.K#
+Faraday_constant= 96485 #C/mol#
+Boltzman_constany= 1.381*10**(-23) #J/K#
+Avogardo_Num=6.022*10**(23) #mol^-1#
+
+
+
+
+
+####constants
+s=1###ehtemal tamam pishamadha
+a=9.8###shetab dar harekat soghoot azad
+Income_Tax_Perecent=0.09
+Iran_Stock_Market_Volatility=0.05
+Santiago_Bernabeu_Stadium_Crowd=78000
+
+#Gravitational_Acceleration_Constant
+g=9.81#(m/s^2)
+
+#Standard_Atmospheric_Pressure
+P_0=101325#(Pa)
+
+#Plank's_Constant
+h=6.62607015e-34 #(J.s)
+
+
+#Boltzmann_constant
+K=1.380649e-23 #(J/K)
+
+#Avogadro's_constant
+N_A=6.022e23 #(without unit) 
+
+
+
+
+#constants
+Latent_heat = 1.16 * (10 ** 9)
+Gama_sl = 0.132
+T_m = 1064 #in centigrade
+A = 0.413 #in nano meter
+Pi = 3.14
+K = 1.38 * (10 ** (-23)) #Boltzmann constant
+N_t = 3 * (10 ** 33)
+
+
+N_a = 6.022*10**23              #molecules/mol (Avogadro's Number)
+k = 1.381*10**(-23)             #J/K (Boltzmann's Constant)
+alpha = 5.67*10**(-8)           #W/m^2/K^4 (Stefan-Boltzmann Constant)
+R = 8.314                       #J/mol/K (Gas costant)
+Visible = range(380, 750, 10)   #Visible Wavelength
+h = 6.626*10**(-34)             #J.s (Planck's Constant)
+c = 2.998*10**8                 #m/s (speed of light)
+
+
+
 
 #-------convertors-----
 
