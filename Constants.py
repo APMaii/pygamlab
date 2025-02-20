@@ -372,6 +372,178 @@ Elementary_Charge=1.602176634*(10**(-19)) #coulombs (C)
 Light_Speed_Constant=299792458 #meters per second (m/s)
 
 
+### constnats
+me = 9.11e-31           # Electron Rest Mass Kg
+mp = 1.67264e-27        # Proton Rest Mass kg 
+e  = 1.60218e-19        # Elementary Charge C(coulomb)
+c  = 2.99792e8          # Speed of Light in Vacuum m/s
+h  = 6.62617e-34        # Planck Constant J-s(joule-seconds)
+ħ  = 1.05458e-34        # Reduced Planck Constant (ħ = h/2π)
+k  = 1.38066e-23        # Boltzmann Constant J/K (joules per kelvin)
+eV = 1.60218e-19        # Electron Volt J (joules)
+
+
+
+#section one
+E0=8.8541878128*10**(-12) #vacuum permittivity
+u0=1.256637061436*10**(-6) #vacuum permeability
+h=6.626068*10**(-34) #planck constant
+k=1.380649*10**(-23) #boltzman constant
+Ke=8.9879*10**(9) #coulomb constant
+
+
+
+g=6.673*10**-11                         #(N.m**2/kg**2)Gravitational_constant
+G=6.673*10**-11                         #(N.m**2/kg**2)Gravitational_constant
+m_earth=5.972*(10**24)                  #(kg)Mass_of_Earth
+m_sun=1.989*(10**30)                    #(kg)Mass_of_the_Sun
+m_mars=6.41693*(10**23)                 #kg)Mass_of_the_Mars
+r_earth_sun=1.496*(10**11)              #(m)Average_distance_from_Earth_to_the_Sun
+r_mars_sun=220.14*(10**9)               #(m)Average_distance_from_Mars_to_the_Sun
+F=G*((m_earth*m_sun)/r_earth_sun**2)    #(N)Force_of_gravity
+F2=g*((m_mars*m_sun)/r_mars_sun**2)     #(N)Force_of_gravity2
+
+
+B  = 1.38e-23          # Boltzman constant  J/k
+EC = 1.602e-19         # Electron charge  C
+Er = 2.81792e-15       # Electron radius  m
+FC = 9.648e4           # Faraday constant C/mol
+PC = 6.626e-34         # Plank constant Js 
+AG = 9.8               # Acceleration gravity  m/s^2
+
+
+
+===========================
+####ثابت بولتزمن 
+######ثابت پلانک 
+##ثابت جهانی گاز ها 
+#####ثابت گرانش 
+####عدد آوگادرو
+k=1.380649*(10**-23)(J.K^-1)
+h=6.62607015*(10**-34)(kg.m^2.S-1)
+R=8.134(J.K^-1.mol^-1)
+G=6.67*(10**-11)(m^3/Kg*S^2)
+NA=6.02214076*(10**23)
+
+
+
+NA = 6.02214076 * (10 ** 23)     #Avogadro constant (1/mol)
+h = 6.62607015 * (10 ** -34)     #Planck constant (J/Hz)
+k = 1.380649 * (10 ** -23)       #Boltzmann constant (J/K)
+F = 96485.3321233100184          #Faraday constant (C/mol)
+c = 2.99792458 * (10 ** 8)       #Light speed in vacuum (m/s)
+
+
+N=6.02214*math.pow(10,23)
+#Avogadro Number, 1/mole
+R=8.3145
+#Universal Gas Constant, j/(mol.K)
+Kb=1.380649*math.pow(10,-23)
+#Boltzmann Constant, j/K
+Ksb=5.67*math.pow(10,-8)
+#Stephan-Boltzmann Constant, W/(k^4.m^2)
+h=6.6236*math.pow(10,-36)
+#Planck Constant, j.s
+
+
+#---------------------
+#constants
+#---------------------
+LEARNING_RATE = 0.01
+MAX_DEPTH = 10
+DEFAULT_TIMEOUT = 30
+CACHE_SIZE = 1024
+
+
+
+#************************ 5 Constant Numbers********************************
+
+#Avogadro Number (1/mol)
+NA=6.22*10**23
+
+#Faraday Constant (C/mol)
+F= 96485.33
+
+#Atomic Mass Comstant
+amu=1.660538*10**(-27)
+
+#Gas Constant (J/(mol.K))
+R=8.3144
+
+#Planck Constant (J.s)
+h=6.626*10**(-34)
+
+#Molar Volume of an Ideal Gas at STP  (L/mol)
+MV=22.414
+
+#Electron Mass (kg)
+me=9.109*10**(-31)
+
+#Proton Mass (kg)
+mp=1.673*10**(-27)
+
+#Neutron Mass (kg)
+mn=1.675*10**(-27)
+
+
+
+eps=2.2204e-16           # epsilon
+e=2.71828                # adad Neper
+pi=3.14
+phi=1.618033            # Golden Ratio
+G=6.67e-11              # Gravitational constant
+g=9.82                  #shetab Geranesh
+
+
+
+#----------1----------
+N=6.02214076*(10**23) #Avagadro's Number
+R=8.3145              #Gas Constant
+K=1.380649*(10**-23)  #Boltzmann constant
+e=2.71828             #Euler's Number
+
+Z_A=0.01              #Flexure Testing of Polymers- A:rate of straining of outer surface at 5% strain 
+Z_b=0.1               #Flexure Testing of Polymers- B:rate of straining of the outer surface intended for materials that may not break at 5% strain
+
+
+
+# Ideal gas constant
+R = 8.314                # J/mole.K
+
+
+#Avogadro's number
+NA = 6.023*10**23
+
+# Faraday's Constant
+F= 96485                #C/mole
+
+
+#Boltzmann Constant
+k_B = 1.381*10**-23         #J/K
+
+
+
+#Planck's Constant
+h = 6.626*10**-34           #JS
+
+
+#---------------------------------<Part 1>-------------------------------------
+Electron_Charge_Constant=1.602*(10**-19)
+Universal_Gas_Constant=8.314
+Avogadro_Num=6.022*(10**23)
+Planck_Constant=6.62607*(10**-34)
+Young_Modulus_Steel=200
+
+
+#Part 1 ______________________________________________________________________________________________
+
+E=190          #Young's modulus of steel at room temperature (GPA).
+e=1            #Coefficient of restitution for perfectly elastic collision.
+K=2.1          #Bulk's modulus of water at room temperature (GPA).
+air_p=1013.25  #Air pressure at sea level (hPA).
+g=9.81         #The acceleration due to gravity, Near Earth's surface (m/s2).
+
+
 
 
 
