@@ -1715,6 +1715,466 @@ def Pascal_to_Bar(Pa):
     return bar
 
 
+import math
+
+
+#Converters
+def Fahrenheit_to_Kelvin(F):
+    return (F - 32) * 5 / 9 + 273.15
+
+def Kelvin_to_Fahrenheit(K):
+    return (K - 273.15) * 9 / 5 + 32
+
+def Meter_to_Angstrom(m):
+    return m*1e10
+
+def Angstrom_to_Meter(A):
+    return A*1e-10
+
+def Milimeter_to_Angstrom(mm):
+    return mm*1e7
+
+def Angstrom_to_Milimeter(A):
+    return A*1e-7
+
+def Nanometer_to_Angstrom(nm):
+    return nm*10
+
+def Angstrom_to_Nanometer(A):
+    return A/10
+
+def Micrometer_to_Angstrom(um):
+    return um*10000
+
+def Angstrom_to_Micrometer(A):
+    return A/10000
+
+
+#section three
+def Kilometer_Per_Hour_To_Meter_Per_Second(kph):
+    '''
+    Parameters
+    ----------
+    kph: float
+         number in kilometer per hour
+    mps: float
+         number in meter per second
+    '''
+    mps=kph*3.6
+    return mps
+
+
+
+
+
+def Meter_Per_Second_To_Kilometer_Per_Hour(mps):
+    '''
+    Parameters
+    ----------
+    mps: float
+         number in meter per second
+    kph: float
+         number in kilometer per hour
+    '''
+    kph=mps/3.6
+    return kph
+
+
+def Kg_to_Ton(Kg):
+        Ton=1000*Kg
+        return Ton
+
+
+
+
+
+def Cm_To_Inch(length = 1) :
+    '''
+    This function convert cm to inch.
+    Convertor law :  inch = length/2.54
+     
+    Parameters
+    ----------
+    value : float, optional
+        Convert input to inch. The default is 1.
+
+    Returns
+    -------
+    return input that converted to inch.
+
+    '''
+    inch = length/2.54
+    return inch
+    
+
+def Inch_To_Cm(length = 1) :
+    '''
+    This function convert inch to cm.
+    Convertor law :  inch = length*2.54
+
+    Parameters
+    ----------
+    length : float, optional
+        Convert input to cm. The default is 1.
+
+    Returns
+    -------
+    return input that converted to cm..
+
+    '''
+    cm = length*2.54
+    return cm
+
+
+
+
+def Joules_Per_Minute_To_Kilowatt(Joules_Per_Minute):
+    '''
+
+    Parameters
+    ----------
+    Joules_Per_Minute : float
+        number per Joules unit.
+
+    Returns
+    -------
+    Kilowatt : float
+        number per Kilowatt unit.
+
+    '''
+    Kilowatt=(Joules_Per_Minute)/60000
+    return Kilowatt
+
+---------------------------------------------------------
+def Inch_To_Centimeter(Inch):
+    '''
+    Parameters
+    ----------
+    Inch : float or int
+        ne inch is equal to 2.54 centimeters.
+        number per Inch unit.
+
+    Returns
+    -------
+    Centimeter : float
+        number per Centimeter unit.
+
+    '''
+    Centimeter=2.54*Inch
+    return Centimeter
+
+
+def Gram_To_Mole(g,MW):
+    '''
+    This function calaculates the eqivalent amount of substance of a compound  in mole(s) base on mass in gram(s).
+
+    Parameters
+    ----------
+    g : float
+        g is the mass of a compound in gram(s).
+    MW : float
+        MW is the Molecular weight of a compound (gram/mol).
+
+    Returns
+    -------
+    Mole : float
+        Mole is the eqivalent amount of substance of a compound in mole(s).
+
+    '''
+    Mole = g / MW
+    return Mole
+
+
+
+def Mole_To_Gram(mol,MW):
+    '''
+    This function calaculates the eqivalent mass of a compound in gram(s) base on amount of substance in mole(s).
+
+    Parameters
+    ----------
+    mol : float
+        mol is the eqivalent amount of substance of a compound in mole(s).
+    MW : float
+        MW is the Molecular weight of a compound (gram/mole).
+
+    Returns
+    -------
+    g : float
+        g is the eqivalent mass in of a compound in in gram(s).
+
+    '''
+    g = mol * MW
+    return g
+
+
+#**************PART3**********CONVERTOR************************************8
+def Hertz_To_Rpm(a,/):
+    '''
+    A converter machine to convert frequency in Hertz(Hz) to frequency in rpm.
+    Parameters
+    ----------
+    a : int or float
+        frequency, Hertz(Hz).
+
+    Returns
+    b : int or float 
+    frequency, revolution per minute (rpm)
+    '''
+    b=a*60
+    return b
+
+
+#************************************************************
+def Rpm_To_Hertz(b,/):
+    '''
+   A converter machine to convert frequency in rpm to frequency in Herta(Hz).
+    Parameters
+    ----------
+    b : int or float
+        frequency, revolution per minute (rpm).
+
+    Returns
+    a, frequency, Hertz(Hz)
+
+    '''
+    a=b/60
+    return a
+
+
+
+
+def Convert_Annual_To_Monthly_Loss(annual_loss):
+    '''
+    
+
+    Parameters
+    ----------
+    annual_loss : int
+        the annual loss of an Economic enterprise.
+
+    Returns
+    -------
+
+        the monthly loss of an Economic enterprise.
+
+    '''
+    if not str(annual_loss).isdigit(): 
+        print ('error! bad parameter!')
+    return int(annual_loss/12)
+
+
+
+print('*******************************************')
+test=Convert_Annual_To_Monthly_Loss(34500000)
+print (test)
+
+
+
+
+def Convert_Persion_Hours_To_Persion_Days(hours, daily_working_hours):
+    '''
+    
+
+    Parameters
+    ----------
+    hours : float
+        total working hours.
+    daily_working_hours : float
+        Legal daily working hours.
+
+
+
+    '''
+    if not str(hours).isdigit() or not str(daily_working_hours).isdigit() :
+        print ('error! bad parameter!')
+    return hours/daily_working_hours
+
+
+
+def Molarity_to_Normality(Molarity,n):
+    '''
+    
+
+    Parameters
+    ----------
+    Molarity : float
+    n : int
+        Number of moles.
+
+    Returns
+    -------
+    Normality.
+
+    '''
+    Normality=Molarity*n
+    return(Normality)
+    
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def Normality_to_Molarity(Normality,n):
+    '''
+    
+
+    Parameters
+    ----------
+    Normality : float
+    n : int
+        Number of moles.
+
+    Returns
+    -------
+    Molarity.
+
+    '''
+    Molarity=Normality/n
+    return(Molarity)
+    
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def Mass_to_Mole(Mass,Molar_Mass):
+    '''
+    
+
+    Parameters
+    ----------
+    Mass : float
+        The mass of substance(g).
+    Molar_Mass : float
+        The mass of one mole of substance (g/mol).
+
+    Returns
+    -------
+    Mole: int
+
+    '''
+    Mole=Mass/Molar_Mass
+    return(Mole)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def Mole_to_Mass(Mole,Molar_Mass):
+    '''
+    
+
+    Parameters
+    ----------
+    Mole : int
+        
+    Molar_Mass : float
+        The mass of one mole of substance (g/mol).
+
+    Returns
+    -------
+    Mass (g) : Float.
+
+    '''
+    Mass=Mole*Molar_Mass
+    return(Mass)
+
+
+#----------3----------
+def Kg_to_Lbm(Kg):
+    Lbm=0.4535*Kg
+    return Lbm
+   
+
+def Lbm_to_Kg(Lbm):
+    Kg=2.20462*Lbm
+    return Kg
+
+
+def Psi_To_Mpa(Num_Psi,/):
+    '''
+    
+
+    Parameters
+    ----------
+    
+    Num_Psi : float
+        Psi = Pounds force per square inch 
+
+    Returns
+    -------
+    Mpa : float
+        Megapascals=Newton per square millimetre
+
+    '''
+    Mpa=Num_Psi*(1/145)
+    return Mpa
+#            ---------------------------------------------------
+def Mpa_To_Psi(Num_Mpa,/):
+    '''
+    
+
+    Parameters
+    ----------
+    
+    Num_Mpa : float
+        Megapascals=Newton per square millimetre
+
+    Returns
+    -------
+    Psi : float
+        Psi=Pounds force per square inch 
+
+    '''
+    Psi=Num_Mpa*145
+    return Psi
+ 
+#==============================================================================
+def Decimal_To_Binary(Num_dec):
+    Bin=0
+    i=0
+    while Num_dec!=0:
+        r=Num_dec%2
+        Bin=Bin+(r*(10**i))
+        Num_dec=Num_dec//2
+        i=i+1
+    return Bin
+
+
+
+def Pound_To_Kilogram(number_in_pound):
+    '''
+    This function converts the desired number from pounds to kilograms.
+
+    Parameters
+    ----------
+    number_in_pound : int
+        Number per pound.
+
+    Returns
+    -------
+    kilogram : int
+        Number per kilogram.
+
+    '''
+    kilogram=number_in_pound/2.2046
+    return kilogram
+
+def Kilogram_To_Pound(number_in_kilogram):
+    '''
+    This function converts the desired number from kilograms to pounds.
+
+    Parameters
+    ----------
+    number_in_kilogram : int
+        Number per kilogram.
+
+    Returns
+    -------
+    pound : int
+        Number per pound.
+
+    '''
+    pound=number_in_kilogram*2.2046
+    return pound
+
+
+
+
+
 
 
 
