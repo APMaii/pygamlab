@@ -4053,6 +4053,1174 @@ fatigue(adrs,'max_LoadCycles')
 fatigue(adrs,'max_LoadRange')
 
 
+#=================================
+#================================
+#===========================
+#====================
+#=============
+#=======coure33333333333333333333333333333333333333333333333
+#=======
+#============
+#====================
+#=========================
+#=================================
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+
+Data=pd.read_excell('C:\\Users\amina\Desktop\LL\signal-to-noise ratio')
+
+
+
+def Signal_To_Noise_Ratio(data,application):
+    '''
+
+    Parameters
+    ----------
+    data : DataFrame
+        consists of your experimental data in 3 columns:
+            1- location: the place you've measured signal and noise
+            2- signal strength: the power of signal in dbm
+            3- noise power: the power of noise in dbm
+    application : string
+        there is 3 application available:
+            1- plot signal: plots signal column
+            2- plot noise: plots noise column
+            3- plot SNR: plots the signal-to-noise ratio
+
+    Returns
+    -------
+    mx : float
+        the maximum signal-to-noise ratio in dbm
+
+    '''
+    location=np.array(data['location'])
+    signal=np.array(data['Signal Strength'])
+    noise=np.array(data['Noise Power'])
+    snr=signal-noise
+    
+    
+    if str(application).lower()=='plot signal' :
+        plt.plot(location,signal)
+        plt.title('signal power in every place')
+        plt.xlabel('place')
+        plt.ylabel('signal power in dbm')
+        plt.grid()
+        plt.show()       
+    elif str(application).lower()=='plot noise' :
+        plt.plot(location,noise)
+        plt.title('noise power in every place')
+        plt.xlabel('place')
+        plt.ylabel('noise power in dbm')
+        plt.grid()
+        plt.show()
+    elif str(application).lower()=='plot snr' :
+        plt.plot(location,snr)
+        plt.title('SNR in every place')
+        plt.xlabel('place')
+        plt.ylabel('SNR in db')
+        plt.grid()
+        plt.show()
+        
+        
+    mx=snr.max()
+    return mx
+
+
+
+
+#climate_change
+
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+import pandas as pd
+
+a=np.random.uniform((54<62.276),(15.34<16.82),size=(6,3))
+data=pd.DataFrame(a,index=['year1980','year1990','year2000','year2010','year2020','year2024'],columns=['Fahrenheit','Celsius','Average Temperature'])
+data.max()
+
+data.dropna(inplace=True)
+data.info()
+
+plt.hist(a)
+plt.xlabel('Celsius')
+plt.ylabel('Fahrenheit')
+plt.show()
+x=['1980','1990','2000','2010','2020','2024']
+y=np.array([0,10,20,25,30,35,40])
+
+#Fahrenheit_Celsius
+
+def Fahrenheit_Celsius(a):
+    Fahrenheit=np.array(a['Celsius'])
+    Celsius=np.array(a['Fahrenheit'])
+    
+    if a=='plot':
+        plt.plot(Fahrenheit,Celsius)
+        plt.title('Fahrenheit','Celsius')
+        plt.show()
+        
+    elif a=='Average Temperature in 1980':
+        Average_Temperature1980=(59.62 + 15.344444)/2
+        return Average_Temperature1980
+    
+    elif a=='Average Temperature in 1990':
+        Average_Temperature1990=(59.8 + 15.44444)/2
+        return Average_Temperature1990
+    
+    elif a=='Average Temperature in 2000':
+        Average_Temperature2000=(54 + 12.2222)/2
+        return Average_Temperature2000
+    
+    elif a=='Average Temperature in 2010':
+        Average_Temperature2010=(58.4 + 14.66667)/2
+        return Average_Temperature2010
+    
+    elif a=='Average Temperature in 2020':
+        Average_Temperature2020=(58.82 + 14.9)/2
+        return Average_Temperature2020
+    
+    elif a=='Average Temperature in 2024':
+        Average_Temperature2024=(62.276 + 16.82)/2
+        return Average_Temperature2024
+
+def climate_change(data,application):
+    '''
+    
+
+    Parameters
+    ----------
+    data : climate change temperature
+        <class 'pandas.core.frame.DataFrame'>
+        Index: 6 entries, year1980 to year2024
+        Data columns (total 3 columns):
+         #   Column               Non-Null Count  Dtype  
+        ---  ------               --------------  -----  
+         0   Fahrenheit           6 non-null      float64
+         1   Celsius              6 non-null      float64
+         2   Average Temperature  6 non-null      float64
+        dtypes: float64(3)
+        memory usage: 192.0+ bytes
+    application : Fahrenheit to Celsius
+        The formula for converting Fahrenheit to Celsius is C = 5/9(F-32).
+        Fahrenheit and Celsius are the same at -40°. At ordinary temperatures, Fahrenheit is a larger number than Celsius.
+
+    climate_change:
+    the combined land and ocean temperature has increased at an average rate of 0.11° Fahrenheit (0.06° Celsius) per decade since 1850,
+    or about 2° F in total. The rate of warming since 1982 is more than three times as fast: 0.36° F (0.20° C) per decade.
+    '''
+
+
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+
+#%%
+def polarization_control(Data,Application):
+    '''
+    
+
+    Parameters
+    ----------
+    Data : DataFrame : The results of the polymerization of a polymer control laboratory are given 
+                       that included four columns: time, temperature, pressure, 
+                       and reaction percentage of the polymer product.
+        DESCRIPTION.
+    Application : float
+        Six applications are done in this function.
+        1) Application = 'temp_time' : Temperature is plotted according to time. 
+        2) Application = 'pressure_time' : Pressure is plotted according to time. 
+        3) Application = 'Percent_time' : The percentage of reaction is plotted over time.
+        4) Application = '100% reaction': If the percentage of polymerization reaction proceed to 100, the temperature and pressure of polymerization is printed and returned.
+        5) Application = 'Max_pressyre': It returns maximum pressure of process.
+        6) Application = 'Max_temp': It returns maximum temperature of process.
+    Returns
+    -------
+    float
+        It returns temperature and pressure of process according to related application.
+
+    '''
+    
+    time = np.array(Data['time'])
+    temp = np.array(Data['temp'])
+    pressure = np.array(Data['pessure'])
+    reaction_percent = np.array(Data['percent'])
+    
+    if Application == 'temp_time':
+        plt.plot(time, temp, c = 'g',linewidth = 1.5)
+        xylable_font={'family': 'serif',
+                'color': 'black' ,
+                'size': 16 }
+        title_font={'family': 'serif',
+                'color': 'black' ,
+                'size': 16 }
+        plt.title('Temperature variation',fontdict = title_font)
+        plt.xlabel('time(s)',fontdict = xylable_font)
+        plt.ylabel('Temperature (C)',fontdict = xylable_font)
+        # plt.legend(['Temperature'])
+        plt.show()
+
+    elif Application == 'pressure_time':
+        plt.plot(time, pressure , c = 'r',linewidth = 1.5)
+        xylable_font={'family': 'serif',
+                'color': 'black' ,
+                'size': 16 }
+        title_font={'family': 'serif',
+                'color': 'black' ,
+                'size': 16 }
+        plt.title('Pressure variation',fontdict = title_font)
+        plt.xlabel('time(s)',fontdict = xylable_font)
+        plt.ylabel('Pressure (Pa)',fontdict = xylable_font)
+        # plt.legend(['Pressure'])
+        plt.show()
+
+    elif Application == 'Percent_time':
+        plt.plot(time, reaction_percent, c = 'b',linewidth = 1.5)
+        xylable_font={'family': 'serif',
+                'color': 'black' ,
+                'size': 16 }
+        title_font={'family': 'serif',
+                'color': 'black' ,
+                'size': 16 }
+        plt.title('Progress variation',fontdict = title_font)
+        plt.xlabel('time(s)',fontdict = xylable_font)
+        plt.ylabel('Reaction percent',fontdict = xylable_font)
+        # plt.legend([ 'reaction_percent'])
+        plt.show()
+
+    elif Application == '100% reaction':    
+        reaction_percent_p=np.arange(0,301)/3
+        L = len(reaction_percent_p)
+        for i in range(L):
+            if reaction_percent_p[i] == 100:
+                print('tempreature and pessure for 100% progress are','tempreature =',temp[i],'(C)', 'pessure=', pressure[i],'(Pa)')
+                return   (temp[i], pressure[i])     
+    elif Application == 'Max_pressyre':    
+         return pressure.max()
+    elif Application == 'Max_temp':    
+         return temp.max()
+#%% Calling function
+time = np.reshape(np.arange(0,301),(301,1))
+temperature= np.reshape(np.random.normal(loc=40,scale=1,size=(301)),(301,1))
+pressure = np.reshape(np.random.normal(loc=2,scale=0.2,size=(301)),(301,1))
+reaction_percent= np.reshape(np.arange(0,301)/3,(301,1))
+
+data = np.concatenate((time,temperature,pressure,reaction_percent),axis=1)
+Data = pd.DataFrame(data,columns=['time','temp','pessure','percent'])
+
+
+polarization_control(Data,'temp_time')
+
+
+Data=pd.read_excel('/Users/elnazmac/Desktop/Desulfurization.xlsx')
+
+#################FUNCTION########################################
+
+def Desulfurization_Rate(Data,application):
+    '''
+
+    Parameters
+    ----------
+    Data : Data Frame
+        experimental data (excel).
+    application : 
+        1.plot
+        2.Max_Removal_With_Ultrasonic
+        3.Max_Removal_Without_Ultrasonic
+
+    Returns
+
+    '''
+    x=np.array(Data['Time'])
+    y1=np.array(Data['Desulfurization_With_Ultrasonic'])
+    y2=np.array(Data['Desulfurization_Without_Ultrasonic'])
+    
+    if application=='plot':
+        plt.plot(x,y1,marker='*',mec='r',mfc='y',ms=14,ls='-',linewidth=5,color='r',label='With_Ultrasonic')
+        plt.plot(x,y2,marker='*',mec='g',mfc='y',ms=14,ls='--',linewidth=5,color='g',label='Without_Ultrasonic')
+        
+        myfont={ 'family': 'serif'   ,
+                'color':  'red'  ,
+                'size':  15   }
+        
+        plt.xlabel('Time')
+        plt.ylabel('Desulfurization')
+        plt.title('Sulfur_Removal_Plot',fontdict=myfont)
+        plt.legend()
+        plt.show()
+    
+    elif application=='Max_Removal_With_Ultrasonic':
+        Max_Removal_With_Ultrasonic=y1.max()
+        return Max_Removal_With_Ultrasonic
+    
+    elif application=='Max_Removal_Without_Ultrasonic':
+        Max_Removal_Without_Ultrasonic=y2.max()
+        return Max_Removal_Without_Ultrasonic
+
+
+
+#karbord tabe1
+Data=pd.read_excel('/Users/elnazmac/Desktop/Desulfurization.xlsx')
+Desulfurization_Rate(Data,'plot')
+
+#karbord tabe2
+Data=pd.read_excel('/Users/elnazmac/Desktop/Desulfurization.xlsx')
+Desulfurization_Rate(Data,'Max_Removal_With_Ultrasonic')  
+
+#karbord tabe3
+Data=pd.read_excel('/Users/elnazmac/Desktop/Desulfurization.xlsx')
+Desulfurization_Rate(Data,'Max_Removal_Without_Ultrasonic')     
+    
+
+
+====================================
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+XRD=pd.read_excel('C:/Users/Nikan/Desktop/ZnO.xlsx')
+def XRD_ZnO(XRD,application):
+    '''
+    
+
+    Parameters
+    ----------
+    XRD : DataFrame
+        Data containing XRD data.
+    application : str
+        Type of application 'plot','FWHM','Scherrer'.
+        plot:To draw the figure.
+        FWHM:Width at Half Maximum.
+        Scherrer:To calculate the crystallite size.
+
+    Returns
+    FWHM,Scherrer
+    -------
+    None.
+
+    '''
+    Angles=np.array(XRD['Angle'])
+    Intensities=np.array(XRD['Det1Disc1'])
+    if  application=='plot':
+        plt.plot(Angles,Intensities,c='red')
+        plt.title('XRD Pattern')
+        plt.xlabel('2theta (degrees)')
+        plt.ylabel('Intensity')
+        plt.show()
+    elif application in ['FWHM', 'Scherrer']:
+        max_intensity = np.max(Intensities)
+        half_max = max_intensity / 2
+        indices = []
+        half_max = max_intensity / 2
+        for i in range(len(Intensities)):
+           if Intensities[i] >= half_max:
+               indices.append(i)
+
+        
+        if len(indices) > 0:
+            left_index = np.min(indices)
+            right_index = np.max(indices)
+       
+    
+            FWHM = Angles[right_index] - Angles[left_index]
+            if application == 'FWHM':
+                return FWHM
+           
+            elif application =='Scherrer':
+                mean_2theta = Angles[indices].mean()
+
+
+                theta = mean_2theta / 2
+                FWHM_rad = ((3.14/180)*FWHM)
+                theta_rad = ((3.14/180)*theta)  
+                crystal_size = (0.9 * 1.5406) / (FWHM_rad * np.cos(theta_rad))
+                
+                return crystal_size
+
+
+crystal_size = XRD_ZnO(XRD, 'Scherrer')
+
+
+XRD_ZnO(XRD,'plot')
+fwhm = XRD_ZnO(XRD, 'FWHM')
+
+crystal_size = XRD_ZnO(XRD, 'Scherrer')
+print(fwhm,crystal_size)
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data = pd.read_excel(r'C:\Users\Admin\Downloads\Telegram Desktop\XRD.xlsx')
+
+def XRD(data,application):
+    '''
+    This function plots the XRD curve .
+
+    Parameters
+    ----------
+    data : DataFrame
+        data is XRD data include Intensity (a.u.) and 2θ (degree).
+    application : str
+        application is the function that you want to apply to your data:
+            - plot : ُPlot the XRD curve
+            - maxintensity : Determining the maximum intensity.
+            - meantheta : Determining the mean of theta angles.
+            
+
+    Returns
+    -------
+    plot, maxintensity, meantheta
+
+    '''
+    
+    data.columns = ('2θ (degree)','Intensity (a.u.)')
+    Intensity = np.array(data['Intensity (a.u.)'])
+    Theta = np.array(data['2θ (degree)'])
+    
+    if application.upper() == 'PLOT':
+        font1 = {'family':'Times New Roman', 'color':'black', 'size':16}
+        font2 = {'family':'Times New Roman', 'color':'black', 'size':14}
+        plt.plot(Theta, Intensity, linewidth=0.8, c='k')
+        plt.title('XRD', fontdict = font1)
+        plt.xlabel('2θ (degree)', fontdict = font2)
+        plt.ylabel('Intensity (a.u.)', fontdict = font2)
+        plt.show()
+        
+    elif application.upper() == 'MAXINTENSITY':
+        maxintensity = Intensity.max()
+        return maxintensity
+        
+    elif application.upper() == 'MEANTHETA':
+        E = 0
+        for i in Theta:
+            theta = i / 2
+            E = E + theta        #sum of numbers
+        M = E / len(Theta)       #Mean
+        return M
+        
+
+
+XRD(data,'PLOT')
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import openpyxl 
+
+def Stress_Strain(data,application):
+    '''
+    this function converts F and dD to Stress and Strain by thickness(1.55mm), width(3.2mm) and parallel length(35mm).
+
+    Parameters
+    ----------
+    data : DataFrame
+        this DataFrame contains F(N) and dD(mm) received from the tensil test machine.
+    application : str
+        application determines the expected output of Stress_Strain function.
+
+    Returns
+    -------
+    int, float or plot
+        return may be elongation at break, strength or a plot.
+
+    '''
+    
+    stress=np.array([data['F']/(1.55*3.2)])
+    strain=np.array([(data['dD']/35)*100])
+    if application.upper()=='ELONGATION AT BREAK':
+        elongation_at_break=np.max(strain)
+        print(elongation_at_break,'%')
+        return elongation_at_break
+    elif application.upper()=='STRENGTH':
+        strength=np.max(stress)
+        print(strength,'N/mm2')
+        return strength
+    elif application.upper()=='PLOT':
+        myfont_title={'family':'sans-serif',
+                      'color':'black',
+                      'size':20}
+        myfont_lables={'family':'Tahoma',
+                       'color':'green',
+                       'size':16}
+        plt.plot(strain,stress,ls='--',c='g',linewidth=10)
+        plt.title('Stress-Strain',fontdict=myfont_title)
+        plt.xlabel('Strain(%)',fontdict=myfont_lables)
+        plt.ylabel('Stress(N/mm2)',fontdict=myfont_lables)
+        plt.show()
+#****************function test******************        
+titr=pd.DataFrame([[1,20],[2,34],[3,45],[4,67],[5,70],[4,89]],columns=['F','dD'])
+Stress_Strain(titr,'plot')
+Stress_Strain(titr,'elongation at break')
+Stress_Strain(titr,'strength')
+
+
+data_base=pd.read_excel('F-dD Data.xlsx')
+tensile=pd.DataFrame(np.array(data_base),columns=['F','dD'])
+
+#**********************clearing data***********************
+tensile.info()
+#out put: <class 'pandas.core.frame.DataFrame'>
+#RangeIndex: 3890 entries, 0 to 3889
+#Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype  
+#---  ------  --------------  -----  
+# 0   F       0 non-null      float64
+# 1   dD      0 non-null      float64
+#dtypes: float64(2)
+#memory usage: 60.9 KB
+# no empty cell and wrong format
+count1=0
+for i in tensile.index:
+    if tensile.loc[i,'F']<0:
+        count1=count1+1
+        print(count1) #out put:0 -------> no wrong data in F column
+
+count2=0
+for j in tensile.index:
+    if tensile.loc[j,'dD']<0:
+        count2=count2+count1
+        print(count2) #out put:0 -------> no wrong data in dD column
+        
+Stress_Strain(tensile,'elongation at break')
+Stress_Strain(tensile,'strength')
+Stress_Strain(tensile,'plot')
+
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+def Imerssion_Test(data,application):
+    '''
+    
+
+    Parameters
+    ----------
+    data : .excel .csv
+    columns name:time, Mg, Mg_H, Mg_Pl, Mg_HPl 
+    application :
+        plot:drawing the changes of weight(%) on time(days)
+        More_Bioactive: the sample with more weight gain in result more bioactive
+        Less_Bioactive: the sample with more weight loss in result less bioactive
+
+    '''
+    x=np.array(data['time'])
+    y1=np.array(data['Mg_HPl'])
+    y2=np.array(data['Mg_H'])
+    y3=np.array(data['Mg_Pl'])
+    y4=np.array(data['Mg'])
+    if application=='plot':
+        plt.plot(x,y1,marker='o',label='Mg_HPl')
+        plt.plot(x,y2,marker='*',label='Mg_H')
+        plt.plot(x,y3,marker='^',label='Mg_Pl')
+        plt.plot(x,y4,marker='+',label='Mg')
+        plt.title('The graph of changes in the weight of the samples in the SBF solution',c='r')
+        plt.xlabel('Imerssion Time(day)',c='g')
+        plt.ylabel('Weight Gain(%)',c='g')
+        plt.legend()
+        plt.show()
+    elif application=='More_Bioactive':
+        max_weight_gain=data[['Mg','Mg_H','Mg_Pl','Mg_HPl' ]].max()
+        max_weight_gainn=max_weight_gain.max()
+        more_bioactive=data.columns[data.isin ([max_weight_gainn]).any()]
+        return more_bioactive
+    elif application=='Less_Bioactive':
+        max_weight_loss=data[['Mg','Mg_H','Mg_Pl','Mg_HPl' ]].min()
+        max_weight_losss=max_weight_loss.min()
+        less_bioactive=data.columns[data.isin ([max_weight_losss]).any()]
+        return less_bioactive
+
+data=pd.read_excel('weight gain.xlsx') 
+Imerssion_Test(data,'Less_Bioactive')      
+
+
+mport numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import math 
+
+
+time=np.arange(0,101).reshape(-1,1)
+temp=np.random.uniform(0,101,size=101).reshape(-1,1)
+pressure=np.random.uniform(0,5,size=101).reshape(-1,1)
+conv=np.random.uniform(0,91,size=101).reshape(-1,1)
+c=np.concatenate([time,temp,pressure,conv],axis=1)
+data_dasti=pd.DataFrame(c,columns=['time','temp','pressure','conv'])
+sotune4=np.array(data_dasti['conv'])
+sotune2=np.array(data_dasti['temp'])
+
+#data=pd.read_excel(r"C:\Users\asus\Desktop\A2_Prjct.xlsx.xlsx")
+#dat=pd.read_csv(r'C:\Users\asus\Desktop\A2_Prjct.xlsx.xlsx')
+
+def Conversion(data,app):
+    '''
+    This program is related to a chemical reaction laboratory, which has been measured in a table at a certain temperature,
+    pressure and time, with a one-second interval,and gives you the highest conversion percentage at a given temperature and pressure.
+    It also draws graphs of conversion percentage, temperature and pressure in terms of time.
+
+    Parameters
+    ----------
+    data : DataFrame of pandas or array of numpy
+        please be careful about the inputs: your table should contain about 100 index and 4  columns.
+    app : str
+       Only write "PLOT_TEMP" if you want to draw the figure tempreturre over time,else if you want to draw pressure on time write
+       'PLOT_pressure' or write 'PLOT_CONVERSION' if you want the conversion on time figure.
+       or write "MAXIMUM CONVERSION" if you want the maximum number of conversions at a specific temperature and pressure.
+       Otherwise, you will see the error message below.
+   
+    TypeError
+       The datas or application is not entered correctly
+
+    Returns
+    -------
+    index_max_conv : str
+        this will gives you the highest convertion index.
+
+    '''
+    sotune1=np.array(data['time'])
+    sotune2=np.array(data['temp'])
+    sotune3=np.array(data['pressure'])
+    sotune4=np.array(data['conv'])
+    if app.upper()=='PLOT_TEMP':
+       plt.plot(sotune2, sotune1,color='black')
+       plt.title('temprature over time')
+       plt.xlabel('time(second)')
+       plt.ylabel('temprature(celsious) ')
+       plt.grid()
+       plt.show()
+     
+    elif app.upper()=='PLOT_PRESSURE':
+       plt.plot(sotune3, sotune1,color='red')
+       plt.title('pressure over time')
+       plt.xlabel('time(second)')
+       plt.ylabel('pressure(bar) ')
+       plt.grid()
+       plt.show()
+       
+    elif app.upper()=='PLOT_CONVERSION':
+          plt.plot(sotune4, sotune1,color='blue')
+          plt.title('conversion over time')
+          plt.xlabel('time(second)')
+          plt.ylabel('conversion(%) ')
+          plt.grid()
+          plt.show()
+
+    elif app.upper()=='MAXIMUM CONVERSION':
+        maxstress=sotune4.max()
+        maxstrain=sotune2.max()
+        print('maximum of tempreture is ' , maxstrain )
+        print('maximum of conversion is ' , maxstress )
+        index_max_conv=np.argmax(sotune4) 
+        print('The tempreture in maximum conversion is ' , sotune2[index_max_conv] ,
+              'and the preesure is ' ,sotune3[index_max_conv]   )
+        return index_max_conv
+    
+    else:
+        raise TypeError ('The datas or application is not entered correctly.')
+    return sotune1
+    return sotune2
+    return sotune3  
+    return sotune4        
+
+Conversion(data_dasti,'maximum conversion')
+Conversion(data_dasti,'plot_pressure')
+
+
+
+#import section
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#====================================================================================
+#====================================================================================
+
+#########------>>>>>>> Step0 Cleanin Data <<<<<<<<<<<<<----------------
+
+#$$ we can make a function to import a csv file and make sure the data pass the step0 (or cleaning data) 
+
+
+def Import_Data(File_Directory=None):
+    
+    
+    if File_Directory is None:
+        raise TypeError('Please enter the file directory to open!')
+        
+        
+        
+    try:
+        data=pd.read_csv(File_Directory)
+        
+        
+#for examle -->data=pd.read_csv('C:\\Users\\Parsis.Co\\Desktop\\CV.csv')
+         
+         
+#1--->File not find  (by 'FileNotFoundError')       
+    except FileNotFoundError:
+        raise FileNotFoundError('Unfortunately, the desired file <',File_Directory,'>is not available ')
+        
+        
+        
+#2---> File is  empty (by 'pd.errors.EmptyDataError')
+    except pd.errors.EmptyDataError:
+         raise ValueError('The file: ',data, ' is empty. please a correct file.')
+         
+   
+#3--->Format is wrong  (by 'pd.errors.ParserError')     
+    except pd.errors.ParserError:
+             raise ValueError('The file format is not valid, please import a <csv> format file')
+             
+             
+ #4--->remove empty cells     
+    if data.isnull().values.any():
+        print('Empty cell founded and removed ')
+        data.dropna(inplace=True)
+        
+        
+ #5--->turn object to numeric form for both columns    
+    for x in data['P']:
+        if data['P'].dtype=='object':
+            print('object element founded in potential column and converted to numeric form')
+            data['P']=pd.to_numeric(data['P'])
+            
+    for y in data['C']:
+        if data['C'].dtype=='object':
+            print('object element founded in current density column and converted to numeric')
+            data['P']=pd.to_numeric(data['P'])
+            
+            
+ #6--->remove duplicated data         
+    if data.duplicated().any():
+        print('Duolicated elemets in rows founded and removed ')
+        data=data.drop_duplicates()
+        
+        
+    return data
+        
+            
+            
+            
+ #====================================================================================
+ #====================================================================================
+
+ ##font definitions for title and labels
+
+title_style={'family':'times new roman',
+             'color':'red',
+             'size':28}
+label_style={'family':'times new roman',
+              'color':'black',
+             'size':18}
+
+ #====================================================================================
+ #====================================================================================           
+            
+ 
+#########------>>>>>>> Main function for cyclic voltammetry investigations <<<<<<<<<<<<<----------------            
+            
+
+def CV(data=None,Application=None, is_reversible=None):
+    '''
+    
+
+    Parameters
+    ----------
+    data : DataFrame
+        Enter your .csv format file as pd.DataFrame.
+        Data is the potential vs. current density expoted from the potentiostate device to study electrochemical of your fabricated electrode.
+        To use this function correctly, the potential column should named as 'P' and your current density column should named as 'C'
+        
+    Application : str
+        Please enter the application you want to do for your data, including: plot, maxcurrent, peakpotential, charge, and Diffusion-coefficient.
+    is_reversible : bool, optional
+        If your reaction id reversible please enter 'True', and if the reaction is irreversible enter 'False' to calculate the Diffusion coefficient for your reaction.
+
+    Application=plot (type=plot)--> Plot a cyclic voltammogram (current density vs. potential)
+    Application= maxcurrent (type=float)--> the function returns the peak of current that the current density id maximum.
+    Application= peakpotential (type=float)--> the function returns the potential which attributed to maxmum current or peak current.
+    Application=charge (type=float)--> The function returns the charge corresponding to the integration of the plot.
+    Application=Diffusion_coefficient (type=float)--> The function returns the value according the andles-Sevcik aquation depends on reversiblly of irreversibly of reaction.
+    
+
+    '''
+    
+#--> ensure the defined-file name (data) is in calling section
+    
+    if data is None:
+        raise ValueError('Please enter the file name and make sure you import your file as DataFrame')
+        
+#--> ensure the user enter the application in calling section
+        
+    if Application is None:
+        raise ValueError('Please enter an application for your CV data')
+        
+    
+    if Application=='plot':
+        potential=np.array(data['P'])
+        current_density=np.array(data['C'])
+        plt.plot(potential,current_density,c='c', linewidth=3)
+        plt.title('Cyclic Voltammetry',fontdict=title_style)
+        plt.xlabel('Potential (V) vs. Ag/AgCl',fontdict=label_style)
+        plt.ylabel('Current Density (mA/cm^2)',fontdict=label_style)
+        plt.grid(color='gray',linewidth=0.5)
+        plt.show()
+        
+        
+    elif Application=='maxcurrent':
+        maxcurrent=data['C'].max()
+        print('The maximum current density value is: ', maxcurrent, 'mA/cm^2')
+        return maxcurrent
+        
+    
+    elif Application=='peakpotential':
+        maxcurrent=data['C'].max()
+        maxcurrentindex=data['C'].idxmax()
+        peakpotetial=data.loc[maxcurrentindex,'P']
+        print('The peak potential corresponding to the maximum current is: ',peakpotetial)
+        return peakpotetial
+        
+    elif Application=='charge':
+        potential=np.array(data['P'])
+        current_density=np.array(data['C'])
+        charge=np.trapezoid(current_density,potential)
+        print('The charge for your CV is= ', charge, 'c')
+        return charge
+        
+    
+    
+        
+    elif Application=='Diffusion_Coefficient':  #(Peak_Current,A,C,Scan_Rate,n,is_reversible):
+        maxcurrent=data['C'].max()
+        Area=0.0123
+        C=0.2
+        Scan_Rate=50
+        n=1
+        
+        if is_reversible is None:
+            raise ValueError ('Please enter <True> if the reaction is reversible, else enter <False>')
+            
+        if is_reversible:
+            Diffusion_Coefficient=(maxcurrent/((2.65*10**5)*(n**(3/2))*Area*C*(Scan_Rate**(1/2))))**2
+            
+        else:
+            Diffusion_Coefficient=(maxcurrent/(0.446*(n**(3/2))*Area*C*(Scan_Rate**(1/2))))**2
+            
+            
+        print('The value of Diffusion coefficient for your electrochemical reaction is:',Diffusion_Coefficient )
+        return Diffusion_Coefficient
+
+#import math
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+#---------------------- Example 1 ------------------------------------
+
+def Product_Of_Vectors(data,app):
+    
+    '''
+    do bordar (two vectors) be onvane voroodi migirad, va anha ra baham zarb mikonad.
+    
+    Parameters
+    ----------
+    data : float
+        yek matrix ba do sotoon ast ke sotoone aval, bordar avval, va digari bordar dovvom.
+    app : str
+          plot agar bashe, rasm mikoneh, ertebat do bordar ro ba ham va agar
+          calculate bood zarb dakheli bordar avval ba tranahadeh bordar dovvom
+          ra mohasebeh mikonad.
+
+    Returns
+    -------
+    output : float
+        Production of vectors.
+
+    '''
+    x=np.array(data['vector1'])
+    y=np.array(data['vector2'])
+    
+    if app=='plot':
+        plt.plot(x,y,marker='<',ms=10,mfc='tab:orange',mec='c',c='tab:blue',linewidth=2)
+        plt.title('nemoodar')
+        plt.xlabel('vector1')
+        plt.ylabel('vector2')
+        plt.show()
+    elif app=='calculate':
+        y1=np.transpose(y)
+        output=np.dot(x,y1)
+        return output
+
+
+a=np.random.uniform(-5,10,size=100).reshape(-1,1)
+b=np.random.uniform(0,10,size=100).reshape(-1,1)
+c=np.concatenate([a,b],axis=1)
+data=pd.DataFrame(c,columns=['vector1','vector2'])
+Product_Of_Vectors(data,'plot') 
+Product_Of_Vectors(data,'calculate')   
+
+#-------------------- Example 2 ---------------------------------
+def Echelon_Matrix(data,ap):
+    '''
+    یک ماتریس 90در 200 داریم که مثلا 200 مولفه را در مورد سلامت نود نفر جمع آوری کردیم
+    و حالا میخواهیم ببینیم که کدوم یکی از این مولفه ها اضافی هستند و اطلاعات خوبی 
+    از سلامتی افراد نمیده. هدفمون اینه که ماتریس را  به صورت سطری پلکانی
+    در آوریم یعنی بالا مثلثیش کنیم و مولفه های مهم رو پیدا کنیم. 
+    Parameters
+    ----------
+    data : float
+        This is a matrix with more than 50 rows and columns.
+    ap : str
+          plot agar bashe, rasm mikoneh, ertebat sotoone 10 , 50 ro ba ham va agar
+          up bood matrix ra be soorat satri pelekani mikonad.
+
+    Returns
+    -------
+    A : float
+        This is a triangular matrix.
+
+    '''
+    x=np.array(data[:,10])
+    y=np.array(data[:,50])
+    if ap=='plot':
+        plt.plot(x,y,marker='4',ms=20,mec='y',c='tab:purple',ls='--')
+        plt.title('nemoodare ertebat ghand khoon va vazn')
+        plt.xlabel('vazn')
+        plt.ylabel('ghand khoon')
+        plt.show()
+    elif ap=='up':
+        A=np.triu(data)
+        return A
+   
+aa=np.random.randint(0,100,(90,200)) 
+Echelon_Matrix(aa,'plot')
+Echelon_Matrix(aa,'up')
+
+
+
+
+
+def MyFunction(data,application):
+     if application=='plot':
+         x=data['DT']
+         #print(x)
+         y=data['Gold']
+         plt.plot(x,y)
+         plt.xlabel('Date')
+         plt.xticks(rotation=90)
+         plt.ylabel('Gold Price per OUNS')
+         plt.title('Gold Price base on USD')
+         plt.show()  
+     elif application=='operation':
+         Converting_Gold_Price_to_Toman(data)
+         
+         
+'''
+Converting_Gold_Price_to_Toman
+
+input:
+data pandas dataframe 
+ 
+
+output:
+data pandas dataframe
+'''
+def Converting_Gold_Price_to_Toman(ddf):
+     a=np.array(ddf['Gold'])
+     ddf['Doller'] = pd.to_numeric(ddf['Doller'], errors='coerce')
+     b=np.array(ddf['Doller'])
+     c=np.multiply(a,b)
+     c=np.divide(c,31.1035)
+     c=np.multiply(c,1000)
+     ddf['Gold price in Toman']=c
+     datadata.rename(columns={'Date':'DT', 'GLD': 'Gold', 'DLR': 'Doller'}, inplace=True)
+     print('\n')
+     print(ddf[['DT','Gold price in Toman']])
+     return(ddf)
+    
+
+
+#load data into a DataFrame object from csv file:
+datadata=pd.read_csv('Gold_price.csv')
+datadata.rename(columns={'Date':'DT', 'GLD': 'Gold', 'DLR': 'Doller'}, inplace=True)
+command=0
+while(int(command)!=1 and int(command)!=2):
+     command=input('\nWelcom to converting Gold Price in first three monthes of 2017: \nwhich action would you like to do?\n1-for drawing a plot press 1\n2-for doing action press 2  ')
+if(int(command)==1):
+   MyFunction(datadata,'plot')
+elif(int(command)==2):
+   MyFunction(datadata,'operation')
+
+
+
+def Fatigue_Test_Analysis(data,application):
+    '''
+    
+
+    Parameters
+    ----------
+    data : data is the exel file with the two columns (stress_amplitude column and number_of_cycles column)
+    application : plot , max stress amplitude , fatigue strength , fatigue life , stress in one cycle , Sa , 
+                    fatigue limit , std stress , std cycles
+    
+
+    Returns
+    -------
+    plot: S-N plot
+    fatigue strength: استحکام خستگی 
+    fatigue life: عمر خستگی
+    stress in one cycle: Basquin's equation to define B constant.The B is the value of the stress at one cycle.
+    Sa: max stress amplitude in cycle.
+    fatigue limit: The time of cycle that stress no change.
+    std stress: انحراف معیار تنش‌ها
+    std cycles: انحراف معیارا سیکل‌ها
+
+    '''
+    stress_amplitude = np.array(data["stress_amplitude"])
+    number_of_cycles = np.array(data["number_of_cycles"])
+    
+ 
+    if application=="plot":
+        title_font={"color":"black",
+                 'family':'Merriweather',
+                 'size': 20     }
+        
+        xy_label_font={"color":"Magenta",
+                 'family':'Merriweather',
+                 'size': 12     }
+        
+        plt.plot(number_of_cycles,stress_amplitude,marker='o',c='c',mec='k',mfc='r',label='S-N Curve',linewidth=3)
+        plt.title('S-N Curve (Fatigue Test)',fontdict=title_font,pad=13)
+        plt.xscale('log')  
+        plt.xlabel('Number of Cycles to Failure (N)',fontdict=xy_label_font)
+        plt.ylabel('Stress Amplitude (MPa)',fontdict=xy_label_font)
+        plt.grid()
+        plt.legend()
+        plt.show()
+    
+    if application=='max stress amplitude' :
+        max_stress_amplitude=np.max(stress_amplitude)
+        return max_stress_amplitude
+    
+    if application=='fatigue strength' :
+        fatigue_strengt=np.mean(stress_amplitude)   
+        return fatigue_strengt
+    
+    if application=="fatigue life" :
+        fatigue_life = np.mean(number_of_cycles)
+        return fatigue_life
+   
+    if application=='stress in one cycle' :
+        n=np.log10(number_of_cycles[0])-np.log10(number_of_cycles[1])
+        m=np.log10(stress_amplitude[1])-np.log10(stress_amplitude[0])
+        slope=n/m
+        stress_in_one_cycle=number_of_cycles[0]*2*((stress_amplitude[0])**slope)
+        return stress_in_one_cycle
+    
+    if application=='Sa' :
+        i=np.where(number_of_cycles==1)
+        Sa=stress_amplitude[i]
+        return Sa
+   
+    if application=='fatigue limit' :
+        repetative_index = None
+        for i in range(0,len(stress_amplitude)-1) :
+            if stress_amplitude[i]==stress_amplitude[i+1] and repetative_index==None :
+                repetative_index=i
+            elif stress_amplitude[i]!=stress_amplitude[i+1] :
+                repetative_index=None
+        fatigue_limit=number_of_cycles[repetative_index]
+        return fatigue_limit                
+        
+    if application=='std stress' :
+        std_stress = np.std(stress_amplitude)
+        return std_stress
+     
+    if application=='std cycles' :
+        std_cycles = np.std(number_of_cycles)
+        return std_cycles
+    
+
+
+
+import openpyxl
+import pandas as pd
+import numpy as np
+import math 
+from matplotlib import pyplot as plt
+
+Data = pd.read_excel(r"C:\Users\Bartar\OneDrive\Desktop\project\BTC_Price(2022)2.xlsx" )
+
+Data.info()
+
+Data.dropna(inplace=0)
+#a = pd.DataFrame(Data)
+#a['Price'] = a['Price'].astype(float)
+#a['Data'] = a['Data'].astype(str)
+
+#for i in a.index:
+    # data.loc[5,['Temp']]=None
+ #   if a.loc[i, ['Price']] < 0:
+  #      a = a.drop(i)
+   # if DAta.
+
+def Price_BTC(Data,application):
+    '''
+    
+    Parameters
+    ----------
+    Data : int
+        This function needs an excel with two columns (Price and Date)
+    application : str
+        These are some ways you can use this function  :
+            plot
+            Max_Price
+            Max_Date
+            Min_Price
+            Min_Price
+            
+
+    Returns
+    -------
+    Plot and int
+        plot of price per date
+        Date of Maximum and minimum Price
+
+    '''
+    Price = np.array(Data['Price'])
+    Date = np.array(Data['Date'])
+    APP = application.upper()
+    
+    if APP == 'PLOT' :
+        plt.plot(Date,Price,ms=3,mfc='b',c='k',linewidth=3)
+        plt.title('Price of BTC')
+        plt.ylabel('(US)Price')
+        plt.xlabel('Date(AD)')
+        plt.show()
+        
+    elif APP =='MAX_PRICE' :
+        return Date[np.argmax(Price)], Price.max()
+    
+    elif APP == 'MAX_DATE' :
+        return Date[-1], Price[-1]
+    
+    elif APP == 'MIN_PRICE' :
+        return Date[np.argmin(Price)] , Price.min()
+    
+    elif APP == 'MIN_DATE':
+        return Date[0],Price[0]
+    
+print (Price_BTC(Data,'plot'))
 
 
 
