@@ -1,3 +1,11 @@
+'''
+Constants.py ==> 
+
+
+
+'''
+
+
 #" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
 #                                               -W. Edwards Deming
 #------------------------------------------------------------------------------
@@ -38,11 +46,7 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 
 @Graphene Advanced Material Laboratory: https://www.GamLab.Aut.ac.ir
 
-
-@Co-authors: 
 '''
-
-
 
 
 #Constant-------------------------------------------
@@ -86,7 +90,6 @@ Conductivity_PPY=105
 Conductivity_pT=33.7
 Conductivity_P3HT=2.4
 Conductivity_PLN=10
-
 Kw = 1*10**-14  # Autoionization constant for water at 25°C
 Fe_Tm_Alpha=910
 'دمای ذوب آهن در فاز آلفا است'
@@ -150,9 +153,6 @@ thermal_conductivity_coefficient_of_Al=237
 
 thermal_conductivity_coefficient_of_Cu=385
 'Here, thermal conductivity coefficient of Cu is reported in W/mK'
-
-
-
 R = 8.314                  #Ideal Gas constant (J/mol.K)
 h = 6.626 * (10 ** (-34))  #Plank's constant (J.s)
 NA = 6.022 * (10 ** (23))  #Avagadro's constant (molecules per mole)
@@ -161,7 +161,6 @@ c = 3.00 * (10 ** (8))     #Speed of Light is a Vacuum (m/s)
 G = 6.674 * (10 ** (-11))  #Universal Gravitational constant ((m^3)/(kg.(s^2)))
 F = 96485                  #Faraday's constant (C/mol)
 
-
 # Define molecular weights of composite materials
 G_Mol_Si = 28.09   #silicium
 G_Mol_O = 16.00    #oxygen
@@ -169,15 +168,7 @@ G_Mol_Ba = 137.33  #barium
 G_Mol_Zr = 91.22   #zirconium
 G_Mol_Ti = 47.87   #titanium
 
-# Define lists of composite materials
-Resin_Materials = ['TEGDMA', 'BIS_GMA', 'UDMA']
-Filler_Materials = ['Silica dioxide', 'Barium silicate', 'Zirconium dioxide']
-Colors_Materials = ['Minerals: Titanium oxide', 'Organic: Photoactive pigments']
 
-
-
-
-#variable
 k= 534.6
 pi= 3.14
 F=96485
@@ -192,9 +183,6 @@ R=5
 alpha=3
 q=0.7
 
-
-
-#[Haniyeh] رشته مهندسی کامپیوتر
 #dae in ja ma yekseri aadad sabet taeerif kardim
 Avogadro_Number=6.02*10**23
 #(mol) adad avogadro
@@ -210,27 +198,13 @@ Faraday_Constant=9.64*10**4
 
 Earth_Accel=9.8
 #(m/s**2) geranesh zamin
-
-        
+    
 Planck_constant=6.626*10**(-34) #js#
 R=8.314 #J/mol.K#
 Faraday_constant= 96485 #C/mol#
 Boltzman_constany= 1.381*10**(-23) #J/K#
 Avogardo_Num=6.022*10**(23) #mol^-1#
 
-
-
-
-
-####constants
-s=1###ehtemal tamam pishamadha
-a=9.8###shetab dar harekat soghoot azad
-Income_Tax_Perecent=0.09
-Iran_Stock_Market_Volatility=0.05
-Santiago_Bernabeu_Stadium_Crowd=78000
-
-#Gravitational_Acceleration_Constant
-g=9.81#(m/s^2)
 
 #Standard_Atmospheric_Pressure
 P_0=101325#(Pa)
@@ -246,9 +220,6 @@ K=1.380649e-23 #(J/K)
 N_A=6.022e23 #(without unit) 
 
 
-
-
-#constants
 Latent_heat = 1.16 * (10 ** 9)
 Gama_sl = 0.132
 T_m = 1064 #in centigrade
@@ -256,7 +227,6 @@ A = 0.413 #in nano meter
 Pi = 3.14
 K = 1.38 * (10 ** (-23)) #Boltzmann constant
 N_t = 3 * (10 ** 33)
-
 
 N_a = 6.022*10**23              #molecules/mol (Avogadro's Number)
 k = 1.381*10**(-23)             #J/K (Boltzmann's Constant)
@@ -266,11 +236,6 @@ Visible = range(380, 750, 10)   #Visible Wavelength
 h = 6.626*10**(-34)             #J.s (Planck's Constant)
 c = 2.998*10**8                 #m/s (speed of light)
 
-
-
-
-
-#Part1 ------------------------------------------------------------------------
 #IE_Constants
 
 k=1.96              #k=Z(0.05) Normal Standard Distribution
@@ -279,57 +244,36 @@ ag=3.1936           #f(A/G , i% , n) = 3.1936 for i=18% and n=10
 t_stu=0.9277        #T-Student Distribution for x=1.5 and n=30 (degree freedom 29)
 d=1.128             #Constant coefficients for n=2
 
-
-
-###----------Part1---------------
 R=8.314 ##gas constant in J/mol.K
 D=2.3*(10**(-5)) ##oxygen diffusion coefficient in water μm2/s
 S=28.34 ##standard enthropy for solid alumminuim in J/mol.K
 k=1.38*(10**(-23))  ##boltzmann constant for gas particle kinetic energy
 Tm=14.025 ## hydrojen melting point in K
 
-#part 1:
 vacuum_permeability=1
 π=3.14
 G=6.674 * 10^-11 
 e=2.71828
 k=9*10**9
 
-#Building importance factor
-I1=1.4
-I2=1.2
-I3=1
-I4=0.8
-#Length to width ratio of works
-gold=618.1
-
-#first________________________________________________________________________________________________
 R_J=8.314 #J/mol.K : The molar gas constant or ideal gas constant.
 R_Lit=0.08 #Lit.atm/mol.K
 R_cal=1.98 #Cal/mol.K
 R_cm3=82.06 #cm^3.atm/mol.K
-#second________________________________________________________________________________________________
 C_V_J_1=12.471 #J/mol.K :The Monoatomic ideal gas constant-VOLUME specific heat.:: C_V=1.5R
 C_V_J_2=20.785 #J/mol.K :The Diatomic ideal gas constant-VOLUME specific heat.:: C_V=2.5R
 C_V_J_more=29.099 #J/mol.K :The Polyatomic ideal gas constant-VOLUME specific heat.:: C_V=3.5R
-#_________________________________________________________________________________________________
 C_V_Cal_1=2.97 #Cal/mol.K :The Monoatomic ideal gas constant-VOLUME specific heat.:: C_V=1.5R
 C_V_Cal_2=4.95 #Cal/mol.K :The Diatomic ideal gas constant-VOLUME specific heat.:: C_V=2.5R
 C_V_Cal_more=6.93 #Cal/mol.K :The Polyatomic ideal gas constant-VOLUME specific heat.:: C_V=3.5R
-#third________________________________________________________________________________________________
 C_P_J_1=20.785 #J/mol.K :The Monoatomic ideal gas constant-PRESSURE specific heat.:: C_P=2.5R
 C_P_J_2=29.099 #J/mol.K :The Diatomic ideal gas constant-PRESSURE specific heat.:: C_P=3.5R
 C_P_J_more=37.413 #J/mol.K :The Polyatomic ideal gas constant-PRESSURE specific heat. :: C_V=4.5R
-#_________________________________________________________________________________________________
 C_P_Cal_1=4.95 #Cal/mol.K :The Monoatomic ideal gas constant-PRESSURE specific heat.:: C_P=2.5R
 C_P_Cal_2=6.93 #Cal/mol.K :The Diatomic ideal gas constant-PRESSURE specific heat.:: C_P=3.5R
 C_P_Cal_more=8.91 #Cal/mol.K :The Polyatomic ideal gas constant-PRESSURE specific heat. :: C_V=4.5R
-#ّfourth________________________________________________________________________________________________
 Pi=3.14 #The number π is a mathematical constant that is the ratio of a circle's circumference to its diameter.
-#ّfifth________________________________________________________________________________________________
 h=6.62*10**(-34) #kg.m^2/s
-
-
 R = 8.314                        # Gas constant        --> j/mol*k
 
 a = 6.0232 * (10**23)            # Avogadro constant   --> 1/mol
@@ -343,7 +287,6 @@ h = 6626068 * (10**34)           # Planck constant     --> J*s
 c = 4.18                         # Specific heat capacity of liquid water 
 
 m = 9.1093837015 * (10**(-34))   # Electron mass --> kg
-
 
 k=1.38054*10**-23 
 # k is Boltzman constant and in terms jouls/degree
@@ -363,14 +306,12 @@ h=6.62607015*10**-34
 G=6.674*10*-11
 # G is universal gravitational constant 
 
-
 Boltzmann_Constant=1.380649*(10**(-23)) #joule per kelvin (J/K)
 Avogadro_Constant=6.02214*(10**23) #per moles (mol-1)
 Faraday_Constant=96485.3399 #coulombs per mole of electrons (C/mol)
 Planck_Constant=6.62607015*(10**(-34)) #joule second (J.s)
 Elementary_Charge=1.602176634*(10**(-19)) #coulombs (C)
 Light_Speed_Constant=299792458 #meters per second (m/s)
-
 
 ### constnats
 me = 9.11e-31           # Electron Rest Mass Kg
@@ -382,16 +323,12 @@ h  = 6.62617e-34        # Planck Constant J-s(joule-seconds)
 k  = 1.38066e-23        # Boltzmann Constant J/K (joules per kelvin)
 eV = 1.60218e-19        # Electron Volt J (joules)
 
-
-
 #section one
 E0=8.8541878128*10**(-12) #vacuum permittivity
 u0=1.256637061436*10**(-6) #vacuum permeability
 h=6.626068*10**(-34) #planck constant
 k=1.380649*10**(-23) #boltzman constant
 Ke=8.9879*10**(9) #coulomb constant
-
-
 
 g=6.673*10**-11                         #(N.m**2/kg**2)Gravitational_constant
 G=6.673*10**-11                         #(N.m**2/kg**2)Gravitational_constant
@@ -403,7 +340,6 @@ r_mars_sun=220.14*(10**9)               #(m)Average_distance_from_Mars_to_the_Su
 F=G*((m_earth*m_sun)/r_earth_sun**2)    #(N)Force_of_gravity
 F2=g*((m_mars*m_sun)/r_mars_sun**2)     #(N)Force_of_gravity2
 
-
 B  = 1.38e-23          # Boltzman constant  J/k
 EC = 1.602e-19         # Electron charge  C
 Er = 2.81792e-15       # Electron radius  m
@@ -411,9 +347,6 @@ FC = 9.648e4           # Faraday constant C/mol
 PC = 6.626e-34         # Plank constant Js 
 AG = 9.8               # Acceleration gravity  m/s^2
 
-
-
-===========================
 ####ثابت بولتزمن 
 ######ثابت پلانک 
 ##ثابت جهانی گاز ها 
@@ -425,14 +358,11 @@ R=8.134(J.K^-1.mol^-1)
 G=6.67*(10**-11)(m^3/Kg*S^2)
 NA=6.02214076*(10**23)
 
-
-
 NA = 6.02214076 * (10 ** 23)     #Avogadro constant (1/mol)
 h = 6.62607015 * (10 ** -34)     #Planck constant (J/Hz)
 k = 1.380649 * (10 ** -23)       #Boltzmann constant (J/K)
 F = 96485.3321233100184          #Faraday constant (C/mol)
 c = 2.99792458 * (10 ** 8)       #Light speed in vacuum (m/s)
-
 
 N=6.02214*math.pow(10,23)
 #Avogadro Number, 1/mole
@@ -445,19 +375,11 @@ Ksb=5.67*math.pow(10,-8)
 h=6.6236*math.pow(10,-36)
 #Planck Constant, j.s
 
-
-#---------------------
-#constants
-#---------------------
+-
 LEARNING_RATE = 0.01
 MAX_DEPTH = 10
 DEFAULT_TIMEOUT = 30
 CACHE_SIZE = 1024
-
-
-
-#************************ 5 Constant Numbers********************************
-
 #Avogadro Number (1/mol)
 NA=6.22*10**23
 
@@ -485,8 +407,6 @@ mp=1.673*10**(-27)
 #Neutron Mass (kg)
 mn=1.675*10**(-27)
 
-
-
 eps=2.2204e-16           # epsilon
 e=2.71828                # adad Neper
 pi=3.14
@@ -494,19 +414,10 @@ phi=1.618033            # Golden Ratio
 G=6.67e-11              # Gravitational constant
 g=9.82                  #shetab Geranesh
 
-
-
-#----------1----------
 N=6.02214076*(10**23) #Avagadro's Number
 R=8.3145              #Gas Constant
 K=1.380649*(10**-23)  #Boltzmann constant
 e=2.71828             #Euler's Number
-
-Z_A=0.01              #Flexure Testing of Polymers- A:rate of straining of outer surface at 5% strain 
-Z_b=0.1               #Flexure Testing of Polymers- B:rate of straining of the outer surface intended for materials that may not break at 5% strain
-
-
-
 # Ideal gas constant
 R = 8.314                # J/mole.K
 
@@ -516,36 +427,20 @@ NA = 6.023*10**23
 
 # Faraday's Constant
 F= 96485                #C/mole
-
-
 #Boltzmann Constant
 k_B = 1.381*10**-23         #J/K
-
-
-
 #Planck's Constant
 h = 6.626*10**-34           #JS
-
-
-#---------------------------------<Part 1>-------------------------------------
+-
 Electron_Charge_Constant=1.602*(10**-19)
 Universal_Gas_Constant=8.314
 Avogadro_Num=6.022*(10**23)
 Planck_Constant=6.62607*(10**-34)
 Young_Modulus_Steel=200
 
-
-#Part 1 ______________________________________________________________________________________________
-
 E=190          #Young's modulus of steel at room temperature (GPA).
 e=1            #Coefficient of restitution for perfectly elastic collision.
 K=2.1          #Bulk's modulus of water at room temperature (GPA).
 air_p=1013.25  #Air pressure at sea level (hPA).
 g=9.81         #The acceleration due to gravity, Near Earth's surface (m/s2).
-
-
-
-
-
-
 
