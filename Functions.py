@@ -358,6 +358,21 @@ def Bragg_Law (h,k,l,a,y):
     teta=math.asin((square_sin_teta)**1/2)
     
     return teta*180/math.pi
+
+
+def Berag_law(landa,sin_a):
+    """
+    Parameters 
+    landa( float) is wavelength in micro meters 
+    sin_a (float)is the sine of defraction angle/2 
+    Berag's law is landa=2dsin_a
+    Returns d (float) value which is the distance between 
+    two atomic planes responsible for the defraction in micron
+    """
+    d=landa/(2*sin_a)
+    return d 
+
+
 ##-----------------------------------------------------------------------------
 
 def Beer_Lambert_Law (a,l,I0):
@@ -484,6 +499,35 @@ def Corrosion_Rate(W,D,A,t):
     
     CR=534.6*W/(D*A*t)
     return CR
+
+def Calculate_ECB(chi, Ee, Eg):
+    
+    '''
+    This function calculates the conduction band edge energy (ECB) of a semiconductor using Mulliken electronegativity theory.
+
+    Parameters
+    ----------
+    chi : float
+        The absolute electronegativity of the semiconductor (eV), calculated as the geometric mean of the absolute electronegativity
+        of the constituent elements. For ZnO, chi=sqrt(chi_Zn*chi_O)=5.79 eV.
+        
+    Ee : float
+        The energy of free electrons on the standard hydrogen electrode (SHE) scale (eV). For standard scale, Ee=4.5 eV.
+    
+    Eg : float
+        The bandgap energy of the semiconductor (eV). For ZnO, Eg=3.23 eV.
+
+    Returns
+    -------
+    ECB : float
+        The conduction band edge energy (eV).
+
+    '''
+    
+    ECB=chi-Ee+0.5*Eg
+   
+    return (ECB)
+
 
 
 def Circle_Area(radius):
@@ -993,6 +1037,30 @@ def Diffusion_Coefficient(T):
     Dm=Do*2.718**(-Ec/T)
     return Dm
 
+
+def Degradation_Percentage(C0,Ct):
+    
+    '''
+    This function calculates the degradation percentage of a pollutant solution in a photocatalytic process.
+
+    Parameters
+    ----------
+    C0: float
+        Initial concentration of the pollutant solution (mg/L)
+    
+    Ct: float
+        Concentration of the pollutant solution at a certain time interval (mg/L)
+
+    Returns
+    -------
+    Percentage: float
+        The degradation percentage (%) of the pollutant solution.
+
+    '''
+   
+    Percentage=(1-(Ct/ C0))*100
+    
+    return (Percentage)
 
 
 
@@ -1792,6 +1860,19 @@ def Faraday_Law_of_Electrolysis(Q,M,z):
     m=(Q*M)/(z*Faraday_Constant)
     return m
 
+def Faraday_Corrosion(current_density, time, atomic_weight, density, valence):
+    """
+     calculate penetration depth from corrosion
+    current_density: A/m²
+    time:hour
+    atomic_weight: g/mol
+    density: g/cm³
+    valence
+    """
+    K = 3.27e-4  #μm/(A/m²·h)
+    faraday=(K * current_density * time * atomic_weight / (density * valence))
+    return faraday
+	
 
 def Friction_Law(mass,angle,/,MOTCS,moving):
     '''
@@ -2031,7 +2112,40 @@ This function determines the drug’s efficacy in biological process inhibition
 
     '''
     return 1-(A1-A3/A2-A3)*100
-  
+
+
+def Hall_Petch(d_grain, sigma0, k):
+    """
+    calculate yield strengh with grain size in Hall Petch
+    k(float) = MPa·√m Hall Petch constant
+    d_grain  = size of grain according to meter
+    """
+    hall=(sigma0 + k / (d_grain**0.5))
+    return hall
+
+
+def Hall_petch(frictional_stress,k,grain_diameter):
+    """
+    
+
+    Parameters
+    ----------
+    frictional_stress : float
+        Sigma0 which refers to resistance of lattice to dislocation movement. 
+    k : float
+        grain boundry locking term.
+    grain_diameter : float
+       average diameter of grains 
+
+    Returns
+    -------
+    Yield stress (in MPa)
+
+    """
+    yield_stress=frictional_stress+k/(grain_diameter)**0.5
+    return yield_stress
+
+
 def Hooke(strain,young_modulus):
     stress=young_modulus*strain
     return stress
@@ -3442,7 +3556,82 @@ def Rectangle_Area(length,width):
     rectangle_area=length*width
     return rectangle_area
     
+def Rolling_Parameters_Calculator (roller_radius, flow_stress, sample_width, 
+                                   wanted_thickness_reduction, coefficient_of_friction = None) :
+    '''
     
+
+    Parameters
+    ----------
+    roller_radius : float
+        roller radius in term of meter.
+    
+    flow_stress : float
+        flow stress of your sample in term of Pascal.
+   
+    sample_width : float
+        sample width in meter.
+   
+    wanted_thickness_reduction : float
+        wanted thickness reduciton (delta h) in terms of meter.
+    
+    coefficient_of_friction : floea, optional
+        coefficient of friction between the roller and your sample. 
+        notice :
+            
+            if you give nothing for friction of coefficeint, function assumed that this
+            coefficient is 0.2 and didnt include the role of friction in the rolling force formula. (* 1.2) 
+            but if you enter a value for this, function include the role of friction in the process 
+            and multiplies the rolling force by 1.2
+
+    Returns
+    -------
+    delta_h_max : float
+       the maximum thickness reduction that can be reached in terms of meter.
+    
+    h_min : float
+        minimum thickness that can be reached in terms of meters.
+    
+    rolling_force : float
+        the required force for rolling in terms of Newton.
+        
+        
+        
+    ### important : this function give all output in scientific notation.
+
+    '''
+    
+    
+    
+    import math
+    if coefficient_of_friction == None :
+        
+        # calculating delta h max (assumed frcition coefficient 0.2)
+        delta_h_max = "{:e}".format((0.2 ** 2) * roller_radius)
+        
+        # calculating h min (assumed friction coefficient 0.2)
+        h_min = "{:e}".format(0.35 * 0.2 * roller_radius * flow_stress)
+    else :
+        
+        # calculatin delta h max with given friction coefficient
+        delta_h_max = "{:e}".format((coefficient_of_friction ** 2) * roller_radius)
+        
+        # calculaitin h min with given friction coefficeint         
+        h_min = "{:e}".format(0.35 * coefficient_of_friction * roller_radius * flow_stress)
+        
+    if coefficient_of_friction == None :
+        
+        # calculating rolling force (assumed as a ideal process without friction)
+        rolling_force = "{:e}".format(sample_width * flow_stress * (math.sqrt(roller_radius*wanted_thickness_reduction)))
+    else :
+        
+        # calculatin rolling force (assumed as a real process with friction)
+        rolling_force = "{:e}".format(sample_width * flow_stress * (math.sqrt(roller_radius*wanted_thickness_reduction)) * 1.2)
+        
+    
+    return delta_h_max, h_min, rolling_force
+
+
 
 
 def Rectangle_Perimeter(length,width):
@@ -3514,6 +3703,91 @@ def shearrate(Q,p,r,n):
 def shearstress (F,A):
     T=F/A
     return T
+
+
+def Stress_Intensity_Factor(stress, crack_length, crack_type):
+    '''
+    Calculate the stress intensity factor (K) based on the type of crack.
+    K = crack_type * stress * (sqrt(pi * crack_length))
+    Parameters
+    ----------
+    stress : float
+        applied stress (sigma).
+    crack_length : float
+        lenght of the crack (a).
+    crack_type : str
+        there are 3 types of crack 'surface', 'circular', 'internal'.
+
+    Returns: float
+        Stress intensity factor (K).
+
+    '''
+    if crack_type == 'surface': #ضریب شدت تنش سطحی
+        K = 1.12 * stress * (3.1415 ** 0.5) * (crack_length ** 0.5)
+        
+    elif crack_type == 'circular': #ضریب شدت تنش برای ترک سکه ای
+        K = (2/3.1415) * stress * (3.1415 ** 0.5) * (crack_length ** 0.5) 
+        
+    elif crack_type == 'internal': #ضریب شدت تنش برای ترک داخلی
+        K = 1 * stress * (3.1415 ** 0.5) * (crack_length ** 0.5)
+    else:
+        raise ValueError("Invalid crack type. Choose from 'surface', 'circular', or 'internal'.")
+        
+    return K
+
+
+
+def Solidification_Front_Composition (partition_coefficient, alloy_composition, solid_fraction, law_type = 'lever'):
+    '''
+    
+
+    Parameters
+    ----------
+    partition_coefficient : float
+        a non-dimensional value that describe the scope of liquidus line.
+    
+    alloy_composition : float
+        initial composition of your alloy in terms of Wt % of left element in phase diagram.
+    
+    solid_fraction : float
+        how much of your alloy solidified.
+    
+    law_type : str, optional
+        you can choose two different model for solidification. lever and scheil.
+        The default is 'lever'.
+
+    Returns
+    -------
+    solid_front_massfraction : float 
+        solid mass fraction in solidification front in terms of Wt % of left element in phase diagram.
+    
+    liquid_front_conc : float
+        liquid mass fraction in solidification front in terms of Wt % of left element in phase diagram .
+        
+        
+    notice :
+            
+        This function round answers to two decimals.
+    '''
+    
+    
+    
+    if law_type.strip().lower() == 'lever' :
+    # calculate base on lever rule
+    
+        solid_front_massfraction = round((partition_coefficient * alloy_composition * (1 
+                     + (solid_fraction * (partition_coefficient - 1))) ** -1), 2)
+    else :
+    # calculate base on scheil rule
+    
+        solid_front_massfraction = round(( partition_coefficient * alloy_composition * (1 
+                    - solid_fraction) ** (partition_coefficient - 1)), 2)
+    # calcute liquid front mass fraction
+    
+    liquid_front_massfraction = round((solid_front_massfraction / partition_coefficient), 2 )
+    
+    return solid_front_massfraction, liquid_front_massfraction
+
 
 
 def Surface_Area_To_Volume_Ratio(Shape,Diameter=0,a=0):
@@ -4221,6 +4495,36 @@ def Velocity_Equation(V1,V2,a):
     return (V2**2-V1**2)/2*a
 
 
+def Van_Der_Waals_Pressure(n, V, T, a, b):
+    
+    '''
+    Calculate the pressure of a real gas using Van der Waals equation.
+    
+    Van der Waals equation is:
+        
+    (P + a ((n/V))^2)(V - nb) = nRT
+    
+    Parameters
+    ----------
+    n : Float
+        number of moles of the gas.
+    V : float
+        Volume of the gas in litrs.
+    T : float
+        Temperataure of the gas in Kelvin.
+    a : float
+        Van der Waals constant.
+    b : float
+        Van der Waals constant.
+
+    Returns: float
+        Pressure of the gas in atm.
+  
+    '''
+    
+    P = (n * R * T) / (V - n * b) - (a* n**2) / (V**2)
+    return P
+
 
 
 
@@ -4466,6 +4770,49 @@ def Web_Service_Analyze(services,resp_times,exe_CPU_costs,exe_Mem_costs,exe_Disk
         
     print(web_services_analyze_data)
     return (web_services_analyze_data)
+
+def Welding_Heat_Input(Efficiency,Voltage,Amperage,Speed): 
+    '''
+    
+    Parameters
+    ----------
+    Efficiency : float
+        Efficiency is the proportion of useful inserted heat to the total inserted heat into the weldment.
+    Voltage : float
+        Voltage is the electrical potential of the welding arc (V).
+    Amperage : float
+        Amperage is the amount of electrical current in welding (A).
+    Speed : float
+        Speed is the velocity of the welding tool (cm/min).
+
+    Returns
+    -------
+    Heat_Input is the useful heat inserted into the weldment.
+
+    '''
+   
+    Heat_Input=Efficiency*Voltage*Amperage/Speed
+    return Heat_Input
+
+def Welding_Deposition_Rate(Deposited_Metal_Mass,Welding_Time):
+    '''
+    
+    Parameters
+    ----------
+    Deposited_Metal_Mass : flaat
+        Deposited_Metal_Mass is the amount of deposited metal during welding (kg).
+    Welding_Time : float
+        Welding_Time is the consumed time for welding (hr).
+
+    Returns
+    -------
+    Deposition_Rate is the amount of deposited metal per hour during the welding operation.
+
+    '''
+    
+    Deposition_Rate=Deposited_Metal_Mass/Welding_Time
+    return Deposition_Rate
+
 
 
 def uncertainty_principle(delta_position, delta_momentum, hbar):
