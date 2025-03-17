@@ -2174,6 +2174,309 @@ def Kilogram_To_Pound(number_in_kilogram):
 
 
 
+def Centimeter_per_Minute_to_Meter_per_Hour_Welding_Speed_Converter(Centimeter_per_Minute):
+    '''
+    This function converts the Welding Speed from Centimeter per Minute to Meter per Hour.
+
+    Parameters
+    ----------
+    Centimeter_per_Minute : float
+        Centimeter_per_Minute is a unit for welding speed.
+
+    Returns
+    -------
+    Meter_per_Hour is a unit for welding speed.
+
+    '''     
+ 
+    Meter_per_Hour=Centimeter_per_Minute/1.7
+    return Meter_per_Hour
+
+
+def Meter_per_Hour_to_Centimeter_per_Minute_Welding_Speed_Converter(Meter_per_Hour):
+    '''
+    This function converts the Welding Speed from Meter per Hour to Centimeter per Minute.
+
+    Parameters
+    ----------
+    Meter_per_Hour : float
+        Meter_per_Hour is a unit for welding speed.
+
+    Returns
+    -------
+    Centimeter_per_Minute is a unit for welding speed.
+
+    '''     
+ 
+    Centimeter_per_Minute=Meter_per_Hour*1.7
+    return Centimeter_per_Minute
+
+
+# 3. Liter/Minute to CC/Second Welding Gas Flow Rate Converter
+    
+def Liter_per_Minute_to_CC_per_Second_Welding_Gas_Flow_Rate_Converter(Liter_per_Minute):
+    '''
+    This function converts the Welding Gas Flow Rate from Liter per Minute to CC per Second.
+
+    Parameters
+    ----------
+    Liter_per_Minute : float
+        Liter_per_Minute is a unit for gas flow rate in welding.
+
+    Returns
+    -------
+    CC_per_Second is a unit for gas flow rate in welding.
+
+    '''     
+ 
+    CC_per_Second=Liter_per_Minute*16.67
+    return CC_per_Second
+
+
+# 4.  CC/Second to Liter/Minute Welding Gas Flow Rate Converter
+    
+def CC_per_Second_to_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter(CC_per_Second):
+    '''
+    This function converts the Welding Gas Flow Rate from CC per Second to Liter per Minute.
+
+    Parameters
+    ----------
+    CC_per_Second : float
+        CC_per_Second is a unit for gas flow rate in welding.
+
+    Returns
+    -------
+    Liter_per_Minute is a unit for gas flow rate in welding.
+
+    '''     
+ 
+    Liter_per_Minute=CC_per_Second/16.67
+    return Liter_per_Minute
+
+
+def Mm_year_to_Mils_year(milpy):
+    """
+    1mm/yr=39.37mpy
+    Crossion rate
+     """
+    mpy=39.37*milpy
+    return mpy
+# Mm_year_to_Mils_year(int(input()))
+
+def Mils_year_to_Mm_year(mpy):
+    """
+      1mm/yr=39.37mpy
+      Crossion rate
+    """
+    Mm_year=mpy/39.37
+    return Mm_year
+# print(Mils_year_to_Mm_year(float(input())))
+
+
+
+def Rockwell_to_Brinell(hrb):
+    '''
+    convert Rockwell hardness (HRB) to Brinell hardness (HB).
+    
+    Parameters
+    
+    hrb : float
+        hardness in Rochwell scale.
+
+    Returns float: Hardness in Brinell scale.
+    
+
+    '''
+    hb = (hrb * 5.0) + 50
+    return hb
+
+
+    
+def Brinell_to_Rockwell(hb):
+    '''
+    convert Brinell hardness (HB) to Rockwell hardness (HRB)
+
+    Parameters
+    ----------
+    hb : float
+        hardness in Brinell scale.
+
+    Returns float: Hardness in Rochwell scale.
+   
+
+    '''
+    
+    hrb = (hb - 50) / 5.0
+    return hrb
+
+
+
+def Horsepower_to_Watt (Horsepower):
+    '''
+    
+
+    Parameters
+    ----------
+    Horsepower : float
+        give number in horsepower.
+
+    Returns
+    -------
+    watt : float
+        return your number in watt.
+
+    '''
+    Watt = "{:e}".format(Horsepower * 745.7)
+    return Watt
+
+
+
+def Watt_to_Horsepower (Watt) :
+    '''
+    
+
+    Parameters
+    ----------
+    Watt : float
+        give number in Watt.
+
+    Returns
+    -------
+    Horsepower : float
+        return number in Horsepower.
+
+    '''
+    Horsepower = "{:e}".format(Watt / 745.7)
+    return Horsepower
+
+
+
+
+def Force_CGS_to_SI (Force_in_CGS):
+    '''
+    
+
+    Parameters
+    ----------
+    Force_In_CGS : float
+        give your force value in CGS system.
+
+    Returns
+    -------
+    SI : float
+        return your force value in SI system.
+
+    '''
+    
+    SI = "{:e}".format(Force_in_CGS * 1e-5)
+    return SI
+
+def Force_SI_to_CGS (Force_in_SI) :
+    '''
+    
+
+    Parameters
+    ----------
+    Force_in_SI : float
+        give your force value in SI system.
+
+    Returns
+    -------
+    CGS : float
+        return your force value in CGS system.
+
+    '''
+    
+    CGS = "{:e}".format(Force_in_SI * 1e+5)
+    return CGS
+
+
+def Nanometer_To_Angstrom(Nanometer_value):
+    
+    '''
+    This function converts Nanometers to Angstroms.
+    1 Nanometer(nm)= 10 Angstroms(Å)
+
+    Parameters
+    ----------
+    Nanometer_value: int or float
+        Value in Nanometers(nm).
+    
+    Returns
+    -------
+    Angstrom_value: int or float
+        Equivalent value in Angstroms(Å).
+
+    '''
+    Angstrom_value= Nanometer_value*10
+    return Angstrom_value
+
+def Angstrom_To_Nanometer(Angstrom_value):
+    
+    '''
+    This function converts Angstroms to Nanometers.
+
+    Parameters
+    ----------
+    Angstrom_value: int or Float
+        Value in angstroms (Å).
+    
+    Returns
+    -------
+    Nanometer_value: int or Float
+        Equivalent value in Nanometers (nm).
+
+    '''
+    Nanometer_value= Angstrom_value/10
+    return Nanometer_value 
+
+
+def Current_density_to_mpy(Current_density,density,masschange,valency):
+    """
+    
+
+    Parameters
+    ----------
+    Current_density : float
+        Current density .(microA/cm2)
+    density : float
+       Material Density (g/cm3).
+    masschange : float 
+        amount of matter already corroded (g)
+    valency : intiger
+       How positive is the charge of the Material
+
+    Returns
+    -------
+   corrosion rate in mpy
+   
+
+    """
+    corrosion_rate_mpy=Current_density*1e-6*31536000*(1/density)*masschange*400*(1/(valency*96500))
+    return corrosion_rate_mpy
+
+def  Mpy_to_current_density(mpy,density,masschange,valency):
+    """
+    
+
+    Parameters
+    ----------
+    mpy : float
+        corrosion rate in mpy
+    density : float
+        materails density 
+    masschange : float
+        amount of mass corroded 
+    valency : int
+        how positive is the charge
+
+    Returns
+    -------
+    Current density 
+
+    """
+    Current_density=(mpy*1e6*density*2.5*valency*96500)/(31536000*masschange*1000)
+    return Current_density
 
 
 
