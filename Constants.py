@@ -444,3 +444,72 @@ K=2.1          #Bulk's modulus of water at room temperature (GPA).
 air_p=1013.25  #Air pressure at sea level (hPA).
 g=9.81         #The acceleration due to gravity, Near Earth's surface (m/s2).
 
+
+S_F=1.5       #Safety factor considered for calculation of weld permitted stress
+W_F=0.85      #Weld factor considered for calculation of weld permitted stress
+H_E=.9        #Heat efficiency considered for calculation of the heat input for gas metal arc welding
+Z_L_F=0.7     #Z-loss factor considered for calculation of fillet weld size for horizontal welding position and joint angle of 20 degrees
+B_K=0.8       #A constant considered for calculation of a column's free length under buckling
+
+
+Melting_Iron=1538
+Peritectic_Reaction=1495
+Eutectic_Point=1147
+A3=912
+Eutectoid_Reaction=727
+
+R = 0.0821 #universal gas constant in L.atm/(K.mole)
+n = 1.0 #mole
+V = 22.4 #the Volume of the ideal gas in room temp (L)
+T = 298.15 #Room Temperature (K)
+a = 1.39 #پارامتر ثابت برای گاز نیتروژن در معادله واندروالس L^2.atm/mole^2
+b = 39.1 #پارامتر ثابت برای گاز نیتروژن در معادله واندروالس cm^3/mole  
+surface_crack_value = 1.12 #ضریب کالیبراسیون برای ترک سطحی یا خارجی
+circule_crack_value = 2/3.1415 #ضریب کالیبراسیون برای ترک سکه ای
+internal_crack_value = 1 #ضریب کالیبراسیون برای ترک داخلی
+
+
+
+fib_number=1.618            #adad fibonacci
+byte_bits=8                 #tedad bit haye mojod dar yek tabe
+max_byte=225                #max meghdar yek byte
+boolean_number=1            #meghdar boole ke dar donyaye digital 1=true hast
+binary_base=2               #adad ke kol sestemeh kamputer roye an sakhte shode
+
+
+
+
+R = 8.314            # ideal gas constant (J/mol.K)
+c = 2.998e+8         # speed of light in vacun (m/s)
+N0 = 6.022e+23       # Avogadro's number 
+h = 6.6256e-34       # plank's constant (J/Hz)
+k = 1.38054e+23      # boltzmann constant (J/K)
+
+
+
+Avogadro_Number=6.02214076e23  # mol^-1 (Avogadro's number: the quantity of defined entities (particles, atoms, molecules, etc) that contained in one mole of a substance).
+
+Boltzmann_Constant=1.380649e-23  # J/K (Boltzmann constant: relates the average kinetic energy of particles in a gas to the absolute temperature).
+
+Aluminum_Kalpha_Energy=1486.6  # eV (Energy of the Kα X-ray emission line from an aluminum anode, commonly used in XPS analysis).
+
+Redox_Potential_H2O_OH_radical=1.97  # eV (Standard redox potential of the H2O/·OH couple at neutral pH, indicating the high oxidizing power of hydroxyl radicals).
+
+Energy_free_electrons=4.5  # eV (Energy of free electrons on the Standard Hydrogen Electrode (SHE) scale).
+
+
+
+Universal_Gas_Constant = 8.314                       #IN Ideal gases this number relates to pressure,volume and temprature
+Rydberg_Cpnstant = 1.097*10**7                       #Relates to wavelength of spectral of hdrogen.
+Fine_Structure_Constant = 1.137                      #Relates to strength of electromagnetic interaction beetween elementry charged particles.
+Permeabeability_Of_Free_Space  =4*pi*10**(-7)       #Relates to magnetic fields and forces.
+Permittivity_Of_Free_Space = 8.85*10**(-12)          #Relates to electric fields and forces
+
+
+R=8.314 #in j/mol.k which constant of gases
+K=1.38e-23 #Boltzman constant, unit is j/kelvin
+h=6.626e-34 #Plank's constant j/Herz
+gas_molar_volume=22.4 # liters per mole in STP
+e=1.6e-19 #amount of charge in one electron ,unit: Coulomb
+
+
