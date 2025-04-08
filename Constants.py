@@ -375,7 +375,6 @@ Ksb=5.67*math.pow(10,-8)
 h=6.6236*math.pow(10,-36)
 #Planck Constant, j.s
 
--
 LEARNING_RATE = 0.01
 MAX_DEPTH = 10
 DEFAULT_TIMEOUT = 30
@@ -431,7 +430,7 @@ F= 96485                #C/mole
 k_B = 1.381*10**-23         #J/K
 #Planck's Constant
 h = 6.626*10**-34           #JS
--
+
 Electron_Charge_Constant=1.602*(10**-19)
 Universal_Gas_Constant=8.314
 Avogadro_Num=6.022*(10**23)
