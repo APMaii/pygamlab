@@ -56,6 +56,8 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 '''
 
 
+
+
 #import-----------------------------------------
 import math
 import statistics
@@ -141,7 +143,9 @@ class NavierStokesSolver:
         x, y = np.meshgrid(range(self.domain_size), range(self.domain_size))
         ani = FuncAnimation(fig, update, frames=num_frames, repeat=False)
         plt.show()
-        
+
+
+
 '''
 # Example Usage:
 domain_size = 50
