@@ -69,6 +69,9 @@ def Activation_Energy(k,k0,T):
     return Ea 
 
 
+
+
+
 def Atomic_Packing_Factor(radius , crystal_structure):
     
     '''
@@ -136,9 +139,12 @@ def Activity_Coef(wB,wC,wD,eBB,eCB,eDB):
 
     '''
     
-    fB=e**(eBB*wB+eCB*wC+eDB*wD)
+    fB=math.e**(eBB*wB+eCB*wC+eDB*wD)
     
     return fB
+
+
+
 
 def Arithmetic_Sequence(start_num,common_difference,n):
     '''
@@ -161,15 +167,22 @@ An arithmetic sequence is an ordered set of numbers that have a common differenc
     a_n = start_num + ((n - 1)*common_difference)
     return a_n
 
+
+
+
 def Aeroscope_Stress_Concentration(max_stress,nominal_stresss):
     K=max_stress/nominal_stresss
     return K
 
+
+
+
 def archimedes_principle(density_fluid, volume_displaced, gravitational_acceleration):
     return density_fluid * volume_displaced * gravitational_acceleration
-def Activation_energy(Temp_difference):
-    return (16 * Pi * (Gama_sl ** 3) * (T_m ** 2))/(3 * (Latent_heat ** 2) * (Temp_difference ** 2))
-	
+
+
+
+
 def Atomic_Percentage(n_1,n_2,n_3,n_4,Entry,output,m_1,m_2,m_3,m_4,M_1,M_2,M_3,M_4,w_1,w_2,w_3,w_4):
     '''
     Parameters
@@ -256,6 +269,9 @@ def Atomic_Percentage(n_1,n_2,n_3,n_4,Entry,output,m_1,m_2,m_3,m_4,M_1,M_2,M_3,M
             AP_4=(w_4/M_4)/((w_1/M_1)+(w_2/M_2)+(w_3/M_3)+(w_4/M_4))
             return AP_4
 
+
+
+
 def Austenite_Martensite_VC(C):
     '''
     This function calaculates the volume change of a unit cell in Austenite to Marteniste transformation.
@@ -284,10 +300,6 @@ def Austenite_Martensite_VC(C):
 
 
 
-
-
-
-
 def BMI_Calculation(W,H):
     '''
     
@@ -305,6 +317,9 @@ def BMI_Calculation(W,H):
 
     '''
     return(W/H**2)
+
+
+
 
 
 def Biomaterial_Degredation_Rate(W1,W2,T):
@@ -327,15 +342,29 @@ def Biomaterial_Degredation_Rate(W1,W2,T):
     '''
     return((W1-W2)/W1*100/T)     
 
+
+
+
 def Burning_Rate(L,t):##L=burning length in mm & t=burning time in sec
     V=(60*L)/t ##V= burning rate in mm/sec according to the ASTM D3801 UL-94 test
     return V
+
+
+
+
 def boyles_law(initial_volume, initial_pressure, final_volume):
     return initial_pressure * initial_volume - final_volume
 
 
+
+
+
 def boltzmann_distribution(energy, temperature, boltzmann_constant):
     return math.exp(-energy / (boltzmann_constant * temperature))
+
+
+
+
 def Bragg_Law (h,k,l,a,y):
     '''
     This function calculate the diffraction angle of a incidence wavelenght through a crytal special plate
@@ -360,6 +389,9 @@ def Bragg_Law (h,k,l,a,y):
     return teta*180/math.pi
 
 
+
+
+
 def Berag_law(landa,sin_a):
     """
     Parameters 
@@ -373,7 +405,6 @@ def Berag_law(landa,sin_a):
     return d 
 
 
-##-----------------------------------------------------------------------------
 
 def Beer_Lambert_Law (a,l,I0):
     '''
@@ -396,6 +427,9 @@ def Beer_Lambert_Law (a,l,I0):
     I=I0*(10**(-a*l))
     return I
     
+
+
+
 def Binomial_Probability(n,k,p):
     """
     
@@ -417,10 +451,16 @@ def Binomial_Probability(n,k,p):
     q=1-p
     return p**k*q**(n-k)
 
+
+
+
 def Bouyancy_Force(d,V):
     g=9.81#(m/s^2)
     F_b=d*g*V
     return F_b
+
+
+
 
 
 def Brinell_Hardness_Calculation (d1,d2,D,p): 
@@ -475,6 +515,11 @@ def Copolymer_Type(Copolymer):
     else: 
         print('Random')
         
+        
+        
+
+
+
 def Corrosion_Rate(W,D,A,t):
     '''
     
@@ -499,6 +544,9 @@ def Corrosion_Rate(W,D,A,t):
     
     CR=534.6*W/(D*A*t)
     return CR
+
+
+
 
 def Calculate_ECB(chi, Ee, Eg):
     
@@ -530,6 +578,9 @@ def Calculate_ECB(chi, Ee, Eg):
 
 
 
+
+
+
 def Circle_Area(radius):
     '''
     
@@ -545,7 +596,7 @@ def Circle_Area(radius):
         area of circle.
 
     '''
-    circle_area=(radius**2)*pi
+    circle_area=(radius**2)*math.pi
     return circle_area
 
 
@@ -566,26 +617,26 @@ def Circle_Perimeter(radius):
         perimeter of circle.
 
     '''
-    circle_perimeter=2*pi*radius
+    circle_perimeter=2*math.pi*radius
     return circle_perimeter
     
 
 
 def Circle_Area(r):
-    x=r**2*pi
+    x=r**2*math.pi
     return x
 
 
-def Circle_Surrondings(r):
-    x=r*ta
-    return x
+
+
 
 
 def coulombs_law(charge1, charge2, distance):
     k_constant = 8.9875e9  # Coulomb's constant
     return k_constant * (charge1 * charge2) / distance**2
-def curies_law(magnetic_susceptibility, magnetic_field, temperature):
-    return magnetic_susceptibility * magnetic_field - (C / temperature)
+
+
+
 
 
 
@@ -628,6 +679,9 @@ def Convert_Gas_Constant(gas_constant , from_unit , to_unit):
         return "Invalid"
 
 
+
+
+
 def Carnot_Efficiency(T_c , T_h): 
     
     '''
@@ -651,31 +705,10 @@ def Carnot_Efficiency(T_c , T_h):
         print(f"ERROR: {e}")
 
 
-def Corrosion_Rate(num1,num2,num3,num4):
-    '''
-    
-
-    Parameters
-    ----------
-    num1 : float
-        the weight loss after exposure time(mg).
-    num2 : float
-        density(g/cm3).
-    num3 : float
-        exposed area(inch2).
-    num4 : float
-        time(hour).
-
-    Returns 
-    corrosin rate in mpy unit.
-    
-
-    '''
-    Corrosion_Rate = (k*num1)/(num2*num3*num3)
-    return Corrosion_Rate
 
 
-#function2
+
+
 
 def Contact_Angle(num1,num2,num3):
     '''
@@ -697,36 +730,11 @@ def Contact_Angle(num1,num2,num3):
     import math
     costeta= (num1-num3)/num2
     teta = math.acos(costeta)
-    teta_degree= teta*180/pi
+    teta_degree= teta*180/math.pi
     return teta_degree
 
 
-def Carbon_content(B,x,t):
-    """
-    Parameters
-    ----------
-    B : integer
-        the total available carbon content
-    x : integer
-        the thickness in question
-    t : ineteger
-        time 
-    Returns
-    -------
-    Cxt : integer
-        carbon content at the required time and location according to total carbon provided
 
-    """
-    Cxt=(B/(3.14*Dm*t)**0.5)*2.718**(-(x**2)/4/Dm/t)
-    return Cxt
-
-
-
-
-
-#functions
-def Critical_radius(Temp_difference):
-   return (2 * Gama_sl * T_m)/(Latent_heat * Temp_difference)
 
 
 
@@ -774,13 +782,21 @@ def Copolymer_Type(Copolymer, Polymer_num=2):
             print(copolymer_type)
         return copolymer_type
       
-  def Cost_Indicators(ac,ev):
+      
+
+
   
-    global cv,cpi
-    cv=ev-ac
-    cpi=ev/ac
-    
-    return cv,cpi
+      
+def Cost_Indicators(ac,ev):
+
+  global cv,cpi
+  cv=ev-ac
+  cpi=ev/ac
+  
+  return cv,cpi
+
+
+
 
 
 def Crystal_Percent(H,W,H100):#H=polymer enthalpy in mJ & W=polymer weight in mg & H100=neede enthalpy for polymer with 100%crystallinity in j/gr
@@ -854,6 +870,9 @@ def Calculate_Pipe_Heat_Transfer(mu,muW,rho,Cp,Pr,K,u,d,l,Tw,Tb1):
 
 
 
+
+
+
 def Cohen(m,r,/):
     '''
   Cohen equation is used to predict the yield stress of a polymeric blend  containing a rubbery dispersion phase. 
@@ -875,8 +894,10 @@ def Cohen(m,r,/):
     b=m*a
     return b
     
-        
-#Critical diameter of rubbery particles
+       
+
+
+ 
 def Critical_Diameter(d,r,/):
     '''
     This equation predicts the critical diameter of rubber particles toughening a polymeric matrix.
@@ -898,6 +919,9 @@ def Critical_Diameter(d,r,/):
     c=3.14/b
     dc=d/c
     return dc
+
+
+
 
 
 def Component(a,b):
@@ -928,6 +952,9 @@ def Component(a,b):
     return c
 
 
+
+
+
 def Change_In_Pressure_Of_a_Mercury_OR_Water_Column_Manometer(Type_Of_Fluid,h,g=9.81):
     
  if Type_Of_Fluid.upper()=='water':
@@ -940,6 +967,9 @@ def Change_In_Pressure_Of_a_Mercury_OR_Water_Column_Manometer(Type_Of_Fluid,h,g=
 
  else:
      raise ValueError ("Invalid Type of Fluid")
+
+
+
 
 def Concentration_Calculator (CA1, unit_CA1, CA2, unit_CA2, Q1, unit_Q1, Q2, unit_Q2):
     '''
@@ -1012,30 +1042,22 @@ def Density(m, V):
     den = m / V       
     return den
 
+
+
+
 def Drag_Force(Velocity,Fluid_Coefficent,Fluid_Density,cross_sectional_area,):
    D = ((Velocity**2)*(Fluid_Density)*(Fluid_Coefficent)*(cross_sectional_area))/2
    return D
     
 
+
+
+
 def Density (mass,volume):
     d=mass/volume
     return d
 
-def Diffusion_Coefficient(T):
-    """
-    Parameters
-    ----------
-    T : integer
-        the Temperature for which we require the Coeffiecient.
-    Returns
-    -------
-    Dm : integer
-        Diffusion Coefffecient at the required Temperature.
 
-    """
-    global Dm
-    Dm=Do*2.718**(-Ec/T)
-    return Dm
 
 
 def Degradation_Percentage(C0,Ct):
@@ -1069,8 +1091,14 @@ def darcys_law(flow_rate, permeability, area, pressure_difference):
     return permeability * area * pressure_difference - flow_rate
 
 
+
+
+
 def doppler_effect(observed_frequency, source_frequency, velocity_observer, velocity_source, speed_of_sound):
     return observed_frequency - source_frequency * ((speed_of_sound + velocity_observer) / (speed_of_sound - velocity_source))
+
+
+
 
 
 def Diffusivity(MA, MB, T, rAB, K, εAB, f, Pt=1.013*10**5):
@@ -1109,6 +1137,9 @@ def Diffusivity(MA, MB, T, rAB, K, εAB, f, Pt=1.013*10**5):
         return DAB
     else:
         return "Invalid inputs"
+
+
+
 
 
 def Diffusion_in_Gases(Diffusion_Type, Diffusivity, Separate_Panels_Distance, Pressure_in_Panel_A, Pressure_in_Panel_B, PressureBM, Gas_Constant, Total_Pressure=1.013*10**5):
@@ -1185,86 +1216,8 @@ def Diffusion_in_Gases(Diffusion_Type, Diffusivity, Separate_Panels_Distance, Pr
     return C
 
 
-def Dental_Composite(totalR, totalF, totalC,
-                     percentages_Filler, percentages_Resin, percentages_Colors,
-                     molar_Si_SiO2, molar_O_SiO2,
-                     molar_Ba_BaSiO3, molar_Si_BaSiO3, molar_O_BaSiO3,
-                     molar_Zr_ZrO2, molar_O_ZrO2,
-                     molar_Ti_TiO2, molar_O_TiO2
-                     ):
-    # Calculate the values corresponding to the percentage of each material
-    percentages_dict = {}
-
-    # Calculate the values of resin materials
-    for i in range(len(Resin_Materials)):
-        percentages_dict[Resin_Materials[i]] = totalR * (percentages_Resin[i] / 100)
-
-    # Calculate the values of filler materials
-    for i in range(len(Filler_Materials)):
-        percentages_dict[Filler_Materials[i]] = totalF * (percentages_Filler[i] / 100)
-
-    for i in range(len(Colors_Materials)):
-        percentages_dict[Colors_Materials[i]] = totalC * (percentages_Colors[i] / 100)
-
-    total_molar_SiO2 = molar_Si_SiO2 + 2 * molar_O_SiO2
-    # Calculate the molar percentages of each element
-    silicon_percentage = molar_Si_SiO2 / total_molar_SiO2
-    oxygen_percentage = (2 * molar_O_SiO2) / total_molar_SiO2
-
-    # Calculate the total molar mass of the filler material
-    total_molar_BaSiO3 = molar_Ba_BaSiO3 + molar_Si_BaSiO3 + (3 * molar_O_BaSiO3)
-    # Calculate the molar percentages of barium, silicon, and oxygen in the filler material
-    barium_percentage = molar_Ba_BaSiO3 / total_molar_BaSiO3
-    sil_Ba_percentage = molar_Si_BaSiO3 / total_molar_BaSiO3
-    oxy_Ba_percentage = (3 * molar_O_BaSiO3) / total_molar_BaSiO3
-
-    # Calculate the total molar mass of zirconium dioxide (ZrO2)
-    total_molar_ZrO2 = molar_Zr_ZrO2 + (2 * molar_O_ZrO2)
-    # Calculate the molar percentages of zirconium and oxygen in ZrO2
-    zirconium_percentage = molar_Zr_ZrO2 / total_molar_ZrO2
-    oxy_Zr_percentage = (2 * molar_O_ZrO2) / total_molar_ZrO2
-
-    # Calculate the total molar mass of titanium dioxide (TiO2)
-    total_molar_TiO2 = molar_Ti_TiO2 + (2 * molar_O_TiO2)
-    # Calculate the molar percentages of titanium and oxygen in TiO2
-    titanium_percentage = molar_Ti_TiO2 / total_molar_TiO2
-    oxy_Ti_percentage = (2 * molar_O_TiO2) / total_molar_TiO2
-
-    # Add calculated percentages to the dictionary
-    percentages_dict['Silicon in SiO2'] = silicon_percentage
-    percentages_dict['Oxygen in SiO2'] = oxygen_percentage
-    percentages_dict['Barium in BaSiO3'] = barium_percentage
-    percentages_dict['Silicon in BaSiO3'] = sil_Ba_percentage
-    percentages_dict['Oxygen in BaSiO3'] = oxy_Ba_percentage
-    percentages_dict['Zirconium in ZrO2'] = zirconium_percentage
-    percentages_dict['Oxygen in ZrO2'] = oxy_Zr_percentage
-    percentages_dict['Titanium in TiO2'] = titanium_percentage
-    percentages_dict['Oxygen in TiO2'] = oxy_Ti_percentage
-
-    return percentages_dict
 
 
-
-
-def Diod_Forward_Voltage(Temp, I, Is):
-    '''
-    Calculation of forward voltage of a diode
-    Parameters
-    ----------
-    Temp : float
-        diode temperature in celsius.
-    I : float
-        diode current(A).
-    Is : float
-        the reverse saturation current(A).
-
-    Returns
-    -------
-    the voltage across the diode(V).
-    '''
-    Vt = Thermal_Voltage(Temp, 'C')
-    Vd = Vt*math.log(I/Is+1)
-    return Vd
 
 
 
@@ -1298,8 +1251,6 @@ def Defect_Density(Beta,Theta,K=0.9,Landa=1.5406):
 
 
 
-#Absorption Coefficient (D) in electrochemical reactions calculates from Randles-Sevcik aquation in Cyclic voltametry technique.
-# D calculation depends on type of electrochemical reaction (reversibility and irreversibility)
 
 def Diffusion_Coefficient_Calculator(Peak_Current,A,C,Scan_Rate,n,is_reversible):
     '''
@@ -1338,9 +1289,7 @@ def Diffusion_Coefficient_Calculator(Peak_Current,A,C,Scan_Rate,n,is_reversible)
     return(Diffusion_Coefficient)
 
 
-#+++++++++++++++++ first +++++++++++++++++++++++++++
 
-#+++++++++++++++++++++ second +++++++++++++++++++++++++++++++
 def Distance(x,y,z,a,b,c,d):
     '''
     The formula of the distance between a point and a plane in
@@ -1405,9 +1354,9 @@ def Error_Function(z):
     t=0
     d=0.00001
     while t<z:
-        f1=e**(-t**2)
-        f2=e**(-(t+d)**2)
-        erf=erf+(2/(pi**0.5))*((f1+f2)*d/2)
+        f1=math.e**(-t**2)
+        f2=math.e**(-(t+d)**2)
+        erf=erf+(2/(math.pi**0.5))*((f1+f2)*d/2)
         t=t+d
         
     erf=int(erf*1000000)/1000000
@@ -1437,11 +1386,20 @@ This function calculates the percentage of drug loaded in the carrier during dru
 
 
 
+
+
+
 def entropy_change(heat_transfer, temperature):
     return heat_transfer / temperature
 
+
+
+
 def elastic_potential_energy(spring_constant, displacement):
     return 0.5 * spring_constant * displacement**2
+
+
+
 
 def Electrical_Resistance(v,i):
     '''
@@ -1459,7 +1417,9 @@ def Electrical_Resistance(v,i):
     '''
     R =v/i
     return R
-# test
+
+
+
 
 
 def Euler_Diff_Solver(a , b, xf , h , x0 =0 ,y0 =0 ):
@@ -1508,6 +1468,9 @@ def Euler_Diff_Solver(a , b, xf , h , x0 =0 ,y0 =0 ):
     return y   
    
     
+
+
+
 def Euler_Method(a,b, h, x0,y0):
     
     '''
@@ -1543,10 +1506,6 @@ def Euler_Method(a,b, h, x0,y0):
 
 
 
-
-
-
-
 def First_Row_Pascal_Triangle(k):
     
     result=1
@@ -1555,6 +1514,9 @@ def First_Row_Pascal_Triangle(k):
         result*=i
         
     return result
+
+
+
 
 
     
@@ -1568,6 +1530,9 @@ def Fibonachi_Sequence (N):
         first = second
         second = new
     return fibo
+
+
+
 
 def Factorial(a):
     '''
@@ -1595,6 +1560,9 @@ def Factorial(a):
         return factorial
 
 
+
+
+
 def Fabric_GSM(Warp,Weft,Warp_Count_Nm,Weft_Count_Nm,Shrinkage_Percent=5):
    '''
     This function calculates weight fabric in GSM unit.
@@ -1619,6 +1587,9 @@ def Fabric_GSM(Warp,Weft,Warp_Count_Nm,Weft_Count_Nm,Shrinkage_Percent=5):
    Fabric_GSM= Fabric_weight * (1+(Shrinkage_Percent/100))
    return Fabric_GSM
 
+
+
+
 def Fabric_Drape_Coefficient(fabric_weight,fabric_thickness,bending_length):
     '''
     This function estimates the drape coefficient of fabric according to 3 factors:
@@ -1637,6 +1608,9 @@ def Fabric_Drape_Coefficient(fabric_weight,fabric_thickness,bending_length):
     '''
     Drape_Coefficient = (fabric_weight*bending_length)/(fabric_thickness**2)
     return Drape_Coefficient
+
+
+
 
 
 def Fabric_Porosity(air_volume,total_volume):
@@ -1659,6 +1633,9 @@ def Fabric_Porosity(air_volume,total_volume):
     return FP
 
 
+
+
+
 def Fabric_weight(density,area):
     '''
     
@@ -1679,10 +1656,9 @@ def Fabric_weight(density,area):
     return FW
 
 
-"""
-# 3
-# calculate Fibonachi_Sequence by get N
-"""
+
+
+
 def Fibonachi_Sequence (N):
     fibo = 0
     for i in range(0,N+1):
@@ -1695,11 +1671,17 @@ def faradays_law(induced_emf, time, magnetic_flux):
     return induced_emf - time * magnetic_flux
 
 
+
+
+
 def Filler_Weight(M,FR1,FR2,FR3):#M=polymer matrix weight in gr & F1=first flame retardant weight in gr & F2=second flame retardant weight in gr & F3=third flame retardant weight in gr
     a=[FR1/(FR1+FR2+FR3+M)]#FR1 weight%
     b=[FR2/(FR1+FR2+FR3+M)]#FR2 weight %
     c=[FR3/(FR1+FR2+FR3+M)]#FR3 weight %
     return a,b,c
+
+
+
 
 
 def Fick_Sec_Thin(Thickness,Diffusion_coefficient,Time,Thin_layer_Consistency,Position,Thin_Layer_Metal,Second_metal):
@@ -1737,10 +1719,11 @@ def Fick_Sec_Thin(Thickness,Diffusion_coefficient,Time,Thin_layer_Consistency,Po
         Diffusion_coefficient=0.0299 # @Temprature=1000 K
     C_x_t=((Thickness*Thin_layer_Consistency)/(2*(pi*Diffusion_coefficient*Time)**(0.5)))*math.exp((-(Position)**2)/(4*Diffusion_coefficient*Time))
     return C_x_t
-'''
-in tabe kheili ja kar dare bara khode Diffusion Coefficient mishe ye tabe tarif kard o edame dad vali goftm dar hadi k data peida kardm flan erae bdm ta badan sare vqt kamelesh knm
-'''
-#F2________________________________________________________________________________________________
+
+
+
+
+
 def Final_Temp_Irreversible_Adiabatic(Initial_temperature,External_pressure,Internal_pressure,C_V,C_P,R,Unit_of_measurement,Number_of_gas_atoms):
     '''
     Parameters
@@ -1793,6 +1776,9 @@ def Final_Temp_Irreversible_Adiabatic(Initial_temperature,External_pressure,Inte
     return Final_Temp
 
 
+
+
+
 def Fracture_Toughness(s, c, location):
     
     '''
@@ -1838,27 +1824,7 @@ def Fracture_Toughness(s, c, location):
     return K1C
 
 
-def Faraday_Law_of_Electrolysis(Q,M,z):
-    """
-    
-    Parameters
-    ----------
-    Q : float
-        Total charge (in coulombs).
-    M : float
-        Molar mass of the substance (in grams per mole).
-    z : float
-        Number of moles of electrons transferred per mole of substance.
 
-    Returns
-    -------
-    m : float
-        Mass of substance deposited or liberated (in grams)
-
-    """
-    
-    m=(Q*M)/(z*Faraday_Constant)
-    return m
 
 def Faraday_Corrosion(current_density, time, atomic_weight, density, valence):
     """
@@ -1873,6 +1839,9 @@ def Faraday_Corrosion(current_density, time, atomic_weight, density, valence):
     faraday=(K * current_density * time * atomic_weight / (density * valence))
     return faraday
 	
+
+
+
 
 def Friction_Law(mass,angle,/,MOTCS,moving):
     '''
@@ -1952,6 +1921,9 @@ def Friction_Law(mass,angle,/,MOTCS,moving):
 
 
 
+
+
+
 def Geometric_Sequence(first_variable,second_variable):
     '''
     This function obtains the result of a geometric progression
@@ -1977,8 +1949,14 @@ def Geometric_Sequence(first_variable,second_variable):
         return 1
     return m 
 
+
+
+
 def gauss_law(electric_field, surface_area, electric_flux):
     return electric_field * surface_area - electric_flux
+
+
+
 
 def Gibs_free_energy(H0,T,S0):
     '''
@@ -2001,6 +1979,9 @@ def Gibs_free_energy(H0,T,S0):
     return G0
 
 
+
+
+
 def Gravitational_force(G,FT):
     '''
     Parameters
@@ -2021,6 +2002,9 @@ def Gravitational_force(G,FT):
         F=G*((5.972*(10**24)*1.989*(10**30))/((1.496*(10**11))**2))
         return F
     
+
+
+
 def Gravitational_force_formula(g,m_mars,m_sun,r_mars_sun):
     '''
     
@@ -2056,40 +2040,17 @@ def Gravitational_force_formula(g,m_mars,m_sun,r_mars_sun):
 
 
 
-class Grain_Growth_Calculater:
-    def __init__(self):
-        
-        self.k = self.validate_input("Enter the growt rate coefficient (k): ")
-        self.grain_size = self.validate_input("Enter the grain size: ")
-        self.time_interval = self.validate_input("Enter the time interval (in second): ")
-        
-    def validate_input(self , prompt):
-        while True:
-            user_input = input(prompt)
-            try:
-                value = float(user_input)
-                    
-                if value <= 0:
-                    print("Value must be +. Try again.")
-                        
-                else:
-                    return value
-                    
-            except ValueError:
-                print("Invalid input.")
-                    
-    def Growth_Rate_Calculation(self):
-        return self.k * self.grain_size / self.time_interval
-        
-
-
-
 
 def Heat_Transfer_Rate (Thermal_conductivity,area, tempreture_difference):
+    '''
+    This function is used to calculate heat transfer rate by using thermal conductivity, area of transformation, and tempreture of to sides of transformation.
+    In this formula, heat transfer rate is in Btu/(hr*square ft*F), area is in square ft, and tempreture difference is in F.
+
+'''
     Heat_Transfer_Rate=Thermal_conductivity*area*tempreture_difference
     return Heat_Transfer_Rate
-'This function is used to calculate heat transfer rate by using thermal conductivity, area of transformation, and tempreture of to sides of transformation.'
-'In this formula, heat transfer rate is in Btu/(hr*square ft*F), area is in square ft, and tempreture difference is in F.'
+
+
 
 
   
@@ -2114,6 +2075,9 @@ This function determines the drug’s efficacy in biological process inhibition
     return 1-(A1-A3/A2-A3)*100
 
 
+
+
+
 def Hall_Petch(d_grain, sigma0, k):
     """
     calculate yield strengh with grain size in Hall Petch
@@ -2122,6 +2086,9 @@ def Hall_Petch(d_grain, sigma0, k):
     """
     hall=(sigma0 + k / (d_grain**0.5))
     return hall
+
+
+
 
 
 def Hall_petch(frictional_stress,k,grain_diameter):
@@ -2146,6 +2113,9 @@ def Hall_petch(frictional_stress,k,grain_diameter):
     return yield_stress
 
 
+
+
+
 def Hooke(strain,young_modulus):
     stress=young_modulus*strain
     return stress
@@ -2155,11 +2125,20 @@ def Hooke(strain,young_modulus):
 def heat_transfer(thermal_conductivity, area, temperature_difference, thickness):
     return thermal_conductivity * area * temperature_difference / thickness
 
+
+
+
 def hookes_law(spring_constant, displacement):
     return spring_constant * displacement
 
+
+
+
 def hadamard_product(matrix1, matrix2):
     return np.multiply(matrix1, matrix2)
+
+
+
 
 
 def Heat_Capacity (m,c,T1,T2):
@@ -2187,6 +2166,9 @@ def Heat_Capacity (m,c,T1,T2):
     return Q,str
 
 
+
+
+
 def HeatـTransferـCoefficient(k,A,t1,t2,d):
     '''
     
@@ -2211,6 +2193,9 @@ def HeatـTransferـCoefficient(k,A,t1,t2,d):
     Q=k*A*(t2-t1/d)
     return Q
 
+
+
+
 def Hardness_vickers(F,d):
     '''
     Parameters
@@ -2228,6 +2213,10 @@ def Hardness_vickers(F,d):
     '''
     HV=1.854*F/(d**2)
     return HV
+
+
+
+
 
 def Heat_Exchanger_Transfer(U,Th1,Th2,Tc1,Tc2,C,dot_m):
     '''
@@ -2264,18 +2253,6 @@ def Heat_Exchanger_Transfer(U,Th1,Th2,Tc1,Tc2,C,dot_m):
 
     A=Q/(U*delta_T_LMTD)###The heat exchange surface used
     return delta_T_LMTD,A,Q
-
-
-class Hydrogen_Energy_Level_Calculater:   #defined the class 
-    def Calculate_Energy_Level(sef , n):  #This method is defined with input in n to calculate the energy level
-        energy = -13.6 / (n ** 2)         #The energy level formula
-        return energy                     #Energy value is returned as the output of the function
-    
-    def validate_input(self , n):         #This method gets input n  wich represent th hydrogen energy number and check if it's valide or not
-        if not isinstance(n , int) or n <= 0:
-            raise ValueError("Invalid value!")
-
-
 
 
 
@@ -2337,13 +2314,22 @@ def Ideal_Gas_low(R = "(L.atm) / (K.mol)", V = 1, n = 1, T = 0):
         P = (n * T * (8.314472 * (10**(-5)))) / V
         return P
 
+
+
+
 def ideal_gas_law(pressure, volume, temperature):
     gas_constant = 8.314  # Ideal gas constant
     return pressure * volume - gas_constant * temperature
 
 
+
+
+
 def ideal_diode_equation(current, saturation_current, thermal_voltage):
     return current - saturation_current * (math.exp(current / thermal_voltage) - 1)
+
+
+
 
 def Income_Tax(a):
     """
@@ -2392,6 +2378,9 @@ def Insertion_Sort (non_sorted_list):
     print (non_sorted_list)
     return(non_sorted_list)
 
+
+
+
 def Indeterminate_degree_of_truss(m,j):
     ''' 
     This function calculates the degree of indeterminacy of the truss by taking 'm' number of truss members and 'j' number of nodes.
@@ -2426,40 +2415,20 @@ def Indeterminate_degree_of_truss(m,j):
 
 
 
+
+
+
 def kinetic_energy(mass, velocity):
     return 0.5 * mass * velocity**2
-
-                    
-class Kinetic_Energy:
-    
-    def __init__(self):
-        self.mass = None
-        self.velocity = None
-        
-    def User_Inputs(self):
-        while True:
-            try:
-                self.mass = float(input("Enter the mass of the object(kg): "))    #Get the object mass from user (int or float)
-                self.velocity = float(input("Enter the velocity of the object(m/s): "))    #Get the velocity of the object (int or float)
-                break
-            
-            except ValueError:
-                print("Invalid!")
-                
-    def Kinetic_Energy_Calculater(self):
-        
-        kinetic_energy = 0.5 * self.mass * self.velocity ** 2 
-        return kinetic_energy
-    
-    def Result(self , result):
-        print("Kinetic Energy is: {:.2f} J".format(result))
-
 
 
 
 
 def lorentz_force(charge, velocity, magnetic_field):
     return charge * (velocity.cross(magnetic_field))
+
+
+
 
 def Lorentz_Lorenz_Constant(n,ro):
     
@@ -2475,6 +2444,9 @@ def Lorentz_Lorenz_Constant(n,ro):
     '''
     R=float((n**2-1)/(n**2+2)/ro)
     return R
+
+
+
 
 
 def Latice_Parameter(structure, r):
@@ -2523,7 +2495,6 @@ def Latice_Parameter(structure, r):
 
 
 
-   #2-4:
 def Lattice_Parameter(r,structure):
     '''
     Parameters
@@ -2545,6 +2516,7 @@ def Lattice_Parameter(r,structure):
         a=4*r/(3**0.5)
     return a
 	
+
 
 
 
@@ -2616,6 +2588,9 @@ def Mandaliof_Properties(E):
     print('\nBoiling temperature:        ',T_b[loc],' \nStandard phase:             ',P)
 
 
+
+
+
 def Mtt_Test(C1,C2):
     '''
  This function measures the metabolic activity of the cell
@@ -2648,7 +2623,10 @@ def mass_energy_equivalence(mass):
 def maxwells_equations(electric_field, magnetic_field, charge_density, current_density):
     return electric_field.div() - charge_density, magnetic_field.curl() - current_density
 
-#?????????      
+
+
+
+     
 def Mc_Cabe(F,Zf,Xd,Xw,R,alpha,q):
     '''This function is used for Mc-Cabe calculation in Distillation Towers
     F : Feed Rate
@@ -2748,10 +2726,16 @@ def Mc_Cabe(F,Zf,Xd,Xw,R,alpha,q):
     return print('Nmin=',Nmin,'     Rmin=',Rmin,'     N=',N,'     NFeed=',Nfeed,'     W=',W,'     D=',D)
 
 
+
+
+
 def Mass_Transfer_Intensity(result_1, size_of_the_surface): 
     MTI_ἠ = float(result_1 * size_of_the_surface)    #The size of the surface where mass transfer occurs(unite Meter).
 
     return MTI_ἠ
+
+
+
 
 def Mass_Plating(num1,num2,num3,num4):
     '''
@@ -2774,6 +2758,9 @@ def Mass_Plating(num1,num2,num3,num4):
     '''
     m = num1*num2*num3/(num4*F)
     return m
+
+
+
 
 
 def Mass_Of_Rubber_In_Internal_Mixer(filler_percentage,type_of_rotors,V):
@@ -2859,7 +2846,7 @@ def Nanoparticle_Surface_Area(Shape,Diameter=0,a=0):
     Shape=input('enter the shape of nanoparticle')
     if Shape=='sphere':
         Diameter=int(input('enter the shape of nanoparticles diameter'))
-        Nanoparticle_Surface_Area=Pi*(Diameter**2)
+        Nanoparticle_Surface_Area=math.pi*(Diameter**2)
         print(Nanoparticle_Surface_Area)
         return Nanoparticle_Surface_Area
     elif Shape=='cube':
@@ -2874,6 +2861,9 @@ def Nanoparticle_Surface_Area(Shape,Diameter=0,a=0):
         return Nanoparticle_Surface_Area
     else: 
         print('please retry and enter the needed parameters corectly')
+
+
+
 
 
 def Nanoparticle_Aspect_Ratio(lenght=1,width=1,height=1):
@@ -2910,6 +2900,9 @@ def Nanoparticle_Aspect_Ratio(lenght=1,width=1,height=1):
     print('Nanoparticle_Aspect_Ratio=',Nanoparticle_Aspect_Ratio)
     return Nanoparticle_Aspect_Ratio
 
+
+
+
 def Nanoparticle_Volume(Shape,Diameter=0,a=0):
     """
     Calculating the Volume of a nanoparticle by determinig the shape
@@ -2940,7 +2933,7 @@ def Nanoparticle_Volume(Shape,Diameter=0,a=0):
     Shape=input('enter the shape of nanoparticle')
     if Shape=='sphere':
         Diameter=int(input('enter the shape of nanoparticles diameter'))
-        Nanoparticle_Volume=Pi*((Diameter**3)/6)
+        Nanoparticle_Volume=math.pi*((Diameter**3)/6)
         print(Nanoparticle_Volume)
         return Nanoparticle_Volume
     elif Shape=='cube':
@@ -2959,55 +2952,19 @@ def Nanoparticle_Volume(Shape,Diameter=0,a=0):
 
 
 
+
+
+
 def newtons_second_law(force, mass, acceleration):
     return force - mass * acceleration
 
 
-def nernst_equation(ion_concentration, temperature, faraday_constant, standard_potential):
-    return standard_potential - (R * temperature / (n * faraday_constant)) * math.log10(ion_concentration)
 
-
-def Number_of_unit_cells(Radius):
-    return (4 * Pi * (Radius ** 3))/(3 * (converted_A ** 3))
-
-def Nucleation(Temprature, activation):
-    return (N_t * math.exp(-(activation/(K * Temprature))))
-
-def Number_of_Particles(n):
-    
-    """
-    
-    Parameters
-    ----------
-    n : float
-        Number of moles.
-
-    Returns
-    -------
-    N : float
-        This function is used to calculate the number of particles or atoms in a substance.
-
-    """
-    
-    N=n*Avogadro_Constant
-    return N
 
 
 
 def ohms_law(voltage, current, resistance):
     return voltage - current * resistance
-
-def Osmotic_Pressure(M,T):
-    '''
-    This function is used for membrane Osmotic Pressure calculation 
-    M : NaCl Concentration in Feed (g/l)
-    T : Temperature (c)
-    Returns membrane Osmotic Pressure in Bar
-    '''
-    m=M/(Nacl_MW)
-    t=T+273.15
-    Osmotic_Pressure=1.8*gas_constant*0.01*m*t
-    return Osmotic_Pressure
 
 
 
@@ -3016,129 +2973,9 @@ def poisson(transverse_strain,axial_strain):
     v=-(transverse_strain/axial_strain)
     return v
 
-def pH_Calculator(a, c, K1=0, K2=0, K3=0):
-
-    
-    
-    '''
-    Parameters
-    ----------
-    a : int
-        If you have a strong acid, enter 1. For strong base, enter 2. For weak acid, enter 3. For weak base, enter 4.
-    c : float
-        Enter the concentration of acid or base solution (mol/Lit).
-    K1 : float
-        Enter the first dissociation constant of the weak acid or base. 
-        The dissociation constant for weak acids and bases must be lower than one(K<1).
-        For polyprotic acid or bases (the acid or bases that have more than one hydrogen or hydroxide ion per molecule), only enter only dissociation coefficients smaller than 1. (K<1)
-    K2 : float
-        Enter the second dissociation constant of the weak acid or base.
-    K3 : float
-         Enter the third dissociation constant of the weak acid or base.    
-    Returns
-    -------
-    pH : float
-        The pH of acid/base solution.
-    '''
-        
-    
-    
-    
-    
-    
-    import math as m
-    pHw=-m.log10(Kw)/2
-    Hw=10**(-pHw)
-    H=[0,0,0]
-    x=[0,0]
-    pH=0
-    c= float(c)
-    k=[K1,K2,K3] 
-    if a == 1:
-            H[0]=c
-            x[0]=(-(H[0]+k[0])+m.sqrt((H[0]+k[0])**2+4*k[0]))/2
-            x[1]=(-(H[0]+k[0])-m.sqrt((H[0]+k[0])**2+4*k[0]))/2
-            for i in range(2):
-                 if  type(x[i])!='complex' and x[i]>=0:
-                    H[1]=H[0]+x[i]
-            x[0]=(-(H[1]+k[1])+m.sqrt((H[1]+k[1])**2+4*k[1]))/2
-            x[1]=(-(H[1]+k[1])-m.sqrt((H[1]+k[1])**2+4*k[1]))/2
-            for i in range(2):
-                 if  type(x[i])!='complex' and x[i]>=0:
-                    H[2]=H[1]+x[i]
-                    pH = -m.log10(H[2]+Hw)
-                    return pH
-                 
-            
-            
-    elif a == 2:
-            H[0]=c
-            x[0]=(-(H[0]+k[0])+m.sqrt((H[0]+k[0])**2+4*k[0]))/2
-            x[1]=(-(H[0]+k[0])-m.sqrt((H[0]+k[0])**2+4*k[0]))/2
-            for i in range(2):
-                 if  type(x[i])!='complex' and x[i]>=0:
-                    H[1]=H[0]+x[i]
-            x[0]=(-(H[1]+k[1])+m.sqrt((H[1]+k[1])**2+4*k[1]))/2
-            x[1]=(-(H[1]+k[1])-m.sqrt((H[1]+k[1])**2+4*k[1]))/2
-            for i in range(2):
-                 if  type(x[i])!='complex' and x[i]>=0:
-                    H[2]=H[1]+x[i]
-                    pH = 14+m.log10(H[2]+Hw)
-                    return pH
-            
-            
-
-
-    elif a == 3:
-        if k[0]==0:
-            print('Enter the dissociation constants of the weak acid')
-        else:
-            H[0]=(-k[0]+m.sqrt(k[0]**2+4*c*k[0]))/2
-            x[0]=(-(H[0]+k[1])+m.sqrt((H[0]+k[1])**2+4*k[1]))/2
-            x[1]=(-(H[0]+k[1])-m.sqrt((H[0]+k[1])**2+4*k[1]))/2
-            for i in range(2):
-                if  type(x[i])!='complex' and x[i]>=0:
-                    H[1]=H[0]+x[i]
-            x[0]=(-(H[1]+k[2])+m.sqrt((H[1]+k[2])**2+4*k[2]))/2
-            x[1]=(-(H[1]+k[2])-m.sqrt((H[1]+k[2])**2+4*k[2]))/2
-            for i in range(2):
-                 if  type(x[i])!='complex' and x[i]>=0:
-                    H[2]=H[1]+x[i]
-                    pH = -m.log10(H[2]+Hw)
-                    return pH
-              
-            
-
-
-    elif a == 4:
-        if k[0]==0:
-            print('Enter the dissociation constants of the weak base')
-        else:
-            H[0]=(-k[0]+m.sqrt(k[0]**2+4*c*k[0]))/2
-            x[0]=(-(H[0]+k[1])+m.sqrt((H[0]+k[1])**2+4*k[1]))/2
-            x[1]=(-(H[0]+k[1])-m.sqrt((H[0]+k[1])**2+4*k[1]))/2
-            for i in range(2):
-                 if  type(x[i])!='complex' and x[i]>=0:
-                    H[1]=H[0]+x[i]
-            x[0]=(-(H[1]+k[2])+m.sqrt((H[1]+k[2])**2+4*k[2]))/2
-            x[1]=(-(H[1]+k[2])-m.sqrt((H[1]+k[2])**2+4*k[2]))/2
-            for i in range(2):
-                 if  type(x[i])!='complex' and x[i]>=0:
-                    H[2]=H[1]+x[i]
-                    pH = 14+m.log10(H[2]+Hw)
-                    return pH
-              
- 
-
-
-
-
-
 
             
-  
-    
- 
+
     
 def pH_Which (pH):
     if pH<7:
@@ -3150,10 +2987,6 @@ def pH_Which (pH):
            
         
         
-
-
-
-
 
 
 def Principal_Stress(Sx,Sy,Sz,Txy,Tyz,Txz):
@@ -3226,6 +3059,9 @@ def Principal_Stress(Sx,Sy,Sz,Txy,Tyz,Txz):
     return S_P
 
 
+
+
+
 def Pythagorean(side1,side2):
     '''
     It should be an orthogonal triangle and this function gives you hypotenuse
@@ -3247,11 +3083,20 @@ def Pythagorean(side1,side2):
     return hypotenuse
 
 
+
+
+
 def pythagorean_theorem(a, b):
     return (a**2 + b**2)**0.5
 
+
+
+
 def photoelectric_effect(kinetic_energy, photon_energy, work_function):
     return kinetic_energy - (photon_energy - work_function)
+
+
+
 
 
 def is_Pythagorean(a,b,c):
@@ -3277,6 +3122,9 @@ def is_Pythagorean(a,b,c):
     else:
         return False
 
+
+
+
 def Polygonal_Diameters(n):
     """
     
@@ -3291,6 +3139,9 @@ def Polygonal_Diameters(n):
 
     """
     return((n*(n-3))/2)
+
+
+
 
 def PengRobinson(T = None,P = None,Tc = None,Pc = None,w = None,MW = None,Phases = None):
     """
@@ -3363,19 +3214,8 @@ def PengRobinson(T = None,P = None,Tc = None,Pc = None,w = None,MW = None,Phases
 
 
 
-def Perm(r,F,P):
-    '''
-    This function is used for membrane permeability calculation 
-    r : membrane radius (cm)
-    F : Flowrate (ml/min)
-    P : applied pressure (Bar)
-    Returns membrane permeability in LMH/Bar Unit 
-    '''
-    Area=PI*(r**2)
-    Flux=F/Area
-    flux=Flux_convertor1(Flux)
-    Perm=flux/P
-    return Perm
+
+
 
 def Planks_Fix(y,R,r):
     '''
@@ -3388,12 +3228,10 @@ def Planks_Fix(y,R,r):
     '''
     p=2*y*R/r
     return p
-#test
 
 
-#------------------
 
-#test
+
 
 def Power_Factor(i,v):
     '''
@@ -3410,10 +3248,9 @@ def Power_Factor(i,v):
     '''
     p=i*v
     return p
-# test
 
 
-#-----------------
+
 
 
 
@@ -3433,74 +3270,7 @@ def Print_Time(Print_speed,Volume,Printer_efficiency):
     '''
     Print_time=float(Volume)/(float(Print_speed)*float(Printer_efficiency))
     return Print_time
-#2
 
-
-
-
-
-
-def Polymer_Life_Time(E,T,t=1):
-    
-    ''' E(float)=  activation Energy   J
-   T(float)= absolute temperature in K
-   t(float)= constant time and usually we consider it 1
-    we calculate t and E based on experiences
-    
-    
-    Retuen:
-        
-        Life_Length=(float)
-        the length the life of polymer
-    
-    '''
-    E_kj=E*1000 #because I have math range error I consider this limitation
-    exp=E_kj/(Constant_Numbers(constant_num='K_Boltzman')*T)
-    if exp>709:
-        return float('inf') #if exponent is too large it returns infinity
-    
-    Life_Length=math.exp(exp)
-    return Life_Length
-
-
-
-    
-def Photon_Energy(f):
-    """
-
-    Parameters
-    ----------
-    f : float
-        Frequency of the photon (in hertz).
-
-    Returns
-    -------
-    E : float
-        Energy of the photon (in Joule).
-
-    """
-    
-    E=Planck_Constant*f
-    return E
-
-
-#section two
-def Power_Spectrum_Density(frequency,T):
-    '''
-    Parameters
-    ----------
-    frequency: float
-               the frequency that power spectrum density is required at
-    T: float
-       the temperature of material in kelvin
-
-    Returns
-    -------
-    s: float
-       power spectrum density of thermal noise           
-    '''
-    s=(frequency*h)/2*(2.7**((h*frequency)/(k*T))-1)
-    return s
 
 
 
@@ -3536,6 +3306,9 @@ def Quadratic_Equation(a,b,c):
         else:
             return x1,x2
         
+
+
+
 def Rectangle_Area(length,width):
     '''
     This function calculate the area of square too!
@@ -3555,6 +3328,10 @@ def Rectangle_Area(length,width):
     '''
     rectangle_area=length*width
     return rectangle_area
+
+
+
+
     
 def Rolling_Parameters_Calculator (roller_radius, flow_stress, sample_width, 
                                    wanted_thickness_reduction, coefficient_of_friction = None) :
@@ -3655,6 +3432,9 @@ def Rectangle_Perimeter(length,width):
     return rectangle_perimeter
 
 
+
+
+
 def root_degree2(a,b,c):
     delta=b**2-(4*a*c)
 
@@ -3666,18 +3446,30 @@ def root_degree2(a,b,c):
         return x
     if delta<0:
         print("no answer")
-        
+      
+
+
+  
 def rayleigh_scattering(intensity, wavelength, particle_size):
     return intensity - (particle_size / wavelength)**4
+
+
+
 
 
 
 def rydberg_formula(wavelength, rydberg_constant, principal_quantum_number):
     return 1 / wavelength - rydberg_constant * principal_quantum_number**2
 
+
+
+
 def Reynolds_Number_Pipe(d,u,vis,D_H):
     Re=d*u*D_H/vis
     return Re
+
+
+
 
 
 
@@ -3695,14 +3487,20 @@ def Rejection(CF,CP):
 
 
 
-def shearrate(Q,p,r,n):
+def Shear_Rate(Q,p,r,n):
     y=(Q/p*r**3)*(3+1/n)
     return y
-#2-formula of shear rate
-#F=applied force,A=cross-sectional area,T=shear stress
-def shearstress (F,A):
+
+
+
+
+
+def Shear_Stress (F,A):
     T=F/A
     return T
+
+
+
 
 
 def Stress_Intensity_Factor(stress, crack_length, crack_type):
@@ -3734,6 +3532,9 @@ def Stress_Intensity_Factor(stress, crack_length, crack_type):
         raise ValueError("Invalid crack type. Choose from 'surface', 'circular', or 'internal'.")
         
     return K
+
+
+
 
 
 
@@ -3790,6 +3591,9 @@ def Solidification_Front_Composition (partition_coefficient, alloy_composition, 
 
 
 
+
+
+
 def Surface_Area_To_Volume_Ratio(Shape,Diameter=0,a=0):
     """
     Calculating the ratio of nanoparticle's surface to its volume by determinig the shape
@@ -3820,8 +3624,8 @@ def Surface_Area_To_Volume_Ratio(Shape,Diameter=0,a=0):
     Shape=input('enter the shape of nanoparticle')
     if Shape=='sphere':
         Diameter=int(input('enter the shape of nanoparticles diameter'))
-        Nanoparticle_Surface_Area=Pi*(Diameter**2)
-        Nanoparticle_Volume=Pi*((Diameter**3)/6)
+        Nanoparticle_Surface_Area=math.pi*(Diameter**2)
+        Nanoparticle_Volume=math.pi*((Diameter**3)/6)
     elif Shape=='cube':
         a=int(input('enter a '))
         Nanoparticle_Surface_Area=6*(a**2)
@@ -3839,26 +3643,20 @@ def Surface_Area_To_Volume_Ratio(Shape,Diameter=0,a=0):
 
 
 
+
+
+
 def Sphere_Volume (R):
     V = (4/3)* math.pi * R**3
     return V
 
-#print("Sphere_Volume = ",Sphere_Volume(2))
 
-"""
-# 2
-# calculate Area of Sphere by get R
-"""
+
+
 def Sphere_Area (R):
     S = 4 * math.pi * R**2
     return S
 
-#print("Sphere_Area = ",Sphere_Area(2))
-
-
-def Specific_Impulse(Thrust,Propellent_flowrate):
-    d=Thrust/(Propellent_flowrate*g0)
-    return d
 
 
 def Sphere_Volume(radius):
@@ -3876,7 +3674,7 @@ def Sphere_Volume(radius):
         volume of sphere.
 
     '''
-    sphere_volume=(4*(radius**3)*pi)/3
+    sphere_volume=(4*(radius**3)*math.pi)/3
     return sphere_volume
 
 
@@ -3900,8 +3698,11 @@ def Sphere_Surface_Area(radius):
         surface area of sphere .
 
     '''
-    sphere_surface_area=(4*pi*(radius**2))
+    sphere_surface_area=(4*math.pi*(radius**2))
     return sphere_surface_area
+    
+    
+    
     
     
     
@@ -3926,7 +3727,6 @@ This  function estimates the number of evaluable subjects required for achieving
     
     
       
-#PART.2.8
 
 
 
@@ -3950,6 +3750,9 @@ def Stress(strain,young_modulus):
     global S
     S=strain*young_modulus
     return S
+
+
+
 
 
 def Standard_Deviation(a):
@@ -3980,6 +3783,9 @@ def Standard_Deviation(a):
     SD2 = (F / (len(a) - 1))
     SD = math.sqrt(SD2)
     return SD
+
+
+
 
 def Solubility (a,b,c,T, T_unit, T_end):
     '''
@@ -4099,11 +3905,16 @@ def Tensile_Strength (f,a):
     return c
 
 
-#tensile strength
-def tensilestrength(Maxloud,cross_sectional_area):
+
+
+
+def Tensile_Strength(Maxloud,cross_sectional_area):
     tensilestrength=Maxloud/cross_sectional_area
     return tensilestrength
     
+
+
+
 
 
 def Triangle_Environment (first_side,second_side,third_side):
@@ -4131,6 +3942,9 @@ def Triangle_Environment (first_side,second_side,third_side):
    
 
 
+
+
+
 def Triangle_Area(Height,rule):
     '''
     This function obtains the area of ​​the triangle
@@ -4152,27 +3966,6 @@ def Triangle_Area(Height,rule):
     return (area) 
 
 
-#دقیقا مطمِن نبودم که ورودی اول چیه و 
-#با توجه به فرمول هایی که پیدا کردم احتمال دادم مقاومت حرارتی باشه 
-#اما اگر اشتباه متوجه شدم ممنون میشوم بهم اطلاع دهید تا درستش کنم.
-
-def Thermal_Conductivity (thermal_conductance,thickness) :
-    R=thermal_conductance
-    L=thickness
-    return L/R
-'''
-    تابع 
-thermal conductivity یا K   ضریب هدایت حرارتی یا رسانندگی گرمایی
-   وات بر کلوین متر (W·K−۱·m−۱)
-را به ما میدهد 
-
-متغیر های تابع به صورت زیر اند
-thermal_conductance یا مقاومت حرارتی یا R 
-وات بر کلوین متر2 ((W·K−1·m−2))
-
-thickness یا ضخامت یا L 
-متر (m)
-'''
 
 
 def TB():
@@ -4238,6 +4031,9 @@ def TB():
     return TBP
   
 
+
+
+
 def TD():
     '''
     This function is used for dew temp calculation in mixed solution
@@ -4300,52 +4096,10 @@ def TD():
         n=n+1
     return TDP
 
-def Thermal_Voltage(T1,T2):
-    
-    """
-    
-    Parameters
-    ----------
-    T1 : float
-        Temperature 1 (in Kelvin).
-    T2 : float
-        Temperature 2 (in Kelvin).
 
-    Returns
-    -------
-    V_T : float
-        Thermal Voltage is voltages created by the junction of dissimilar metals when a temperature difference exists between these junctions.
 
-    """
-    
-    V_T=(Boltzmann_Constant*(abs(T2-T1))/Elementary_Charge)
-    return V_T
-        
 
-#Functions
-def Thermal_Voltage(Temperature, Unit = 'K'):
-    '''    
-    Calulation of thermal voltage value
-    Parameters
-    ----------
-    Temperature : 
-        Temperature.
-    Unit : The unit of temperature
-        K or k: Kelvin
-        F or f: fahrenheit
-        C or c: celsius
-        The default is 'K'.
-    Returns
-    -------
-    Calulated thermal voltage(KT/q)
-    '''
-    if Unit.upper() == 'F':
-       #Temperature = (Temperature - 32) * 5 / 9 + 273.15 
-       Temperature = Fahrenheit_to_Kelvin(Temperature)
-    elif Unit.upper() == 'C':
-      Temperature = Temperature + 273.15
-    #return 1.38066e-23*Temperature/1.60218e-19  
-    return k*Temperature/e  
+
 
 
 def Tresca_Yield_For_Principal_Stresses(c,hardness,sigma_1,sigma_2,sigma_3,/):
@@ -4390,8 +4144,12 @@ def Tresca_Yield_For_Principal_Stresses(c,hardness,sigma_1,sigma_2,sigma_3,/):
         
     return Tresca
         
-#==============================================================================   
-#--------->If we have biaxial tension
+
+
+
+
+
+
 def Tresca_Yield_For_Biaxial_Tension(c,hardness,sigma_xx,sigma_yy,tau_xy,/):
     '''
     
@@ -4435,8 +4193,9 @@ def Tresca_Yield_For_Biaxial_Tension(c,hardness,sigma_xx,sigma_yy,tau_xy,/):
             
     return Tresca
     
-#==============================================================================
-#-------->Function 2: Total Solidification Time of Casting
+
+
+
 
 
 def Total_Solidification_Time_of_Casting(volume,surface_area,Cm,n,/):
@@ -4468,11 +4227,12 @@ def Total_Solidification_Time_of_Casting(volume,surface_area,Cm,n,/):
 
 
 
-
-
 def viscosity (y,T):
     n=T/y
     return n
+
+
+
 
 def Velocity_Equation(V1,V2,a):
     """
@@ -4495,35 +4255,6 @@ def Velocity_Equation(V1,V2,a):
     return (V2**2-V1**2)/2*a
 
 
-def Van_Der_Waals_Pressure(n, V, T, a, b):
-    
-    '''
-    Calculate the pressure of a real gas using Van der Waals equation.
-    
-    Van der Waals equation is:
-        
-    (P + a ((n/V))^2)(V - nb) = nRT
-    
-    Parameters
-    ----------
-    n : Float
-        number of moles of the gas.
-    V : float
-        Volume of the gas in litrs.
-    T : float
-        Temperataure of the gas in Kelvin.
-    a : float
-        Van der Waals constant.
-    b : float
-        Van der Waals constant.
-
-    Returns: float
-        Pressure of the gas in atm.
-  
-    '''
-    
-    P = (n * R * T) / (V - n * b) - (a* n**2) / (V**2)
-    return P
 
 
 
@@ -4552,6 +4283,9 @@ def Vicker_Hardness_Calculation (d1,d2,p):
     VHN = (1.854*p)/(d**2)
 
     return VHN
+
+
+
 
 
 
@@ -4592,7 +4326,9 @@ def wavelength_frequency_relation(speed_of_light, wavelength, frequency):
     return speed_of_light - wavelength * frequency
 
 
-    #2-3:
+
+
+
 def Wear_rate(V,F,S):
     '''
     Parameters
@@ -4641,6 +4377,12 @@ def Wear_Rate(v, f, s):
     w = v/(f*s)
     
     return w
+
+
+
+
+
+
 #William, Landel, Ferrry (WLF)
 def WLF(T,Tg,/):
     '''
@@ -4667,15 +4409,6 @@ def WLF(T,Tg,/):
     return aT
         
 
-#Cohen Equation
-
-
-
-#------------------------------------------------------------
-#second function: 
-#analize of web services performance in infrastructure 
-#architecture (the forth layer of an enterprise architecture)
-#------------------------------------------------------------
 
 def Web_Service_Analyze(services,resp_times,exe_CPU_costs,exe_Mem_costs,exe_Disk_costs,exe_Net_costs):
     '''
@@ -4771,6 +4504,9 @@ def Web_Service_Analyze(services,resp_times,exe_CPU_costs,exe_Mem_costs,exe_Disk
     print(web_services_analyze_data)
     return (web_services_analyze_data)
 
+
+
+
 def Welding_Heat_Input(Efficiency,Voltage,Amperage,Speed): 
     '''
     
@@ -4794,6 +4530,9 @@ def Welding_Heat_Input(Efficiency,Voltage,Amperage,Speed):
     Heat_Input=Efficiency*Voltage*Amperage/Speed
     return Heat_Input
 
+
+
+
 def Welding_Deposition_Rate(Deposited_Metal_Mass,Welding_Time):
     '''
     
@@ -4812,6 +4551,9 @@ def Welding_Deposition_Rate(Deposited_Metal_Mass,Welding_Time):
     
     Deposition_Rate=Deposited_Metal_Mass/Welding_Time
     return Deposition_Rate
+
+
+
 
 
 
