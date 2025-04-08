@@ -1,15 +1,8 @@
 
 '''
-Convertos.py :
+Convertors.py :
 
-
-
-
-
-
-
-
-
+This module provides converter functions for transforming values between different units of measurement.
 
 '''
 
@@ -60,83 +53,14 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 
 
 
-
-
-
-
-
-def Area_Converter1(Square_Metre,):
-   Square_Cm = Square_Metre*10000
-   'this function converts Square_Metre to Square_Cm '
-   return Square_Cm
-
-
-
-def Area_Converter2(Square_Cm):
-   Square_Meter = Square_Cm/10000
-   'this function converts Square_Cm to Square_Metre '
-   return Square_Meter
-
-def Convertor1 (G_per_Cm3):
-    Kg_per_Meter3=G_per_Cm3 * 1000
-    return Kg_per_Meter3
- 
-    
-def Convertor2 (Kg_per_Meter3):
-    G_per_Cm3=Kg_per_Meter3 / 1000
-    return G_per_Cm3
-
-'''
-'این دو تابع به عنوان یک convertor  عمل میکنند
-اولی برای تبدیل واحد
-( گرم بر سانتی متر مکعب 
-به 
-کیلوگرم بر مترمکعب)
-است و دومی برعکس ان را انجام میدهد.
-
-'''
 #baraxesh nis
-def CelsiusToKelvin(t):
+def Celsius_To_Kelvin(t):
     T=t+273
     return T
 
 
 
-def centimeter_to_meter(size):
-    '''
-    This function converts centimeters to meters
 
-    Parameters
-    ----------
-    size : int
-        Enter an int number to convert centimeters to meters.
-
-    Returns
-    -------
-    m : int
-        The output is the number converted to meters.
-
-    '''
-    m=size/100
-    return m
-    
-def mete_to_centimeter (size):
-    '''
-    This function converts meters  to centimeters
-
-    Parameters
-    ----------
-    size : int
-       Enter an int number to convert meters to centimeters .
-
-    Returns
-    -------
-    c : int
-        The output is the number converted to centimeters.
-
-    '''
-    c=size*100
-    return c
 
 def Square_Meter_To_Square_Cm(b):
     
@@ -166,12 +90,9 @@ def Square_Cm_To_Square_meter(a):
     c=a/10000
     return c
 
-def Cconverter(c):
-    f=(((c*1.8)+32)/32)
-    return f
 
 
-def converter_m_to_mm(meter):
+def Meter_To_MilliMeter(meter):
     '''
     
 
@@ -189,7 +110,9 @@ def converter_m_to_mm(meter):
     milimeter=meter*1000
     return milimeter
 
-def converter_mm_to_m (milimeter):
+
+
+def MilliMeter_To_Meter (milimeter):
     '''
     
 
@@ -206,10 +129,6 @@ def converter_mm_to_m (milimeter):
     '''
     meter=milimeter/1000
     return meter
-
-
-
-
 
 
 
@@ -245,23 +164,25 @@ def Liter_To_Cubic_Meter(number_in_Liter):
     return (Cubic_Meter)
 
 
-
-
-
 # Celcius_To_Kelvin
-def Convert_Celcius_To_Kelvin (Celcius):
+def Celcius_To_Kelvin (Celcius):
+  '''
+This function is used to convert celcius to kelvin
+The tempreture in celcius is different from the tempreture in kelvin by 273.15
+
+  '''
     Kelvin = Celcius + 273.15
     return Kelvin
-'This function is used to convert celcius to kelvin'
-'The tempreture in celcius is different from the tempreture in kelvin by 273.15'
-
 
 #Kelvin_to_celcius
-def Convert_Kelvin_to_Celcius (Kelvin):
+def Kelvin_to_Celcius (Kelvin):
+  '''
+  This function is used to convert kelvin to celcius
+  The tempreture in celcius is different from the tempreture in kelvin by 273.15
+
+  '''
     Celcius = Kelvin - 273.15
     return Celcius
-'This function is used to convert kelvin to celcius'
-'The tempreture in celcius is different from the tempreture in kelvin by 273.15'
 
 
 
@@ -324,65 +245,7 @@ def Fabric_GSM_to_GLM(Fabric_Weight,Fabric_Width):
     '''
    Fabric_GLM=(Fabric_Weight*Fabric_Width)/39.37
    return Fabric_GLM
-       
-def Fconverter(f):
-    c=((32*f-32)*(5/9))
-    return c
 
-
-
-def gpatompa(n):
-    Mpa=n*1000
-    return Mpa
-
-def mpatogpa(n):
-    Gpa=n/1000
-    return Gpa
-
-
-
-
-def Gram_To_Picogram(Gram=1):
-    """
-    converting Gram to Picogram
-
-    Parameters
-    ----------
-    Gram : float,mass
-        DESCRIPTION. The default is 1.
-
-    Returns
-    -------
-    Picogram : float,mass
-       
-
-    """
-   
-    Gram=int(input ('how many Gram?'))
-    Picogram=Gram*1000000000000
-    print(Gram,'Gram=',Picogram,'Picogram.')
-    return Picogram
-
-
-
-def Picogram_To_Gram(Picogram=1):
-    """
-    converting Picogram to Gram
-
-    Parameters
-    ----------
-    Picogram : float,mass
-        DESCRIPTION. The default is 1.
-
-    Returns
-    -------
-    Gram : float,mass
-
-    """
-    Picogram=int(input ('how many Gram?'))
-    Gram=Picogram/1000000000000
-    print(Picogram,'Picogram=',Gram,'Gram.')
-    return Gram
 
 
 def Kilogeram_Per_Cubic_Meter_To_Pounds_Per_Cubic_Inch(KgPerCubicMeter):
@@ -395,29 +258,15 @@ def Pounds_Per_Cubic_Inch_To_Kilogeram_Per_Cubic_Meter(LbPerCubicInch):
 
 
 
-"""
-https://abzarek.ir/service-p/length-converter/lightyear-to-Kilometer
-# 5
-تبدیل کیلومتر به سال نوری
-# convert kilometer to Light Year
-"""
-def KiloMeter_LightYear (km):
+def KiloMeter_To_LightYear (km):
     ly = km / 9460730472801.1
     return ly
 
 
-"""
-https://abzarek.ir/service-p/length-converter/lightyear-to-Kilometer
-# 4
-تبدیل سال نوری به کیلومتر
-# convert Light Year to Kilometer 
-"""
-def LightYear_KiloMeter (ly):
+
+def LightYear_To_KiloMeter (ly):
     km = ly * 9460730472801.1
     return km
-
-#print("LightYear_KiloMeter = ",LightYear_KiloMeter(5))
-
 
 
 
@@ -542,8 +391,6 @@ def Pascal_To_Megapascal(Pascal):
 
 
 
-
-
 def Newton_TO_Pound_Force(Newton):
      # 1 Pound_Force = 4.448221619 New
      
@@ -561,11 +408,7 @@ def Newton_TO_Pound_Force(Newton):
      '''
      return Pound_Force
  
-
-#_______________
-
-
-#Pound_Force_TO_Newton    
+  
 def Pound_Force_To_Newton(Pound_Force):
     
     Newton = Pound_Force * 4.448221619
@@ -585,17 +428,6 @@ def Pound_Force_To_Newton(Pound_Force):
 
 
 
-
-
-def VC_mpsTOkph(mps):
-    kph = mps*3.6
-    return kph
-
-
-
-def VC_kphTOmps(kph):
-    mps = kph/3.6
-    return mps
 
 
 def Yarn_Count_Converter(Yarn_Count, Current_System='tex', Desired_System='den'):
@@ -744,59 +576,32 @@ def Yarn_Count_Converter(Yarn_Count, Current_System='tex', Desired_System='den')
 
 
 
-def Convert_Coulomb_to_Electron_volt( coulomb):
+def Coulomb_To_Electron_volt( coulomb):
     electron_volt = coulomb * 6.24e18 
     return electron_volt
 
-def Convert_Electron_volt_to_Coulomb( electron_volt):
+def Electron_volt_To_Coulomb( electron_volt):
     coulomb = electron_volt / 6.24e18
     return coulomb
 
 
 
 
-def Celsius_To_Kelvin (C):
-    K = float(C + 273.15) 
-    return K 
-
-
-#vice versa_______________
-
-def Kelvin_To_Celsius (K): 
-    C = float(K - 273.15)
-    return C
-    
-
-
-def convert_cm2_cs_to_m2_s (cm2_cs) :
-    m2_s = float(cm2_cs / 100)  # Conversion factor for area: 1 m^2 = 10000 cm^2  # Conversion factor for time: 1 s = 100 cs  # (10**-2) Combined conversion factor for square meters per second to square centimeters per centisecond
-    return m2_s
-
-
-#vice versa_________________________
-
-def convert_m2_s_to_cm2_cs (m2_s) :
-    cm2_cs = float(m2_s * 100)
-    return cm2_cs
-
-    
-
-
-def Atmosphere_to_Pascal (atm):
+def Atmosphere_To_Pascal (atm):
     Pa= float(atm * 101325)
     return Pa 
 
     
 #vice versa___________________
 
-def Pascal_to_Atmosphere (Pa):
+def Pascal_To_Atmosphere (Pa):
     atm = float(Pa / 101325)
     return atm 
 
 
 
 
-def percentages_to_moles(total, percentages):
+def Percentages_To_Moles(total, percentages):
     # Define the molecular weight of the composite mixture
     molar_weight = {'TEGDMA': 156.27, 'BIS_GMA': 512.67, 'UDMA': 398.48,
                     'Silica dioxide': 60.08, 'Barium silicate': 233.39, 'Zirconium dioxide': 123.22
@@ -812,7 +617,7 @@ def percentages_to_moles(total, percentages):
 
 
 
-def moles_to_percentages(total, moles):
+def Moles_To_Percentages(total, moles):
     # Define the molecular weight of the composite mixture
     molar_weight = {'TEGDMA': 156.27, 'BIS_GMA': 512.67, 'UDMA': 398.48,
                     'Silica dioxide': 60.08, 'Barium silicate': 233.39, 'Zirconium dioxide': 123.22
@@ -827,11 +632,8 @@ def moles_to_percentages(total, moles):
 
 
 
-
-
-
 #convertor1
-def Radians_to_degrees (num):
+def Radians_To_Degrees (num):
     '''
     
     This function is used for convert radians to degree
@@ -840,7 +642,7 @@ def Radians_to_degrees (num):
     return degree
 
 #convertor2
-def Weightpercent_to_ppm (num):
+def Weightpercent_To_ppm (num):
     '''
     
     This function is used for convert weight percent to ppm
@@ -851,49 +653,21 @@ def Weightpercent_to_ppm (num):
 
     
 
-def M_to_mm (M):
-    '''
-    
-    This function is usef for convert Meter to Milimeter
-    '''
-    mm=M*1000
-    return mm
-
-
-
-#15000000
-
-def mm_to_M (mm):
-    '''
-    
-    This function is usef for convert Meter to Milimeter
-    '''
-    M=mm/1000
-    return M
-
-#1.4999999999999999e-05
-    
-#------------------------------
-#sakht do tbee convertor
-#mohasebe tabdil fahrenheit be cantigerad
-def Fahrenheit_to_C(F):
+def Fahrenheit_To_Centigrade(F):
     '''
     This function is usef for convert Fahrenheit_to_Centigrade
     '''
-    C=F-32/18 #fahrenheit menhaye32 mikonim baeed taghsim bar 18 ta cantigerad be dast biyad
-    return C #dar in ja az return estefademikonim ta khoroji bedast ayad
+    C=F-32/18 
+    return C 
 
-#-----------------------------
 
-def C_to_Fahrenheit(C):
+
+def Centigrade_To_Fahrenheit(C):
     '''
     This function is usef for Centigrade_to_Fahrenheit
     '''
-    F=C*1.8+32 #cantigerad ra zarbedar1.8 bealave32 mikonim ta  Fahrenheit be dast ayad
-    return F #dar in ja az return estefademikonim ta khoroji bedast ayad
-
-#---------------------------
-
+    F=C*1.8+32 
+    return F
 
 
 
@@ -915,14 +689,8 @@ def Pascal_to_mmHg(p):
     '''
     mmHg=p/2
     return mmHg
-##----------------------------------------------------------------------------
 
 
-    
-
-
-   
-####convertor1
 def Kmph_To_Mps(V1):
     """
     This function is uesd to convert Kilometer per  hour to meter per second
@@ -931,21 +699,23 @@ def Kmph_To_Mps(V1):
     V2=V1/3.6
     return V2
 
-####reverse
+
 def Mps_To_Kmph(V1):
     """
     This function is used to convert meter per second to kilometer per hour
     """
     V2=V1*3.6
     return V2
-#####convertor2
+
+
 def Pascal_To_CmHg(P1):
     """
     This function is used to convert Pascal   to centimeter mercury 
     """
     P2=P1/1333.22
     return P2
-#####reverse
+
+
 def CmHg_To_Pascal(P1):
     """
     This function is used to convert mercury centimeter to Pascal
@@ -953,74 +723,32 @@ def CmHg_To_Pascal(P1):
     P2=P1*1333.22
     return P2
 
-#------------------------------------------------------------------------------
-#convertor1
-def sec_to_hour(t):
+
+def Sec_To_Hour(t):
     t=t/3600
     return t
 
-#convertor 1 reversed
-def hour_to_sec(t):
+def Hour_To_Sec(t):
     t=t*3600
     return t
 
-#------------------------------------------------------------------------------
-#convertor 2 
-def Cm_to_um(x):
-    a=x*10000
-    return a
-
-#convertor 2 reverse
-def um_to_Cm(x):
-    a=x/10000
-    return a
 
 
 
-
-
-#===============================
-#1_Constants:
-
-
-
-
-
-
-
-#===========================================
-#2_Functions:
-
-
-
-
-
-
-
-def Electronvolt_to_Joule(e_v):
+def Electronvolt_To_Joule(e_v):
     Joule=e_v*1.6022e-19
     return Joule
 
 
-#Second_convertor------>Degree_to_Radian
-'''
+def Degree_To_Radian(deg):
+  '''
 This function converts values of angle from degree to radian.
 '''
-def Degree_to_Radian(deg):
     rad=deg*3.141592653589793/180
     return rad
 
 
 
-
-
-
-#convertors
-def Meter_to_nanometer(value):
-    return value * (10**9)
-    
-def Nanometer_to_meter(value):
-    return value * (10 ** (-9))
 
 def Centigrade_to_kelvin(value):
     return value + 237
@@ -1029,232 +757,54 @@ def Centigrade_to_kelvin(value):
 
 
 
-
-#part3
-
-def Flux_convertor1(a):
-    '''
-This function is used for convert ml/cm2.min to L/m2hr
-    a : flow in ml/cm2.s unit
-    Returns flow in L/m2hr unit
-    '''
-    b=a*600
-    return b
-
-
-def Flux_convertor2(a):
-    '''
-This function is used for convert L/m2hr to ml/cm2.min
-    a : flow in L/m2hr unit
-    Returns flow in ml/cm2.min unit
-    '''
-    b=a/600
-    return b
-
-
-def Pressure_convertor1(a):
-    '''
-This function is used for convert mmHg to bar
-    a : Pressure in mmHg unit
-    Returns Pressure in bar unit
-    '''
-    b=a/760
-    return b
-
-
-def Pressure_convertor2(a):
-    '''
-This function is used for convert bar to mmHg
-    a : Pressure in bar unit
-    Returns Pressure in mmHg unit
-    '''
-    b=a*760
-    return b
-
-
-def Temperature_convertor1(a):
-    '''
-This function is used for convert Celsius to Fahrenheit
-    a : Temperature in Celsius unit
-    Returns Temperature in Fahrenheit unit
-    '''
-    b=(a*1.8)+32
-    return b
-
-def Temperature_convertor2(a):
-    '''
-This function is used for convert Fahrenheit to Celsius
-    a : Temperature in Fahrenheit unit
-    Returns Temperature in Celsius unit
-    '''
-    b=(a-32)/(1.8)
-    return b
-
-
-def Velocity_convertor1(a):
-    '''
-This function is used for convert m/s to km/hr
-    a : Velocity in m/s unit
-    Returns Velocity in km/hr unit
-    '''
-    b=a*3.6
-    return b
-
-
-def Velocity_convertor2(a):
-    '''
-This function is used for convert km/hr to m/s
-    a : Velocity in km/hr unit
-    Returns Velocity in m/s unit
-    '''
-    b=a/3.6
-    return b
-
-
-
-#part2
-
-
-
-def Foot_to_Mile (ft):
+def Foot_To_Mile (ft):
     
     mi=0.000189393939*ft
     
     return mi
 
-def Mile_to_Foot (mi):
+def Mile_To_Foot (mi):
     
     ft=5280*mi
     
     return ft
 
-Foot_to_Mile(1000)  #Out[26]: 0.189393939
-Mile_to_Foot(0.5)   #Out[27]: 2640.0
 
-def Byte_to_Kilobyte (b):
+def Byte_To_Kilobyte (b):
     
     kb=0.0009765625*b
     
     return kb
 
-def Kilobyte_to_Byte (kb):
+def Kilobyte_To_Byte (kb):
     
     b=1024*kb
     
     return b
 
-Byte_to_Kilobyte(1024)  #Out[29]: 1.0
-Kilobyte_to_Byte(0.5)   #Out[30]: 512.0
 
 
-###---------------Part2-------------------------------------------------------
-##part2-section1*********
-##polymer burning rate calculation function
-
-
-##part3--section1*************************
-##converting celsius temperature to farenheit
-def Celesius_to_Farenheit(a):##a= temperature in celsius
+def Celesius_To_Farenheit(a):##a= temperature in celsius
     b=(1.8*a)+32##b=temperature in farenheit
     return b
 
-Celesius_to_Farenheit(50)
-##convertingfarenheit temperature to celsius
-def Farenheit_to_Celsius(a):##a=temperature in farenheit
+def Farenheit_To_Celsius(a):##a=temperature in farenheit
     b=(a-32)/1.8##b=temperature in celsius
     return b
 
-Farenheit_to_Celsius(122)
 
-##part3---section2*********************
-##converting ppm to percent
-def Ppm_to_Percent(a):##a=ion concentration in ppm in brine
+def Ppm_To_Percent(a):##a=ion concentration in ppm in brine
     b=a/10000##b=ion percent in brine
     return b
 
-Ppm_to_Percent(50)
-##converting percent to ppm
-def Percent_to_Ppm(a):##a=ion percent in brine
+
+def Percent_To_Ppm(a):##a=ion percent in brine
     b=a*10000##b=ion concentration in ppm in brine
     return b
 
-Percent_to_Ppm(0.005)
-
-    
 
 
-
-
-
-
-#---------------------
-#part2:
-
-#-----------------
-#part3(convert):
-def km_to_hm(km):
-    hm = km*10
-    return hm
-# This function is usef for convert kilometr to hectometr
-def hm_to_km(hm):
-    km =hm*0.1
-    return km
-#This function is usef for convert hectometr to kilometr
-#-------------------
-def km_to_deka(km):
-    deka=km*10
-    return deka
-#This function is usef for convert kilometr to dekametr
-def deka_to_km(deka):
-    km=deka*0.01
-    return km
-#This function is usef for convert dekametr to kilometr
-
-
-
-
-#====================================================================================================================================================
-
-#Part 2
-
-#1 related to additive manufacturing
-
-
-
-
-
-
-def Temperature_C_To_F(temp):
-    '''temp=(float) the value of temperature
-     
-     
-     Return:
-         float: Temperature in C
-     '''
-    
-    
-    tem=(temp*9/5)+32
-    return tem
-
-
-def Temperature_F_To_C(tem):
-    '''tem=(float) the value of temperature in C 
-     
-     
-     Return:
-         float: Temperature in F
-     in this function we convert C to F '''
-    
-    
-    temp=(tem-32)*5/9
-    return temp
-    
-    
-#------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#2
-
-def Convert_Viscosity_To_Poise(pa_s):
+def Viscosity_To_Poise(pa_s):
     '''Pa_s=(float) the viscosity in Pa.S
      
      
@@ -1267,7 +817,7 @@ def Convert_Viscosity_To_Poise(pa_s):
     return poise
 
 
-def Convert_Viscosity_To_Pas(poise):
+def Viscosity_To_Pas(poise):
     '''poise=(float) the viscosity in poise
      
      
@@ -1282,118 +832,29 @@ def Convert_Viscosity_To_Pas(poise):
     
 
 
-
-
-#2(3 ta tabe...)
-#__________________________________________________________________________________________
-
-
-
-
-#____________________________________________________________________
-
-#3(2 ta tabe converto)
-
-
-def Cm_to_m(cm):
-    m=cm/100
-    return m
-    
-
-cm_to_m(100)
-
  
-
-def M_to_cm(m):
-    cm=m*100
-    return cm
-
-
-
-def M_t0_in:
+def Meter_To_inch:
     In=m*0.0254
     return In
 
 
-def In_to_m :
+def Inch_To_Meter :
     m=In/0.0254
     return m
     
 
 
-
-'''
-part 1: Constant numbers
-
-'''
-
-'''
-Planck's constant with symbol
-h is a physical constant and the main characteristic of the mathematical formulas of quantum mechanics.
-This constant describes the behavior of particles and waves at the atomic scale and the particle aspect of light.
-'''
-#______________________________________________________________________________________________________
-'''
-part 2: Functions
-'''
-#F1________________________________________________________________________________________________
-
-'''
-part 3: Convertors
-'''
-#C1________________________________________________________________________________________________
-def Hour_to_Second(Hour):
-    Second=Hour*3600
-    return Second
-
-def Second_to_Hour(Second):
-    Hour=Second/3600
-    return Hour
-#C2________________________________________________________________________________________________
-def Joules_to_Calories(Joules):
+def Joules_To_Calories(Joules):
     Calories=Joules/4.2
     return Calories
 
-def Calories_to_Joules(Calories):
+def Calories_To_Joules(Calories):
     Joules=Calories*4.2
     return Joules
 
 
 
-#------------------2nd--------------------------------------------------------
-
-# 1st function calculates Latice parameter of crystal structure.
-
-# FCC(face centered cubic) 
-# BCC(body centered cubic) 
-# SC(simple cubic) 
-# HCP(hexagonal close pack)
-# DC(diamond cubic)
-
-
-
-#------------------------------------------------------------------------------   
-
-# 2nd function calculates fracture toughness 
-# based on applied stress and crack length and location
-
-
-#------------------------------------------------------------------------------       
-
-# 3rd function calculates wear rate.
-
-
-#------------------------------------------------------------------------------
-
-# 4th function calculates Vickers hardness.
-
-
-
-#------------------3rd---------------------------------------------------------
-
-# 1st function converts torr to pascal and vice versa.
-
-def Torr_to_Pascal(torr):
+def Torr_To_Pascal(torr):
     
     '''
     this function converts torr to pascal
@@ -1403,9 +864,8 @@ def Torr_to_Pascal(torr):
     pa = (torr*760)/101325
     
     return pa
-#------------------------------------------------------------------------------
 
-def Pascal_to_Torr(pa):
+def Pascal_To_Torr(pa):
     
     '''
     this function converts pascal to torr
@@ -1414,72 +874,10 @@ def Pascal_to_Torr(pa):
     torr = (pa*101325)/760
     
     return torr
-#------------------------------------------------------------------------------
-
-# 2nd function converts joules to calories and vice versa.
-
-def Joules_to_Calories(j):
-    
-    '''
-    this function converts joules to calories
-    '''
-    
-    
-    cal = j / 4.184
-    
-    return cal
-#------------------------------------------------------------------------------
-
-def Calories_to_Joules(cal):
-    
-    '''
-    this function converts calories to joules
-    '''
-    
-    j = 0.239006 * cal
-    
-    return j
-#------------------------------------------------------------------------------
-
-# 3rd function converts atmosphere to pascal and vice versa.
-
-def Atmosphere_to_Pascal(atm):
-    
-    '''
-    this function converts atmosphere to pascal
-    '''
-    
-    
-    pa = atm * 101325
-    
-    return pa
-#------------------------------------------------------------------------------
-
-def Pascal_to_Atmosphere(pa):
-    
-    '''
-    this function converts pascal to atmosphere
-    '''
-    
-    atm = pa/101325
-    
-    return atm
 
 
-#------------------------------------------------------------------------------
 
-# 4th function converts miller index to miller_brove index and vice versa
-
-# In crystallography, crystal structure is a description of the ordered 
-# arrangement of atoms, ions, or molecules in a crystalline material.
-# unite cell repeat along the principal directions of three-dimensional space.
-# but there are 2 patterns in HCP structure. 
-# one of them includes 3 component which called miller index.
-# another involves 4 component which called miller_brove index. 
-# mentioned indexes determine crystal directions.
-
-
-def Miller_to_Millerbrove(u,v,w):
+def Miller_To_Millerbrove(u,v,w):
     
     '''
        this function converts miller index to miller_brove index
@@ -1518,9 +916,8 @@ def Miller_to_Millerbrove(u,v,w):
     
     return l,m,n,o
   
-#------------------------------------------------------------------------------
 
-def Millerbrove_to_Miller(l,m,n,o):
+def Millerbrove_To_Miller(l,m,n,o):
 
     '''
        this function converts miller_brove index to miller index
@@ -1560,89 +957,7 @@ def Millerbrove_to_Miller(l,m,n,o):
 
 
 
-
-
-# -*- coding: utf-8 -*-
-"""
-A1_Zahra_Afshar
-
-send to ai.2024.pilehvar@gmail.com
-
-@author: Zahra Afshar
-
-"""
-
-#1:
-
-
-
-
-
-
-
-
-
-#2:
-    #2-1:
-
-
-
-
-
-
-  
-#3:
-#3-1:
-def Torr_Pa(Torr):
-    '''
-    This function convert the amount of pressure in terms of Torr to Paskal.    
-    '''
-    Pa=Torr*133.322
-    return Pa
-Torr_Pa(2)
-
-
-def Pa_Torr(Pa):
-    '''
-    This function convert the amount of pressure in terms of paskal to torr.
-    '''
-    Torr=Pa/133.322
-    return Torr
-Pa_Torr(266.644)
-
-
-#3-2:
-def kgf_dyn(kgf):
-    '''
-    This function convert the amount of force in terms of kilogramforce to dyn.
-    '''
-    dyn=kgf*980665
-    return dyn
-kgf_dyn(3)
-
-
-def dyn_kgf(dyn):
-    '''
-    This function convert the amount of force in terms of dyn to kilogramforce.
-    '''
-    kgf=dyn/980665
-    return kgf
-dyn_kgf(2941995)
-
-    
-#A1_Project
-#Part 1
-
-
-#------------------------------
-#Part 2
-
-
-    
-#------------------------------
-#Part 3
-
-def Calories_to_Joules(cal):
+def Calories_To_Joules(cal):
     """
 
     Parameters
@@ -1660,7 +975,7 @@ def Calories_to_Joules(cal):
     J=4.184*cal
     return J
 
-def Joules_to_Calories(J):
+def Joules_To_Calories(J):
     """
 
     Parameters
@@ -1678,7 +993,7 @@ def Joules_to_Calories(J):
     cal=J/4.184
     return cal
 
-def Bar_to_Pascal(bar):
+def Bar_To_Pascal(bar):
     """
 
     Parameters
@@ -1696,7 +1011,7 @@ def Bar_to_Pascal(bar):
     Pa=bar*(10**(-5))
     return Pa
 
-def Pascal_to_Bar(Pa):
+def Pascal_To_Bar(Pa):
     """
 
     Parameters
@@ -1718,39 +1033,35 @@ def Pascal_to_Bar(Pa):
 import math
 
 
-#Converters
-def Fahrenheit_to_Kelvin(F):
-    return (F - 32) * 5 / 9 + 273.15
 
-def Kelvin_to_Fahrenheit(K):
-    return (K - 273.15) * 9 / 5 + 32
 
-def Meter_to_Angstrom(m):
+def Meter_To_Angstrom(m):
     return m*1e10
 
-def Angstrom_to_Meter(A):
+def Angstrom_To_Meter(A):
     return A*1e-10
 
-def Milimeter_to_Angstrom(mm):
+def Milimeter_To_Angstrom(mm):
     return mm*1e7
 
-def Angstrom_to_Milimeter(A):
+def Angstrom_To_Milimeter(A):
     return A*1e-7
 
-def Nanometer_to_Angstrom(nm):
+def Nanometer_To_Angstrom(nm):
     return nm*10
 
-def Angstrom_to_Nanometer(A):
+def Angstrom_To_Nanometer(A):
     return A/10
 
-def Micrometer_to_Angstrom(um):
+def Micrometer_To_Angstrom(um):
     return um*10000
 
-def Angstrom_to_Micrometer(A):
+def Angstrom_To_Micrometer(A):
     return A/10000
 
 
-#section three
+
+
 def Kilometer_Per_Hour_To_Meter_Per_Second(kph):
     '''
     Parameters
@@ -1780,50 +1091,12 @@ def Meter_Per_Second_To_Kilometer_Per_Hour(mps):
     return kph
 
 
-def Kg_to_Ton(Kg):
+def Kg_To_Ton(Kg):
         Ton=1000*Kg
         return Ton
 
 
 
-
-
-def Cm_To_Inch(length = 1) :
-    '''
-    This function convert cm to inch.
-    Convertor law :  inch = length/2.54
-     
-    Parameters
-    ----------
-    value : float, optional
-        Convert input to inch. The default is 1.
-
-    Returns
-    -------
-    return input that converted to inch.
-
-    '''
-    inch = length/2.54
-    return inch
-    
-
-def Inch_To_Cm(length = 1) :
-    '''
-    This function convert inch to cm.
-    Convertor law :  inch = length*2.54
-
-    Parameters
-    ----------
-    length : float, optional
-        Convert input to cm. The default is 1.
-
-    Returns
-    -------
-    return input that converted to cm..
-
-    '''
-    cm = length*2.54
-    return cm
 
 
 
@@ -1845,7 +1118,8 @@ def Joules_Per_Minute_To_Kilowatt(Joules_Per_Minute):
     Kilowatt=(Joules_Per_Minute)/60000
     return Kilowatt
 
----------------------------------------------------------
+
+
 def Inch_To_Centimeter(Inch):
     '''
     Parameters
@@ -1907,7 +1181,6 @@ def Mole_To_Gram(mol,MW):
     return g
 
 
-#**************PART3**********CONVERTOR************************************8
 def Hertz_To_Rpm(a,/):
     '''
     A converter machine to convert frequency in Hertz(Hz) to frequency in rpm.
@@ -1924,7 +1197,7 @@ def Hertz_To_Rpm(a,/):
     return b
 
 
-#************************************************************
+
 def Rpm_To_Hertz(b,/):
     '''
    A converter machine to convert frequency in rpm to frequency in Herta(Hz).
@@ -1943,7 +1216,7 @@ def Rpm_To_Hertz(b,/):
 
 
 
-def Convert_Annual_To_Monthly_Loss(annual_loss):
+def Annual_To_Monthly_Loss(annual_loss):
     '''
     
 
@@ -1964,34 +1237,13 @@ def Convert_Annual_To_Monthly_Loss(annual_loss):
 
 
 
-print('*******************************************')
-test=Convert_Annual_To_Monthly_Loss(34500000)
-print (test)
 
 
 
 
-def Convert_Persion_Hours_To_Persion_Days(hours, daily_working_hours):
-    '''
-    
-
-    Parameters
-    ----------
-    hours : float
-        total working hours.
-    daily_working_hours : float
-        Legal daily working hours.
 
 
-
-    '''
-    if not str(hours).isdigit() or not str(daily_working_hours).isdigit() :
-        print ('error! bad parameter!')
-    return hours/daily_working_hours
-
-
-
-def Molarity_to_Normality(Molarity,n):
+def Molarity_To_Normality(Molarity,n):
     '''
     
 
@@ -2009,9 +1261,8 @@ def Molarity_to_Normality(Molarity,n):
     Normality=Molarity*n
     return(Normality)
     
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def Normality_to_Molarity(Normality,n):
+def Normality_To_Molarity(Normality,n):
     '''
     
 
@@ -2030,9 +1281,8 @@ def Normality_to_Molarity(Normality,n):
     return(Molarity)
     
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def Mass_to_Mole(Mass,Molar_Mass):
+def Mass_To_Mole(Mass,Molar_Mass):
     '''
     
 
@@ -2051,9 +1301,9 @@ def Mass_to_Mole(Mass,Molar_Mass):
     Mole=Mass/Molar_Mass
     return(Mole)
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def Mole_to_Mass(Mole,Molar_Mass):
+
+def Mole_To_Mass(Mole,Molar_Mass):
     '''
     
 
@@ -2073,13 +1323,13 @@ def Mole_to_Mass(Mole,Molar_Mass):
     return(Mass)
 
 
-#----------3----------
-def Kg_to_Lbm(Kg):
+
+def Kg_To_Lbm(Kg):
     Lbm=0.4535*Kg
     return Lbm
    
 
-def Lbm_to_Kg(Lbm):
+def Lbm_To_Kg(Lbm):
     Kg=2.20462*Lbm
     return Kg
 
@@ -2102,7 +1352,9 @@ def Psi_To_Mpa(Num_Psi,/):
     '''
     Mpa=Num_Psi*(1/145)
     return Mpa
-#            ---------------------------------------------------
+
+
+
 def Mpa_To_Psi(Num_Mpa,/):
     '''
     
@@ -2122,7 +1374,7 @@ def Mpa_To_Psi(Num_Mpa,/):
     Psi=Num_Mpa*145
     return Psi
  
-#==============================================================================
+
 def Decimal_To_Binary(Num_dec):
     Bin=0
     i=0
@@ -2174,7 +1426,7 @@ def Kilogram_To_Pound(number_in_kilogram):
 
 
 
-def Centimeter_per_Minute_to_Meter_per_Hour_Welding_Speed_Converter(Centimeter_per_Minute):
+def Centimeter_per_Minute_To_Meter_per_Hour_Welding_Speed_Converter(Centimeter_per_Minute):
     '''
     This function converts the Welding Speed from Centimeter per Minute to Meter per Hour.
 
@@ -2193,7 +1445,7 @@ def Centimeter_per_Minute_to_Meter_per_Hour_Welding_Speed_Converter(Centimeter_p
     return Meter_per_Hour
 
 
-def Meter_per_Hour_to_Centimeter_per_Minute_Welding_Speed_Converter(Meter_per_Hour):
+def Meter_per_Hour_To_Centimeter_per_Minute_Welding_Speed_Converter(Meter_per_Hour):
     '''
     This function converts the Welding Speed from Meter per Hour to Centimeter per Minute.
 
@@ -2212,9 +1464,7 @@ def Meter_per_Hour_to_Centimeter_per_Minute_Welding_Speed_Converter(Meter_per_Ho
     return Centimeter_per_Minute
 
 
-# 3. Liter/Minute to CC/Second Welding Gas Flow Rate Converter
-    
-def Liter_per_Minute_to_CC_per_Second_Welding_Gas_Flow_Rate_Converter(Liter_per_Minute):
+def Liter_per_Minute_To_CC_per_Second_Welding_Gas_Flow_Rate_Converter(Liter_per_Minute):
     '''
     This function converts the Welding Gas Flow Rate from Liter per Minute to CC per Second.
 
@@ -2233,9 +1483,8 @@ def Liter_per_Minute_to_CC_per_Second_Welding_Gas_Flow_Rate_Converter(Liter_per_
     return CC_per_Second
 
 
-# 4.  CC/Second to Liter/Minute Welding Gas Flow Rate Converter
-    
-def CC_per_Second_to_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter(CC_per_Second):
+
+def CC_per_Second_To_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter(CC_per_Second):
     '''
     This function converts the Welding Gas Flow Rate from CC per Second to Liter per Minute.
 
@@ -2254,27 +1503,25 @@ def CC_per_Second_to_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter(CC_per_Sec
     return Liter_per_Minute
 
 
-def Mm_year_to_Mils_year(milpy):
+def Mm_year_To_Mils_year(milpy):
     """
     1mm/yr=39.37mpy
     Crossion rate
      """
     mpy=39.37*milpy
     return mpy
-# Mm_year_to_Mils_year(int(input()))
 
-def Mils_year_to_Mm_year(mpy):
+def Mils_year_To_Mm_year(mpy):
     """
       1mm/yr=39.37mpy
       Crossion rate
     """
     Mm_year=mpy/39.37
     return Mm_year
-# print(Mils_year_to_Mm_year(float(input())))
 
 
 
-def Rockwell_to_Brinell(hrb):
+def Rockwell_To_Brinell(hrb):
     '''
     convert Rockwell hardness (HRB) to Brinell hardness (HB).
     
@@ -2292,7 +1539,7 @@ def Rockwell_to_Brinell(hrb):
 
 
     
-def Brinell_to_Rockwell(hb):
+def Brinell_To_Rockwell(hb):
     '''
     convert Brinell hardness (HB) to Rockwell hardness (HRB)
 
@@ -2311,7 +1558,7 @@ def Brinell_to_Rockwell(hb):
 
 
 
-def Horsepower_to_Watt (Horsepower):
+def Horsepower_To_Watt (Horsepower):
     '''
     
 
@@ -2331,7 +1578,7 @@ def Horsepower_to_Watt (Horsepower):
 
 
 
-def Watt_to_Horsepower (Watt) :
+def Watt_To_Horsepower (Watt) :
     '''
     
 
@@ -2351,8 +1598,7 @@ def Watt_to_Horsepower (Watt) :
 
 
 
-
-def Force_CGS_to_SI (Force_in_CGS):
+def Force_CGS_To_SI (Force_in_CGS):
     '''
     
 
@@ -2371,7 +1617,7 @@ def Force_CGS_to_SI (Force_in_CGS):
     SI = "{:e}".format(Force_in_CGS * 1e-5)
     return SI
 
-def Force_SI_to_CGS (Force_in_SI) :
+def Force_SI_To_CGS (Force_in_SI) :
     '''
     
 
@@ -2431,7 +1677,7 @@ def Angstrom_To_Nanometer(Angstrom_value):
     return Nanometer_value 
 
 
-def Current_density_to_mpy(Current_density,density,masschange,valency):
+def Current_density_To_mpy(Current_density,density,masschange,valency):
     """
     
 
@@ -2455,7 +1701,7 @@ def Current_density_to_mpy(Current_density,density,masschange,valency):
     corrosion_rate_mpy=Current_density*1e-6*31536000*(1/density)*masschange*400*(1/(valency*96500))
     return corrosion_rate_mpy
 
-def  Mpy_to_current_density(mpy,density,masschange,valency):
+def  Mpy_To_current_density(mpy,density,masschange,valency):
     """
     
 
