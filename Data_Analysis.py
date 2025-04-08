@@ -59,21 +59,18 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 #import-----------------------------------------
 import math
 import statistics
-import cmath
-import random
 import numpy as np
 import pandas as pd
-import matplotlib as plt
-
-
-
-
-
-import pandas as pd
-import statistics as st
-import numpy as np
+#import matplotlib as plt
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
+from matplotlib.ticker import AutoMinorLocator
+import pandas as pd
+
+import seaborn as sns 
+from scipy import stats
+from scipy.integrate import solve_bvp
 
 
 
@@ -103,8 +100,7 @@ def pressure_volume_ideal_gases(file,which):
         font_title={'family':'serif','color':'black','size':18}
         font_label={'family':'serif','color':'red','size':12}
         plt.show()
-        
-        
+
         
     elif which=='min pressure':
         min_pressure=mydf['pressure'].min()
@@ -123,11 +119,11 @@ def pressure_volume_ideal_gases(file,which):
          return max_volume
     
     elif which=='average pressure':
-         average_pressure=st.mean(pressure)
+         average_pressure=statistics.mean(pressure)
          return average_pressure
         
     elif which=='average volume':
-         average_volume=st.mean(volume)
+         average_volume=statistics.mean(volume)
          return average_volume
             
     elif which=='temperature':
@@ -148,55 +144,53 @@ def pressure_volume_ideal_gases(file,which):
     
     
     
-    def Energie(input_file,which):
-        '''
-        This is a function to drawing a plot or to calculating 
-        the amount of Energie of a Motor to (open/close) a Valve in a cycle, which takes 2.7 secound to open and to close.
-        
-        ----------
-        input_file : .xlsx format
-            the file must be inserted in xlsx.
-        which : int
-            1 : Drawing a Plot
-            2 : Calculate the Consupmtion Energie in [mWs]
-            please say which work we do ( 1 or 2).
+def Energie(input_file,which):
+    '''
+    This is a function to drawing a plot or to calculating 
+    the amount of Energie of a Motor to (open/close) a Valve in a cycle, which takes 2.7 secound to open and to close.
+    
+    ----------
+    input_file : .xlsx format
+        the file must be inserted in xlsx.
+    which : int
+        draw : Drawing a Plot
+        calculate : Calculate the Consupmtion Energie in [mWs]
+        please say which work we do ( 1 or 2).
 
-        '''
+    '''
         
-        input_file = 'C:\\Users\\Fust\\Desktop\\Book1.xlsx' 
+    mydf=pd.read_excel(input_file)
+    
+    
+    if which=='draw':
+        #get the data on each columns
         
-        mydf=pd.read_excel(input_file)
+        A=mydf['Angle[°]']
         
+        Energie =mydf['Energie']
+       
+        #plotting data
+        plt.plot(A, Energie,color = 'green')
+        plt.title('Energie of OTT Motor 185000 Cycle')
+        plt.xlabel('Angle[°]')
+        plt.ylabel('Consupmtion Energie')
+        plt.show()
+    
+    
+    if which=='calculate':
+        mydf=pd.DataFrame(mydf,columns=['Angle[°]','Power[mW]','Time for a Cycle','Energie'])
         
-        if which==1:
-            #get the data on each columns
-            
-            A=mydf['Angle[°]']
-            
-            Energie =mydf['Energie']
-           
-            #plotting data
-            plt.plot(A, Energie,color = 'green')
-            plt.title('Energie of OTT Motor 185000 Cycle')
-            plt.xlabel('Angle[°]')
-            plt.ylabel('Consupmtion Energie')
-            plt.show()
+        summ = mydf['Energie'].sum()                          # The amount of Energie for a half Cycle of Duty in mWs
+       
+        summ =( summ * 2)/1000                                # The amount of Consumption Energie for a Dutycycle in Ws
         
+        return summ
         
-        if which==2:
-            mydf=pd.DataFrame(mydf,columns=['Angle[°]','Power[mW]','Time for a Cycle','Energie'])
-            
-            summ = mydf['Energie'].sum()                          # The amount of Energie for a half Cycle of Duty in mWs
-           
-            summ =( summ * 2)/1000                                # The amount of Consumption Energie for a Dutycycle in Ws
-            
-            return summ
-        
-    Energie( 'C:\\Users\\Fust\\Desktop\\Book1.xlsx', 1)
-    Energie( 'C:\\Users\\Fust\\Desktop\\Book1.xlsx', 2)
 
 
-def my_Stress_Strain(input_file,which,count):
+
+
+def Stress_Strain1(input_file,which,count):
     '''
     This function claculates the stress and strain
     Parameters from load and elongation data
@@ -233,57 +227,54 @@ def my_Stress_Strain(input_file,which,count):
         return strain_max
 
 
-def aerospace (CSV,which):
-    '''
-    this function has the ability to convert your datas into 
-    answers that you need 
-    your datas should be in Newton and M**2 format 
-    in this program we will be using presure as the output data 
-    if you want to make a sketch Use === Plot
-    if you want to check the max_presure use === MaxPer
-    '''
-    mydf = pd.read_csv(CSV)
-    mydff = np.array(mydf)
-    mydf1 = pd.DataFrame(mydff,columns=['Newton','Area'])
-    mydf2 = mydf1['Newton']/mydf1['Area']
-    mydf3 = pd.concat(mydf1,mydf2)
-    if which == 'Plot':
-        plt.plot(mydf1['Newton'],mydf1['Area'])
-        plt.xlabel('Area')
-        plt.ylabel('Newton')
-        plt.show()
-    if which == 'MaxPer':
-        max_p = mydf3.max()
-        return max_p
-        
-        
-        
-        
-mydf=pd.read_csv('nanofiber-stress-strain.csv')
-mydf1=mydf[39:175]
-mydf2=mydf[203:414]
-mydf3=mydf[442:]
 
-# Defining a function to change column names and clean data
-def preprocess(df):
-    # Rename columns
-    df.columns = df.iloc[0]
-    df = df[1:]
-    df.rename(columns={'Tensile stress MPa': 'Stress (MPa)', 'Tensile strain %': 'Strain (%)'}, inplace=True)
+
+def Strain_Stress2(df,operation):
+    '''
     
-    # Reseting index
-    df.reset_index(inplace=True, drop=True)
-   
-    #changing the type of the columns
-    df = df.astype(float)
-    return df
+    
+    This function gets data and an operation .
+    It plots Stress-Strain curve if the oepration is plot 
+    and finds the UTS value (which is the ultimate tensile strength) otherwise.
+    ------------------------------
+    Parameters
+    ----------
+    df : DataFrame
+       It has 2 columns: DL(which is length in mm) & F (which is the force in N).
+    operation :
+       It tells the function to whether Plot the curve or find the UTS valu. 
 
-# applying preprocess function on dataframes
-df_new1 = preprocess(mydf1)
-df_new2 = preprocess(mydf2)
-df_new3 = preprocess(mydf3)
+    Returns
+    -------
+    The Stress-Strain curve or the amount of UTS
+    
+    '''
+    L0 = 40
+    #L0: initial length of the sample
+    D0 = 9
+    #D0: initial diameter of the sample
+    A0 = math.pi / 4 * (D0 ** 2)
+    df['e'] = df['DL'] / L0
+    df['S'] = df['F'] / A0
+    if operation == 'PLOT':
+        plt.scatter(df['e'], df['S'])
+        plt.xlabel('e')
+        plt.ylabel('S')
+        plt.title('S vs e Plot')
+        plt.grid(True)
+        plt.show()
+    elif operation == 'UTS':
+        return df['S'].max()
+    else:
+        print("Please enter proper operation")
+        return
 
-def Stress_Strain_Curve(input_data, action):
+
+
+
+
+
+def Stress_Strain3(input_data, action):
     stress = input_data['Stress (MPa)']
     strain = input_data['Strain (%)']
     
@@ -308,19 +299,119 @@ def Stress_Strain_Curve(input_data, action):
         # Calculation of Young's Modulus
         slope_intercept = np.polyfit(strain, stress, 1)
         return slope_intercept[0]
+
+def Stress_Strain4(file_path, D0, L0):
+    '''
+    This function uses the data file
+    that contains length and force, calculates the engineering, true
+    and yielding stress and strain and also draws a graph of these.
     
-# Example:
-stress_max = Stress_Strain_Curve(df_new1, 'max stress')
-young_modulus = Stress_Strain_Curve(df_new1, 'young modulus')
-Stress_Strain_Curve(df_new1, 'plot')
+    Parameters:
+    D0(mm): First Qatar to calculate stress
+    L0(mm): First Length to canculate strain
+    F(N): The force applied to the object during this test
+    DL(mm): Length changes
     
-print('Maximum Stress (MPa):', stress_max)
-print("Young's Modulus (MPa):", young_modulus)
+    Returns:
+    Depending on the operation selected,
+    it returns calculated values, plots,
+    advanced analysis, or saves results.
+    '''
+    try:
+        data = pd.read_excel(file_path)
+        
+    except FileNotFoundError:
+        print("File not found. Please check the file path.")
+        return
+
+    A0 = math.pi * (D0/2)**2
+
+    data['stress'] = data['F (N)'] / A0
+    data['strain'] = (data['DL (mm)'] - L0) / L0
+
+    data['true_stress'] = data['F (N)'] / A0
+    data['true_strain'] = np.log(1 + data['strain'])
+
+    yield_point = data.loc[data['stress'].idxmax()]
+    permanent_strain = data['strain'].iloc[-1]
+
+    plt.figure(figsize=(12, 8))
+    plt.plot(data['strain'], data['stress'], label='Engineering Stress-Strain', marker='o', color='b', linestyle='-')
+    plt.plot(data['true_strain'], data['true_stress'], label='True Stress-Strain', marker='x', color='r', linestyle='--')
+    plt.scatter(yield_point['strain'], yield_point['stress'], color='g', label='Yield Point')
+    plt.annotate(f"Yield Point: Strain={yield_point['strain']:.2f}, Stress={yield_point['stress']:.2f}", (yield_point['strain'], yield_point['stress']), textcoords="offset points", xytext=(0,10), ha='center')
+    plt.xlabel('Strain')
+    plt.ylabel('Stress (MPa)')
+    plt.title('Stress-Strain Curve')
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+    print("Columns in the data:")
+    print(data.columns)
+    
+    print("\nFirst few rows of the data:")
+    print(data.head())
+
+    print("\nYield Point Information:")
+    print(yield_point)
+    print("Permanent Strain:", permanent_strain)
 
 
 
 
+def Stress_Strain5(input_data, action):
+    stress = input_data['Stress (MPa)']
+    strain = input_data['Strain (%)']
+    
+    if action == 'plot':
+        # Plotting data
+        fig, ax = plt.subplots(figsize=(8, 6))
+        plt.plot(strain, stress, linewidth=2, color='royalblue', marker='o', markersize=5, label='Stress-Strain Curve')
+        plt.title('Stress-Strain Curve', fontsize=16)
+        plt.xlabel('Strain (%)', fontsize=14)
+        plt.ylabel('Stress (MPa)', fontsize=14)
+        plt.xlim([0, strain.max()])
+        plt.ylim([0, stress.max()])
+        plt.grid(True, linestyle='--', alpha=0.6)
+        plt.legend()
+   
+    elif action == 'max stress':
+        # Calculation of the maximum stress
+        stress_max = stress.max()
+        return stress_max
+    
+    elif action == 'young modulus':
+        # Calculation of Young's Modulus
+        slope_intercept = np.polyfit(strain, stress, 1)
+        return slope_intercept[0]
 
+
+
+def aerospace_analysis (CSV,which):
+    '''
+    this function has the ability to convert your datas into 
+    answers that you need 
+    your datas should be in Newton and M**2 format 
+    in this program we will be using presure as the output data 
+    if you want to make a sketch Use === Plot
+    if you want to check the max_presure use === MaxPer
+    '''
+    mydf = pd.read_csv(CSV)
+    mydff = np.array(mydf)
+    mydf1 = pd.DataFrame(mydff,columns=['Newton','Area'])
+    mydf2 = mydf1['Newton']/mydf1['Area']
+    mydf3 = pd.concat(mydf1,mydf2)
+    if which == 'Plot':
+        plt.plot(mydf1['Newton'],mydf1['Area'])
+        plt.xlabel('Area')
+        plt.ylabel('Newton')
+        plt.show()
+    if which == 'MaxPer':
+        max_p = mydf3.max()
+        return max_p
+        
+        
 
 
 def XRD_Analysis(file,which,peak=0):
@@ -559,7 +650,6 @@ def Income_Developer(file, work):
     # get age data
     python_ages = python_data['Age']
     js_ages = js_data['Age']
-    all_age = data['Age']
     ages_x = np.arange(18, 49)
 
     # get income data
@@ -570,9 +660,7 @@ def Income_Developer(file, work):
     max_income_python = python_data['Income'].max()
     max_income_js = js_data['Income'].max()
 
-    # convert data to array
-    np_python_ages = np.array([python_ages])
-    np_js_ages = np.array([js_ages])
+
 
     if work == 'plot_data':
         # show plot data
@@ -628,63 +716,9 @@ def Income_Developer(file, work):
         raise Exception('invalid command')
 
 
-# f1 = os.path.join('diabetes.csv')
-f2 = os.path.join('income_developer.csv')
-Income_Developer(f2, 'show_by_side_by_side_data')
-# Diabetes_Dataset(f1, '')
 
 
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-from tensile_test_data import F_numeric_values, DL_numeric_values
-import math
-
-tensile_test_data = {'DL': DL_numeric_values, 'F': F_numeric_values}
-df = pd.DataFrame(tensile_test_data)
-
-
-def Strain_Stress(df,operation):
-    '''
-    
-    
-    This function gets data and an operation .
-    It plots Stress-Strain curve if the oepration is plot 
-    and finds the UTS value (which is the ultimate tensile strength) otherwise.
-    ------------------------------
-    Parameters
-    ----------
-    df : DataFrame
-       It has 2 columns: DL(which is length in mm) & F (which is the force in N).
-    operation :
-       It tells the function to whether Plot the curve or find the UTS valu. 
-
-    Returns
-    -------
-    The Stress-Strain curve or the amount of UTS
-    
-    '''
-    L0 = 40
-    #L0: initial length of the sample
-    D0 = 9
-    #D0: initial diameter of the sample
-    A0 = math.pi / 4 * (D0 ** 2)
-    df['e'] = df['DL'] / L0
-    df['S'] = df['F'] / A0
-    if operation == 'PLOT':
-        plt.scatter(df['e'], df['S'])
-        plt.xlabel('e')
-        plt.ylabel('S')
-        plt.title('S vs e Plot')
-        plt.grid(True)
-        plt.show()
-    elif operation == 'UTS':
-        return df['S'].max()
-    else:
-        print("Please enter proper operation")
-        return
 
 def LN_S_E(df, operation):
     '''
@@ -742,11 +776,9 @@ def LN_S_E(df, operation):
         print("Please enter proper operation")
         return
 
-Strain_Stress(df,'PLOT')
-print("UTS is: " , Strain_Stress(df,'UTS'))
 
-LN_S_E(df,'PLOT')
-print("Young's Modulus is: " , LN_S_E(df,'YOUNG_MODULUS'))
+
+
 def Oxygen_Heat_Capacity_Analysis(file_path):
     '''
     This function reads the temperature and heat capacity information
@@ -789,136 +821,10 @@ def Oxygen_Heat_Capacity_Analysis(file_path):
     plt.tight_layout()
     plt.show()
 
-file_path = 'C:/Data/Oxygen_Heat_Capacity.xlsx'  
-Oxygen_Heat_Capacity_Analysis(file_path)
-
-def Stress_Strain_Analysis(file_path, D0, L0):
-    '''
-    This function uses the data file
-    that contains length and force, calculates the engineering, true
-    and yielding stress and strain and also draws a graph of these.
-    
-    Parameters:
-    D0(mm): First Qatar to calculate stress
-    L0(mm): First Length to canculate strain
-    F(N): The force applied to the object during this test
-    DL(mm): Length changes
-    
-    Returns:
-    Depending on the operation selected,
-    it returns calculated values, plots,
-    advanced analysis, or saves results.
-    '''
-    try:
-        data = pd.read_excel(file_path)
-        
-    except FileNotFoundError:
-        print("File not found. Please check the file path.")
-        return
-
-    A0 = math.pi * (D0/2)**2
-
-    data['stress'] = data['F (N)'] / A0
-    data['strain'] = (data['DL (mm)'] - L0) / L0
-
-    data['true_stress'] = data['F (N)'] / A0
-    data['true_strain'] = np.log(1 + data['strain'])
-
-    yield_point = data.loc[data['stress'].idxmax()]
-    permanent_strain = data['strain'].iloc[-1]
-
-    plt.figure(figsize=(12, 8))
-    plt.plot(data['strain'], data['stress'], label='Engineering Stress-Strain', marker='o', color='b', linestyle='-')
-    plt.plot(data['true_strain'], data['true_stress'], label='True Stress-Strain', marker='x', color='r', linestyle='--')
-    plt.scatter(yield_point['strain'], yield_point['stress'], color='g', label='Yield Point')
-    plt.annotate(f"Yield Point: Strain={yield_point['strain']:.2f}, Stress={yield_point['stress']:.2f}", (yield_point['strain'], yield_point['stress']), textcoords="offset points", xytext=(0,10), ha='center')
-    plt.xlabel('Strain')
-    plt.ylabel('Stress (MPa)')
-    plt.title('Stress-Strain Curve')
-    plt.grid(True)
-    plt.legend()
-    plt.show()
-
-    print("Columns in the data:")
-    print(data.columns)
-    
-    print("\nFirst few rows of the data:")
-    print(data.head())
-
-    print("\nYield Point Information:")
-    print(yield_point)
-    print("Permanent Strain:", permanent_strain)
-
-file_path = 'C:/Data/Textile_Test.xlsx'  
-D0 = 9
-L0 = 40
-Stress_Strain_Analysis(file_path, D0, L0)
-
-import numpy as np
-import matplotlib as mlp
-import matplotlib.pyplot as plt
-import pandas as pd
 
 
-data=pd.read_excel("E:\courses\master\EVA-Gr-CB.Project\Test.Results\Mechanical.Properties\Mechanical.Properties.14\Book14.xlsx")
-a=np.array(data) ##convert data to array
-a1=a[11:,4]##extract elongation data
-a2=a[11:,5]##extract tension data
-def Stress_Strain(data,operation):
-    ##drawing eva polymer tension diagram and finding max tension
-    if operation=="Ultimate Tensile Stress":
-        UTS=a2.max()
-        return UTS
-    if operation=="plot":
-        font={'family':'sharif','color':'b','size':'15'}
-        font2={'family':'sharif','color':'r','size':'25'}
-        plt.plot(a1,a2)
-        plt.title('Ethylene Vinyl Acetate',fontdict=font2)
-        plt.xlabel('tension (N/mm2)',fontdict=font)
-        plt.ylabel('elonfation (%)',fontdict=font)
-        plt.show
-  
-Stress_Strain(data,'Ultimate Tensile Stress')
-Stress_Strain(data,'plot')
 
 
-data2=pd.read_excel("E:\courses\master\EVA-Gr-CB.Project\Test.Results\TGA\TGA1\EVA-CB\Sheet1.xlsx")
-b=np.array(data2)
-b1=b[1:,1]##extract temperature data
-b2=b[1:,2]##extract weight data
-b3=b[1:,3]##extract derivative weight data
-def Thermal_Decomposition(data2,plot):
-    ##drawing TGA and DTG plots to show thermal decomposition of EVA-CB composite
-    if plot=="TGA":
-        font={'family':'sharif','color':'b','size':'15'}
-        font2={'family':'sharif','color':'r','size':'25'}
-        plt.plot(b1,b2)
-        plt.title('EVA-CB',fontdict=font2)
-        plt.xlabel('temperature (°C)',fontdict=font)
-        plt.ylabel('weight(%)',fontdict=font)
-        plt.show
-    if plot=="DTG":
-        font={'family':'sharif','color':'b','size':'15'}
-        font2={'family':'sharif','color':'r','size':'25'}
-        plt.plot(b1,b3)
-        plt.title('EVA-CB',fontdict=font2)
-        plt.xlabel('temperature (°C)',fontdict=font)
-        plt.ylabel('deriv.weight(%/°C)',fontdict=font)
-        plt.show
-        
-Thermal_Decomposition(data2,"TGA")
-Thermal_Decomposition(data2,"DTG")
-        
-        
-        
-        
-import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-from matplotlib.ticker import AutoMinorLocator
-import pandas as pd
-import fsspec
-import openpyxl
 
 
 
@@ -985,20 +891,10 @@ def Compression_Test(Data,Operator,Sample_Name,Density=0):
         plt.gca().spines['right'].set_linewidth(2)
         plt.tick_params(axis='both', labelsize=11)
     
-#testing the corroctness of the function
-Data=pd.read_excel('C://Users//Asus//Desktop//University//Master of Material Science//Master Project//Analysis Results//Compression//Test 26//Excel Files//G20525-4-1.xlsx')
-Data1=pd.read_excel('C://Users//Asus//Desktop//University//Master of Material Science//Master Project//Analysis Results//Compression//Test 26//Excel Files//PBS20525-1-1.xlsx')
-Compression_Test(Data,"plot","G20525-4")
-Compression_Test(Data1,"plot","PBS20525-1")
-Compression_Test(Data,"S_max","G20525-4")
-Compression_Test(Data,"S_max/Density","G20525-4",0.61)
 
 
 
-
-
-
-def DMTA_Test(Data,Operator,Sample_Name):
+def DMTA_Test(Data2,Operator,Sample_Name):
     """
     
 
@@ -1116,27 +1012,7 @@ def DMTA_Test(Data,Operator,Sample_Name):
         plt.tick_params(axis='both', labelsize=11)
 
 
-#testing the corroctness of the function
-Data2=pd.read_excel('C://Users//Asus//Desktop//University//Master of Material Science//Master Project//Analysis Results//DMTA//Compression Mode//Test 1//Excel Files//G20525-4.xlsx')
-DMTA_Test(Data2,"storage_max","G20525-4")
-DMTA_Test(Data2,"loss_max","G20525-4")
-DMTA_Test(Data2,"tan_max","G20525-4")
-DMTA_Test(Data2,"plot_storage","G20525-4")
-DMTA_Test(Data2,"plot_loss","G20525-4")
-DMTA_Test(Data2,"plot_tan","G20525-4")
 
-
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-
-
-#Please input the data file in the line below!
-data=pd.read_excel('C:/Users/Lenovo/Downloads/ai_2024.xlsx')
-
-
-
-#First_Function
 
 def Find_Max_Vertical_Velocity(data):
     '''
@@ -1162,10 +1038,7 @@ def Find_Max_Vertical_Velocity(data):
     return u_max,loc_max
 
 
-Find_Max_Vertical_Velocity(data)
-    
-    
-#Second_Function
+
         
 def Solidification_Start(data,Temp_sol):
     '''
@@ -1195,140 +1068,10 @@ def Solidification_Start(data,Temp_sol):
         return True
     
 
-Solidification_Start(data, 466)  
-    
-
-import numpy as np
-import pandas as pd
-import openpyxl
-import matplotlib as mlp
-import matplotlib.pyplot as plt
-    
-
-#===========
-font_a ={ 'family': 'serif',
-             'color' : 'red',
-             'size' : 14
-        }  
-
-#===========
-
-
-'''
-===========================================First
-
-تابع توزیع احتمال دو جمله ای
-برای حساب کرن توزیع احتخمال یک پیشامد
-این تابع برای محاسبه احتمال پیشامد بصورت یک و صفر است
-مثلا برای حساب کردن احتمال اینکه با 10 با پرتاب سکه چند بار 6 ببینیم
-که یک صورت شکست دارد و یک صورت پیروزی مثلا شیر پیروزی و خط شکست باشد
-_______________________
-
-فرمول محاسبه تابه احتمال دو جمله ای
-P(x):(tarkib X az N)*(p**x)*(q**n-x)
-tarkib X az N= n! / x! (n-x)!
-
-------> P(x): احتمال وقوع پیشامد
-------> n = تعداد تکرار آزمایش
-------> p = 1 piroozi
-------> q = p-1 faild
-------> x = moteghayer tasadofi
-
-توابع مورد نیاز 
-Factoriel
-'''
-
-def fact(x):
-    if x==0:
-        return 1
-    else:
-        return x * fact(x-1)
-'''    
->>>>>>>>>>>>tabe avalie
-def Bino_m(x,n,p=0.5):
-    q = 1 - p
-    fact_n = float(fact(n))
-    fact_x = float(fact(x))
-    fact_nx= float(fact(n-x))
-    tarkib_x_n = fact_n / (fact_x * fact_nx)
-    px = tarkib_x_n * (p**x) * ((q)**(n-x))
-    
-    
-    #plt.plot(args, kwargs)
-    plt.show()
-    return px
-'''
 
 
 
 
-def Bino_m_rasm(x,n,p=0.5):
-    '''
-        Parameters
-    ----------
-    x : int
-        addad mored azmayesh.
-    n : int
-        tedad tekrar azmayesh
-    p : float optional
-      ehtemal pirouzi. The default is 0.5.
-
-    Returns
-    -------
-    plot
-        neshan dadan bordar va natije
-    float
-        mizan ehtemal pirouzi.
-
-    '''
-
-    first_x=x
-    q = 1 - p
-    x=np.arange(1,n+1)
-    tarkib_x_n = np.array([])
-    fact_n = float(fact(n))
-    px=np.array([])
-    a=np.array(())
-    for i in x:
-        fact_x = float(fact(i))
-        n2=n-i
-        fact_nx= float(fact(n2))
-        tarkib_x_n = float (fact_n / (fact_x * fact_nx))
-        px_x = float( tarkib_x_n * (p**i) * (q**n2) )
-        px=np.append(px,px_x)
-        a=np.append(a,i)
-        if i==first_x:
-            plt.plot(a[first_x-1], px[first_x-1],marker="o",mec='g')
-        else:
-            plt.plot(a,px)
-                
-    return px[first_x-1],plt.show()
-
-#================test:
-v=Bino_m_rasm(6,10)
-
-       
-"""
-===========================================second
-mizan sakhti ab
-عوامل موثر بر سختی آب میزان
-در درجه اول میزان کلسیوم کربنات و منیزیوم در آن است
-و فرمول آن به شرح زیر است
-ppm(sakhti ab-->mg/L) = (Mg * 4.12) + (Ca * 2.5)
-در صورتی که عدد به دست آمده از 60 کمتر باشد آب نرم
-اگر بین 60 تا 120 باشد آب متوسط
-بین 120 تا 180 باشد آب سخت
-و بیشتر از 180 آب بسیار سخت میباشد
-همچنین میازن مس آب باید کمتر از 20 ملیگ گرم در لیتر - نیکل کمتر از 10 زینک کمتر از 10 
-آرتوفسفات کمتر از 100 و سیانید کمتر از 2 باشد
-در غیر اینصورت آب قابل استفاده نیست.
-====> Mg manyazio,
-====> ca calsium carbonat 
-در این تابع ورودی از اکسل دریافت و نتیجه آزمایش ها رسم میشود 
-در صورتیکه آب غابل استفاده نباشد در لیست مجزایی دی خروجی نمایشگ داده خوادهد شد
-"""
-
-data = pd.read_excel('C:\\Users\\PARVANE-PC\\Desktop\\samples.xlsx')
 
 
 
@@ -1388,39 +1131,13 @@ def Sakhti_ab( data):
     
     return data,plt.show()
 
-#================= test
 
-new1 =Sakhti_ab(data)
-
-'''
-در این تابع با دسترسی توابع پانداس تونستم به متغیرهای داخل دیتا فرم دسترسی پیدا کنم
-مقادیر که کلا در ازمایش اولیه حذف میشه رو از دیتا فرم حذف کردم
-و درجه سختی رو با جدول باقی مانده انجام دادم
-میخاستم جدول نهایی خروجی ای از میزان سختی باشه وابسته به شهر ولی نمیتونستم مقدار آرایه ppm  به حالت بازه تغییر بدم 
-یعنی نتونستم دسترسی به اندیس پیدا کنم
-و با حلقه for دسته بندی کنم
-
-
-'''
-
-import numpy as np
-import math
-import matplotlib.pyplot as plt
-import pandas as pd
-
-
-# 1-----------------------------------------------------------------------------
-w=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight CrN S.xlsx')
-
-
-'''
-bayad adresse mahalle zakhireye dadeha dar w vared shavad.
-'''
 
 
 def Wear_Rate(w,work,S,F):
     '''
-    w bayad shamele 2 soton bashad ke dar yek soton vazn nemoone ghabl az test andazegiri shavad ,
+    w : dataframe contains 2 columns 
+    bayad shamele 2 soton bashad ke dar yek soton vazn nemoone ghabl az test andazegiri shavad ,
     dar yek soton vazne nemone pas az etmame test.
     
     S haman masate laghzesh hine azmone sayesh ast. S bayad bar hasbe metr bashad.
@@ -1442,50 +1159,8 @@ def Wear_Rate(w,work,S,F):
         return WR
     
     
-a=Wear_Rate(w,'wear rate',300,5)
-print('nerkhe sayeshe shoma barabar ast ba:', a)
 
 
-
-
-w=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=0)
-
-
-def Wear_Rate(w,work,S,F):
-        '''
-        w bayad shamele 2 soton bashad ke dar yek soton vazn nemoone ghabl az test andazegiri shavad ,
-        dar yek soton vazne nemone pas az etmame test.
-        S haman masate laghzesh hine azmone sayesh ast. S bayad bar hasbe metr bashad.
-        F barabare niroyee ast ke be pin vared shode ast , azmon ba an anjam shode ast. F bayad bar hasbe newton bashad
-        '''
-        w.columns
-        wb=np.array(w['weight befor test'])
-        # khate bala soton avval ra joda mikonad yani vazne nemone ghabl az azmoon.
-        wa=np.array(w['weight after test'])
-        # khate bala soton dovvom ra joda mikonad yani vazne nemone baa'd az azmoon.
-        wl=np.subtract(wb,wa)
-        # khate bala kaheshe vazne nemoone pas az azmoon ra hesab mikonad.
-        m=wl.mean()
-        # khate bala miangine kaheshe vazne nemoone ra hesab mikonad.
-        if work=='wear rate':
-            WR= m/(S*F)
-            # WR yani Wear Rate va nerkhe sayesh ra hesab mikonad.
-            return WR
-
-
-
-
-
-
-w0=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=0)
-w1=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=1)
-w2=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=2)
-w3=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=3)
-w4=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=4) 
-#sheet name har safhe az excel ra baz mikonad.
-
-list_1=[w0,w1,w2,w3,w4]
-# yek list az dadeha misazim.
 def Wear_Bar(list_1,work='bar'):
     # manzoor az bar nemoodare mile ee ast.
     new_list=[]
@@ -1503,15 +1178,6 @@ def Wear_Bar(list_1,work='bar'):
     plt.ylabel('Wear Rate(mg/N.m',size=12,color='k')
     plt.show()
     
-    
-w0=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=0)
-w1=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=1)
-w2=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=2)
-w3=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=3)
-w4=pd.read_excel('/Users/intel/Desktop/poject 2/wear weight.xlsx',sheet_name=4) 
-
-list_1=[w0,w1,w2,w3,w4]
-Wear_Bar(list_1,'bar')
 
 
 
@@ -1521,21 +1187,19 @@ Wear_Bar(list_1,'bar')
 
 
 
-# 2-----------------------------------------------------------------------------
-font_1={'family': 'serif',
-        'color': 'b',
-        'size':14}
-
-font_2={'family': 'serif',
-        'color': 'k',
-        'size':12}
-# 2 ta font misazim ke betavanim estefade konim.
-
-b=pd.read_excel('/Users/intel/Desktop/poject 2/polarization substrate.xlsx')
 def Polarization(b,work):
     '''
     d: dadehaye azmayeshgah shmele ghegaliye jaryan va potansiel hastand.
     '''
+    
+    font_1={'family': 'serif',
+            'color': 'b',
+            'size':14}
+
+    font_2={'family': 'serif',
+            'color': 'k',
+            'size':12}
+    
     b.columns
     cd=np.array(b['Current density'])
     # cd haman ghegaliye jaryan ast.
@@ -1563,113 +1227,13 @@ def Polarization(b,work):
         g=f[0,1]
         return g
 
-h=Polarization(b, 'corrosion potential')
-print('potansiele khordegie shoma barabar ast ba:',h)
-
-
-Polarization(pd.read_excel('/Users/intel/Desktop/poject 2/polarization substrate.xlsx'), 'plot')
-# ya
-# Polarization(b, 'plot')
-        
-        
-
-
-
-         
-
-
-import numpy as np#for array and calculation
-import pandas as pd#for data
-import matplotlib.pyplot as plt#for plot
-
-data_path = r'C:\Users\DataSystem.ir\Desktop\Stress_strain.xlsx'#here we get the path and file name
-data = pd.read_excel(data_path)#read the data
-
-#in our excel file we have Forza standard(N) and deformation and area is constantant which is 5/29916E-05
-#first we write def get force and area to calculate stress
-
-area = 5 / 29916E-05 # Constant area
-#constant number for our calculation so I define it here
-
-def Stress_Cal(data, area):
-    N_data = data['N']#access data in column N which is related to force
-    x = np.array(N_data / area / 1000000)#creat array of them
-    # the formula for stress= Force/area and it has division by 1000000 for Mpa
-    return x
-
-def Strain_Cal(data):#y is our strain and it divided by 100 since it is percent of deformation
-    Deformation_data = data['Deformation']
-    y = np.array(Deformation_data / 100)
-    return y
-
-def Stress_Strain(x, y, operation):#calculate modulus
-    m = np.divide(x, y, out=np.zeros_like(x), where=y != 0) # in this part first I wrote if y==o continue but i search in the web and they recommended this id strain is zero continue and just remain it zerp
-    print(m)#calculate modulus by using divivision in array
-
-#in this part which is related to operation we calculate min, max and plot the diagram
-
-    if operation == 'min':#calulate min stress and strain
-        min_stress = x.min()
-        min_strain = y.min()
-        print('Min strain=',min_strain,'Min stress=',min_stress)
-        
-    elif operation == 'max':#calculate max strain and straee
-        max_stress = x.max()
-        max_strain = y.max()
-        print('Max strain=',max_strain,'Max stress=', max_stress)
-        
-    elif operation == 'plot':# draw plot
-        plt.figure(figsize=(8, 6))
-        plt.plot(x, y, 'o-', label='Stress-Strain Relationship',c='g')
-        plt.xlabel('Strain')
-        plt.ylabel('Stress')
-        plt.title('Stress-Strain Diagram')
-        plt.legend()#for better understangin when the data are alot and close to each other
-        plt.grid(True)
-        plt.show()
-        
-        
-def Slope_Cal(x, y):# in this part I search in the web
-    # Filter out the zero strain values to avoid division by zero because if it divided by zero in would be INF
-    fil_indices = y != 0 # just why becase just strain is impo for us and if strain would be zero can cause the problem for us
-    fil_x = x[fil_indices]
-    fil_y = y[fil_indices]
-
-    # Fit a linear model (polynomial of degree 1) and it should be one because the slope in linear part is impo
-    slope, intercept = np.polyfit(fil_y, fil_x, 1)
-    return slope, intercept
-
-operation = input("Enter max, min, or plot: ")   #I suppose that user enter the operator   
-y = Strain_Cal(data)
-x = Stress_Cal(data, area) 
-# Then, in your main code block, call this function with your data:  
-slope, intercept = Slope_Cal(x, y)
-print("Slope (Modulus of Elasticity):", slope)  
-Stress_Strain(x, y, operation)
 
 
 
 
-#the slope in my data are not correect because I limit my data and I just use first 100 data and the linear part for calculate slope may be in the the after these
 
-#------------------------------------------------------------------------------
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns 
-from scipy import stats
-#------------------------------------------------------------------------------
-# import data
-xrd = pd.read_excel(r'D:\6. ai in mse\library\quiz\xrd.xlsx')
-# data description
-xrd .columns
-#------------------------------------------------------------------------------
-# font
-font_title = { 'family' : 'serif','color' :'black' , 'size' : 15 }
-font_x = {'family' :  'serif','color' :   'black', 'size' : 10 }
-font_y = { 'family' : 'serif','color' :   'black', 'size' : 10}    
-#------------------------------------------------------------------------------
-#def function
+
+
 def Xrd_Analysis(data, operation):
     
     '''
@@ -1701,6 +1265,10 @@ def Xrd_Analysis(data, operation):
     plot
 
     '''
+    
+    font_title = { 'family' : 'serif','color' :'black' , 'size' : 15 }
+    font_x = {'family' :  'serif','color' :   'black', 'size' : 10 }
+    font_y = { 'family' : 'serif','color' :   'black', 'size' : 10}    
 
 
     if operation == 'max intensity':
@@ -1737,17 +1305,7 @@ def Xrd_Analysis(data, operation):
         plt.ylabel('Intensity',fontdict=font_y)
         plt.show()
 
-#------------------------------------------------------------------------------
-Xrd_Analysis(xrd, 'max intensity')   
-Xrd_Analysis(xrd, 'scatter plot')   
-Xrd_Analysis(xrd, 'line graph')   
-Xrd_Analysis(xrd, 'line graph fill between')   
-#------------------------------------------------------------------------------
-#import data
-cof = pd.read_excel(r'D:\6. ai in mse\library\quiz\cof.xlsx')
-cof.columns
-#------------------------------------------------------------------------------
-# def function
+
 def Statitical_Analysis(data, operation):
     '''
     this function calculate quantile, IQR, min, max, median,and
@@ -1773,6 +1331,9 @@ def Statitical_Analysis(data, operation):
     5. zscore
     6. determined plot
     '''
+    font_title = { 'family' : 'serif','color' :'black' , 'size' : 15 }
+    font_x = {'family' :  'serif','color' :   'black', 'size' : 10 }
+    font_y = { 'family' : 'serif','color' :   'black', 'size' : 10}   
     
     if operation == 'statistics':
        for c in data.columns:
@@ -1824,18 +1385,7 @@ def Statitical_Analysis(data, operation):
          plt.show()
          
 
-#------------------------------------------------------------------------------
-Statitical_Analysis(cof, 'statistics')     
-Statitical_Analysis(cof, 'histogram')    
-Statitical_Analysis(cof, 'correaltion')  
-Statitical_Analysis(cof, 'pairplot')  
-#------------------------------------------------------------------------------
 
-
-import pandas as pd
-import matplotlib.pyplot as plt
-data1=pd.read_excel('C:/Users/Gandi/Desktop/Boo.xlsx')
-data2=pd.read_excel('C:/Users/Gandi/Desktop/Bo.xlsx')
 
 def Blood_Pressure(data1,operation):
     '''
@@ -1873,6 +1423,8 @@ def Blood_Pressure(data1,operation):
         plt.title('Blood_Pressure')
         plt.show()
         
+        
+        
 def Pulse(data2,operation):
     '''
     This function gives us the maximum and minimum pulse of people over forty years old 
@@ -1904,18 +1456,9 @@ def Pulse(data2,operation):
         plt.show()
         
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-import matplotlib
-from mpl_toolkits import mplot3d
-import math
-import statistics
 
-filee=pd.read_excel('C:/Users/HP/Desktop/res.xlsx')
-filee1= pd.read_excel('C:/Users/HP/Desktop/dls.xlsx')
 
-#first function:
+
 
 def Color_Feature(filee,kar):
     
@@ -1960,9 +1503,10 @@ def Color_Feature(filee,kar):
          ax.set_ylabel('a*')
          img= ax.scatter(l,a,b,color='r')
          ax.set_title('l* a* b* of color')
-Color_Feature(filee,'plot')
+         img.show()
 
-#second function:
+
+
 
 def Particles_Size(filee1,kar1):
     
@@ -2003,7 +1547,6 @@ def Particles_Size(filee1,kar1):
         plt.plot(x,y)
         
     
-Particles_Size(filee1,'plot')  
 
     
 
@@ -2026,9 +1569,9 @@ def Price_Change(data,operation):
         new_data=data[["High","Low","taghyir"]]
         return new_data["taghyir"] 
        
-df=pd.read_csv("E:/codebasis/pandas/july2017apple.csv")         
-Price_Change(df,"mohasebe")
-Price_Change(df,"plot")
+
+
+
 def New_Case_Corona_Propotion(data,operation):
     ''' Parameters
     ----------
@@ -2044,18 +1587,11 @@ def New_Case_Corona_Propotion(data,operation):
     if operation=="nesbat":
         data["New_Propotion"]=data["New_cases"]/data["Cases"]
         return data.New_Propotion
-df=pd.read_csv("C:/Users/MashadService.ir/Desktop/corona_march2020_mlcourse.csv",index_col="Country") 
-New_Case_Corona_Propotion(df,"plot") 
-New_Case_Corona_Propotion(df,"nesbat")     
-        
 
 
 
 
-import numpy as np
-import pandas as pd
-import matplotlib as mlp
-import matplotlib.pyplot as plt
+
 def Load_Position_Convertor(Data,Operation,Area,Length):
     '''
     This function receives an input file containing Load-Position data, as well as the cross-sectional area and gauge length of the part, and according to the user's needs, it can:
@@ -2084,7 +1620,6 @@ def Load_Position_Convertor(Data,Operation,Area,Length):
 
     '''
 
-    Data=pd.read_excel('C://Users//Dr Computer//Desktop//Data For Project 2.xlsx')
     Load=np.array(Data['Load (kN)'])
     Position=np.array(Data['Position (mm)'])
 
@@ -2135,116 +1670,12 @@ def Load_Position_Convertor(Data,Operation,Area,Length):
         return EAD
 
 
-        
-Load_Position_Convertor( '','EAD Calculation', 10, 10) 
-
-#1------------------------------------------------
-
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib as mlp
-import math
- 
-
-
-
- 
-def Nemodar_Sahmi(x,y):
-    x=np.arange(0, 2*(np.pi), 0.1) 
-    y=np.sin(x)
-  
-        
-plt.plot(x,y,marker='o',ms=5,mec='tan',mfc='black',ls='--',c='tan',lw='2') 
-
-font_title={ 'color':'olive',
-             'size':25}
-
-font_xlabel={'color':'black',
-              'size':15}
-
-font_ylabel={'color':'black',
-              'size':15}
-
-plt.title('Nemodar Sahmi',font_title)
-
-plt.xlabel( 'X',font_xlabel)
-plt.ylabel( 'Y', font_ylabel)
-plt.grid()
-plt.show()
-  
-
- 
-
-
-#2--------------------------------------------------
-
-
-
-def Quadratic_Function(a,b,c) :
-    x=np.arange(-1000,1000,10 )
-    a=2
-    b=15
-    c=10
-    y=a*(x**2)+b*x+c
-       
-plt.plot(x,y,marker='x',ms=10, ls='-.',color='r',mfc='r',mec='g',lw='1')
-plt.title("Quadratic Function",color='r',pad=20)
-plt.xlabel("Values of x",color='b')
-plt.ylabel("Values of y",color='b')
-plt.show()
+   
 
 
 
 
-
-
-#3--------------------------------------------------------
-
-
-
-
-plt.plot(np.sin(x),label='sin(x)',color='b')
-plt.plot(np.cos(x),label='cos(x)',color='r')
-plt.legend()
-plt.title('Sin_Cos',pad=20,loc='left')
-plt.grid()
-plt.show()
-
-    
-  
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-f_loc='//c://Users//Rayan//Desktop//'
-data=pd.read_excel(f_loc)
-
-
-
-
-
-
-
-
-
-
-def Brain_Data():
+def Brain_Data_example():
     """
     This function prompts the user to input values for sudiom and potasiom along with time increments,
     creates a DataFrame with the provided data, and returns it.
@@ -2317,78 +1748,10 @@ def Brain_Plot_3D(df):
     # Show the plots
     plt.show()
 
-# Generate Brain data and plot it
-DF_3D = Brain_Data()
-Brain_Plot_3D(DF_3D)
-
-
-
-
-
-
-
-
-"""
-Created on Tue Mar 26 12:04:01 2024
-
-@author: Nasim Heidaran
-"""
-
-
-
 
 
 
 '''
-
-____________________________Rejection Calculation______________________________
-
-Mathematical modeling of porous (like UF membranes) and dense membranes (like
-RO) is a relatively simple procedure. But in the case of NF membrane, modeling 
-becomes alittle complicated due to their special structures.
-Several mechanisms are suggested to explain the nanofilteration performance of 
-these types of membranes.
-In this code 3 mechanism are considered to predict rejections of 6 membranes.
-the calculated values are compared to experimental ones and the model with the
-least average error is introduced as the best model.
-
- 1.Sieving(Ferry-Rankin equation)
- Ferry-Rankin equation is used for calculating membrane rejection.
- The key parameters in this equation are membrane pore radii and solute radii.
- 
- 2.Hindrance Transport (DSPM-DE equation)
- In this model the role of membrane pore wall is also important in separation.
- The key parameters in this equation are membrane pore radii and solute radii.
- The rejection is calculated by Simplified DSPM-DE equation
- 
- 3.Donnan Effect (Spiegler_Kedem)
- In this model the key parameter is membrane pore charge density which is
- calculated from zeta potential experimental values.The rejection is 
- calculated by Spiegler_Kedem equation 
- 
-_______________________________Flux Calculation________________________________
-
-In this code,  Hagen-Poiseuille equation is used for calculating porous 
-membrane flux. and Darcy law is used for dense ones.
-The key parameters in this equation are membrane pore radii, membrane porosity
-thickness of membrane, and dynamic viscosity of solution. In this 
-code it is sopposed to calculate volumetric flux for 20 membranes with 
-different pore sizes and porosities.  
-
-_____________________Concentration Polarization Evaluation_____________________
-
-Concentration polarization occurs when the concentration of solute increases at
-the boundary layer close to the membrane surface. So calculating solute 
-concentration on membrane surface is the aim of this code which uses film thory.
-'''
-#____________________________Rejection Calculation_____________________________
-
-#importing required libraries
-    
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-import math
 
 #Importing experimental datas
 Experimental_Datas=pd.read_excel('C://Users//nasim//Documents//python//Rejection-Flux.xlsx')
@@ -2495,9 +1858,10 @@ Mean_Eror=np.mean(eror)*100
 m='average error in this model is '+ str(Mean_Eror) +' percent'
 print(m)
 
-
+'''
 
 #________________________________Flux Calculation______________________________
+'''
 
 #Importing experimental datas
 Experimental_Datas=pd.read_excel('C://Users//nasim//Documents//python//Flux.xlsx')
@@ -2532,6 +1896,7 @@ plt.title('Mmebrane Flux',fontdict=font_ttt,pad=25)
 plt.xlabel('Membrane code',fontdict=font_xxx)
 plt.ylabel('Mmebrane Pure Water Flux (m/s) ',fontdict=font_yyy)
 plt.show()
+
 #________________________________Film Treory___________________________________
 
 #Importing experimental datas
@@ -2584,29 +1949,22 @@ plt.ylabel('Cm',fontdict=font_yy)
 plt.show()
 
 
-
-
-import numpy as np
-
-import matplotlib.pyplot as plt
-
-import pandas as pd
-
-import math
-
-from matplotlib.patches import Ellipse, Polygon
+'''
 
 
 
-f_loc='C://Users//Haj Abedi//Dropbox//Nasim//Python//Project//Data.xlsx'
 
-def SI_Calculation(P,PC,Density=1):
+
+
+
+def SI_Calculation(f_loc,P,PC,Density=1):
 
     
 
     '''
 
     This function is used for Separation Index Calculation
+    
 
     P : Pressure (bar)
 
@@ -2796,15 +2154,13 @@ def SI_Calculation(P,PC,Density=1):
 
     return SI
 
-SI=SI_Calculation(0.6,50/1000)
 
 
 
 
 
-e_loc='C://Users//Haj Abedi//Dropbox//Nasim//Python//Project//Porosity Data.xlsx'
 
-def Porosity(Density=1):
+def Porosity(e_loc,Density=1):
 
     
 
@@ -2898,11 +2254,10 @@ def Porosity(Density=1):
 
     return Porosity
 
-Porosity=Porosity()
 
 
 
-def Tortuosity():
+def Tortuosity(e_loc):
 
     
 
@@ -2978,15 +2333,13 @@ def Tortuosity():
 
     return Tortuosity
 
-Tortuosity=Tortuosity()
 
 
 
 
 
-g_loc='C://Users//Haj Abedi//Dropbox//Nasim//Python//Project//Pore Size Data.xlsx'
 
-def Pore_Size(A,P,Vis=8.9*1e-4):
+def Pore_Size(g_loc,A,P,Vis=8.9*1e-4):
 
     
 
@@ -3076,135 +2429,15 @@ def Pore_Size(A,P,Vis=8.9*1e-4):
 
     return Pore_Size
 
-Pore_Size=Pore_Size(0.0024,400000)
 
 
 
 
 
-def Pore_Number(A):
 
-    
-
-    '''
-
-    A=shows the membrane effective surface area (m2)
-
-    Returns the Pore Number of membranes
-
-    '''
-
-    
-
-    Pore_Number=(Porosity*A)/((math.pi)*(((Pore_Size*1E-9)**2)/4))
-
-
-
-    font={'family':'serif','color':'k','size':'20'}
-
-    
-
-    c=np.array([])
-
-    for i in range (0,len(Pore_Number)):
-
-        if Pore_Number[i]<1*1E14:
-
-            a=np.array(['.'])
-
-            c=np.concatenate((c,a))
-
-        elif Pore_Number[i]<2*1E14:
-
-            a=np.array(['o'])
-
-            c=np.concatenate((c,a))
-
-        else:
-
-            a=np.array(['O'])
-
-            c=np.concatenate((c,a))
-
-    fig, ax = plt.subplots()
-
-    
-
-    bar_labels=['.:Low Pore_Number','o:Medium Pore_Number','O:High Pore_Number']
-
-    for i in range(0,len(Pore_Number)-3):
-
-        m=['_.']
-
-        bar_labels=bar_labels+m
-
-        
-
-    Pore_Size_Data=pd.read_excel(g_loc)   
-
-    membrane=np.array(Pore_Size_Data['membrane'])
-
-    ax.bar(membrane,Pore_Number,color='w',edgecolor='c',hatch=c,linewidth=1,yerr=0.05,ecolor='c',width=0.85,label=bar_labels)   
-
-    plt.title('Pore_Number Chart',fontdict=font)
-
-    plt.xlabel('membrane',fontdict=font)
-
-    plt.ylabel('Pore Number',fontdict=font)
-
-    ax.legend(title='Pore_Number Range')
-
-    plt.show()
-
-    
-
-    return Pore_Number
-
-Pore_Number=Pore_Number(0.0024)
-
-gfhfg=1
-
-
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
-
-'''
-This function is used for calculating rejection and flux of nanofilteration 
-membrane for separation of anti-tumor drug Doxorubicin.z
-
-_____________Rejection Calculation_____________
-
-In this code, Ferry-Rankin equation is used for calculating membrane rejection.
-The key parameters in this equation are membrane pore radii and solute pore   
-radii. In this code it is sopposed to calculate rejection for 22 membranes with 
-different pore sizes.
-
-_____________Flux Calculation_____________
-
-In this code,  Hagen-Poiseuille equation is used for calculating membrane flux.
-The key parameters in this equation are membrane pore radii, membrane pore 
-numbers, thickness of membrane, and dynamic viscosity of solution. In this 
-code it is sopposed to calculate volumetric flux for 22 membranes with 
-different pore sizes and pore numbers.  
-'''
-#_____________________________________________________________________________
-#importing required libraries:
-    
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-from scipy.integrate import solve_bvp
-import scipy.optimize
-import math
-
-
-Experimental_Datas=pd.read_excel('C://Users//nasim//Documents//python//Rejection-Flux.xlsx')
-Dox_Size=1.68*10**-9 #m
 
 def Membrane_Rejection(Experimental_Datas):
+    Dox_Size=1.68*10**-9 #m
     Pore_Sizes=np.array(Experimental_Datas['Membrane Pore Size ']) 
     Calculated_Rejection=(1-2*(1-(Dox_Size/Pore_Sizes)**2)+(1-(Dox_Size/Pore_Sizes)**4))
     Experimental_Rejection=np.array(Experimental_Datas['Experimental Rejection'])
@@ -3261,106 +2494,6 @@ def Membrane_Rejection(Experimental_Datas):
         cp= res_plot[-1]
         Rejection=1-cp/C0
         return(Rejection)
-Rejection=Membrane_Rejection(Experimental_Datas)
-
-'''
-yeki az mabahese mortabeT ba Industrial Engineering mabhase Amare tosifi mibashad
-amare tosifi shamele:
-    1. amare haye tosif konande marboot be goroohi az dade ha shamele:
-        1.1. amare haye tamrkozi mandande mean, median, mod
-        1.2. amare haye parakandegi hamchon standard deviation, variance
-        1.3. amare haye shekle tozi hamchon skewness
-    2. nemoodar haye tosifi hamchon:
-        2.1. Scatterplot
-        2.2. Histogram
-        2.3. Boxplot
-        and so on ...
-        
-dar in barname 2 tabe tarif mikonim:
-    
-    1.Des_Stat: in tabe ettela,ate marboot be amare tosifi ra baraye yek series moshakhas erae midahad
-
-    2.Des_Plot: in tabe nemoodare morede nazare user marboot be 2 series ra rasm mikondad
-'''
-
-
-Finance_Data=pd.read_excel('C://Users//user//Desktop//Financial.xlsx')
-#calling data sample via Pandas library
-
-Random_Data=pd.DataFrame(np.array([[1,2,3],[4,5,6],[7,8,9]]),columns=['A','B','C'])
-#calling data in a reqular way!
-
-MSP_Class=pd.DataFrame(
-    {
-     'Name':['Mojtaba Bakhshi','Amir Sabri','Mohammad Bakhtiyari'],
-     'Age':[25,24,23],
-     'Sex':['Male','Male','Male'],
-     'Education':['Bs','Ms','Bs']
-     }
-    )
-#calling data using dictionaries. When using a Python dictionary of lists, the dictionary keys will be used as column headers and the values in each list as columns of the DataFrame.
-
-def Des_Stat ():
-    
-    Column=Finance_Data[input('please tell me which column you interested it: ')]
-    Descriptive_Statistical=Column.describe()
-    
-    return Descriptive_Statistical
-
-#for example
-
-Des_Stat()
-
-'''
-Out[10]: 
-count    700.000000
-mean     118.428571
-std      136.775515
-min        7.000000
-25%       12.000000
-50%       20.000000
-75%      300.000000
-max      350.000000
-Name: Sale Price, dtype: float64
-'''
- # in tabe name sotooni ra ke qasde daryafte ette'lat ra darim ra migirad va az dakhele dataframe ettela,ate marboot be an sotoon ra dakhele variable Column zakhire mikonad
- # function 'Describe()' yeki az tabe haye ketabkhane pandas mibashad ke kollie ette'laate marboot be amare tosifi ra ejra mikonad
- 
- 
-def Des_Plot () :
-    
-    Xaxis=Finance_Data[input('Enter the name of x_axis column: ')]
-    Yaxis=Finance_Data[input('Enter the name of y_axis column: ')]
-    plot=input('Which plot would you prefer to show: ')
-    
-    if plot=='Scatter':
-        plt.scatter(Xaxis, Yaxis)
-        plt.title(plot, c='purple', fontsize=24, fontname='Times New Roman')
-        plt.xlabel(Xaxis.name, c='crimson', fontsize=14, fontname='Times New Roman')
-        plt.ylabel(Yaxis.name, c='crimson', fontsize=14, fontname='Times New Roman')
-        plt.show()
-    elif plot=='Histogram':
-        plt.hist2d(Xaxis, Yaxis)
-        plt.title(plot, c='purple', fontsize=24, fontname='Times New Roman')
-        plt.xlabel(Xaxis.name, c='crimson', fontsize=14, fontname='Times New Roman')
-        plt.ylabel(Yaxis.name, c='crimson', fontsize=14, fontname='Times New Roman')
-        plt.show()
-    elif plot=='Plot':
-        plt.plot(Xaxis, Yaxis)
-        plt.title(plot, c='purple', fontsize=24, fontname='Times New Roman')
-        plt.xlabel(Xaxis.name, c='crimson', fontsize=14, fontname='Times New Roman')
-        plt.ylabel(Yaxis.name, c='crimson', fontsize=14, fontname='Times New Roman')
-        plt.show()
-    elif plot=='Stem':
-        plt.stem(Xaxis, Yaxis)
-        plt.title(plot, c='purple', fontsize=24, fontname='Times New Roman')
-        plt.xlabel(Xaxis.name, c='crimson', fontsize=14, fontname='Times New Roman')
-        plt.ylabel(Yaxis.name, c='crimson', fontsize=14, fontname='Times New Roman')
-        plt.show()
-    else:
-        print('Maybe you mean a plot that I cant show you!')
-
-Des_Plot()
 
 
 
@@ -3370,14 +2503,7 @@ Des_Plot()
 
 
 
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
-
-
-def XRD_Analysis(file,which,peak=0):
+def XRD_Analysis2(file,which,peak=0):
     '''
     
 
@@ -3456,76 +2582,10 @@ def XRD_Analysis(file,which,peak=0):
 
 
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
-#Loading data
-mydf=pd.read_csv('nanofiber-stress-strain.csv')
-mydf1=mydf[39:175]
-mydf2=mydf[203:414]
-mydf3=mydf[442:]
-
-# Defining a function to change column names and clean data
-def preprocess(df):
-    # Rename columns
-    df.columns = df.iloc[0]
-    df = df[1:]
-    df.rename(columns={'Tensile stress MPa': 'Stress (MPa)', 'Tensile strain %': 'Strain (%)'}, inplace=True)
-    
-    # Reseting index
-    df.reset_index(inplace=True, drop=True)
-   
-    #changing the type of the columns
-    df = df.astype(float)
-    return df
-
-# applying preprocess function on dataframes
-df_new1 = preprocess(mydf1)
-df_new2 = preprocess(mydf2)
-df_new3 = preprocess(mydf3)
-
-def Stress_Strain_Curve(input_data, action):
-    stress = input_data['Stress (MPa)']
-    strain = input_data['Strain (%)']
-    
-    if action == 'plot':
-        # Plotting data
-        fig, ax = plt.subplots(figsize=(8, 6))
-        plt.plot(strain, stress, linewidth=2, color='royalblue', marker='o', markersize=5, label='Stress-Strain Curve')
-        plt.title('Stress-Strain Curve', fontsize=16)
-        plt.xlabel('Strain (%)', fontsize=14)
-        plt.ylabel('Stress (MPa)', fontsize=14)
-        plt.xlim([0, strain.max()])
-        plt.ylim([0, stress.max()])
-        plt.grid(True, linestyle='--', alpha=0.6)
-        plt.legend()
-   
-    elif action == 'max stress':
-        # Calculation of the maximum stress
-        stress_max = stress.max()
-        return stress_max
-    
-    elif action == 'young modulus':
-        # Calculation of Young's Modulus
-        slope_intercept = np.polyfit(strain, stress, 1)
-        return slope_intercept[0]
-    
-# Example:
-stress_max = Stress_Strain_Curve(df_new1, 'max stress')
-young_modulus = Stress_Strain_Curve(df_new1, 'young modulus')
-Stress_Strain_Curve(df_new1, 'plot')
-    
-print('Maximum Stress (MPa):', stress_max)
-print("Young's Modulus (MPa):", young_modulus)
 
 
 
-import pandas as pd
-from matplotlib import pyplot as plt
-import numpy as np
-
-def aerospace (CSV,which):
+def aerospace2 (CSV,which):
     '''
     this function has the ability to convert your datas into 
     answers that you need 
@@ -3549,297 +2609,13 @@ def aerospace (CSV,which):
         return max_p
         
 
-"""
-Created on Sun Sep  2 12:11:53 2023
-
-@author: ALirezaPeymani
-
-
-Remove spikes from Raman spectra of the Polybutadiene by the Z-scores  algorithm 
-
-"""
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-# load the data as data frame
-df = pd.read_csv("C://Users//ALPHA65//Quiz//Ram_PBDEN.csv")
-# Transform the data to a numpy array
-wavelength = df['Wavelength']
-intensity = df['Intensity']
-# Plot the spectrum:
-plt.plot(wavelength, intensity)
-plt.title('Spectrum', fontsize = 20)
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel('Wavelength (cm-1)', fontsize = 20)
-plt.ylabel('Intensity (a.u.)', fontsize = 20)
-plt.show()
-
-
-#calculate the z-scores for the points in the Raman spectrum
-#z-scores = (x(i)-μ) / σ
-#where μ is the mean and σ is the standard deviation of the population x 
-#(x(i) represent the values of a single Raman spectrum)
-#The z-scores tell how far a value is from the average in units of standard deviation.
-
-def z_score(intensity):
- mean_int = np.mean(intensity)
- std_int = np.std(intensity)
- z_scores = (intensity - mean_int) / std_int
- return z_scores 
-
-intensity_z_score = np.array(z_score(intensity))
-plt.plot(wavelength, intensity_z_score)
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel( 'Wavelength (cm-1)' ,fontsize = 20)
-plt.ylabel( 'Z-Score' ,fontsize = 20)
-plt.show()   
-
-
-def z_score(intensity):
- mean_int = np.mean(intensity)
- std_int = np.std(intensity)
- z_scores = (intensity - mean_int) / std_int
- return z_scores
-threshold = 3.5
-intensity_z_score = np.array(abs(z_score(intensity)))
-plt.plot(wavelength, intensity_z_score)
-plt.plot(wavelength, threshold*np.ones(len(wavelength)), label = 'threshold')
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel( 'Wavelength' ,fontsize = 20)
-plt.ylabel( '|Z-Score|' ,fontsize = 20)
-plt.show()
-
-
-threshold = 3.5
-# 1 is assigned to spikes, 0 to non-spikes:
-spikes = abs(np.array(z_score(intensity))) > threshold
-plt.plot(wavelength, spikes, color = 'red')
-plt.title('Spikes:'  + str(np.sum(spikes)), fontsize = 20)
-plt.grid()
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel( 'Wavelength' ,fontsize = 20)
-plt.ylabel( 'Z-scores > ' + str(threshold) ,fontsize = 20)
-plt.show()
-
-
-#The second approach  modified Z-score method uses the median (M) and median absolute deviation (MAD) rather than the mean and standard deviation:
-
-#z(i) = 0.6745 (x(i)-M) / MAD
-#The multiplier 0.6745 is the 0.75th quartile of the standard normal distribution.
-
-
-def modified_z_score(intensity):
- median_int = np.median(intensity)
- mad_int = np.median([np.abs(intensity - median_int)])
- modified_z_scores = 0.6745 * (intensity - median_int) / mad_int
- return modified_z_scores
-threshold = 3.5
-intensity_modified_z_score = np.array(abs(modified_z_score(intensity)))
-plt.plot(wavelength, intensity_modified_z_score)
-plt.plot(wavelength, threshold*np.ones(len(wavelength)), label = 'threshold')
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel('Wavelength (cm-1)' ,fontsize = 20)
-plt.ylabel('|Modified Z-Score|' ,fontsize = 20)
-plt.show()
-
-
-
-# 1 is assigned to spikes, 0 to non-spikes:
-spikes = abs(np.array(modified_z_score(intensity))) > threshold
-plt.plot(wavelength, spikes, color = 'red')
-plt.title('Spikes: ' + str(np.sum(spikes)), fontsize = 20)
-plt.grid()
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel( 'Wavelength' ,fontsize = 20)
-plt.ylabel( 'Modified Z-scores > ' + str(threshold) ,fontsize = 20)
-plt.show()
-
-
-#The third approach
-#The third approach propose to make advantage of the high intensity and small width of spikes.  
-#،herefore use the difference between consecutive spectrum points Dx(i) = x(i)-x(i-1) to calculate the z-scores.
-
-# First we calculated Dx(i):
-dist = 0
-delta_intensity = [] 
-for i in np.arange(len(intensity)-1):
- dist = intensity[i+1] - intensity[i]
- delta_intensity.append(dist)
-delta_int = np.array(delta_intensity)
-# Alternatively to the for loop one can use: 
-# delta_int = np.diff(intensity)
-
-intensity_modified_z_score = np.array(modified_z_score(delta_int))
-plt.plot(wavelength[1:], intensity_modified_z_score)
-plt.title('Modified Z-Score using Dx(i)')
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel('Wavelength (cm-1)', fontsize = 20)
-plt.ylabel('Score', fontsize = 20)
-plt.show()
-
-#In order to apply a threshold to exclude spikes, the absolute value of the modified Z-score must be taken:
-#|z(i)| =|0.6745 (Dx(i)-M) / MAD|    
-
-threshold = 3.5
-intensity_modified_z_score = np.array(np.abs(modified_z_score(delta_int)))
-plt.plot(wavelength[1:], intensity_modified_z_score)
-plt.plot(wavelength[1:], threshold*np.ones(len(wavelength[1:])), label = 'threshold')
-plt.title('Modified Z-Score of Dx(i)', fontsize = 20)
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel('Wavelength (cm-1)', fontsize = 20)
-plt.ylabel('Score', fontsize = 20)
-plt.show()
-
-
-# 1 is assigned to spikes, 0 to non-spikes:
-spikes = abs(np.array(modified_z_score(intensity))) > threshold
-plt.plot(wavelength, spikes, color = 'red')
-plt.title('Spikes: ' + str(np.sum(spikes)), fontsize = 20)
-plt.grid()
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel( 'Wavelength' ,fontsize = 20)
-plt.show()
-
-
-plt.plot(wavelength[1:],
-np.array(abs(modified_z_score(delta_int))), color='black', label = '|Modified Z-Score using Dx(i)|')
-plt.plot(wavelength, np.array(abs(modified_z_score(intensity))), label = '|Modified Z-Score|', color = 'red')
-plt.plot(wavelength, np.array(abs(z_score(intensity))), label = '|Z-Score|', color = 'blue')
-plt.xticks(fontsize = 15)
-plt.yticks(fontsize = 15)
-plt.xlabel( 'Wavelength(cm-1)' ,fontsize = 20)
-plt.ylabel( 'Score' ,fontsize = 20)
-plt.legend()
-plt.show()
 
 
 
 
-def my_Stress_Strain(input_file,which,count):
-    '''
-    This function claculates the stress and strain
-    Parameters from load and elongation data
-    ----------
-    input_file : .csv format
-        the file must be inserted in csv.
-    whcih : str
-        please say which work we do ( plot or calculate?).
-    count: int
-        please enter the yarn count in Tex
-    remember: gauge length has been set in 250 mm
-    '''
 
-    #convert the file
-    mydf=pd.read_csv(input_file)
-
-    if which=='plot':
-       
-        stress=mydf['Load']/count
-        strain=mydf['Extension']/250
-        plt.plot(stress,strain)
-        plt.title('stress-strain curve')
-        plt.xlabel('stress')
-        plt.ylabel('strain')
-        plt.show()
     
     
-    if which=='max stress':
-        stress_max=mydf['stress'].max()
-        return stress_max
-
-    if which=='max strain':
-        strain_max=mydf['strain'].max()
-        return strain_max
-
-
-
-
-import pandas as pd
-import statistics as st
-import numpy as np
-import matplotlib.pyplot as plt
-
-
-
-
-def pressure_volume_ideal_gases(file,which):
-    '''
-    By using this function, the relationship between pressure and volume 
-    of ideal gases in thermodynamic will be shown.
-    
-    input_file : .csv format
-        *the file must be inserted in csv.
-        
-    whhch: str
-        what do you want this function to do?
-        
-    '''
-    
-    mydf=pd.read_csv(file)
-    
-    if which=='plot':
-        pressure=mydf['pressure']
-        volume=mydf['volume']
-        
-        plt.plot(volume,pressure)
-        plt.title('volume_pressure_chart')
-        plt.xlabel('pressure')
-        plt.ylabel('volume')
-        font_title={'family':'serif','color':'black','size':18}
-        font_label={'family':'serif','color':'red','size':12}
-        plt.show()
-        
-        
-        
-    elif which=='min pressure':
-        min_pressure=mydf['pressure'].min()
-        return min_pressure
-    
-    elif which=='max pressure':
-        max_pressure=mydf['pressure'].max()
-        return max_pressure
-    
-    elif which=='min volume':
-        min_volume=mydf['volume'].min()
-        return min_volume
-    
-    elif which=='max volume':
-         max_volume=mydf['volume'].max()
-         return max_volume
-    
-    elif which=='average pressure':
-         average_pressure=st.mean(pressure)
-         return average_pressure
-        
-    elif which=='average volume':
-         average_volume=st.mean(volume)
-         return average_volume
-            
-    elif which=='temperature':
-        n=1
-        R=0.821
-        temperature=(pressure*volume)/(n*R)
-        '''
-        This formula is from 'Introduction To The thermodinamics Of Materials
-        David R. Gaskell'
-        
-        '''
-        return temperature
-    
-    else:
-        print('No answer found')
-    
-        
     
 
 def Gradient_descent(dataset , which, alpha=0.001):
@@ -3931,24 +2707,13 @@ def Gradient_descent(dataset , which, alpha=0.001):
                    oldcost=newcost
                    
                    
-                   
-#ddd=Gradient_descent("C:\\Users\\Yasamin\\Desktop\\pga.csv",'cost')
-#df=Gradient_descent("C:\\Users\\Yasamin\\Desktop\\Data1.csv", 'plot')
-                   
-                   
+   
                     
     
     
     
-    
-
-import pandas as pd  
-
-
-import matplotlib.pyplot as plt   
- 
    
-def Energie(input_file,which):
+def Energie2(input_file,which):
     '''
     This is a function to drawing a plot or to calculating 
     the amount of Energie of a Motor to (open/close) a Valve in a cycle, which takes 2.7 secound to open and to close.
@@ -3992,40 +2757,12 @@ def Energie(input_file,which):
         
         return summ
     
-Energie( 'C:\\Users\\Fust\\Desktop\\Book1.xlsx', 1)
-Energie( 'C:\\Users\\Fust\\Desktop\\Book1.xlsx', 2)
 
 
-
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
-
-adrs='C:\\Users\\Brooz\\Desktop\\datafatigue.csv'
-data_fatigue=pd.read_csv('C:\\Users\\Brooz\\Desktop\\datafatigue.csv')
-data_fatigue.columns
-
-LoadRange=[]
-LoadCycles=[]
-
-for i in range (0,len(data_fatigue)):
-    a=data_fatigue['LoadRange LoadCycles'][i].split()
-    LoadRange.append(float(a[0]))
-    LoadCycles.append(float(a[1]))
-
-
-data={
-      "LoadRange":[30.0,24.0,24.0,22.0,22.0,21.0,20.0,20.0,18.0,18.0,16.0,16.0,16.0,15.0,14.0,14.0,13.0,12.0,12.0,11.0,11.0,10.0,10.0,9.5,9.0,9.0,8.0,8.0,8.0,7.0,7.0,6.0,6.0,6.0,5.8],
-      "LoadCycles":[3.462,6.239,7.063,10.189,10.307,11.632,12.593,16.732,20.029,22.292,25.587,27.244,45.298,45.496,66.416,73.128,90.897,95.377,118.807,119.701,192.865,241.237,336.543,345.543,353.876,528.773,886.545,948.345,1021.174,1413.543,1767.506,2081.14,2530.311,2561.642,2692.952]
-      }
-
-new_data=pd.DataFrame(data)
  
 
-def fatigue(new_data,which):
-    new_data=pd.DataFrame(data)
+def fatigue(f_loc,which):
+    new_data=pd.read_csv(f_loc)
     
     if which=='plot':
         x=new_data['LoadCycles']
@@ -4047,32 +2784,7 @@ def fatigue(new_data,which):
         return n
     
    
-adrs='C:\\Users\\Brooz\\Desktop\\datafatigue.csv'    
-fatigue(adrs,'plot')
-fatigue(adrs,'max_LoadCycles')
-fatigue(adrs,'max_LoadRange')
 
-
-#=================================
-#================================
-#===========================
-#====================
-#=============
-#=======coure33333333333333333333333333333333333333333333333
-#=======
-#============
-#====================
-#=========================
-#=================================
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-
-
-
-Data=pd.read_excell('C:\\Users\amina\Desktop\LL\signal-to-noise ratio')
 
 
 
@@ -4132,100 +2844,6 @@ def Signal_To_Noise_Ratio(data,application):
 
 
 
-
-#climate_change
-
-
-import numpy as np
-
-import matplotlib.pyplot as plt
-
-import pandas as pd
-
-a=np.random.uniform((54<62.276),(15.34<16.82),size=(6,3))
-data=pd.DataFrame(a,index=['year1980','year1990','year2000','year2010','year2020','year2024'],columns=['Fahrenheit','Celsius','Average Temperature'])
-data.max()
-
-data.dropna(inplace=True)
-data.info()
-
-plt.hist(a)
-plt.xlabel('Celsius')
-plt.ylabel('Fahrenheit')
-plt.show()
-x=['1980','1990','2000','2010','2020','2024']
-y=np.array([0,10,20,25,30,35,40])
-
-#Fahrenheit_Celsius
-
-def Fahrenheit_Celsius(a):
-    Fahrenheit=np.array(a['Celsius'])
-    Celsius=np.array(a['Fahrenheit'])
-    
-    if a=='plot':
-        plt.plot(Fahrenheit,Celsius)
-        plt.title('Fahrenheit','Celsius')
-        plt.show()
-        
-    elif a=='Average Temperature in 1980':
-        Average_Temperature1980=(59.62 + 15.344444)/2
-        return Average_Temperature1980
-    
-    elif a=='Average Temperature in 1990':
-        Average_Temperature1990=(59.8 + 15.44444)/2
-        return Average_Temperature1990
-    
-    elif a=='Average Temperature in 2000':
-        Average_Temperature2000=(54 + 12.2222)/2
-        return Average_Temperature2000
-    
-    elif a=='Average Temperature in 2010':
-        Average_Temperature2010=(58.4 + 14.66667)/2
-        return Average_Temperature2010
-    
-    elif a=='Average Temperature in 2020':
-        Average_Temperature2020=(58.82 + 14.9)/2
-        return Average_Temperature2020
-    
-    elif a=='Average Temperature in 2024':
-        Average_Temperature2024=(62.276 + 16.82)/2
-        return Average_Temperature2024
-
-def climate_change(data,application):
-    '''
-    
-
-    Parameters
-    ----------
-    data : climate change temperature
-        <class 'pandas.core.frame.DataFrame'>
-        Index: 6 entries, year1980 to year2024
-        Data columns (total 3 columns):
-         #   Column               Non-Null Count  Dtype  
-        ---  ------               --------------  -----  
-         0   Fahrenheit           6 non-null      float64
-         1   Celsius              6 non-null      float64
-         2   Average Temperature  6 non-null      float64
-        dtypes: float64(3)
-        memory usage: 192.0+ bytes
-    application : Fahrenheit to Celsius
-        The formula for converting Fahrenheit to Celsius is C = 5/9(F-32).
-        Fahrenheit and Celsius are the same at -40°. At ordinary temperatures, Fahrenheit is a larger number than Celsius.
-
-    climate_change:
-    the combined land and ocean temperature has increased at an average rate of 0.11° Fahrenheit (0.06° Celsius) per decade since 1850,
-    or about 2° F in total. The rate of warming since 1982 is more than three times as fast: 0.36° F (0.20° C) per decade.
-    '''
-
-
-
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import random
-
-#%%
 def polarization_control(Data,Application):
     '''
     
@@ -4309,22 +2927,9 @@ def polarization_control(Data,Application):
          return pressure.max()
     elif Application == 'Max_temp':    
          return temp.max()
-#%% Calling function
-time = np.reshape(np.arange(0,301),(301,1))
-temperature= np.reshape(np.random.normal(loc=40,scale=1,size=(301)),(301,1))
-pressure = np.reshape(np.random.normal(loc=2,scale=0.2,size=(301)),(301,1))
-reaction_percent= np.reshape(np.arange(0,301)/3,(301,1))
-
-data = np.concatenate((time,temperature,pressure,reaction_percent),axis=1)
-Data = pd.DataFrame(data,columns=['time','temp','pessure','percent'])
 
 
-polarization_control(Data,'temp_time')
 
-
-Data=pd.read_excel('/Users/elnazmac/Desktop/Desulfurization.xlsx')
-
-#################FUNCTION########################################
 
 def Desulfurization_Rate(Data,application):
     '''
@@ -4369,25 +2974,7 @@ def Desulfurization_Rate(Data,application):
 
 
 
-#karbord tabe1
-Data=pd.read_excel('/Users/elnazmac/Desktop/Desulfurization.xlsx')
-Desulfurization_Rate(Data,'plot')
 
-#karbord tabe2
-Data=pd.read_excel('/Users/elnazmac/Desktop/Desulfurization.xlsx')
-Desulfurization_Rate(Data,'Max_Removal_With_Ultrasonic')  
-
-#karbord tabe3
-Data=pd.read_excel('/Users/elnazmac/Desktop/Desulfurization.xlsx')
-Desulfurization_Rate(Data,'Max_Removal_Without_Ultrasonic')     
-    
-
-
-====================================
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-XRD=pd.read_excel('C:/Users/Nikan/Desktop/ZnO.xlsx')
 def XRD_ZnO(XRD,application):
     '''
     
@@ -4447,22 +3034,9 @@ def XRD_ZnO(XRD,application):
                 return crystal_size
 
 
-crystal_size = XRD_ZnO(XRD, 'Scherrer')
 
 
-XRD_ZnO(XRD,'plot')
-fwhm = XRD_ZnO(XRD, 'FWHM')
-
-crystal_size = XRD_ZnO(XRD, 'Scherrer')
-print(fwhm,crystal_size)
-
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-
-data = pd.read_excel(r'C:\Users\Admin\Downloads\Telegram Desktop\XRD.xlsx')
-
-def XRD(data,application):
+def XRD4(data,application):
     '''
     This function plots the XRD curve .
 
@@ -4510,15 +3084,8 @@ def XRD(data,application):
         
 
 
-XRD(data,'PLOT')
 
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import openpyxl 
-
-def Stress_Strain(data,application):
+def Stress_Strain6(data,application):
     '''
     this function converts F and dD to Stress and Strain by thickness(1.55mm), width(3.2mm) and parallel length(35mm).
 
@@ -4558,48 +3125,12 @@ def Stress_Strain(data,application):
         plt.xlabel('Strain(%)',fontdict=myfont_lables)
         plt.ylabel('Stress(N/mm2)',fontdict=myfont_lables)
         plt.show()
-#****************function test******************        
-titr=pd.DataFrame([[1,20],[2,34],[3,45],[4,67],[5,70],[4,89]],columns=['F','dD'])
-Stress_Strain(titr,'plot')
-Stress_Strain(titr,'elongation at break')
-Stress_Strain(titr,'strength')
-
-
-data_base=pd.read_excel('F-dD Data.xlsx')
-tensile=pd.DataFrame(np.array(data_base),columns=['F','dD'])
-
-#**********************clearing data***********************
-tensile.info()
-#out put: <class 'pandas.core.frame.DataFrame'>
-#RangeIndex: 3890 entries, 0 to 3889
-#Data columns (total 2 columns):
- #   Column  Non-Null Count  Dtype  
-#---  ------  --------------  -----  
-# 0   F       0 non-null      float64
-# 1   dD      0 non-null      float64
-#dtypes: float64(2)
-#memory usage: 60.9 KB
-# no empty cell and wrong format
-count1=0
-for i in tensile.index:
-    if tensile.loc[i,'F']<0:
-        count1=count1+1
-        print(count1) #out put:0 -------> no wrong data in F column
-
-count2=0
-for j in tensile.index:
-    if tensile.loc[j,'dD']<0:
-        count2=count2+count1
-        print(count2) #out put:0 -------> no wrong data in dD column
         
-Stress_Strain(tensile,'elongation at break')
-Stress_Strain(tensile,'strength')
-Stress_Strain(tensile,'plot')
+        
 
 
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
+
+
 def Imerssion_Test(data,application):
     '''
     
@@ -4640,27 +3171,8 @@ def Imerssion_Test(data,application):
         less_bioactive=data.columns[data.isin ([max_weight_losss]).any()]
         return less_bioactive
 
-data=pd.read_excel('weight gain.xlsx') 
-Imerssion_Test(data,'Less_Bioactive')      
 
 
-mport numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-import math 
-
-
-time=np.arange(0,101).reshape(-1,1)
-temp=np.random.uniform(0,101,size=101).reshape(-1,1)
-pressure=np.random.uniform(0,5,size=101).reshape(-1,1)
-conv=np.random.uniform(0,91,size=101).reshape(-1,1)
-c=np.concatenate([time,temp,pressure,conv],axis=1)
-data_dasti=pd.DataFrame(c,columns=['time','temp','pressure','conv'])
-sotune4=np.array(data_dasti['conv'])
-sotune2=np.array(data_dasti['temp'])
-
-#data=pd.read_excel(r"C:\Users\asus\Desktop\A2_Prjct.xlsx.xlsx")
-#dat=pd.read_csv(r'C:\Users\asus\Desktop\A2_Prjct.xlsx.xlsx')
 
 def Conversion(data,app):
     '''
@@ -4732,22 +3244,8 @@ def Conversion(data,app):
     return sotune3  
     return sotune4        
 
-Conversion(data_dasti,'maximum conversion')
-Conversion(data_dasti,'plot_pressure')
 
 
-
-#import section
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-#====================================================================================
-#====================================================================================
-
-#########------>>>>>>> Step0 Cleanin Data <<<<<<<<<<<<<----------------
-
-#$$ we can make a function to import a csv file and make sure the data pass the step0 (or cleaning data) 
 
 
 def Import_Data(File_Directory=None):
@@ -4808,26 +3306,8 @@ def Import_Data(File_Directory=None):
     return data
         
             
-            
-            
- #====================================================================================
- #====================================================================================
 
- ##font definitions for title and labels
 
-title_style={'family':'times new roman',
-             'color':'red',
-             'size':28}
-label_style={'family':'times new roman',
-              'color':'black',
-             'size':18}
-
- #====================================================================================
- #====================================================================================           
-            
- 
-#########------>>>>>>> Main function for cyclic voltammetry investigations <<<<<<<<<<<<<----------------            
-            
 
 def CV(data=None,Application=None, is_reversible=None):
     '''
@@ -4853,6 +3333,12 @@ def CV(data=None,Application=None, is_reversible=None):
     
 
     '''
+    title_style={'family':'times new roman',
+                 'color':'red',
+                 'size':28}
+    label_style={'family':'times new roman',
+                  'color':'black',
+                 'size':18}
     
 #--> ensure the defined-file name (data) is in calling section
     
@@ -4919,13 +3405,8 @@ def CV(data=None,Application=None, is_reversible=None):
         print('The value of Diffusion coefficient for your electrochemical reaction is:',Diffusion_Coefficient )
         return Diffusion_Coefficient
 
-#import math
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 
 
-#---------------------- Example 1 ------------------------------------
 
 def Product_Of_Vectors(data,app):
     
@@ -4962,14 +3443,7 @@ def Product_Of_Vectors(data,app):
         return output
 
 
-a=np.random.uniform(-5,10,size=100).reshape(-1,1)
-b=np.random.uniform(0,10,size=100).reshape(-1,1)
-c=np.concatenate([a,b],axis=1)
-data=pd.DataFrame(c,columns=['vector1','vector2'])
-Product_Of_Vectors(data,'plot') 
-Product_Of_Vectors(data,'calculate')   
 
-#-------------------- Example 2 ---------------------------------
 def Echelon_Matrix(data,ap):
     '''
     یک ماتریس 90در 200 داریم که مثلا 200 مولفه را در مورد سلامت نود نفر جمع آوری کردیم
@@ -5002,64 +3476,7 @@ def Echelon_Matrix(data,ap):
         A=np.triu(data)
         return A
    
-aa=np.random.randint(0,100,(90,200)) 
-Echelon_Matrix(aa,'plot')
-Echelon_Matrix(aa,'up')
 
-
-
-
-
-def MyFunction(data,application):
-     if application=='plot':
-         x=data['DT']
-         #print(x)
-         y=data['Gold']
-         plt.plot(x,y)
-         plt.xlabel('Date')
-         plt.xticks(rotation=90)
-         plt.ylabel('Gold Price per OUNS')
-         plt.title('Gold Price base on USD')
-         plt.show()  
-     elif application=='operation':
-         Converting_Gold_Price_to_Toman(data)
-         
-         
-'''
-Converting_Gold_Price_to_Toman
-
-input:
-data pandas dataframe 
- 
-
-output:
-data pandas dataframe
-'''
-def Converting_Gold_Price_to_Toman(ddf):
-     a=np.array(ddf['Gold'])
-     ddf['Doller'] = pd.to_numeric(ddf['Doller'], errors='coerce')
-     b=np.array(ddf['Doller'])
-     c=np.multiply(a,b)
-     c=np.divide(c,31.1035)
-     c=np.multiply(c,1000)
-     ddf['Gold price in Toman']=c
-     datadata.rename(columns={'Date':'DT', 'GLD': 'Gold', 'DLR': 'Doller'}, inplace=True)
-     print('\n')
-     print(ddf[['DT','Gold price in Toman']])
-     return(ddf)
-    
-
-
-#load data into a DataFrame object from csv file:
-datadata=pd.read_csv('Gold_price.csv')
-datadata.rename(columns={'Date':'DT', 'GLD': 'Gold', 'DLR': 'Doller'}, inplace=True)
-command=0
-while(int(command)!=1 and int(command)!=2):
-     command=input('\nWelcom to converting Gold Price in first three monthes of 2017: \nwhich action would you like to do?\n1-for drawing a plot press 1\n2-for doing action press 2  ')
-if(int(command)==1):
-   MyFunction(datadata,'plot')
-elif(int(command)==2):
-   MyFunction(datadata,'operation')
 
 
 
@@ -5153,26 +3570,6 @@ def Fatigue_Test_Analysis(data,application):
 
 
 
-import openpyxl
-import pandas as pd
-import numpy as np
-import math 
-from matplotlib import pyplot as plt
-
-Data = pd.read_excel(r"C:\Users\Bartar\OneDrive\Desktop\project\BTC_Price(2022)2.xlsx" )
-
-Data.info()
-
-Data.dropna(inplace=0)
-#a = pd.DataFrame(Data)
-#a['Price'] = a['Price'].astype(float)
-#a['Data'] = a['Data'].astype(str)
-
-#for i in a.index:
-    # data.loc[5,['Temp']]=None
- #   if a.loc[i, ['Price']] < 0:
-  #      a = a.drop(i)
-   # if DAta.
 
 def Price_BTC(Data,application):
     '''
@@ -5220,7 +3617,6 @@ def Price_BTC(Data,application):
     elif APP == 'MIN_DATE':
         return Date[0],Price[0]
     
-print (Price_BTC(Data,'plot'))
 
 
 
