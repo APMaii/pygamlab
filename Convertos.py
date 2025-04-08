@@ -258,13 +258,13 @@ def Pounds_Per_Cubic_Inch_To_Kilogeram_Per_Cubic_Meter(LbPerCubicInch):
 
 
 
-def KiloMeter_To_LightYear (km):
+def KiloMeter_To_LightYear(km):
     ly = km / 9460730472801.1
     return ly
 
 
 
-def LightYear_To_KiloMeter (ly):
+def LightYear_To_KiloMeter(ly):
     km = ly * 9460730472801.1
     return km
 
@@ -367,7 +367,6 @@ def Megapascal_To_Pascal(Megapascal):
     Pascal : the unit of pressure or stress in SI.
     '''
     
-    global Pascal
     Pascal=Megapascal/1000000
     return Pascal
 
@@ -385,7 +384,6 @@ def Pascal_To_Megapascal(Pascal):
 
     '''
     
-    global Megapascal
     Megapascal=1000000*Pascal
     return Megapascal
 
@@ -671,7 +669,7 @@ def Centigrade_To_Fahrenheit(C):
 
 
 
-##-----------------------------------------------------------------------------
+
   
 def Pascal_to_mmHg(p):
     '''
