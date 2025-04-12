@@ -58,6 +58,7 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 
 
 
+'''
 #import-----------------------------------------
 import math
 import statistics
@@ -145,7 +146,13 @@ class NavierStokesSolver:
         plt.show()
 
 
+'''
 
+
+
+
+
+#**
 '''
 # Example Usage:
 domain_size = 50
@@ -164,6 +171,9 @@ solver.plot_results()
 '''
 
 
+
+
+'''
 domain_size = 50
 viscosity = 0.01
 density = 1.0
@@ -1487,7 +1497,11 @@ X, Y = numpy.meshgrid(x, y)
 surf = ax.plot_surface(X, Y, u[:], cmap=cm.viridis)
 pyplot.show()
 
+'''
 
+
+
+#**
 '''
 fig = pyplot.figure(figsize=(11, 7), dpi=100)
 ax = fig.gca(projection='3d')     
@@ -1496,6 +1510,10 @@ surf = ax.plot_surface(X, Y, u[:], cmap=cm.viridis)
 pyplot.show();
 '''
 
+
+
+
+'''
 # Calc with Loops
 t = time.time()
 u = numpy.ones((ny, nx))
@@ -1624,8 +1642,10 @@ dt=0.07
 #arrays of variables
 r=np.random.rand(n,D)*LL #initialize all random positions
 v=np.random.rand(n,D)-0.5 #initialize with random velocity
+'''
 
 
+#**
 '''
 def update(r,v,dt):
     newr=r+dt*v
@@ -1635,6 +1655,9 @@ def update(r,v,dt):
     if BC==1:
         newr,newv=reflectBC(newr,v)
     return newr,newv
+
+'''
+
 
 '''
 def update(r,v,dt):
@@ -1785,6 +1808,12 @@ def LJpot(r,i,sig,eps):
     return LJP
     
 '''
+
+
+
+
+#**
+'''
 def LJpot(r,i,sigg,epss):
     sg=np.delete(np.array([sigg[tp[j]] for j in range(n)]),i)
     ep=np.delete(np.array([epss[tp[j]] for j in range(n)]),i)
@@ -1801,6 +1830,9 @@ def LJpot(r,i,sigg,epss):
 '''
 
 
+
+
+'''
 def dLJp(r,u,sig,eps):
     drv=r-r[i] #distance in each dimension
     drv=np.delete(drv,i,0) #remove ith element (no self LJ interactions)
@@ -1818,6 +1850,10 @@ def dLJp(r,u,sig,eps):
 
 #this is calculate the gradiat --> delta P=-24... xij yij zij
 #Gradient of Lennard-Jones potential
+'''
+
+
+#**
 '''
 def dLJp(r,i,sigl,epsl,bnds):
     sg=np.delete(np.array([sigl[tp[j]] for j in range(n)]),i)
@@ -1837,6 +1873,10 @@ def dLJp(r,i,sigl,epsl,bnds):
     r14vs=np.sum(r14v,axis=0)
     dLJP=24.0*(r14vs-r8vs)
     return dLJP
+
+'''
+
+
 
 '''
 
@@ -1867,6 +1907,12 @@ def update(r,v,dt):
 
 
 '''
+'''
+
+
+
+
+#**
 def updatev(r,v,dt,sigg,epss):
     #calculate acceleration:
     F=-np.array([dLJp(r,i,sigg[tp[i]],epss[tp[i]],bnd) for i in range(n)]) #LJ
@@ -1890,7 +1936,7 @@ def updatev(r,v,dt,sigg,epss):
 #=========================================
 #=========================================
 
-
+'''
 #you can start with two particcle
 
 from mpl_toolkits import mplot3d
@@ -2010,3 +2056,5 @@ for i in range(100):
 plt.show()
 
 #hamin nshon mide ba yekam moshkel
+
+'''
