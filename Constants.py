@@ -77,7 +77,6 @@ N_a = 6.022*10**23              #molecules/mol (Avogadro's Number)
 k = 1.381*10**(-23)             #J/K (Boltzmann's Constant)
 alpha = 5.67*10**(-8)           #W/m^2/K^4 (Stefan-Boltzmann Constant)
 R = 8.314                       #J/mol/K (Gas costant)
-Visible = range(380, 750, 10)   #Visible Wavelength
 h = 6.626*10**(-34)             #J.s (Planck's Constant)
 c = 2.998*10**8                 #m/s (speed of light)
 pi=3.14
@@ -169,7 +168,6 @@ G_Mol_Ti = 47.87   #titanium
 
 
 k= 534.6
-pi= 3.14
 F=96485
 R=8.314
 g=23
@@ -231,7 +229,6 @@ N_a = 6.022*10**23              #molecules/mol (Avogadro's Number)
 k = 1.381*10**(-23)             #J/K (Boltzmann's Constant)
 alpha = 5.67*10**(-8)           #W/m^2/K^4 (Stefan-Boltzmann Constant)
 R = 8.314                       #J/mol/K (Gas costant)
-Visible = range(380, 750, 10)   #Visible Wavelength
 h = 6.626*10**(-34)             #J.s (Planck's Constant)
 c = 2.998*10**8                 #m/s (speed of light)
 
@@ -336,8 +333,7 @@ m_sun=1.989*(10**30)                    #(kg)Mass_of_the_Sun
 m_mars=6.41693*(10**23)                 #kg)Mass_of_the_Mars
 r_earth_sun=1.496*(10**11)              #(m)Average_distance_from_Earth_to_the_Sun
 r_mars_sun=220.14*(10**9)               #(m)Average_distance_from_Mars_to_the_Sun
-F=G*((m_earth*m_sun)/r_earth_sun**2)    #(N)Force_of_gravity
-F2=g*((m_mars*m_sun)/r_mars_sun**2)     #(N)Force_of_gravity2
+
 
 B  = 1.38e-23          # Boltzman constant  J/k
 EC = 1.602e-19         # Electron charge  C
@@ -346,16 +342,7 @@ FC = 9.648e4           # Faraday constant C/mol
 PC = 6.626e-34         # Plank constant Js 
 AG = 9.8               # Acceleration gravity  m/s^2
 
-####ثابت بولتزمن 
-######ثابت پلانک 
-##ثابت جهانی گاز ها 
-#####ثابت گرانش 
-####عدد آوگادرو
-k=1.380649*(10**-23)(J.K^-1)
-h=6.62607015*(10**-34)(kg.m^2.S-1)
-R=8.134(J.K^-1.mol^-1)
-G=6.67*(10**-11)(m^3/Kg*S^2)
-NA=6.02214076*(10**23)
+
 
 NA = 6.02214076 * (10 ** 23)     #Avogadro constant (1/mol)
 h = 6.62607015 * (10 ** -34)     #Planck constant (J/Hz)
