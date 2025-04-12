@@ -64,10 +64,7 @@ import pandas as pd
 #import matplotlib as plt
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-
 from matplotlib.ticker import AutoMinorLocator
-import pandas as pd
-
 import seaborn as sns 
 from scipy import stats
 from scipy.integrate import solve_bvp
