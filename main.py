@@ -40,12 +40,20 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 
 
 '''
-
-import numpy as np
+import math
+import numpy
 import random
 import statictic
 import scipy
-import pandas as pd
+import pandas 
+import matplotlib 
+import matplotlib.pyplot
+import matplotlib.ticker 
+import seaborn 
+import scipy
+import sklearn
+
+
 
 
 __version__ = "0.0"
@@ -53,12 +61,8 @@ __version__ = "0.0"
 
 
 def get_info():
-    print('Besie constants there are two type of functions: 1-first functions 2-converter functions')
     print('----------------------')
-    print('All contsants is listed below: \n     pi,ti,si,ci,ki,l,m,n,t,q,r,s \n     s,g,h,t,xc')
+    print('Besid constants there are threee type of functions: 1-converter 2-SCINTIFIC functions 3-data analysis functions')
     print('----------------------')
-    print('All functions is listed below:\n [Generate_building] , [ generating_host] ,[generating_soup] \n')
-    print('----------------------')
-    print('Converters is listed below: \n [celisius to farenhite] , [farenhite to celisius]')
-    print('All contsants is listed below: \n     pi,ti,si,ci,ki,l,m,n,t,q,r,s \n     s,g,h,t,xc')
+    
     
