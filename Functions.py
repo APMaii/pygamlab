@@ -50,7 +50,6 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 #import-----------------------------------------
 import math
 import statistics
-import cmath
 import random
 import numpy as np
 import pandas as pd
@@ -497,23 +496,6 @@ def Brinell_Hardness_Calculation (d1,d2,D,p):
 
 
 
-def Copolymer_Type(Copolymer):
-    co_list = Copolymer.split()
-    change = []
-    for i in range(1,len(co_list)):
-        if co_list[i] != co_list[i-1]:
-            change.append(True)
-        else:
-            change.append(False)
-
-    if change.count(False) == 0:
-        print('alternative')
-    elif change.count(True) == 0:
-        print('This is not a copolymer')
-    elif change.count(True)==1:
-        print('Block')
-    else: 
-        print('Random')
         
         
         
@@ -622,12 +604,6 @@ def Circle_Perimeter(radius):
     
 
 
-def Circle_Area(r):
-    x=r**2*math.pi
-    return x
-
-
-
 
 
 
@@ -727,7 +703,7 @@ def Contact_Angle(num1,num2,num3):
     degrees
 
     '''
-    import math
+    
     costeta= (num1-num3)/num2
     teta = math.acos(costeta)
     teta_degree= teta*180/math.pi
@@ -1049,13 +1025,6 @@ def Drag_Force(Velocity,Fluid_Coefficent,Fluid_Density,cross_sectional_area,):
    D = ((Velocity**2)*(Fluid_Density)*(Fluid_Coefficent)*(cross_sectional_area))/2
    return D
     
-
-
-
-
-def Density (mass,volume):
-    d=mass/volume
-    return d
 
 
 
@@ -1659,12 +1628,6 @@ def Fabric_weight(density,area):
 
 
 
-def Fibonachi_Sequence (N):
-    fibo = 0
-    for i in range(0,N+1):
-        fibo = fibo + i
-    return fibo
-
 
 
 def faradays_law(induced_emf, time, magnetic_flux):
@@ -1711,7 +1674,6 @@ def Fick_Sec_Thin(Thickness,Diffusion_coefficient,Time,Thin_layer_Consistency,Po
     C_x_t : float
         It shows the concentration of the metal separated from the thin layer and moved in a certain time in the desired location. output will be gr/cm^3
     '''
-    import math
     pi=3.14
     if Thin_Layer_Metal=='Cu'and Second_metal=='Ni':
         Diffusion_coefficient=0.2698 # @Temprature=1000 K
@@ -3210,7 +3172,7 @@ def PengRobinson(T = None,P = None,Tc = None,Pc = None,w = None,MW = None,Phases
         result = np.array(['N/A','N/A','N/A'])
     
 
-    return Z,fhi,density
+    return result
 
 
 
@@ -3380,7 +3342,6 @@ def Rolling_Parameters_Calculator (roller_radius, flow_stress, sample_width,
     
     
     
-    import math
     if coefficient_of_friction == None :
         
         # calculating delta h max (assumed frcition coefficient 0.2)
@@ -3644,15 +3605,6 @@ def Surface_Area_To_Volume_Ratio(Shape,Diameter=0,a=0):
 
 
 
-
-
-def Sphere_Volume (R):
-    V = (4/3)* math.pi * R**3
-    return V
-
-
-
-
 def Sphere_Area (R):
     S = 4 * math.pi * R**2
     return S
@@ -3908,12 +3860,6 @@ def Tensile_Strength (f,a):
 
 
 
-def Tensile_Strength(Maxloud,cross_sectional_area):
-    tensilestrength=Maxloud/cross_sectional_area
-    return tensilestrength
-    
-
-
 
 
 
@@ -3991,7 +3937,7 @@ def TB():
     guess=0
     p=[]
     U=0
-    import math
+
     print(Material)
     for i in range(0,N):
         I=[int(input('enter component index='))] 
@@ -4057,7 +4003,7 @@ def TD():
     guess=0
     p=[]
     U=0.1
-    import math
+
     print(Material)
     for i in range(0,N):
         I=[int(input('enter component index='))] 
@@ -4177,7 +4123,7 @@ def Tresca_Yield_For_Biaxial_Tension(c,hardness,sigma_xx,sigma_yy,tau_xy,/):
         DESCRIPTION.
 
     '''
-    import math
+
     sigma_y = c*hardness
     sigma_max=(sigma_xx + sigma_yy)/2 + math.sqrt(((sigma_xx-sigma_yy)/2)**2 + tau_xy**2)
     sigma_min=(sigma_xx + sigma_yy)/2 - math.sqrt(((sigma_xx-sigma_yy)/2)**2 + tau_xy**2)
@@ -4559,6 +4505,3 @@ def Welding_Deposition_Rate(Deposited_Metal_Mass,Welding_Time):
 
 def uncertainty_principle(delta_position, delta_momentum, hbar):
     return delta_position * delta_momentum - hbar / 2
-
-
-
