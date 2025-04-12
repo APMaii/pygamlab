@@ -46,7 +46,7 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 @Graphene Advanced Material Laboratory: https://www.GamLab.Aut.ac.ir
 
 '''
-
+import math
 
 #Constant-------------------------------------------
 pi=3.1415926536
