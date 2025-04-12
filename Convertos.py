@@ -62,7 +62,6 @@ def Celsius_To_Kelvin(t):
 
 
 
-
 def Square_Meter_To_Square_Cm(b):
     
     '''
@@ -167,21 +166,26 @@ def Liter_To_Cubic_Meter(number_in_Liter):
 
 # Celcius_To_Kelvin
 def Celcius_To_Kelvin (Celcius):
-  '''
-This function is used to convert celcius to kelvin
-The tempreture in celcius is different from the tempreture in kelvin by 273.15
-
-  '''
+    
+    
+    '''
+    This function is used to convert celcius to kelvin
+    The tempreture in celcius is different from the tempreture in kelvin by 273.15
+    
+    '''
     Kelvin = Celcius + 273.15
     return Kelvin
 
+
+
+
 #Kelvin_to_celcius
 def Kelvin_to_Celcius (Kelvin):
-  '''
+    '''
   This function is used to convert kelvin to celcius
   The tempreture in celcius is different from the tempreture in kelvin by 273.15
-
-  '''
+  
+    '''
     Celcius = Kelvin - 273.15
     return Celcius
 
@@ -637,7 +641,7 @@ def Radians_To_Degrees (num):
     
     This function is used for convert radians to degree
     '''
-    degree=num*180/pi
+    degree=num*180/math.pi
     return degree
 
 #convertor2
@@ -740,7 +744,7 @@ def Electronvolt_To_Joule(e_v):
 
 
 def Degree_To_Radian(deg):
-  '''
+    '''
 This function converts values of angle from degree to radian.
 '''
     rad=deg*3.141592653589793/180
@@ -832,12 +836,12 @@ def Viscosity_To_Pas(poise):
 
 
  
-def Meter_To_inch:
+def Meter_To_inch(m):
     In=m*0.0254
     return In
 
 
-def Inch_To_Meter :
+def Inch_To_Meter(In):
     m=In/0.0254
     return m
     
@@ -1722,7 +1726,3 @@ def  Mpy_To_current_density(mpy,density,masschange,valency):
     """
     Current_density=(mpy*1e6*density*2.5*valency*96500)/(31536000*masschange*1000)
     return Current_density
-
-
-
-
