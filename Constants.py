@@ -411,7 +411,6 @@ NA = 6.023*10**23
 # Faraday's Constant
 F= 96485                #C/mole
 #Boltzmann Constant
-k_B = 1.381*10**-23         #J/K
 #Planck's Constant
 h = 6.626*10**-34           #JS
 
