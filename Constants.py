@@ -247,7 +247,6 @@ Tm=14.025 ## hydrojen melting point in K
 
 vacuum_permeability=1
 π=3.14
-G=6.674 * 10^-11 
 e=2.71828
 k=9*10**9
 
