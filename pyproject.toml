@@ -25,3 +25,6 @@ dependencies = [
   "scikit-learn"
 ]
 
+
+[project.urls]
+Source = "https://github.com/APMaii/pygamlab/tree/main"
