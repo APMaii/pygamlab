@@ -43,3 +43,13 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 '''
 
 
+
+__version__ = "0.1.2"
+
+
+
+__all__ = ["Constants", "Convertors", "Functions", "Data_Analysis"]
+
+
+
+
