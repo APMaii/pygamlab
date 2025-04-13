@@ -187,7 +187,56 @@ def Energie(input_file,which):
 
 
 
-def Stress_Strain1(input_file,which,count):
+
+
+
+def Stress_Strain1(df,operation,L0=90,D0=9):
+    '''
+    
+    
+    This function gets data and an operation .
+    It plots Stress-Strain curve if the oepration is plot 
+    and finds the UTS value (which is the ultimate tensile strength) otherwise.
+    ------------------------------
+    Parameters
+    ----------
+    df : DataFrame
+       It has 2 columns: DL(which is length in mm) & F (which is the force in N).
+    operation :
+       It tells the function to whether PLOT the curve or find the UTS valu. 
+       
+     L0: initial length of the sample
+     D0: initial diameter of the sample
+
+    Returns
+    -------
+    The Stress-Strain curve or the amount of UTS
+    
+    '''
+    
+    A0 = math.pi / 4 * (D0 ** 2)
+    df['e'] = df['DL'] / L0
+    df['S'] = df['F'] / A0
+    if operation == 'PLOT':
+        plt.scatter(df['e'], df['S'])
+        plt.xlabel('e')
+        plt.ylabel('S')
+        plt.title('S vs e Plot')
+        plt.grid(True)
+        plt.show()
+    elif operation == 'UTS':
+        return df['S'].max()
+    else:
+        print("Please enter proper operation")
+        return
+
+
+
+
+
+
+
+def Stress_Strain2(input_file,which,count):
     '''
     This function claculates the stress and strain
     Parameters from load and elongation data
@@ -222,55 +271,8 @@ def Stress_Strain1(input_file,which,count):
     if which=='max strain':
         strain_max=mydf['strain'].max()
         return strain_max
-
-
-
-
-def Strain_Stress2(df,operation):
-    '''
     
     
-    This function gets data and an operation .
-    It plots Stress-Strain curve if the oepration is plot 
-    and finds the UTS value (which is the ultimate tensile strength) otherwise.
-    ------------------------------
-    Parameters
-    ----------
-    df : DataFrame
-       It has 2 columns: DL(which is length in mm) & F (which is the force in N).
-    operation :
-       It tells the function to whether Plot the curve or find the UTS valu. 
-
-    Returns
-    -------
-    The Stress-Strain curve or the amount of UTS
-    
-    '''
-    L0 = 40
-    #L0: initial length of the sample
-    D0 = 9
-    #D0: initial diameter of the sample
-    A0 = math.pi / 4 * (D0 ** 2)
-    df['e'] = df['DL'] / L0
-    df['S'] = df['F'] / A0
-    if operation == 'PLOT':
-        plt.scatter(df['e'], df['S'])
-        plt.xlabel('e')
-        plt.ylabel('S')
-        plt.title('S vs e Plot')
-        plt.grid(True)
-        plt.show()
-    elif operation == 'UTS':
-        return df['S'].max()
-    else:
-        print("Please enter proper operation")
-        return
-
-
-
-
-
-
 def Stress_Strain3(input_data, action):
     stress = input_data['Stress (MPa)']
     strain = input_data['Strain (%)']
@@ -1251,10 +1253,10 @@ def Xrd_Analysis(data, operation):
     operation : str
         determine an operation which apply on data
         possible values:
-            information
             max intensity
             scatter plot
             line graph
+            line graph fill between
     Returns
     -------
     max intensity and degree of max intensity 
