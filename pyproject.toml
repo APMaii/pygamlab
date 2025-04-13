@@ -28,4 +28,3 @@ dependencies = [
   "scikit-learn"
 ]
 
-[project.urls]
