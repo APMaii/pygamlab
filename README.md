@@ -109,49 +109,64 @@ git clone https://github.com/APMaii/pygamlab.git
 ```python
 import PyGamLab
 
+
+import PyGamLab.Constants as gamcn
+import PyGamLab.Convertos as gamcv
+import PyGamLab.Functions as gamfunc
+import PyGamLab.Data_Analysis as gamdat
+
+
+
 #--------------Constants-----------------------
 
-print(PyGamLab.Constants.melting_point_of_Cu)
-print(PyGamLab.Constants.melting_point_of_Al)
-print(PyGamLab.Constants.Fe_Tm_Alpha)
-print(PyGamLab.Constants.Fe_Tm_Gama)
+print(gamcn.melting_point_of_Cu)
+print(gamcn.melting_point_of_Al)
+print(gamcn.Fe_Tm_Alpha)
+print(gamcn.Fe_Tm_Gama)
 
-print(PyGamLab.Constants.Boltzmann_Constant)
-print(PyGamLab.Constants.Faraday_Constant)
-
-#----------------Convertors---------------------
-
-print(PyGamLab.Convertors.Kelvin_to_Celcius(300))
-print(PyGamLab.Convertors.Coulomb_To_Electron_volt())
-print(PyGamLab.Convertors.Angstrom_To_Milimeter())
-print(PyGamLab.Convertors.Bar_To_Pascal())
-
-#------------Functions-----------------------
-
-PyGamLab.Functions.Gibs_free_energy(H0,T,S0)
+print(gamcn.Boltzmann_Constant)
+print(gamcn.Faraday_Constant)
 
 
-PyGamLab.Functions.Bragg_Law(h, k, l, a, y)
+#----------Converters------------------------
+
+print(gamcv.Kelvin_to_Celcius(300))           # Convert 300 K to °C
+print(gamcv.Coulomb_To_Electron_volt(1))      # Convert 1 Coulomb to eV
+print(gamcv.Angstrom_To_Milimeter(1))         # Convert 1 Å to mm
+print(gamcv.Bar_To_Pascal(1))                 # Convert 1 bar to Pascal
+
+#-----------Functions------------------------
+
+# Gibb's Free Energy: G = H0 - T*S0
+H0 = 100  # Enthalpy in kJ/mol
+T = 298   # Temperature in Kelvin
+S0 = 0.2  # Entropy in kJ/mol·K
+print(gamfunc.Gibs_free_energy(H0, T, S0))
 
 
-PyGamLab.Functions.Electrical_Resistance(v,i)
+# Electrical Resistance: R = V / I
+voltage = 10         # in Volts
+current = 2          # in Amperes
+print(gamfunc.Electrical_Resistance(voltage, current))
 
-
-PyGamLab.Functions.Hall_Petch(d_grain,sigma0,k)
+# Hall-Petch Relationship: σ = σ0 + k / √d
+d_grain = 0.01       # Grain diameter in mm
+sigma0 = 150         # Friction stress in MPa
+k = 0.5              # Strengthening coefficient in MPa·mm^0.5
+print(gamfunc.Hall_Petch(d_grain, sigma0, k))
 
 #-----------Data_Analysis--------------------
 import pandas as pd
 
 df= pd.read_csv('/users/apm/....../data.csv')
-PyGamLab.Data_Analysis.Stress_Strain1(df, 'PLOT')
-my_uts=PyGamLab.Data_Analysis.Stress_Strain1(df, 'UTS')
+gamdat.Stress_Strain1(df, 'PLOT')
+my_uts=gamdat.Stress_Strain1(df, 'UTS')
 
 
 data=pd.read_csv('/users/apm/....../data.csv')
-my_max=PyGamLab.Data_Analysis.Xrd_Analysis(data,'max intensity')
-PyGamLab.Data_Analysis.Xrd_Analysis(data,'scatter plot')
-PyGamLab.Data_Analysis.Xrd_Analysis(data,'line graph')
-
+my_max=gamdat.Xrd_Analysis(data,'max intensity')
+gamdat.Xrd_Analysis(data,'scatter plot')
+gamdat.Xrd_Analysis(data,'line graph')
 ```
 
 
