@@ -63,6 +63,29 @@ Features include:
 - Performing scientific calculations
 - Creating visualizations (e.g., line plots, scatter plots, histograms)
 
+
+
+---
+
+## 📦 Requirements
+
+To use **PyGamLab**, make sure you have the following Python packages installed:
+
+- `numpy`
+- `pandas`
+- `scipy`
+- `matplotlib`
+- `seaborn`
+- `scikit-learn`
+
+You can install all dependencies using:
+
+```bash
+pip install numpy pandas scipy matplotlib seaborn scikit-learn
+```
+
+
+
 ---
 
 ## 🚀 Installation
