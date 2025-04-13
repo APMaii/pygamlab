@@ -6,10 +6,10 @@
 
 ## 📌 Overview
 
-**PyGAMLab** stands for *Python GAMLAb tools*, a collection of scientific tools and functions developed at the **GAMLab** by **Ali Pilehvar Meibody** under the supervision of **Prof. Malek Naderi** at **Gamlab (Graphene and Advanced Material Laboratory)** under supervision of **Amirkabir University of Technology (AUT)**.
+**PyGAMLab** stands for *Python GAMLAb tools*, a collection of scientific tools and functions developed at the **GAMLab (Graphene and Advanced Material Laboratory)** by **Ali Pilehvar Meibody** under the supervision of **Prof. Malek Naderi** at  **Amirkabir University of Technology (AUT)**.
 
 - **Author:** Ali Pilehvar Meibody  
-- **Supervisor:** Prof. Naderi  
+- **Supervisor:** Prof. Malek Naderi  
 - **Affiliation:** GAMLab, Amirkabir University of Technology (AUT)
 
 ---
@@ -90,7 +90,7 @@ pip install numpy pandas scipy matplotlib seaborn scikit-learn
 
 ## 🚀 Installation
 
-To install PyGAMLab via pip (after uploading it to PyPI):
+To install PyGAMLab via pip:
 
 ```bash
 pip install pygamlab
@@ -186,15 +186,6 @@ pygamlab/
 
 
 ---
-
-
-
-
-
-
-
-
----
 ## 🤝 Contributing
 
 **Contributions** are welcome! Here's how to get started:
@@ -233,7 +224,7 @@ This project is part of the scientific research activities at **GAMLab (Generali
 
 Special thanks to:
 
-- **Prof. Nader** – For his guidance, mentorship, and continuous support.
+- **Prof. Malek Naderi** – For his guidance, mentorship, and continuous support.
 - **Ali Pilehvar Meibody** – Main developer and author of PyGamLab.
 - **GAMLab Research Group** – For providing a collaborative and innovative environment.
 
