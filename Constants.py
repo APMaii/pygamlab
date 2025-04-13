@@ -64,7 +64,6 @@ pi = 3.14159
 e = 2.71828
 g = 9.81                                          # Gravitational constant
 h =  6.634 * 10**-34                              # constant pelank
-k , b = 1.38 * 10 ** -23                          # J/mjck constant of boltzman       
 tau = 6.28
 R =0.08206           #unit = ((L*atm) / (mol*k)) # Global constant of gases
 pi=3.14
