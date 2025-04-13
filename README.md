@@ -121,10 +121,10 @@ print(PyGamLab.Constants.Faraday_Constant)
 
 #----------------Convertors---------------------
 
-print(PyGamLab.Convertos.Kelvin_to_Celcius(300))
-print(PyGamLab.Convertos.Coulomb_To_Electron_volt())
-print(PyGamLab.Convertos.Angstrom_To_Milimeter())
-print(PyGamLab.Convertos.Bar_To_Pascal())
+print(PyGamLab.Convertors.Kelvin_to_Celcius(300))
+print(PyGamLab.Convertors.Coulomb_To_Electron_volt())
+print(PyGamLab.Convertors.Angstrom_To_Milimeter())
+print(PyGamLab.Convertors.Bar_To_Pascal())
 
 #------------Functions-----------------------
 
