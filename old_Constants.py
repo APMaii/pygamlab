@@ -48,27 +48,22 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 '''
 import math
 
+
 #Constant-------------------------------------------
-pi=3.1415926536
-e=2.7182818284
+Pi=3.14159265358979323846264338327950288419716939937510
+e=2.7182818284 
 c=299792458
 N_a=6.022*10**23
-R_J=8.3143
 R_Cal=1.987
 R_LA=0.08205
-Pi=3.14
 g=9.81
 Tau=Pi*2
 e=7.1828
-pi = 3.14159
 e = 2.71828
 g = 9.81                                          # Gravitational constant
 h =  6.634 * 10**-34                              # constant pelank
 tau = 6.28
-R =0.08206           #unit = ((L*atm) / (mol*k)) # Global constant of gases
-pi=3.14
 ta=6.28
-e=2.718
 zeta=1.202
 #Golden ratio
 phi=1.618
@@ -78,8 +73,6 @@ alpha = 5.67*10**(-8)           #W/m^2/K^4 (Stefan-Boltzmann Constant)
 R = 8.314                       #J/mol/K (Gas costant)
 h = 6.626*10**(-34)             #J.s (Planck's Constant)
 c = 2.998*10**8                 #m/s (speed of light)
-pi=3.14
-R=8.314
 Na=6.022*(10**23)
 e=2.7182818284590452353602874713527
 Boltzmann_Constant=1.380649*(10**(-23))
@@ -117,7 +110,6 @@ Eutectoid_persent=0.76
 'درصد کربن در واکنش یوتکتوئید'
 
 
-Pi=3.14159265358979323846264338327950288419716939937510
 C=299792458
 #m/s; speed of light in vacuum
 R= 8.314510
@@ -493,5 +485,9 @@ K=1.38e-23 #Boltzman constant, unit is j/kelvin
 h=6.626e-34 #Plank's constant j/Herz
 gas_molar_volume=22.4 # liters per mole in STP
 e=1.6e-19 #amount of charge in one electron ,unit: Coulomb
+
+
+
+
 
 
