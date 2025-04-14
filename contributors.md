@@ -3,7 +3,9 @@
 List of contributers
 -------------------------------
 Ehsan Atash Azar
+--
 Elnaz Askari
+--
 Amin Abedi
 Mohammadjavad Asghari
 Najmeh Azizzadeh
