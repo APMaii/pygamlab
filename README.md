@@ -8,7 +8,7 @@
 
 
 <p align="center">
-  <i>**PyGamLab** is a scientific Python library developed for researchers, engineers, and students who need access to fundamental constants, conversion tools, engineering formulas, and data analysis utilities. The package is designed with simplicity, clarity, and usability in mind.</i>
+  <i>PyGamLab is a scientific Python library developed for researchers, engineers, and students who need access to fundamental constants, conversion tools, engineering formulas, and data analysis utilities. The package is designed with simplicity, clarity, and usability in mind.</i>
 </p>
 
 
