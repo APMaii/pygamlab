@@ -1,11 +1,20 @@
 # PyGamLab
 
+<h1 align="center">PyGamLab</h1>
+
+<h1 align="center">PyGamLab</h1>
+
+
+
 <p align="center">
   <img src="pics/pygamlab_logo.png" alt="PyGamLab Logo" width="300"/>
 </p>
 
 
-**PyGamLab** is a scientific Python library developed for researchers, engineers, and students who need access to fundamental constants, conversion tools, engineering formulas, and data analysis utilities. The package is designed with simplicity, clarity, and usability in mind.
+<p align="center">
+  <i>**PyGamLab** is a scientific Python library developed for researchers, engineers, and students who need access to fundamental constants, conversion tools, engineering formulas, and data analysis utilities. The package is designed with simplicity, clarity, and usability in mind.</i>
+</p>
+
 
 ---
 
