@@ -181,6 +181,13 @@ gamdat.Xrd_Analysis(data,'scatter plot')
 gamdat.Xrd_Analysis(data,'line graph')
 ```
 
+---
+## 📚 Documentation
+
+For detailed documentation, please visit the official [PyGamLab Documentation](https://apmaii.github.io/pygamlab/index.html).
+
+
+
 
 ---
 
@@ -195,12 +202,6 @@ pygamlab/
 └── contributers.md
 
 ```
-
-
----
-## 📚 Documentation
-
-For detailed documentation, please visit the official [PyGamLab Documentation](https://apmaii.github.io/pygamlab/index.html).
 
 
 
