@@ -239,6 +239,7 @@ Special thanks to:
 - **Prof. Malek Naderi** – For his guidance, mentorship, and continuous support.
 - **Ali Pilehvar Meibody** – Main developer and author of PyGamLab.
 - **GAMLab Research Group** – For providing a collaborative and innovative environment.
+- **Hossein Behjoo** – For his guidance in taking the AI courses and his creative work in the development of the logo.
 
 We would also like to thank **all the students who participated in the GAMLab AI course** and contributed to the growth and feedback of this project. Their names are proudly listed in the [contributors.md](contributors.md) file.
 
