@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/APMaii/pygamlab/blob/main/pics/gamlab_logo_final.png" alt="PyGamLab Logo" width="200"/>
+  <img src="https://github.com/APMaii/pygamlab/blob/main/pics/gamlab_logo_final.png" alt="PyGamLab Logo" width="600"/>
 </p>
 
 
