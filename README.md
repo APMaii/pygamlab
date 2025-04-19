@@ -21,7 +21,8 @@
 **PyGAMLab** stands for *Python GAMLAb tools*, a collection of scientific tools and functions developed at the **GAMLab (Graphene and Advanced Material Laboratory)** by **Ali Pilehvar Meibody** under the supervision of **Prof. Malek Naderi** at  **Amirkabir University of Technology (AUT)**.
 
 - **Author:** Ali Pilehvar Meibody  
-- **Supervisor:** Prof. Malek Naderi  
+- **Supervisor:** Prof. Malek Naderi
+- ** Co Author: **  Danial Nekoonam
 - **Affiliation:** GAMLab, Amirkabir University of Technology (AUT)
 
 ---
