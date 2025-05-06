@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plutus Instagram Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        plutusGold: '#D4AF37',
+                        plutusDark: '#121212',
+                        plutusBlack: '#000000',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        :root {
+            --plutus-gold: #D4AF37;
+            --plutus-dark: #121212;
+            --plutus-black: #000000;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #000000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gold-gradient {
+            background: linear-gradient(90deg, #D4AF37 0%, #F5E7A3 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .card {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        .pricing-card:hover {
+            transform: scale(1.03);
+        }
+        .instagram-gradient {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+            transition: all 0.3s ease;
+        
+        }
+        /*
+
+            background: linear-gradient(90deg, #D4AF37 0%, #F5E7A3 50%, #D4AF37 100%);
+            color: #000000;
+            transition: all 0.3s ease;
+
+        */
+
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /*
+
+box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+
+
+        */
+        .feature-icon {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Animation Styles */
+        .emoji-container {
+            display: flex;
+            justify-center: center;
+            align-items: center;
+            height: 80px;
+            position: relative;
+        }
+        
+        .svg-icon {
+            animation: floatIcon 3s ease-in-out infinite;
+            filter: invert(71%) sepia(60%) saturate(445%) hue-rotate(6deg) brightness(89%) contrast(92%);
+        }
+        
+        @keyframes floatIcon {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .feature-item {
+            transition: all 0.7s ease;
+        }
+        
+        .feature-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Comment Animation Styles */
+        .comment-animation-container.animate-comments .customer-comment,
+        .comment-animation-container.animate-comments .divider,
+        .comment-animation-container.animate-comments .plutus-response,
+        .comment-animation-container.animate-comments .keyword-tag {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* DM Animation Styles */
+        .dm-animation-container.animate-dm .dm-message-1,
+        .dm-animation-container.animate-dm .dm-message-2,
+        .dm-animation-container.animate-dm .dm-message-3,
+        .dm-animation-container.animate-dm .dm-message-4 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 4px;
+        }
+        
+        .typing-indicator span {
+            width: 4px;
+            height: 4px;
+            margin: 0 1px;
+            background-color: #D4AF37;
+            border-radius: 50%;
+            animation: typing 1.4s infinite both;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+
+        /* Transition Section Styles */
+        .transition-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, var(--plutus-dark) 0%, var(--plutus-black) 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .social-element {
+            position: absolute;
+            opacity: 0;
+            font-size: 24px;
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+            z-index: 1;
+        }
+        
+        .social-element.heart::before {
+            content: '❤️';
+        }
+        
+        .social-element.comment::before {
+            content: '💬';
+        }
+        
+        .social-element.like::before {
+            content: '👍';
+        }
+        
+        .social-element.star::before {
+            content: '⭐';
+        }
+        
+        .social-element.fire::before {
+            content: '🔥';
+        }
+        
+        .social-element.money::before {
+            content: '💰';
+        }
+        
+        .exciting-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 3rem;
+            font-weight: 800;
+            opacity: 0;
+            z-index: 5;
+            text-align: center;
+            white-space: nowrap;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+        }
+        
+        .floating-icon,
+        .coin {
+            display: none;
+        }
+        
+        .announcement-box {
+            transform: perspective(1000px) rotateX(-90deg);
+            transform-origin: top center;
+            opacity: 0;
+            transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .announcement-box.visible {
+            transform: perspective(1000px) rotateX(0deg);
+            opacity: 1;
+        }
+        
+        .gold-shimmer {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.1) 50%, 
+                rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .surprise-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .surprise-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--plutusGold);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .glow {
+            position: absolute;
+            background: radial-gradient(circle, rgba(212,175,55,0.4) 0%, rgba(212,175,55,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-plutusBlack bg-opacity-80 backdrop-blur-md z-50 border-b border-plutusGold/20">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-2xl font-bold gold-gradient">PLUTUS</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="text-white hover:text-plutusGold transition">Features</a>
+                <a href="#ai" class="text-white hover:text-plutusGold transition">AI Integration</a>
+                <a href="#pricing" class="text-white hover:text-plutusGold transition">Pricing</a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+            <button class="btn-gold px-4 py-2 rounded-full font-medium">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 pb-16 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                Do you want to manage your business's <span class="text-plutusGold">Instagram account</span> intelligently and automatically?
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                Plutus brings you an intelligent Instagram manager that handles comments, messages, and customer interactions while you focus on growing your business.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button class="btn-gold px-8 py-4 rounded-full text-lg font-semibold relative overflow-hidden group">
+                    <span class="relative z-10">Get Started for Free</span>
+                    <span class="absolute top-0 left-0 w-full h-0 bg-white bg-opacity-20 transition-all duration-300 group-hover:h-full"></span>
+                </button>
+                <button class="bg-transparent border border-plutusGold text-plutusGold px-8 py-4 rounded-full text-lg font-semibold hover:bg-plutusGold/10 transition">Learn More</button>
+            </div>
+            
+            <!-- Instagram Features Transition Section -->
+            <div class="mt-20 relative">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-plutusBlack/50 to-plutusBlack z-10"></div>
+                
+                <!-- Scrolling features with emojis -->
+                <div class="feature-scroll-container relative z-20 py-10">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                        <!-- Comments Feature -->
+                        <div class="feature-item opacity-0 transform translate-y-10 transition-all duration-700 delay-100">
+                            <div class="bg-[#1E1E1E] p-6 rounded-xl border border-plutusGold/30 shadow-2xl shadow-plutusGold/10 h-full">
+                                <div class="emoji-container mb-4">
+                                    <img src="/Users/apm/Desktop/comment.svg" class="svg-icon w-16 h-16 text-plutusGold mx-auto" alt="Comments Icon">
+                                </div>
+                                <h3 class="text-2xl font-bold text-plutusGold mb-2">Auto Comments</h3>
+                                <p class="text-gray-300">Automated responses to comments with triggered keywords</p>
+                            </div>
+                        </div>
+                        
+                        <!-- DM Feature -->
+                        <div class="feature-item opacity-0 transform translate-y-10 transition-all duration-700 delay-200">
+                            <div class="bg-[#1E1E1E] p-6 rounded-xl border border-plutusGold/30 shadow-2xl shadow-plutusGold/10 h-full">
+                                <div class="emoji-container mb-4">
+                                    <img src="/Users/apm/Desktop/dm.svg" class="svg-icon w-16 h-16 text-plutusGold mx-auto" alt="DM Icon">
+                                </div>
+                                <h3 class="text-2xl font-bold text-plutusGold mb-2">DM Automation</h3>
+                                <p class="text-gray-300">Pre-defined Response to direct messages and replies</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Bot Feature -->
+                        <div class="feature-item opacity-0 transform translate-y-10 transition-all duration-700 delay-300">
+                            <div class="bg-[#1E1E1E] p-6 rounded-xl border border-plutusGold/30 shadow-2xl shadow-plutusGold/10 h-full">
+                                <div class="emoji-container mb-4">
+                                    <img src="/Users/apm/Desktop/ai.svg" class="svg-icon w-16 h-16 text-plutusGold mx-auto" alt="AI Icon">
+                                </div>
+                                <h3 class="text-2xl font-bold text-plutusGold mb-2">AI Assistant</h3>
+                                <p class="text-gray-300">Respond to your all comments and DMs with Plutus AI Solution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16">
+                <span class="gold-gradient">Intelligent Features</span> for Your Instagram
+            </h2>
+            
+            <!-- Feature 1: Automated Comment Replies -->
+            <div class="section mb-32">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6">Automated Comment Replies</h3>
+                        <p class="text-gray-300 mb-8">Never miss an opportunity to engage with your audience. Our system automatically responds to comments based on triggers you define.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="feature-icon p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-plutusGold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-plutusGold">Like Comments</h4>
+                                    <p class="text-gray-300">Automatically like comments containing specific keywords or phrases.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="feature-icon p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-plutusGold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-plutusGold">Reply to Comments</h4>
+                                    <p class="text-gray-300">Send pre-defined responses to engage with your audience instantly.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="feature-icon p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-plutusGold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-plutusGold">Predefined Messages</h4>
+                                    <p class="text-gray-300">Send text, voice, or video responses based on your preferences.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="feature-icon p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-plutusGold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-plutusGold">Media-Specific Keywords</h4>
+                                    <p class="text-gray-300">Set different keywords and responses for each of your media posts separately.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="card rounded-xl p-6 relative comment-animation-container overflow-hidden">
+                            <div class="instagram-gradient absolute top-0 left-0 h-1 w-full rounded-t-xl"></div>
+                            
+                            <!-- Customer Comment - Initially Hidden -->
+                            <div class="customer-comment opacity-0 transition-all duration-500 transform translate-y-4">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">customer</p>
+                                        <p class="text-xs text-gray-400">48 second ago</p>
+                                    </div>
+                                </div>
+                                <p class="mb-4">18</p>
+                            </div>
+
+                            <div class="h-px bg-gray-700 my-4 divider opacity-0 transition-all duration-500 delay-700"></div>
+                            
+                            <!-- Plutus Response - Initially Hidden -->
+                            <div class="plutus-response opacity-0 transition-all duration-500 transform translate-y-4 delay-1000">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden">
+                                        <img src="getplutus_profile.png" alt="Plutus Profile" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">getplutus</p>
+                                        <p class="text-xs text-gray-400">45 second ago• Automated</p>
+                                    </div>
+                                </div>
+                                <p class="mb-4">Hi @customer!, We sent you Direct message with full information 😊.</p>
+                            </div>
+                            
+                            <!-- Keyword Tag - Initially Hidden -->
+                            <div class="keyword-tag opacity-0 transition-all duration-500 delay-1500">
+                                <div class="flex gap-2 mt-4">
+                                    <span class="text-xs bg-plutusGold/20 text-plutusGold px-3 py-1 rounded-full">Keyword: "18"</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feature 2: Automated DM Replies -->
+            <div class="section mb-32">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-10">
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6">Automated Direct Message Replies</h3>
+                        <p class="text-gray-300 mb-8">Convert inquiries into sales with intelligent DM automation that feels personal and responsive.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="feature-icon p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-plutusGold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-plutusGold">Multi-Format Responses</h4>
+                                    <p class="text-gray-300">Reply with text, voice messages, or video content based on customer inquiries.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="feature-icon p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-plutusGold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-plutusGold">Interactive Menus</h4>
+                                    <p class="text-gray-300">Create navigation menus inside Instagram DMs to guide customers.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="feature-icon p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-plutusGold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-plutusGold">Conversation Flows</h4>
+                                    <p class="text-gray-300">Design natural conversation paths that feel human and responsive.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="card rounded-xl p-6 relative dm-animation-container overflow-hidden">
+                            <div class="instagram-gradient absolute top-0 left-0 h-1 w-full rounded-t-xl"></div>
+                            <div class="flex justify-between items-center mb-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </div>
+                                    <p class="font-semibold">potential_customer</p>
+                                </div>
+                                <span class="text-xs text-plutusGold bg-plutusGold/10 px-2 py-1 rounded-full">Automated</span>
+                            </div>
+                            
+                            <div class="flex flex-col gap-4">
+                                <!-- 1. First customer message - appears immediately -->
+                                <div class="dm-message-1 opacity-0 transform translate-y-4 transition-all duration-300 delay-400">
+                                    <div class="self-start max-w-[80%] bg-gray-800 rounded-lg p-3 ml-0 mr-auto">
+                                        <p>Hi! Do you have that gold necklace in stock?</p>
+                                        <p class="text-xs text-gray-400 mt-1">10:30 AM</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- 2. First bot response with menu - appears after customer message -->
+                                <div class="dm-message-2 opacity-0 transform translate-y-4 transition-all duration-300 delay-100">
+                                    <div class="self-end max-w-[80%] bg-plutusGold/20 rounded-lg p-3 mr-0 ml-auto">
+                                        <p>Hello! Yes, our Athena Gold Necklace is currently in stock in all sizes! Would you like to:</p>
+                                        <div class="mt-3 space-y-2">
+                                            <div class="bg-plutusGold/30 hover:bg-plutusGold/40 transition rounded-md p-2 text-center cursor-pointer">
+                                                See product details
+                                            </div>
+                                            <div class="bg-plutusGold/30 hover:bg-plutusGold/40 transition rounded-md p-2 text-center cursor-pointer">
+                                                Check pricing
+                                            </div>
+                                            <div class="bg-plutusGold/30 hover:bg-plutusGold/40 transition rounded-md p-2 text-center cursor-pointer">
+                                                Speak with an agent
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-gray-400 mt-1">10:31 AM</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- 3. Customer selects an option - appears after bot response -->
+                                <div class="dm-message-3 opacity-0 transform translate-y-4 transition-all duration-300 delay-200">
+                                    <div class="self-start max-w-[80%] bg-gray-800 rounded-lg p-3 ml-0 mr-auto">
+                                        <p>Check pricing</p>
+                                        <p class="text-xs text-gray-400 mt-1">10:32 AM</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- 4. Final bot response with details - appears after customer selection -->
+                                <div class="dm-message-4 opacity-0 transform translate-y-4 transition-all duration-300 delay-300">
+                                    <div class="self-end max-w-[80%] bg-plutusGold/20 rounded-lg p-3 mr-0 ml-auto">
+                                        <p>The Athena Gold Necklace is $129.99 with free shipping. We also offer:</p>
+                                        <ul class="list-disc pl-5 mt-2">
+                                            <li>10% off for first-time customers</li>
+                                            <li>Free gift wrapping</li>
+                                            <li>30-day returns</li>
+                                        </ul>
+                                        <p class="text-xs text-gray-400 mt-1">10:32 AM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Integration Section -->
+            <div id="ai" class="section mb-32">
+                <div class="relative overflow-hidden rounded-2xl transition-section" style="min-height: 80vh; padding: 4rem 0;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-plutusDark to-plutusBlack opacity-80"></div>
+                    
+                    <!-- Social Media Rain -->
+                    <div id="social-rain" class="social-rain"></div>
+                    
+                    <!-- Exciting Transition Text -->
+                    <div id="exciting-text-1" class="exciting-text gold-gradient">SOMETHING EXCITING...</div>
+                    <div id="exciting-text-2" class="exciting-text gold-gradient">AN INCREDIBLE SURPRISE...</div>
+                    <div id="exciting-text-3" class="exciting-text gold-gradient">COMING YOUR WAY!</div>
+                    
+                    <!-- Announcement -->
+                    <div class="container mx-auto px-6 text-center z-10 relative">
+                        <h2 class="text-4xl md:text-6xl font-bold mb-10">
+                            <div class="surprise-container">
+                                <div class="surprise-text gold-gradient" id="surprise-text">Plutus has a surprise for you</div>
+                                <div id="confetti-container"></div>
+                            </div>
+                        </h2>
+                        
+                        <div class="max-w-4xl mx-auto bg-black bg-opacity-60 p-8 rounded-2xl backdrop-blur-md border border-[#D4AF37] border-opacity-30 announcement-box" id="announcement-box">
+                            <div class="relative overflow-hidden">
+                                <div class="gold-shimmer" id="shimmer"></div>
+                                <h3 class="text-2xl md:text-3xl font-semibold mb-6 text-plutusGold">
+                                    Introducing Our Revolutionary AI Assistant
+                                </h3>
+                                <div class="space-y-6">
+                                    <p class="text-lg md:text-xl text-gray-200">
+                                        Automated direct message and comment manager based on your business information and products.
+                                        Let AI handle your social media engagement while you focus on what matters most.
+                                    </p>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+                                        <div class="bg-[#121212] p-4 rounded-lg border border-plutusGold border-opacity-20">
+                                            <svg class="w-8 h-8 text-plutusGold mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"></path>
+                                            </svg>
+                                            <p class="text-sm text-gray-300">Smart Comment Replies</p>
+                                        </div>
+                                        <div class="bg-[#121212] p-4 rounded-lg border border-plutusGold border-opacity-20">
+                                            <svg class="w-8 h-8 text-plutusGold mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                            </svg>
+                                            <p class="text-sm text-gray-300">Automated DM Responses</p>
+                                        </div>
+                                        <div class="bg-[#121212] p-4 rounded-lg border border-plutusGold border-opacity-20">
+                                            <svg class="w-8 h-8 text-plutusGold mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                                                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                                            </svg>
+                                            <p class="text-sm text-gray-300">Engagement Analytics</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn-gold px-8 py-4 rounded-full text-lg font-semibold pulse" id="cta-button">
+                                        Get Early Access
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing Section -->
+            <div id="pricing" class="section">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-6">
+                    <span class="gold-gradient">Pricing Plans</span>
+                </h2>
+                <p class="text-xl text-gray-300 text-center mb-16 max-w-2xl mx-auto">
+                    Choose the perfect plan for your business needs. Scale as you grow with our flexible options.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Plan 1 -->
+                    <div class="pricing-card bg-plutusDark border border-plutusGold/30 rounded-xl overflow-hidden">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">Comments Plan</h3>
+                            <p class="text-gray-400 mb-6">Perfect for engagement-focused businesses</p>
+                            <div class="flex items-end gap-2 mb-6">
+                                <span class="text-4xl font-bold">$49</span>
+                                <span class="text-gray-400 mb-1">/month</span>
+                            </div>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Automated comment replies</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Keyword triggers</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Text responses</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Basic analytics</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>DM automation</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>AI integration</span>
+                                </li>
+                            </ul>
+                            <button class="w-full bg-transparent border border-plutusGold text-plutusGold py-3 rounded-lg font-medium hover:bg-plutusGold/10 transition">Select Plan</button>
+                        </div>
+                    </div>
+
+
+                    <!-- Plan 2 -->
+                    <div class="pricing-card bg-plutusDark border border-plutusGold/30 rounded-xl overflow-hidden">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">DM Plan</h3>
+                            <p class="text-gray-400 mb-6">For businesses focused on conversions</p>
+                            <div class="flex items-end gap-2 mb-6">
+                                <span class="text-4xl font-bold">$49</span>
+                                <span class="text-gray-400 mb-1">/month</span>
+                            </div>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Comment automation</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>DM automation</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Interactive menus</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Text, voice & video responses</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Advanced analytics</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>AI integration</span>
+                                </li>
+                            </ul>
+                            <button class="w-full bg-transparent border border-plutusGold text-plutusGold py-3 rounded-lg font-medium hover:bg-plutusGold/10 transition">Select Plan</button>
+                        </div>
+                    </div>
+                    
+
+
+                    <!-- Plan 3 -->
+                    <div class="pricing-card bg-plutusDark border-2 border-plutusGold rounded-xl overflow-hidden relative">
+                        <div class="absolute top-0 right-0">
+                            <div class="bg-plutusGold text-plutusBlack font-semibold py-1 px-4 rounded-bl-lg">Popular</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">DM Plan</h3>
+                            <p class="text-gray-400 mb-6">For businesses focused on conversions</p>
+                            <div class="flex items-end gap-2 mb-6">
+                                <span class="text-4xl font-bold">$89</span>
+                                <span class="text-gray-400 mb-1">/month</span>
+                            </div>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Comment automation</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>DM automation</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Interactive menus</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Text, voice & video responses</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Advanced analytics</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>AI integration</span>
+                                </li>
+                            </ul>
+                            <button class="w-full btn-gold py-3 rounded-lg font-medium">Select Plan</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Plan 4 -->
+                    <div class="pricing-card bg-plutusDark border border-plutusGold/30 rounded-xl overflow-hidden">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">AI Solution</h3>
+                            <p class="text-gray-400 mb-6">Complete automation with AI intelligence</p>
+                            <div class="flex items-end gap-2 mb-6">
+                                <span class="text-4xl font-bold">$149</span>
+                                <span class="text-gray-400 mb-1">/month</span>
+                            </div>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Full comment automation</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Full DM automation</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>AI-powered responses</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Business data integration</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Premium analytics dashboard</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-plutusGold" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Priority support</span>
+                                </li>
+                            </ul>
+                            <button class="w-full bg-transparent border border-plutusGold text-plutusGold py-3 rounded-lg font-medium hover:bg-plutusGold/10 transition">Select Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-plutusBlack border-t border-plutusGold/20 py-12 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <span class="text-3xl font-bold gold-gradient">PLUTUS</span>
+                    <p class="text-gray-400 mt-2">Intelligent Instagram Management</p>
+                </div>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div>
+                        <h4 class="text-plutusGold font-semibold mb-3">Company</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-plutusGold transition">About Us</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-plutusGold transition">Careers</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-plutusGold transition">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-plutusGold font-semibold mb-3">Resources</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-plutusGold transition">Blog</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-plutusGold transition">Documentation</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-plutusGold transition">Support</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-plutusGold font-semibold mb-3">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-plutusGold transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-plutusGold transition">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-plutusGold/20 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Plutus. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-plutusGold transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-plutusGold transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-plutusGold transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // For section animations
+            const sections = document.querySelectorAll('.section');
+            const featureItems = document.querySelectorAll('.feature-item');
+            const commentContainer = document.querySelector('.comment-animation-container');
+            const dmContainer = document.querySelector('.dm-animation-container');
+            
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+            
+            // For feature item animations
+            const featureObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            featureItems.forEach(item => {
+                featureObserver.observe(item);
+            });
+            
+            // For comment animation
+            const commentObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-comments');
+                        }, 500);
+                    }
+                });
+            }, {
+                threshold: 0.7,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            if (commentContainer) {
+                commentObserver.observe(commentContainer);
+            }
+            
+            // For DM conversation animation
+            const dmObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-dm');
+                        }, 500);
+                    }
+                });
+            }, {
+                threshold: 0.7,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            if (dmContainer) {
+                dmObserver.observe(dmContainer);
+            }
+            
+            // For AI section animations
+            const aiSectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animation-triggered')) {
+                        // Mark as triggered to prevent re-animation on scroll
+                        entry.target.classList.add('animation-triggered');
+                        
+                        // Run animations sequence
+                        setTimeout(() => {
+                            // Start with social media rain
+                            createSocialRain();
+                            
+                            // Then show exciting transition text sequence
+                            animateExcitingText();
+                            
+                            // Show announcement after texts
+                            setTimeout(() => {
+                                const announcementBox = document.getElementById('announcement-box');
+                                if (announcementBox) {
+                                    announcementBox.classList.add('visible');
+                                    
+                                    // Animate surprise text after box appears
+                                    setTimeout(() => {
+                                        animateSurpriseText();
+                                    }, 500);
+                                }
+                            }, 2500);
+                        }, 300);
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+            
+            const aiSection = document.getElementById('ai');
+            if (aiSection) {
+                aiSectionObserver.observe(aiSection);
+            }
+            
+            // Button interactions
+            const ctaButton = document.getElementById('cta-button');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function() {
+                    createParticles(this);
+                });
+            }
+        });
+        
+        // Create social media rain animation
+        function createSocialRain() {
+            const container = document.getElementById('social-rain');
+            if (!container) return;
+            
+            const elements = ['heart', 'comment', 'like', 'star', 'fire', 'money'];
+            const count = 60; // Number of elements
+            
+            for (let i = 0; i < count; i++) {
+                const element = document.createElement('div');
+                element.className = `social-element ${elements[Math.floor(Math.random() * elements.length)]}`;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `-50px`;
+                element.style.transform = `scale(${0.5 + Math.random() * 1.5})`;
+                container.appendChild(element);
+                
+                // Animate with different speeds
+                const speed = 3 + Math.random() * 8;
+                const delay = Math.random() * 5;
+                
+                setTimeout(() => {
+                    element.style.transition = `all ${speed}s linear, opacity 1s ease-in`;
+                    element.style.opacity = '0.9';
+                    element.style.top = '120%';
+                    element.style.transform = `scale(${0.5 + Math.random() * 1.5}) rotate(${-30 + Math.random() * 60}deg)`;
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        element.style.opacity = '0';
+                        setTimeout(() => {
+                            element.remove();
+                        }, 1000);
+                    }, (speed - 1) * 1000);
+                }, delay * 1000);
+            }
+        }
+        
+        // Animate the exciting transition text
+        function animateExcitingText() {
+            const text1 = document.getElementById('exciting-text-1');
+            const text2 = document.getElementById('exciting-text-2');
+            const text3 = document.getElementById('exciting-text-3');
+            
+            if (!text1 || !text2 || !text3) return;
+            
+            // First text
+            setTimeout(() => {
+                text1.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                text1.style.opacity = '1';
+                text1.style.transform = 'translate(-50%, -50%) scale(1)';
+                
+                // Hide first text
+                setTimeout(() => {
+                    text1.style.opacity = '0';
+                    text1.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    
+                    // Second text
+                    setTimeout(() => {
+                        text2.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                        text2.style.opacity = '1';
+                        text2.style.transform = 'translate(-50%, -50%) scale(1)';
+                        
+                        // Hide second text
+                        setTimeout(() => {
+                            text2.style.opacity = '0';
+                            text2.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                            
+                            // Third text
+                            setTimeout(() => {
+                                text3.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                                text3.style.opacity = '1';
+                                text3.style.transform = 'translate(-50%, -50%) scale(1)';
+                                
+                                // Hide third text
+                                setTimeout(() => {
+                                    text3.style.opacity = '0';
+                                    text3.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                                }, 800);
+                            }, 300);
+                        }, 800);
+                    }, 300);
+                }, 800);
+            }, 500);
+        }
+        
+        // Animate the surprise text with confetti
+        function animateSurpriseText() {
+            const surpriseText = document.getElementById('surprise-text');
+            const confettiContainer = document.getElementById('confetti-container');
+            
+            if (!surpriseText || !confettiContainer) return;
+            
+            // Create confetti
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = ['#D4AF37', '#F5E7A3', '#ffffff', '#121212'][Math.floor(Math.random() * 4)];
+                confetti.style.width = `${3 + Math.random() * 5}px`;
+                confetti.style.height = `${3 + Math.random() * 5}px`;
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = `${Math.random() * 100}%`;
+                confettiContainer.appendChild(confetti);
+                
+                // Animate confetti
+                setTimeout(() => {
+                    confetti.style.transition = `all ${1 + Math.random() * 2}s ease-out`;
+                    confetti.style.opacity = '1';
+                    confetti.style.transform = `translateY(${30 + Math.random() * 50}px) translateX(${-20 + Math.random() * 40}px) rotate(${Math.random() * 360}deg)`;
+                    
+                    // Fade out after animation
+                    setTimeout(() => {
+                        confetti.style.opacity = '0';
+                    }, 1000 + Math.random() * 1000);
+                }, Math.random() * 500);
+            }
+        }
+        
+        // Create particles when button is clicked
+        function createParticles(button) {
+            if (!button) return;
+            
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Create glow effect
+            const glow = document.createElement('div');
+            glow.className = 'glow';
+            glow.style.width = '10px';
+            glow.style.height = '10px';
+            glow.style.left = `${centerX}px`;
+            glow.style.top = `${centerY}px`;
+            document.body.appendChild(glow);
+            
+            // Animate glow
+            glow.style.transition = 'all 0.8s ease-out';
+            setTimeout(() => {
+                glow.style.width = '200px';
+                glow.style.height = '200px';
+                glow.style.left = `${centerX - 100}px`;
+                glow.style.top = `${centerY - 100}px`;
+                glow.style.opacity = '0';
+                
+                // Remove after animation
+                setTimeout(() => {
+                    glow.remove();
+                }, 800);
+            }, 10);
+            
+            // Create particles
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${2 + Math.random() * 3}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${centerX}px`;
+                particle.style.top = `${centerY}px`;
+                document.body.appendChild(particle);
+                
+                // Animate particles
+                particle.style.transition = `all ${0.6 + Math.random() * 0.8}s ease-out`;
+                setTimeout(() => {
+                    particle.style.transform = `translateX(${-30 + Math.random() * 60}px) translateY(${-30 + Math.random() * 60}px)`;
+                    particle.style.opacity = '0';
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 1000);
+                }, 10);
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93ac7fbdf335ee53',t:'MTc0NjQwODkwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

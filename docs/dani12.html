@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plutus</title>
+    <link rel="icon" type="image/jpeg" href="https://iili.io/3N3ZkXV.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mocha: {
+                            light: '#D4AF37',
+                            DEFAULT: '#8B7355',
+                            dark: '#121212',
+                            darker: '#000000',
+                            cream: '#F5F5DC',
+                        },
+                        'plutus-gold': '#D4AF37',
+                        'plutus-dark': '#121212',
+                        'plutus-black': '#000000',
+                    },
+                    animation: {
+                        'slide-down': 'slideDown 1.5s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'glow': 'glow 2s infinite alternate',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'neural-flow': 'neuralFlow 10s linear infinite',
+                    },
+                    keyframes: {
+                        slideDown: {
+                            '0%': { transform: 'translateY(-100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        glow: {
+                            '0%': { filter: 'brightness(1)', textShadow: '0 0 5px rgba(255,255,255,0.5)' },
+                            '100%': { filter: 'brightness(1.5)', textShadow: '0 0 20px rgba(255,255,255,0.8)' },
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                            '100%': { transform: 'translateY(0px)' },
+                        },
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 5px rgba(210, 180, 140, 0.5)' },
+                            '50%': { boxShadow: '0 0 20px rgba(210, 180, 140, 0.8), 0 0 30px rgba(210, 180, 140, 0.6)' },
+                            '100%': { boxShadow: '0 0 5px rgba(210, 180, 140, 0.5)' },
+                        },
+                        neuralFlow: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '200% 200%' },
+                        },
+                        fadeInUp: {
+                            '0%': {
+                                opacity: 0,
+                                transform: 'translateY(30px)',
+                            },
+                            '100%': {
+                                opacity: 1,
+                                transform: 'translateY(0)',
+                            },
+                        },
+                    },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            background-color: #000000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .tech-grid {
+            background-image: linear-gradient(rgba(210, 180, 140, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(210, 180, 140, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .tech-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 
+                        0 0 15px rgba(210, 180, 140, 0.3);
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(210, 180, 140, 0.5);
+            border-radius: 50%;
+        }
+
+        
+        .spotlight {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .product-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .product-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+        }
+        
+        .btn-plutus {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-plutus:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .product-card {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.6);
+        }
+        
+        .hero-text {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            opacity: 1;
+        }
+        
+        /* Text animation styles */
+        .animate-text {
+            opacity: 1;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        .animate-text-delay-1 {
+            animation-delay: 0.3s;
+        }
+        
+        .animate-text-delay-2 {
+            animation-delay: 0.6s;
+        }
+        
+        .animate-text-delay-3 {
+            animation-delay: 0.9s;
+        }
+        
+        .animate-text-delay-4 {
+            animation-delay: 1.2s;
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: letterDrop 0.4s forwards;
+        }
+        
+        @keyframes letterDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .company-name {
+            display: inline-block;
+        }
+        
+        .company-name span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        /* Lamp styles */
+        .lamp-container {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lamp-icon {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .lamp-light {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.8) 0%, rgba(212, 175, 55, 0) 70%);
+            opacity: 0;
+            transition: all 1.5s ease-out;
+        }
+        
+        .lamp-light.visible {
+            width: 400px;
+            height: 400px;
+            opacity: 1;
+        }
+        
+        .footer-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .glow-border {
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .glow-border:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+
+        .neural-network {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4; /* Increased opacity from 0.25 to 0.4 */
+            pointer-events: none;
+        }
+        
+        .node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #D4AF37;
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(212,175,55,0.6);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .node.pulse {
+            transform: scale(1.8);
+            box-shadow: 0 0 15px rgba(212,175,55,0.9);
+            transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+        }
+        
+        .connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(212,175,55,0), rgba(212,175,55,0.5), rgba(212,175,55,0));
+            transform-origin: left center;
+            z-index: -1;
+            opacity: 0.6;
+            transition: opacity 0.5s ease;
+        }
+        
+        .connection.active {
+            height: 2px;
+            opacity: 0.9;
+            background: linear-gradient(90deg, rgba(212,175,55,0), rgba(212,175,55,0.8), rgba(212,175,55,0));
+            box-shadow: 0 0 8px rgba(212,175,55,0.5);
+            transition: opacity 0.5s ease, height 0.5s ease;
+        }
+        
+        .chat-container {
+            background: rgba(18, 18, 18, 0.75); /* More transparent background to see network better */
+            backdrop-filter: blur(5px); /* Reduced blur to see network better */
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        /* Make the chat messages area more transparent too */
+        #chat-messages {
+            background: rgba(18, 18, 18, 0.5) !important; /* More transparent */
+        }
+        
+        /* Chat Header more transparent */
+        .chat-container .bg-plutus-black {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+        }
+        
+        .message-ai {
+            background: rgba(212, 175, 55, 0.08);
+            border-left: 2px solid #D4AF37;
+            backdrop-filter: blur(2px);
+        }
+        
+        .message-user {
+            background: rgba(255, 255, 255, 0.05);
+            border-right: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Enhance neural network for better visibility in chat section */
+        #ai-section .neural-network {
+            opacity: 0.5 !important; /* Force higher opacity specifically in AI section */
+        }
+        
+        @media (max-width: 768px) {
+            #ai-section .neural-network {
+                opacity: 0.4 !important; /* Slightly lower on mobile but still visible */
+            }
+        }
+        
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background-color: #D4AF37;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+        }
+        
+        .typing-indicator span:nth-child(1) {
+            animation: bounce 1s infinite 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation: bounce 1s infinite 0.4s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation: bounce 1s infinite 0.6s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #D4AF37, #FFF8E1, #D4AF37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+        
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        .input-glow:focus {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Transition effect */
+        .transition-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .neural-bridge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            transform-origin: top center;
+            z-index: 1;
+        }
+        
+        .neural-node {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: #D4AF37;
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 8px #D4AF37;
+            transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+        }
+        
+        .neural-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(212,175,55,0), rgba(212,175,55,0.7), rgba(212,175,55,0));
+            transform-origin: left center;
+            opacity: 0;
+            transition: opacity 0.5s ease, height 0.5s ease;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 10;
+        }
+        
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: #D4AF37;
+        }
+        
+        .section {
+            min-height: auto !important;
+            height: auto !important;
+            position: relative;
+        }
+        
+        .ai-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            min-height: auto !important;
+            padding-bottom: 60px;
+            overflow: hidden;
+        }
+        
+        .ai-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .transition-section {
+            position: relative;
+            min-height: 70vh !important;
+            overflow: hidden;
+        }
+        
+        /* Mobile optimization for neural networks */
+        @media (max-width: 768px) {
+            .neural-network {
+                opacity: 0.3; /* Increased opacity on mobile */
+            }
+            
+            .node {
+                width: 3px; /* Smaller nodes on mobile */
+                height: 3px;
+                box-shadow: 0 0 4px rgba(212, 175, 55, 0.7);
+            }
+            
+            .node.pulse {
+                transform: scale(1.5);
+                box-shadow: 0 0 10px rgba(212,175,55,0.8);
+            }
+            
+            .connection {
+                height: 1px; /* Maintain line height */
+                background: linear-gradient(90deg, rgba(212,175,55,0), rgba(212,175,55,0.7), rgba(212,175,55,0));
+            }
+            
+            .connection.active {
+                height: 1.5px;
+            }
+            
+            /* Fix for black space at the end of website on mobile */
+            body {
+                min-height: 100vh;
+                position: relative;
+                overflow-x: hidden;
+            }
+            
+            footer {
+                margin-bottom: 0;
+                padding-bottom: 20px;
+            }
+            
+            #ai-section {
+                min-height: auto !important;
+                padding-bottom: 40px;
+            }
+            
+            .section {
+                min-height: auto !important;
+                padding: 60px 0;
+            }
+            
+            .transition-section {
+                min-height: 60vh !important;
+            }
+            
+            .neural-bridge {
+                height: 150%; /* Adjusted neural bridge height for mobile */
+            }
+            
+            .neural-line {
+                opacity: 0.6 !important; /* Ensure lines are visible enough on mobile */
+            }
+            
+            .lamp-light.visible {
+                width: 250px; /* Smaller lamp light on mobile */
+                height: 250px;
+            }
+        }
+
+    </style>
+</head>
+<body class="font-sans">
+    <div class="spotlight" id="spotlight"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-plutus-black bg-opacity-80 backdrop-blur-md border-b border-plutus-gold border-opacity-20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-plutus-gold font-bold text-2xl company-name" id="companyName">PLUTUS</div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-white hover:text-plutus-gold transition-colors">Home</a>
+                <a href="#products" class="nav-link text-white hover:text-plutus-gold transition-colors">Products</a>
+                <a href="#contact" class="nav-link text-white hover:text-plutus-gold transition-colors">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-plutus-black bg-opacity-95 border-b border-plutus-gold border-opacity-20">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-plutus-gold transition-colors">Home</a>
+                <a href="#products" class="text-white hover:text-plutus-gold transition-colors">Products</a>
+                <a href="#contact" class="text-white hover:text-plutus-gold transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 z-0">
+            <svg class="w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                    <radialGradient id="heroGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3" />
+                        <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+                    </radialGradient>
+                </defs>
+                <rect x="0" y="0" width="100" height="100" fill="url(#heroGradient)" />
+            </svg>
+        </div>
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="text-2xl md:text-5xl font-bold mb-4 hero-text">
+                <span class="text-white animate-text">Make your business</span>
+                <span class="text-plutus-gold animate-text animate-text-delay-1">intelligent</span>
+            </h1>
+
+            <h3 class="text-2xl md:text-3xl font-bold mb-6 hero-text">
+                <span class="text-white animate-text">and let it work for you</span>
+
+            </h3>
+
+
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto animate-text animate-text-delay-2">
+                <span class="text-plutus-gold animate-text animate-text-delay-1">Plutus</span> delivers cutting-edge artificial intelligence solutions to transform your digital experience.
+            </p>
+            <!-- Call to Action Buttons 
+            <div class="flex flex-col md:flex-row justify-center gap-4 animate-text animate-text-delay-3">
+                <a href="#products" class="btn-plutus text-black font-semibold px-8 py-3 rounded-full">
+                    Explore Products
+                </a>
+                <a href="#contact" class="border border-plutus-gold text-plutus-gold px-8 py-3 rounded-full hover:bg-plutus-gold hover:bg-opacity-10 transition-all">
+                    Contact Us
+                </a>
+            </div>
+            -->
+            <!-- Tech elements -->
+            <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-16 opacity-0" id="tech-icons">
+                <div class="flex flex-col items-center">
+                    <div class="h-16 w-16 rounded-full bg-black border border-mocha-light flex items-center justify-center tech-shadow animate-pulse-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-mocha-light">
+                            <path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <span class="mt-2 text-sm">Fast</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="h-16 w-16 rounded-full bg-black border border-mocha-light flex items-center justify-center tech-shadow animate-pulse-glow" style="animation-delay: 0.3s">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-mocha-light">
+                            <path fill-rule="evenodd" d="M12 1.5a.75.75 0 01.75.75V4.5a.75.75 0 01-1.5 0V2.25A.75.75 0 0112 1.5zm5.805 1.636a.75.75 0 010 1.06l-1.591 1.592a.75.75 0 01-1.06-1.061l1.59-1.591a.75.75 0 011.061 0zm-12.44 0a.75.75 0 011.06 0l1.591 1.591a.75.75 0 01-1.06 1.061l-1.591-1.59a.75.75 0 010-1.062zM12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5zM4.5 12a.75.75 0 01.75-.75h.75a.75.75 0 010 1.5h-.75A.75.75 0 014.5 12zm16.5 0a.75.75 0 01.75-.75h.75a.75.75 0 010 1.5h-.75a.75.75 0 01-.75-.75zM6.636 16.365a.75.75 0 010 1.06l-1.591 1.591a.75.75 0 01-1.06-1.06l1.59-1.591a.75.75 0 011.061 0zm10.728 0a.75.75 0 011.06 0l1.591 1.591a.75.75 0 01-1.06 1.06l-1.591-1.59a.75.75 0 010-1.061zM12 18a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0112 18z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <span class="mt-2 text-sm">Intelligent</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="h-16 w-16 rounded-full bg-black border border-mocha-light flex items-center justify-center tech-shadow animate-pulse-glow" style="animation-delay: 0.6s">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-mocha-light">
+                            <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.75.75 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <span class="mt-2 text-sm">Secure</span>
+                </div>
+            </div>
+      
+
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce animate-text animate-text-delay-4">
+            <svg class="w-8 h-8 text-plutus-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                Our <span class="text-plutus-gold">solutions</span>
+            </h2>
+            
+            <!-- Product 1 -->
+            <div class="product-section mb-32">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="w-full md:w-1/2">
+                        <div class="rounded-2xl overflow-hidden product-card p-6">
+                            <div class="bg-plutus-dark rounded-xl p-8 flex items-center justify-center">
+                                <svg class="w-32 h-32 text-plutus-gold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-3xl font-bold mb-4">Plutus Intelligent <span class="text-plutus-gold">Telegram Robot</span></h3>
+                        <p class="text-gray-300 mb-6">
+                            Our advanced AI-powered Telegram bot provides instant responses, automated workflows, and intelligent data analysis. Enhance your communication and streamline your business processes with our cutting-edge solution.
+                        </p>
+                        <button class="btn-plutus text-black font-semibold px-6 py-2 rounded-full">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-section mb-32">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-10">
+                    <div class="w-full md:w-1/2">
+                        <div class="rounded-2xl overflow-hidden product-card p-6">
+                            <div class="bg-plutus-dark rounded-xl p-8 flex items-center justify-center">
+                                <svg class="w-32 h-32 text-plutus-gold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-3xl font-bold mb-4">Plutus Meta <span class="text-plutus-gold">Instagram Manager</span></h3>
+                        <p class="text-gray-300 mb-6">
+                            Take your Instagram presence to the next level with our AI-driven content management system. Optimize posting schedules, analyze engagement metrics, and generate content recommendations to grow your audience.
+                        </p>
+                        <a href="insta6.html" class="btn-plutus text-black font-semibold px-6 py-2 rounded-full inline-block">
+                            Learn More
+                        </a>
+
+
+                        <!-- <button class="btn-plutus text-black font-semibold px-6 py-2 rounded-full">
+                            Learn More
+                        </button>-->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-section">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="w-full md:w-1/2">
+                        <div class="rounded-2xl overflow-hidden product-card p-6">
+                            <div class="bg-plutus-dark rounded-xl p-8 flex items-center justify-center">
+                                <svg class="w-32 h-32 text-plutus-gold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-3xl font-bold mb-4">Crypto <span class="text-plutus-gold">Plutus App</span></h3>
+                        <p class="text-gray-300 mb-6">
+                            Our intelligent cryptocurrency trading platform uses advanced algorithms to predict market trends and optimize your investment strategy. Stay ahead of the market with real-time analytics and AI-powered insights.
+                        </p>
+
+                        <a href="crypto_rain.html" class="btn-plutus text-black font-semibold px-6 py-2 rounded-full inline-block">
+                            Learn More
+                        </a>
+
+
+                        <!--  
+                        <button class="btn-plutus text-black font-semibold px-6 py-2 rounded-full">
+                            Learn More
+                        </button>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section with Lamp -->
+    <section id="contact" class="py-20 px-4 bg-black relative tech-grid">
+        <div class="lamp-container text-center mb-16 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 mx-auto text-plutus-gold lamp-icon animate-float">
+                <path d="M12 .75a8.25 8.25 0 00-4.135 15.39c.686.398 1.115 1.008 1.134 1.623a.75.75 0 00.577.706c.352.083.71.127 1.074.127.364 0 .722-.044 1.074-.127a.75.75 0 00.577-.706c.02-.615.448-1.225 1.134-1.623A8.25 8.25 0 0012 .75z" />
+                <path fill-rule="evenodd" d="M9.75 15.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V16.5a.75.75 0 01.75-.75zm4.5 0a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V16.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+            </svg>
+            <div class="lamp-light"></div>
+        </div>
+
+        <div class="container mx-auto max-w-4xl relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 footer-content opacity-0">
+                <div class="bg-black p-6 rounded-lg tech-shadow glow-border border border-plutus-gold border-opacity-30">
+                    <h3 class="text-xl font-bold mb-4 text-plutus-gold">Contact Us</h3>
+                    <p class="mb-4">Ready to transform your business intelligence? Get in touch with our team of experts.</p>
+                    <p class="mb-2 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 text-plutus-gold">
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                        </svg>
+                        info@plutus-bi.com
+                    </p>
+                    <p class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 text-plutus-gold">
+                            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.498 4.423a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        +1 (555) 123-4567
+                    </p>
+                </div>
+
+                <div class="bg-black p-6 rounded-lg tech-shadow glow-border border border-plutus-gold border-opacity-30">
+                    <h3 class="text-xl font-bold mb-4 text-plutus-gold">About Us</h3>
+                    <p>Plutus is a leading provider of business intelligence solutions, helping companies make data-driven decisions since 2010.</p>
+                    <p class="mt-4">Our mission is to empower businesses of all sizes with accessible, powerful analytics tools.</p>
+                </div>
+
+                <div class="bg-black p-6 rounded-lg tech-shadow glow-border border border-plutus-gold border-opacity-30">
+                    <h3 class="text-xl font-bold mb-4 text-plutus-gold">Work With Plutus</h3>
+                    <p class="mb-4">Join our team of data scientists, analysts, and business intelligence experts.</p>
+                    <a href="#" class="bg-mocha text-white py-2 px-4 rounded hover:bg-mocha-light transition inline-block mt-2 glow-border">View Careers</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <a href="#transition-section">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </a>
+        </div>
+
+
+    </section>
+
+
+    <!-- Contact Section 
+    <section id="contact" class="py-20 relative">
+        <div class="absolute inset-0 z-0">
+            <svg class="w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                    <radialGradient id="contactGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3" />
+                        <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+                    </radialGradient>
+                </defs>
+                <rect x="0" y="0" width="100" height="100" fill="url(#contactGradient)" />
+            </svg>
+        </div>
+        <div class="container mx-auto px-6 z-10 relative">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="text-plutus-gold">Contact</span> Us
+            </h2>
+            
+            <div class="max-w-4xl mx-auto product-card p-8 rounded-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                        <p class="text-gray-300 mb-6">
+                            Have questions about our products or services? We'd love to hear from you. Fill out the form and our team will get back to you shortly.
+                        </p>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-plutus-gold bg-opacity-20 flex items-center justify-center mr-4">
+                                <svg class="w-5 h-5 text-plutus-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">info@plutus.ai</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-plutus-gold bg-opacity-20 flex items-center justify-center mr-4">
+                                <svg class="w-5 h-5 text-plutus-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-plutus-gold bg-opacity-20 flex items-center justify-center mr-4">
+                                <svg class="w-5 h-5 text-plutus-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">123 AI Boulevard, Tech City</span>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                                <input type="text" id="name" name="name" class="w-full bg-plutus-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-plutus-gold text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full bg-plutus-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-plutus-gold text-white">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full bg-plutus-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-plutus-gold text-white"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn-plutus text-black font-semibold px-6 py-2 rounded-full w-full">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Transition Section with Neural Network Bridge -->
+    <section id="transition-section" class="transition-section">
+        <div class="neural-bridge" id="neural-bridge"></div>
+        <div class="absolute inset-0 flex items-center justify-center z-10">
+            <h2 class="text-3xl font-bold text-plutus-gold opacity-0" id="transition-text">Connecting to Plutus AI</h2>
+        </div>
+    </section>
+    
+    <!-- AI Assistant Section -->
+    <section id="ai-section" class="section flex flex-col items-center justify-center p-4 md:p-8 ai-section">
+        <!-- Neural Network Background -->
+        <div class="neural-network" id="neural-network"></div>
+        
+        <!-- Main Content -->
+        <div class="w-full max-w-4xl z-10">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2 gradient-text">PLUTUS AI</h1>
+                <p class="text-gray-400 text-sm md:text-base">Advanced intelligence at your service</p>
+            </div>
+            
+            <!-- Chat Interface -->
+            <div class="chat-container rounded-2xl shadow-2xl overflow-hidden animate-glow">
+                <!-- Chat Header -->
+                <div class="bg-plutus-black bg-opacity-70 p-4 border-b border-plutus-gold border-opacity-20 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-plutus-gold animate-pulse-glow mr-3"></div>
+                        <h2 class="font-medium">Plutus Assistant</h2>
+                    </div>
+                    <div class="text-xs text-gray-400">Online</div>
+                </div>
+                
+                <!-- Chat Messages -->
+                <div id="chat-messages" class="p-4 h-96 overflow-y-auto space-y-4 bg-plutus-dark bg-opacity-70">
+                    <!-- AI Welcome Message -->
+                    <div class="message-ai p-3 rounded-lg max-w-[80%]">
+                        <p>Welcome to Plutus AI. How can I assist you today?</p>
+                    </div>
+                    
+                    <!-- Messages will be added here dynamically -->
+                </div>
+                
+                <!-- Chat Input -->
+                <div class="p-4 border-t border-plutus-gold border-opacity-20 bg-plutus-black bg-opacity-70">
+                    <form id="chat-form" class="flex items-center gap-2">
+                        <input 
+                            type="text" 
+                            id="user-input" 
+                            class="w-full bg-plutus-dark bg-opacity-70 border border-plutus-gold border-opacity-30 rounded-lg px-4 py-3 focus:outline-none focus:border-plutus-gold input-glow transition-all duration-300"
+                            placeholder="Ask something..."
+                            autocomplete="off"
+                        >
+                        <button 
+                            type="submit" 
+                            class="bg-plutus-gold text-plutus-black px-4 py-3 rounded-lg font-medium hover:bg-opacity-80 transition-all duration-300 flex items-center"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="text-center mt-6 mb-6 text-gray-500 text-xs">
+                <p>© 2023 Plutus AI • Secure and private conversations</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-plutus-gold border-opacity-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-plutus-gold font-bold text-2xl mb-2">PLUTUS</div>
+                    <p class="text-gray-400">Powering your business with AI</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-plutus-gold transition-colors">
+                        <!-- Twitter Icon -->
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-plutus-gold transition-colors">
+                        <!-- Instagram Icon -->
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-plutus-gold transition-colors">
+                        <!-- Facebook Icon -->
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-plutus-gold transition-colors">
+                        <!-- LinkedIn Icon -->
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-500 text-sm">
+                &copy; 2024 Plutus AI. All rights reserved.
+            </div>
+            <div class="mt-2 text-center text-sm text-gray-500">
+                <a href="term_of_conditions.html" class="hover:text-plutus-gold transition-colors mx-2">Terms & Conditions</a> |
+                <a href="privacy_policy.html" class="hover:text-plutus-gold transition-colors mx-2">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Animate hero text on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add console log to verify script execution
+            console.log("DOM Content Loaded");
+            
+            setTimeout(() => {
+                document.getElementById('tech-icons').style.opacity = '0.7';
+                document.getElementById('tech-icons').style.transform = 'scale(1) translateY(0)';
+                document.getElementById('tech-icons').style.transition = 'all 1.5s ease-out';
+            }, 100);
+            
+            // Setup lamp effect immediately on load
+            setupLampEffect();
+            
+            setTimeout(() => {
+                document.querySelector('.hero-text').classList.add('animate-slide-down');
+            }, 300);
+            
+            setTimeout(() => {
+                document.querySelector('.hero-subtext').classList.add('animate-fade-in');
+            }, 1200);
+            
+            setTimeout(() => {
+                document.querySelector('.hero-button').classList.add('animate-fade-in');
+            }, 1800);
+            
+            setTimeout(() => {
+                document.getElementById('tech-icons').classList.add('animate-fade-in');
+            }, 2200);
+            
+            // Animate company name letters
+            const companyName = document.getElementById('companyName');
+            if (companyName) {
+                const text = companyName.textContent;
+                companyName.textContent = '';
+                
+                for (let i = 0; i < text.length; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = text[i];
+                    span.style.animationDelay = `${i * 0.1}s`;
+                    span.classList.add('animate-letter');
+                    companyName.appendChild(span);
+                }
+            }
+        });
+
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Spotlight effect
+        const spotlight = document.getElementById('spotlight');
+        
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            spotlight.style.opacity = '1';
+            spotlight.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(212, 175, 55, 0.15), transparent 70%)`;
+        });
+
+        // fast intelligent secure buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('hero-glow')) {
+                setTimeout(() => {
+                    document.getElementById('hero-glow').style.opacity = '0.7';
+                    document.getElementById('hero-glow').style.transform = 'scale(1) translateY(0)';
+                    document.getElementById('hero-glow').style.transition = 'all 1.5s ease-out';
+                }, 100);
+            }
+            
+            setTimeout(() => {
+                if (document.getElementById('tech-icons')) {
+                    document.getElementById('tech-icons').classList.add('animate-fade-in');
+                }
+            }, 2200);
+        });
+        
+        // Scroll animations
+        const productSections = document.querySelectorAll('.product-section');
+        
+        const observerOptions = {
+            threshold: 0.2
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        productSections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Form submission handler - only attach if the form exists
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // Simple validation
+                if (!name || !email || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                // In a real application, you would send this data to your server
+                alert('Thank you for your message! We will get back to you soon.');
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Function to set up lamp effect
+        function setupLampEffect() {
+            console.log("Setting up lamp effect");
+            const lampContainer = document.querySelector('.lamp-container');
+            const lampLight = document.querySelector('.lamp-light');
+            const footerContent = document.querySelector('.footer-content');
+            
+            if (!lampContainer || !lampLight || !footerContent) {
+                console.error("Lamp elements not found!", {
+                    lampContainer: !!lampContainer,
+                    lampLight: !!lampLight,
+                    footerContent: !!footerContent
+                });
+                return;
+            }
+            
+            // Make lamp glow more prominent
+            const activateLampWithAnimation = () => {
+                console.log("Lamp in view - activating with animation");
+                
+                // First make the lamp icon slightly brighter
+                setTimeout(() => {
+                    document.querySelector('.lamp-icon').style.filter = 'brightness(1.5)';
+                    document.querySelector('.lamp-icon').style.transition = 'filter 0.5s ease';
+                }, 100);
+                
+                // Then show the light
+                setTimeout(() => {
+                    lampLight.classList.add('visible');
+                }, 600);
+                
+                // Then reveal the content
+                setTimeout(() => {
+                    footerContent.style.opacity = '1';
+                    footerContent.style.transform = 'translateY(0)';
+                }, 1200);
+            };
+            
+            // Manual activation when scrolled into view
+            const activateLamp = () => {
+                const lampRect = lampContainer.getBoundingClientRect();
+                if (lampRect.top < window.innerHeight - 100 && lampRect.bottom > 0) {
+                    console.log("Lamp in view - activating");
+                    activateLampWithAnimation();
+                    window.removeEventListener('scroll', activateLamp);
+                }
+            };
+            
+            // Check on scroll
+            window.addEventListener('scroll', activateLamp);
+            
+            // Check immediately (in case already in view)
+            setTimeout(activateLamp, 500);
+            
+            // Set up intersection observer as backup
+            const lampObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    console.log("Lamp intersection observed");
+                    activateLampWithAnimation();
+                    lampObserver.disconnect();
+                }
+            }, { threshold: 0.3, rootMargin: "0px 0px -100px 0px" });
+            
+            lampObserver.observe(lampContainer);
+        }
+
+         // Neural Network Animation for AI Section
+         document.addEventListener('DOMContentLoaded', function() {
+            const neuralNetwork = document.getElementById('neural-network');
+            
+            // Detect if mobile device
+            const isMobile = window.innerWidth <= 768;
+            
+            // Adjust node count based on device type - INCREASED NODE COUNT
+            const nodeCount = isMobile ? 35 : 70; // Increased from 20/40 to 35/70
+            const nodes = [];
+            const connections = [];
+            
+            // Create nodes
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'node';
+                node.style.left = `${Math.random() * 100}%`;
+                node.style.top = `${Math.random() * 100}%`;
+                node.dataset.id = i; // Add ID for reference
+                neuralNetwork.appendChild(node);
+                nodes.push(node);
+            }
+            
+            // Create connections between nodes - more structured approach
+            for (let i = 0; i < nodes.length; i++) {
+                const nodeA = nodes[i];
+                
+                // Connect in a more structured way - nodes connect to closest neighbors
+                // Plus some random connections for organic feel
+                const nearbyNodes = findNearbyNodes(nodeA, nodes, isMobile ? 3 : 5);
+                
+                for (let j = 0; j < nearbyNodes.length; j++) {
+                    const nodeB = nearbyNodes[j];
+                    if (nodeA !== nodeB) {
+                        createConnection(nodeA, nodeB);
+                    }
+                }
+                
+                // Add 1-2 random connections to create some cross-network paths
+                for (let k = 0; k < (isMobile ? 1 : 2); k++) {
+                    const randomNodeIndex = Math.floor(Math.random() * nodes.length);
+                    const nodeB = nodes[randomNodeIndex];
+                    if (nodeA !== nodeB && !nearbyNodes.includes(nodeB)) {
+                        createConnection(nodeA, nodeB);
+                    }
+                }
+            }
+            
+            // Find nearby nodes based on position
+            function findNearbyNodes(sourceNode, allNodes, count) {
+                const sourceLeft = parseFloat(sourceNode.style.left);
+                const sourceTop = parseFloat(sourceNode.style.top);
+                
+                // Calculate distances
+                const nodeDistances = allNodes.map(node => {
+                    if (node === sourceNode) return { node, distance: Infinity };
+                    
+                    const nodeLeft = parseFloat(node.style.left);
+                    const nodeTop = parseFloat(node.style.top);
+                    
+                    const distance = Math.sqrt(
+                        Math.pow(nodeLeft - sourceLeft, 2) + 
+                        Math.pow(nodeTop - sourceTop, 2)
+                    );
+                    
+                    return { node, distance };
+                });
+                
+                // Sort by distance and take the closest ones
+                nodeDistances.sort((a, b) => a.distance - b.distance);
+                return nodeDistances.slice(0, count).map(item => item.node);
+            }
+            
+            function createConnection(nodeA, nodeB) {
+                const connection = document.createElement('div');
+                connection.className = 'connection';
+                connection.dataset.from = nodeA.dataset.id;
+                connection.dataset.to = nodeB.dataset.id;
+                
+                // Position and update connection
+                function updateConnection() {
+                    const rectA = nodeA.getBoundingClientRect();
+                    const rectB = nodeB.getBoundingClientRect();
+                    
+                    const x1 = rectA.left + rectA.width / 2;
+                    const y1 = rectA.top + rectA.height / 2;
+                    const x2 = rectB.left + rectB.width / 2;
+                    const y2 = rectB.top + rectB.height / 2;
+                    
+                    const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                    
+                    connection.style.width = `${length}px`;
+                    connection.style.left = `${x1}px`;
+                    connection.style.top = `${y1}px`;
+                    connection.style.transform = `rotate(${angle}deg)`;
+                }
+                
+                neuralNetwork.appendChild(connection);
+                connections.push({ 
+                    connection, 
+                    update: updateConnection,
+                    nodeA,
+                    nodeB
+                });
+                updateConnection();
+            }
+            
+            // Update connections on window resize
+            window.addEventListener('resize', function() {
+                connections.forEach(conn => conn.update());
+            });
+            
+            // Professional pulse effect - simulate data flow through the network
+            function startPulseEffect() {
+                // Start a new pulse at regular intervals
+                setInterval(() => {
+                    // Select a random starting node
+                    const startNodeIndex = Math.floor(Math.random() * nodes.length);
+                    const startNode = nodes[startNodeIndex];
+                    
+                    // Propagate a pulse through the network
+                    propagatePulse(startNode, new Set(), 0);
+                }, isMobile ? 2500 : 1800);
+            }
+            
+            // Pulse propagation through the network with delay
+            function propagatePulse(node, visitedNodes, depth) {
+                // Prevent infinite loops and limit depth
+                if (visitedNodes.has(node) || depth > 5) return;
+                visitedNodes.add(node);
+                
+                // Create pulse effect on the node
+                const pulseDelay = depth * (isMobile ? 250 : 180);
+                setTimeout(() => {
+                    // Add pulse class
+                    node.classList.add('pulse');
+                    
+                    // Find and activate connections from this node
+                    const nodeId = node.dataset.id;
+                    connections.forEach(conn => {
+                        if (conn.nodeA.dataset.id === nodeId || conn.nodeB.dataset.id === nodeId) {
+                            conn.connection.classList.add('active');
+                            setTimeout(() => {
+                                conn.connection.classList.remove('active');
+                            }, 500);
+                        }
+                    });
+                    
+                    // Remove pulse after animation
+                    setTimeout(() => {
+                        node.classList.remove('pulse');
+                    }, 600);
+                    
+                    // Find connected nodes and continue pulse
+                    const connectedNodes = findConnectedNodes(node);
+                    connectedNodes.forEach(nextNode => {
+                        propagatePulse(nextNode, visitedNodes, depth + 1);
+                    });
+                }, pulseDelay);
+            }
+            
+            // Find nodes connected to the given node
+            function findConnectedNodes(node) {
+                const nodeId = node.dataset.id;
+                const connectedNodes = [];
+                
+                connections.forEach(conn => {
+                    if (conn.nodeA.dataset.id === nodeId) {
+                        connectedNodes.push(conn.nodeB);
+                    } else if (conn.nodeB.dataset.id === nodeId) {
+                        connectedNodes.push(conn.nodeA);
+                    }
+                });
+                
+                return connectedNodes;
+            }
+            
+            // Random subtle movement of nodes - less movement for more professional look
+            const movementInterval = setInterval(() => {
+                const moveNode = nodes[Math.floor(Math.random() * nodes.length)];
+                const currentLeft = parseFloat(moveNode.style.left);
+                const currentTop = parseFloat(moveNode.style.top);
+                
+                // Smaller movement range for professional look
+                const movementFactor = isMobile ? 0.1 : 0.15;
+                
+                const newLeft = currentLeft + (Math.random() - 0.5) * movementFactor;
+                const newTop = currentTop + (Math.random() - 0.5) * movementFactor;
+                
+                moveNode.style.left = `${Math.max(0, Math.min(100, newLeft))}%`;
+                moveNode.style.top = `${Math.max(0, Math.min(100, newTop))}%`;
+                
+                // Update affected connections
+                connections.forEach(conn => {
+                    if (conn.nodeA === moveNode || conn.nodeB === moveNode) {
+                        conn.update();
+                    }
+                });
+            }, isMobile ? 3000 : 2000);
+            
+            // Start the pulse effect
+            startPulseEffect();
+            
+            // Neural Bridge Animation for Transition - updated for more professional look
+            const neuralBridge = document.getElementById('neural-bridge');
+            const transitionText = document.getElementById('transition-text');
+            
+            // Adjust bridge node count for mobile - INCREASED
+            const bridgeNodeCount = isMobile ? 50 : 90; // Increased from 30/60 to 50/90
+            const bridgeNodes = [];
+            const bridgeConnections = [];
+            
+            // Create bridge nodes
+            for (let i = 0; i < bridgeNodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'neural-node';
+                node.style.left = `${Math.random() * 100}%`;
+                node.style.top = `${Math.random() * 100}%`;
+                node.dataset.id = `bridge-${i}`; // Add ID for reference
+                neuralBridge.appendChild(node);
+                bridgeNodes.push(node);
+            }
+            
+            // Create bridge connections - more structured for professional look
+            for (let i = 0; i < bridgeNodes.length; i++) {
+                const nodeA = bridgeNodes[i];
+                
+                // Connect to closest neighbors
+                const nearbyNodes = findNearbyBridgeNodes(nodeA, bridgeNodes, isMobile ? 3 : 4);
+                
+                for (let j = 0; j < nearbyNodes.length; j++) {
+                    const nodeB = nearbyNodes[j];
+                    if (nodeA !== nodeB) {
+                        createBridgeConnection(nodeA, nodeB);
+                    }
+                }
+                
+                // Add 1-2 random long-distance connections for visual interest
+                if (Math.random() < 0.6) { // 60% chance
+                    const randomNode = bridgeNodes[Math.floor(Math.random() * bridgeNodes.length)];
+                    if (nodeA !== randomNode && !nearbyNodes.includes(randomNode)) {
+                        createBridgeConnection(nodeA, randomNode);
+                    }
+                }
+            }
+            
+            // Find nearby bridge nodes
+            function findNearbyBridgeNodes(sourceNode, allNodes, count) {
+                const sourceLeft = parseFloat(sourceNode.style.left);
+                const sourceTop = parseFloat(sourceNode.style.top);
+                
+                // Calculate distances
+                const nodeDistances = allNodes.map(node => {
+                    if (node === sourceNode) return { node, distance: Infinity };
+                    
+                    const nodeLeft = parseFloat(node.style.left);
+                    const nodeTop = parseFloat(node.style.top);
+                    
+                    const distance = Math.sqrt(
+                        Math.pow(nodeLeft - sourceLeft, 2) + 
+                        Math.pow(nodeTop - sourceTop, 2)
+                    );
+                    
+                    return { node, distance };
+                });
+                
+                // Sort by distance and take the closest ones
+                nodeDistances.sort((a, b) => a.distance - b.distance);
+                return nodeDistances.slice(0, count).map(item => item.node);
+            }
+            
+            function createBridgeConnection(nodeA, nodeB) {
+                const connection = document.createElement('div');
+                connection.className = 'neural-line';
+                connection.dataset.from = nodeA.dataset.id;
+                connection.dataset.to = nodeB.dataset.id;
+                neuralBridge.appendChild(connection);
+                
+                bridgeConnections.push({
+                    connection,
+                    nodeA,
+                    nodeB
+                });
+            }
+            
+            // Update bridge connections
+            function updateBridgeConnections() {
+                bridgeConnections.forEach(conn => {
+                    const rectA = conn.nodeA.getBoundingClientRect();
+                    const rectB = conn.nodeB.getBoundingClientRect();
+                    
+                    const x1 = rectA.left + rectA.width / 2;
+                    const y1 = rectA.top + rectA.height / 2;
+                    const x2 = rectB.left + rectB.width / 2;
+                    const y2 = rectB.top + rectB.height / 2;
+                    
+                    const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                    
+                    conn.connection.style.width = `${length}px`;
+                    conn.connection.style.left = `${x1}px`;
+                    conn.connection.style.top = `${y1}px`;
+                    conn.connection.style.transform = `rotate(${angle}deg)`;
+                });
+            }
+            
+            // Scroll-based animation with improved professional pulses
+            window.addEventListener('scroll', function() {
+                const transitionSection = document.getElementById('transition-section');
+                const aiSection = document.getElementById('ai-section');
+                const transitionRect = transitionSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Calculate how far into the transition section we've scrolled (0 to 1)
+                const scrollProgress = 1 - (transitionRect.bottom / (windowHeight + transitionRect.height));
+                
+                if (scrollProgress >= 0 && scrollProgress <= 1) {
+                    // Animate neural bridge nodes and connections with professional intensity
+                    bridgeNodes.forEach((node, index) => {
+                        const delay = index * 0.01;
+                        const nodeOpacity = Math.min(1, Math.max(0, (scrollProgress * 3 - delay)));
+                        node.style.opacity = nodeOpacity;
+                        
+                        // Add glow effect as we scroll
+                        const glowSize = Math.min(10, scrollProgress * 15);
+                        node.style.boxShadow = `0 0 ${glowSize}px rgba(212, 175, 55, ${scrollProgress * 0.7})`;
+                        
+                        // Professional scaling effect
+                        const scaleValue = 1 + scrollProgress * 0.5;
+                        node.style.transform = `scale(${Math.min(1.5, scaleValue)})`;
+                    });
+                    
+                    bridgeConnections.forEach((conn, index) => {
+                        const delay = index * 0.005;
+                        const opacity = Math.min(0.9, Math.max(0, (scrollProgress * 2.5 - delay)));
+                        conn.connection.style.opacity = opacity;
+                        
+                        // Increase line thickness slightly as scrolling progresses
+                        const thickness = 1 + scrollProgress * 0.5;
+                        conn.connection.style.height = `${thickness}px`;
+                    });
+                    
+                    // Animate transition text
+                    if (scrollProgress > 0.3 && scrollProgress < 0.8) {
+                        transitionText.style.opacity = Math.min(1, (scrollProgress - 0.3) * 2);
+                    } else if (scrollProgress >= 0.8) {
+                        transitionText.style.opacity = Math.max(0, 1 - (scrollProgress - 0.8) * 5);
+                    } else {
+                        transitionText.style.opacity = 0;
+                    }
+                    
+                    updateBridgeConnections();
+                }
+                
+                // Show AI section when we've scrolled past the transition
+                if (scrollProgress > 0.8) {
+                    aiSection.classList.add('visible');
+                }
+            });
+            
+            // Create particle effect for transition
+            function createParticles() {
+                const transitionSection = document.getElementById('transition-section');
+                // Fewer particles on mobile devices
+                const particleCount = isMobile ? 30 : 60;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    // Random size between 2-6px (slightly smaller on mobile)
+                    const size = isMobile ? 1 + Math.random() * 3 : 2 + Math.random() * 4;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random position
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    
+                    // Animation - slower on mobile
+                    const duration = isMobile ? 5 + Math.random() * 5 : 3 + Math.random() * 7;
+                    const delay = Math.random() * 5;
+                    
+                    particle.style.transition = `opacity ${duration}s ease-in-out ${delay}s, transform ${duration}s ease-in-out ${delay}s`;
+                    
+                    transitionSection.appendChild(particle);
+                    
+                    // Trigger animation on scroll
+                    window.addEventListener('scroll', function animateParticle() {
+                        const transitionRect = transitionSection.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        
+                        if (transitionRect.top < windowHeight && transitionRect.bottom > 0) {
+                            particle.style.opacity = isMobile ? 0.7 : 0.8; // Slightly less opaque on mobile
+                            
+                            // Less movement on mobile for better performance
+                            const moveDistance = isMobile ? 50 : 100;
+                            particle.style.transform = `translate(${(Math.random() - 0.5) * moveDistance}px, ${(Math.random() - 0.5) * moveDistance}px)`;
+                            
+                            window.removeEventListener('scroll', animateParticle);
+                        }
+                    });
+                }
+            }
+            
+            createParticles();
+            
+            // Chat Functionality
+            const chatForm = document.getElementById('chat-form');
+            const userInput = document.getElementById('user-input');
+            const chatMessages = document.getElementById('chat-messages');
+            
+            // Fix layout issues
+            function adjustLayoutForMobile() {
+                const isMobile = window.innerWidth <= 768;
+                const aiSection = document.getElementById('ai-section');
+                const transitionSection = document.getElementById('transition-section');
+                
+                if (isMobile) {
+                    // Set a fixed height for mobile to avoid extra space
+                    if (aiSection) {
+                        aiSection.style.height = 'auto';
+                        aiSection.style.minHeight = 'auto';
+                        aiSection.style.maxHeight = 'none';
+                    }
+                    
+                    if (transitionSection) {
+                        transitionSection.style.minHeight = '60vh';
+                    }
+                    
+                    // Ensure chat container fits properly
+                    const chatContainer = document.querySelector('.chat-container');
+                    if (chatContainer) {
+                        chatContainer.style.maxHeight = '80vh';
+                    }
+                } else {
+                    // Reset for desktop
+                    if (aiSection) {
+                        aiSection.style.height = 'auto';
+                        aiSection.style.minHeight = 'auto';
+                    }
+                    
+                    if (transitionSection) {
+                        transitionSection.style.minHeight = '70vh';
+                    }
+                }
+            }
+            
+            // Run on load and resize
+            window.addEventListener('load', adjustLayoutForMobile);
+            window.addEventListener('resize', adjustLayoutForMobile);
+            
+            // AI API endpoint
+            const AI_API_ENDPOINT = "http://localhost:8001/ai_support";
+            
+            chatForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const message = userInput.value.trim();
+                if (message === '') return;
+                
+                // Add user message
+                addMessage(message, 'user');
+                userInput.value = '';
+                
+                // Show typing indicator
+                showTypingIndicator();
+                
+                console.log("Sending request to AI:", message);
+                
+                // Call the AI API
+                fetch(AI_API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        user_id: "website_user"
+                    })
+                })
+                .then(response => {
+                    console.log("Response status:", response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("AI response received:", data);
+                    removeTypingIndicator();
+                    addMessage(data.response, 'ai');
+                    
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                })
+                .catch(error => {
+                    console.error("Error calling AI API:", error);
+                    removeTypingIndicator();
+                    addMessage("Sorry, I encountered an error while processing your request. Please try again later.", 'ai');
+                    
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                });
+            });
+            
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = sender === 'user' 
+                    ? 'message-user p-3 rounded-lg ml-auto max-w-[80%]' 
+                    : 'message-ai p-3 rounded-lg max-w-[80%]';
+                
+                if (sender === 'user') {
+                    // User messages appear immediately
+                    messageDiv.innerHTML = `<p>${text}</p>`;
+                } else {
+                    // AI messages appear in chunks with typing effect
+                    const paragraph = document.createElement('p');
+                    messageDiv.appendChild(paragraph);
+                    
+                    // Initial empty content
+                    paragraph.textContent = '';
+                    
+                    // Type out the message character by character
+                    let currentIndex = 0;
+                    const words = text.split(' ');
+                    
+                    function typeNextWord() {
+                        if (currentIndex < words.length) {
+                            // Type the next word
+                            const wordToType = words[currentIndex] + (currentIndex < words.length - 1 ? ' ' : '');
+                            paragraph.textContent += wordToType;
+                            
+                            // Scroll to bottom with each word
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                            
+                            // Increment index for next word
+                            currentIndex++;
+                            
+                            // Random typing speed between 50-150ms per word for realistic effect
+                            const typingSpeed = Math.floor(Math.random() * 100) + 50;
+                            setTimeout(typeNextWord, typingSpeed);
+                        }
+                    }
+                    
+                    // Start typing animation
+                    typeNextWord();
+                }
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            function showTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message-ai p-3 rounded-lg max-w-[80%] typing-indicator';
+                typingDiv.id = 'typing-indicator';
+                typingDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            function removeTypingIndicator() {
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Handle orientation change or window resize for mobile
+        window.addEventListener('resize', function() {
+            // Update all connections
+            connections.forEach(conn => conn.update());
+            
+            // Also update bridge connections if they exist
+            if (bridgeConnections.length > 0) {
+                updateBridgeConnections();
+            }
+            
+            // Check if we crossed the mobile threshold and need to refresh
+            const newIsMobile = window.innerWidth <= 768;
+            if (newIsMobile !== isMobile && neuralNetwork) {
+                // If changing between mobile and desktop view, consider refreshing the page
+                // for a completely fresh layout, or alternatively hide and show elements
+                // to trigger reflow (simpler approach)
+                if (neuralNetwork.style.display !== 'none') {
+                    neuralNetwork.style.display = 'none';
+                    setTimeout(() => {
+                        neuralNetwork.style.display = 'block';
+                    }, 50);
+                }
+                
+                if (neuralBridge && neuralBridge.style.display !== 'none') {
+                    neuralBridge.style.display = 'none';
+                    setTimeout(() => {
+                        neuralBridge.style.display = 'block';
+                    }, 50);
+                }
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93aa61ca12f10f7e',t:'MTc0NjM4NjcwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
