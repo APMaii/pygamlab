@@ -5,7 +5,6 @@ Constants.py ==>
 This module contains scientific constants intended for use throughout the package.
 '''
 
-
 #" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
 #                                               -W. Edwards Deming
 #------------------------------------------------------------------------------
