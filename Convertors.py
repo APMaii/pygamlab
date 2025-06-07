@@ -2,7 +2,6 @@
 Convertors.py :
 
 This module provides converter functions for transforming values between different units of measurement.
-
 '''
 
 #" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
