@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/APMaii/pygamlab/blob/main/pics/python_logo_final.png" alt="PyGamLab Logo" width="450"/>
+  <img src="https://raw.githubusercontent.com/APMaii/pygamlab/refs/heads/main/pics/pygamlab_main_logo.png" alt="PyGamLab Logo" width="450"/>
 </p>
 
 
@@ -21,8 +21,8 @@
 **PyGAMLab** stands for *Python GAMLAb tools*, a collection of scientific tools and functions developed at the **GAMLab (Graphene and Advanced Material Laboratory)** by **Ali Pilehvar Meibody** under the supervision of **Prof. Malek Naderi** at  **Amirkabir University of Technology (AUT)**.
 
 - **Author:** Ali Pilehvar Meibody  
-- **Supervisor:** Prof. Malek Naderi
-- ** Co Author: **  Danial Nekoonam
+- **Co Author:** Danial Nekounam
+- **Supervisor:** Prof. Malek Naderi  
 - **Affiliation:** GAMLab, Amirkabir University of Technology (AUT)
 
 ---
@@ -45,7 +45,7 @@ Examples:
 
 ---
 
-### 🔹 `Convertors.py`
+### 🔹 `Converters.py`
 Contains unit conversion functions that follow the format:  
 `FirstUnit_To_SecondUnit()`
 
@@ -197,7 +197,7 @@ For detailed documentation, please visit the official [PyGamLab Documentation](h
 pygamlab/
 ├── __init__.py
 ├── Constants.py
-├── Convertors.py
+├── Converters.py
 ├── Functions.py
 ├── Data_Analysis.py
 └── contributers.md
