@@ -124,7 +124,7 @@ import PyGamLab
 
 
 import PyGamLab.Constants as gamcn
-import PyGamLab.Convertos as gamcv
+import PyGamLab.Converters as gamcv
 import PyGamLab.Functions as gamfunc
 import PyGamLab.Data_Analysis as gamdat
 
