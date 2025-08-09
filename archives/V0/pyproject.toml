@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PyGamLab"
+version = "0.1.4"
+description = "A scientific Python library with constants, unit convertors, formulas, and data analysis tools."
+authors = [
+  { name="Ali Pilehvar Meibody", email="ai.2024.pilehvar@Gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"  # Simplified license specification
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering"
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn"
+]
+
+[project.urls]
+Source = "https://github.com/APMaii/pygamlab/tree/main"
