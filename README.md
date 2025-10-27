@@ -375,9 +375,9 @@ pygamlab/
 │ │ ├── GAM_nano_particles.py
 │ │ └── GAM_nanotubes.py
 │ └── gamvis/
-│ ├── init.py
-│ ├── gamvis.py
-│ └── gamvis_engine.py
+│   ├── init.py
+│   ├── gamvis.py
+│   └── gamvis_engine.py
 ├── io/
 │ ├── init.py
 │ ├── read.py
@@ -392,12 +392,12 @@ pygamlab/
 │ ├── Jarvis.py
 │ └── Aflow.py
 └── ai_core/
-├── init.py
-├── gam_ai.py
-└── gam_models/
-├── init.py
-├── files.gam_ai
-└── ...
+│ ├── init.py
+│ ├── gam_ai.py
+│ └── gam_models/
+│   ├── init.py
+│   ├── files.gam_ai
+│   └── ...
 ```
 
 
