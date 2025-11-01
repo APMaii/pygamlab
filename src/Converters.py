@@ -1,56 +1,3 @@
-'''
-Converters.py :
-
-This module provides converter functions for transforming values between different units of measurement.
-
-'''
-
-#" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
-#                                               -W. Edwards Deming
-#------------------------------------------------------------------------------
-# Copyright 2023 The Gamlab Authors. All Rights Reserved.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#     http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#------------------------------------------------------------------------------
-
-''' 
-The Scientific experimental simulation library 
--------------------------------------------------------------------------------
-Graphen & Advanced Material Laboratory 
-
-it aimes to provide new scientist to use data,simlation, prepared data 
-and Artificial intelligence models.
-
-See http://gamlab.aut.ac.ir for complete documentation.
-'''
-__doc__='''
-
-@author: Ali Pilehvar Meibody (Alipilehvar1999@gmail.com)
-
-                                         888                    888
- .d8888b    .d88b.     88888b.d88b.      888         .d88b.     888
-d88P"      d88""88b    888 "888 "88b     888        d88""88b    88888PP
-888  8888  888  888    888  888  888     888        888  888    888  888
-Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
- "Y8888P8   "Y88P8888  888  888  888     888888888   "Y88P8888  88888888  
-
-
-@Director of Gamlab: Professor M. Naderi (Mnaderi@aut.ac.ir)    
-
-@Graphene Advanced Material Laboratory: https://www.GamLab.Aut.ac.ir
-
-
-@Co-authors: 
-'''
-
-
 
 import math
 
@@ -67,6 +14,13 @@ def Atmosphere_To_Pascal(atm):
     -------
     float
         The equivalent value in pascals.
+    
+    Examples
+    --------
+    >>> Atmosphere_To_Pascal(1)
+    101325.0
+    >>> Atmosphere_To_Pascal(0.5)
+    50662.5
     """
     Pa = float(atm * 101325)
     return Pa
@@ -85,6 +39,13 @@ def Angstrom_To_Meter(A):
     -------
     float
         The equivalent value in meters.
+    
+    Examples
+    --------
+    >>> Angstrom_To_Meter(1)
+    1e-10
+    >>> Angstrom_To_Meter(5e3)
+    5e-07
     """
     return A * 1e-10
 
@@ -102,6 +63,13 @@ def Angstrom_To_Millimeter(A):
     -------
     float
         The equivalent value in millimeters.
+    
+    Examples
+    --------
+    >>> Angstrom_To_Millimeter(1e7)
+    1.0
+    >>> Angstrom_To_Millimeter(5e6)
+    0.5
     """
     return A * 1e-7
 
@@ -122,6 +90,13 @@ def Angstrom_To_Nanometer(Angstrom_value):
         Equivalent value in Nanometers (nm).
 
     '''
+    
+    # Examples
+    # --------
+    # >>> Angstrom_To_Nanometer(10)
+    # 1.0
+    # >>> Angstrom_To_Nanometer(25)
+    # 2.5
     Nanometer_value= Angstrom_value/10
     return Nanometer_value 
 
@@ -141,31 +116,47 @@ def Angstrom_To_Micrometer(A):
     -------
     float
         The equivalent value in micrometers.
+    
+    Examples
+    --------
+    >>> Angstrom_To_Micrometer(10000)
+    1.0
+    >>> Angstrom_To_Micrometer(25000)
+    2.5
     """
     return A / 10000
 
 
-def Annual_To_Monthly_Loss(annual_loss):
-    '''
-    
+
+def Binary_To_Decimal(Num_bin):
+    """
+    Converts a binary number (given as an int, e.g. 1011) to its decimal representation.
 
     Parameters
     ----------
-    annual_loss : int
-        the annual loss of an Economic enterprise.
+    Num_bin : int
+        The binary number to convert.
 
     Returns
     -------
-
-        the monthly loss of an Economic enterprise.
-
-    '''
-    if not str(annual_loss).isdigit(): 
-        print ('error! bad parameter!')
-    return int(annual_loss/12)
-
-
-
+    int
+        The decimal representation of the binary number.
+    
+    Examples
+    --------
+    >>> Binary_To_Decimal(1011)
+    11
+    >>> Binary_To_Decimal(11111111)
+    255
+    """
+    Dec = 0
+    i = 0
+    while Num_bin != 0:
+        r = Num_bin % 10
+        Dec = Dec + (r * (2**i))
+        Num_bin = Num_bin // 10
+        i = i + 1
+    return Dec
 
 
 def Byte_To_Kilobyte(b):
@@ -181,6 +172,13 @@ def Byte_To_Kilobyte(b):
     -------
     float
         The equivalent value in kilobytes.
+    
+    Examples
+    --------
+    >>> Byte_To_Kilobyte(1024)
+    1.0
+    >>> Byte_To_Kilobyte(512)
+    0.5
     """
     kb = 0.0009765625 * b
     return kb
@@ -201,7 +199,12 @@ def Bar_To_Pascal(bar):
     Pa : float
         pascal
 
+    Example
+    -------
+    >>> Bar_To_Pascal(1)
+    1e-05
     """
+    
     
     Pa=bar*(10**(-5))
     return Pa
@@ -216,9 +219,17 @@ def Brinell_To_Rockwell(hb):
         hardness in Brinell scale.
 
     Returns float: Hardness in Rochwell scale.
+
+    Examples
+    --------
+    >>> Brinell_To_Rockwell(100)
+    10.0
+    >>> Brinell_To_Rockwell(75)
+    5.0
    
 
     '''
+    
     
     hrb = (hb - 50) / 5.0
     return hrb
@@ -238,6 +249,7 @@ def Cubic_Meter_To_Liter(number_in_Cubic_Meter):
         Number per liter unit.
 
     '''
+
     Liter= number_in_Cubic_Meter*1000
     return Liter
     
@@ -260,12 +272,19 @@ def Celcius_To_Kelvin(Celcius):
     Notes
     -----
     The temperature in Celsius is offset by 273.15 to convert to Kelvin.
+    
+    Examples
+    --------
+    >>> Celcius_To_Kelvin(0)
+    273.15
+    >>> Celcius_To_Kelvin(25)
+    298.15
     """
     Kelvin = Celcius + 273.15
     return Kelvin
 
 
-def Coulomb_To_Electron_volt(coulomb):
+def Coulomb_To_Electron_Volt(coulomb):
     """
     Convert the given value in coulombs to electron volts.
 
@@ -282,6 +301,13 @@ def Coulomb_To_Electron_volt(coulomb):
     Notes
     -----
     1 coulomb = 6.24e18 electron volts.
+    
+    Examples
+    --------
+    >>> Coulomb_To_Electron_Volt(1)
+    6.24e+18
+    >>> Coulomb_To_Electron_Volt(1.6e-19)
+    0.9984
     """
     electron_volt = coulomb * 6.24e18
     return electron_volt
@@ -300,10 +326,34 @@ def Centigrade_To_Fahrenheit(C):
     -------
     float
         The equivalent temperature in Fahrenheit.
+    
+    Examples
+    --------
+    >>> Centigrade_To_Fahrenheit(0)
+    32.0
+    >>> Centigrade_To_Fahrenheit(100)
+    212.0
     """
     F = C * 1.8 + 32
     return F
 
+def Centimeter_To_Inch(Centimeter):
+    '''
+    Parameters
+    ----------
+    Centimeter : float or int
+        One centimeter is equal to 0.393701 inches.
+        number per Centimeter unit.
+
+    Returns
+    -------
+    Inch : float
+        number per Inch unit.
+
+    '''
+
+    Inch = Centimeter / 2.54
+    return Inch
 
 def CmHg_To_Pascal(P1):
     """
@@ -318,6 +368,13 @@ def CmHg_To_Pascal(P1):
     -------
     float
         The equivalent pressure in pascals.
+    
+    Examples
+    --------
+    >>> CmHg_To_Pascal(1)
+    1333.22
+    >>> CmHg_To_Pascal(0.5)
+    666.61
     """
     P2 = P1 * 1333.22
     return P2
@@ -338,6 +395,7 @@ def Calories_To_Joules(cal):
 
     """
     
+
     J=4.184*cal
     return J
 
@@ -357,11 +415,15 @@ def Centimeter_per_Minute_To_Meter_per_Hour_Welding_Speed_Converter(Centimeter_p
 
     '''     
  
+
     Meter_per_Hour=Centimeter_per_Minute/1.7
+    #or
+    Meter_per_Hour = Centimeter_per_Minute * 0.6
+
     return Meter_per_Hour
 
 
-def Current_density_To_mpy(Current_density,density,masschange,valency):
+def Current_Density_To_Mpy(Current_density,density,masschange,valency):
     """
     
 
@@ -382,6 +444,7 @@ def Current_density_To_mpy(Current_density,density,masschange,valency):
    
 
     """
+
     corrosion_rate_mpy=Current_density*1e-6*31536000*(1/density)*masschange*400*(1/(valency*96500))
     return corrosion_rate_mpy
 
@@ -400,6 +463,7 @@ def CC_per_Second_To_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter(CC_per_Sec
 
     '''     
  
+
     Liter_per_Minute=CC_per_Second/16.67
     return Liter_per_Minute
 
@@ -418,6 +482,13 @@ def Degree_To_Radian(deg):
     -------
     float
         The angle value in radians.
+    
+    Examples
+    --------
+    >>> Degree_To_Radian(180)
+    3.141592653589793
+    >>> Degree_To_Radian(90)
+    1.5707963267948966
     """
     rad = deg * 3.141592653589793 / 180
     return rad
@@ -436,6 +507,13 @@ def Decimal_To_Binary(Num_dec):
     -------
     int
         The binary representation of the decimal number.
+    
+    Examples
+    --------
+    >>> Decimal_To_Binary(11)
+    1011
+    >>> Decimal_To_Binary(255)
+    11111111
     """
     Bin = 0
     i = 0
@@ -460,6 +538,13 @@ def Electronvolt_To_Joule(e_v):
     -------
     float
         The energy value in joules.
+    
+    Examples
+    --------
+    >>> Electronvolt_To_Joule(1)
+    1.6022e-19
+    >>> Electronvolt_To_Joule(6.241509074e18)
+    1.0000000001902376
     """
     Joule = e_v * 1.6022e-19
     return Joule
@@ -479,6 +564,13 @@ def Electron_volt_To_Coulomb(electron_volt):
     -------
     float
         The equivalent charge value in coulombs.
+    
+    Examples
+    --------
+    >>> Electron_volt_To_Coulomb(1)
+    1.602e-19
+    >>> Electron_volt_To_Coulomb(6.241e18)
+    0.99999842
     """
     coulomb = electron_volt * 1.602e-19
     return coulomb
@@ -497,6 +589,13 @@ def Foot_To_Mile(ft):
     -------
     float
         The length value in miles.
+    
+    Examples
+    --------
+    >>> Foot_To_Mile(5280)
+    1.00000000032
+    >>> Foot_To_Mile(2640)
+    0.50000000016
     """
     mi = 0.000189393939 * ft
     return mi
@@ -515,6 +614,13 @@ def Fahrenheit_To_Centigrade(F):
     -------
     float
         The temperature value in Centigrade (Celsius).
+    
+    Examples
+    --------
+    >>> Fahrenheit_To_Centigrade(32)
+    0.0
+    >>> Fahrenheit_To_Centigrade(212)
+    100.0
     """
     C = (F - 32) * 5/9
     return C
@@ -544,7 +650,7 @@ def Foot_Pound_To_Newton(Foot_Pounds):
     return Newton_Meters
 
 
-def Fabric_GSM_to_GLM(Fabric_Weight,Fabric_Width):
+def Fabric_GSM_To_GLM(Fabric_Weight,Fabric_Width):
    '''
     This function converts fabric weight in GSM unit to GLM unit.
 
@@ -558,10 +664,30 @@ def Fabric_GSM_to_GLM(Fabric_Weight,Fabric_Width):
         Result.
  
     '''
+
    Fabric_GLM=(Fabric_Weight*Fabric_Width)/39.37
    return Fabric_GLM
 
 
+def Fabric_GLM_To_GSM(Fabric_GLM, Fabric_Width):
+    '''
+    This function converts fabric weight in GLM unit to GSM unit.
+
+    Parameters
+    ----------
+    Fabric_GLM : int or float
+        Fabric weight per GLM.
+    Fabric_Width : int or float
+        Width of fabric in inches.
+
+    Returns
+    -------
+    Fabric_GSM : float
+        Fabric weight in GSM.
+    '''
+
+    Fabric_GSM = (Fabric_GLM * 39.37) / Fabric_Width
+    return Fabric_GSM
 
 
 def Force_CGS_To_SI (Force_in_CGS):
@@ -580,6 +706,7 @@ def Force_CGS_To_SI (Force_in_CGS):
 
     '''
     
+
     SI = "{:e}".format(Force_in_CGS * 1e-5)
     return SI
 
@@ -599,6 +726,7 @@ def Force_SI_To_CGS (Force_in_SI) :
 
     '''
     
+
     CGS = "{:e}".format(Force_in_SI * 1e+5)
     return CGS
 
@@ -623,6 +751,7 @@ def Gram_To_Mole(g,MW):
         Mole is the eqivalent amount of substance of a compound in mole(s).
 
     '''
+
     Mole = g / MW
     return Mole
 
@@ -641,6 +770,13 @@ def Hour_To_Sec(t):
     -------
     float
         The time value in seconds.
+    
+    Examples
+    --------
+    >>> Hour_To_Sec(1)
+    3600
+    >>> Hour_To_Sec(2.5)
+    9000.0
     """
     t = t * 3600
     return t
@@ -656,6 +792,13 @@ def Hertz_To_Rpm(a,/):
     Returns
     b : int or float 
     frequency, revolution per minute (rpm)
+
+    Examples
+    --------
+    >>> Hertz_To_Rpm(1)
+    60
+    >>> Hertz_To_Rpm(2.5)
+    150.0
     '''
     b=a*60
     return b
@@ -675,6 +818,12 @@ def Horsepower_To_Watt (Horsepower):
     watt : float
         return your number in watt.
 
+    Examples
+    --------
+    >>> Horsepower_To_Watt(1)
+    '7.457000e+02'
+    >>> Horsepower_To_Watt(2)
+    '1.491400e+03'
     '''
     Watt = "{:e}".format(Horsepower * 745.7)
     return Watt
@@ -736,6 +885,24 @@ def Joules_To_Calories(J):
     cal=J/4.184
     return cal
 
+def Joule_To_Electronvolt(Joule):
+    """
+    Converts energy value from joules to electronvolts.
+
+    Parameters
+    ----------
+    Joule : float
+        The energy value in joules.
+
+    Returns
+    -------
+    float
+        The energy value in electronvolts.
+    """
+    e_v = Joule / 1.6022e-19
+    return e_v
+
+
 def Joules_Per_Minute_To_Kilowatt(Joules_Per_Minute):
     '''
 
@@ -774,8 +941,26 @@ def Kilogram_To_Pound(number_in_kilogram):
     pound=number_in_kilogram*2.2046
     return pound
 
+def Kilowatt_To_Joules_Per_Minute(Kilowatt):
+    '''
+    Converts power from kilowatts to joules per minute.
 
-def Kelvin_to_Celcius(Kelvin):
+    Parameters
+    ----------
+    Kilowatt : float
+        The power value in kilowatts.
+
+    Returns
+    -------
+    Joules_Per_Minute : float
+        The equivalent power in joules per minute.
+    '''
+    Joules_Per_Minute = Kilowatt * 60000
+    return Joules_Per_Minute
+
+
+
+def Kelvin_To_Celcius(Kelvin):
     """
     This function is used to convert Kelvin to Celsius.
     The temperature in Celsius is different from the temperature in Kelvin by 273.15.
@@ -789,6 +974,13 @@ def Kelvin_to_Celcius(Kelvin):
     -------
     float
         The temperature value in Celsius.
+    
+    Examples
+    --------
+    >>> Kelvin_To_Celcius(273.15)
+    0.0
+    >>> Kelvin_To_Celcius(298.15)
+    25.0
     """
     Celcius = Kelvin - 273.15
     return Celcius
@@ -824,6 +1016,13 @@ def KiloMeter_To_LightYear(km):
     -------
     float
         The distance value in light-years.
+    
+    Examples
+    --------
+    >>> KiloMeter_To_LightYear(9460730472801.1)
+    1.0
+    >>> round(KiloMeter_To_LightYear(4730365236400.55), 1)
+    0.5
     """
     ly = km / 9460730472801.1
     return ly
@@ -861,6 +1060,13 @@ def Kilobyte_To_Byte(kb):
     -------
     float
         The data size value in bytes.
+    
+    Examples
+    --------
+    >>> Kilobyte_To_Byte(1)
+    1024
+    >>> Kilobyte_To_Byte(0.5)
+    512.0
     """
     b = 1024 * kb
     return b
@@ -880,6 +1086,13 @@ def Kilometer_Per_Hour_To_Meter_Per_Second(kph):
     -------
     float
         The speed value in meters per second.
+    
+    Examples
+    --------
+    >>> Kilometer_Per_Hour_To_Meter_Per_Second(3.6)
+    1.0
+    >>> Kilometer_Per_Hour_To_Meter_Per_Second(36)
+    10.0
     """
     mps = kph / 3.6
     return mps
@@ -898,6 +1111,13 @@ def Kg_To_Ton(Kg):
     -------
     float
         The mass value in metric tons.
+    
+    Examples
+    --------
+    >>> Kg_To_Ton(1000)
+    1.0
+    >>> Kg_To_Ton(250)
+    0.25
     """
     Ton = Kg / 1000
     return Ton
@@ -916,6 +1136,13 @@ def Kg_To_Lbm(Kg):
     -------
     float
         The mass value in pounds (lbm).
+    
+    Examples
+    --------
+    >>> Kg_To_Lbm(1)
+    2.20462
+    >>> Kg_To_Lbm(5)
+    11.0231
     """
     Lbm = Kg * 2.20462
     return Lbm
@@ -935,6 +1162,7 @@ def Liter_To_Cubic_Meter(number_in_Liter):
         Number per cubic meter unit.
 
     '''
+
     Cubic_Meter= number_in_Liter/1000
     return (Cubic_Meter)
 
@@ -953,6 +1181,13 @@ def LightYear_To_KiloMeter(ly):
     -------
     float
         The distance value in kilometers.
+    
+    Examples
+    --------
+    >>> LightYear_To_KiloMeter(1)
+    9460730472801.1
+    >>> LightYear_To_KiloMeter(0.5)
+    4730365236400.55
     """
     km = ly * 9460730472801.1
     return km
@@ -971,13 +1206,20 @@ def Lbm_To_Kg(Lbm):
     -------
     float
         The mass value in kilograms.
+    
+    Examples
+    --------
+    >>> Lbm_To_Kg(2.20462)
+    0.9999996694214878
+    >>> Lbm_To_Kg(1)
+    0.4535924254969406
     """
     Kg = Lbm / 2.20462
     return Kg
 
 
 
-def Liter_per_Minute_To_CC_per_Second_Welding_Gas_Flow_Rate_Converter(Liter_per_Minute):
+def Liter_Per_Minute_To_CC_Per_Second_Welding_Gas_Flow_Rate_Converter(Liter_per_Minute):
     '''
     This function converts the Welding Gas Flow Rate from Liter per Minute to CC per Second.
 
@@ -992,6 +1234,7 @@ def Liter_per_Minute_To_CC_per_Second_Welding_Gas_Flow_Rate_Converter(Liter_per_
 
     '''     
  
+
     CC_per_Second=Liter_per_Minute*16.67
     return CC_per_Second
 
@@ -1365,7 +1608,7 @@ def Mpa_To_Psi(Num_Mpa,/):
     return Psi
 
 
-def Meter_per_Hour_To_Centimeter_per_Minute_Welding_Speed_Converter(Meter_per_Hour):
+def Meter_Per_Hour_To_Centimeter_Per_Minute_Welding_Speed_Converter(Meter_per_Hour):
     '''
     This function converts the Welding Speed from Meter per Hour to Centimeter per Minute.
 
@@ -1385,7 +1628,7 @@ def Meter_per_Hour_To_Centimeter_per_Minute_Welding_Speed_Converter(Meter_per_Ho
 
 
 
-def Mm_year_To_Mils_year(milpy):
+def Mm_Year_To_Mils_Year(milpy):
     """
     Converts a corrosion rate from millimeters per year (mm/yr) to mils per year (mpy).
     1 mm/yr = 39.37 mpy
@@ -1404,7 +1647,7 @@ def Mm_year_To_Mils_year(milpy):
     return mpy
 
 
-def Mils_year_To_Mm_year(mpy):
+def Mils_Year_To_Mm_Year(mpy):
     """
     Converts a corrosion rate from mils per year (mpy) to millimeters per year (mm/yr).
     1 mm/yr = 39.37 mpy
@@ -1424,7 +1667,7 @@ def Mils_year_To_Mm_year(mpy):
 
 
 
-def  Mpy_To_current_density(mpy,density,masschange,valency):
+def  Mpy_To_Current_Density(mpy,density,masschange,valency):
     """
     
 
@@ -1492,7 +1735,7 @@ def Nanometer_To_Micrometer(nanometer):
     return Micrometer
 
 
-def Newton_TO_Pound_Force(Newton):
+def Newton_To_Pound_Force(Newton):
      # 1 Pound_Force = 4.448221619 New
      
      
@@ -1551,6 +1794,8 @@ def Nanometer_To_Angstrom(Nanometer_value):
     Angstrom_value= Nanometer_value*10
     return Angstrom_value
 
+
+
 def Newton_To_Foot_Pound(Newton_Meters):
     '''
     # This Conventor convert Nm to ft-lbs
@@ -1568,7 +1813,6 @@ def Newton_To_Foot_Pound(Newton_Meters):
     
     Foot_Pound=Newton_Meters*0.7376
     return Foot_Pound
-
 
 
 
@@ -1678,7 +1922,7 @@ def Percentages_To_Moles(total, percentages):
 
 
 
-def Pascal_to_mmHg(p):
+def Pascal_To_MmHg(p):
     '''
     This function convert pascal to mmHg
 
@@ -1841,7 +2085,22 @@ def Pound_To_Kilogram(number_in_pound):
     return kilogram
 
 
+def Ppm_To_Weightpercent(ppm):
+    """
+    This function is used to convert ppm (parts per million) to weight percent.
 
+    Parameters
+    ----------
+    ppm : float
+        The concentration in ppm.
+
+    Returns
+    -------
+    float
+        The concentration in weight percent.
+    """
+    weight_percent = ppm / 10000
+    return weight_percent
 
 
 
@@ -1866,7 +2125,60 @@ def Molarity_To_Normality(Molarity,n):
 
 
 
+def MmHg_To_Pascal(mmHg):
+    """
+    Convert pressure from millimeters of mercury (mmHg) to Pascal (Pa).
 
+    Parameters
+    ----------
+    mmHg : float
+        Pressure in millimeters of mercury.
+
+    Returns
+    -------
+    float
+        Pressure in Pascals.
+    """
+    Pa = mmHg * 133.322
+    return Pa
+
+def Moles_To_Percentages(moles):
+    """
+    Calculate weight percentages of each component from their moles.
+
+    Parameters
+    ----------
+    moles : dict
+        Dictionary where keys are material names and values are the number of moles.
+
+    Returns
+    -------
+    dict
+        Dictionary where keys are material names and values are weight percentages.
+    """
+    molar_weight = {
+        'TEGDMA': 156.27,
+        'BIS_GMA': 512.67,
+        'UDMA': 398.48,
+        'Silica dioxide': 60.08,
+        'Barium silicate': 233.39,
+        'Zirconium dioxide': 123.22
+    }
+
+    # Calculate mass of each component
+    mass = {}
+    for material, n_moles in moles.items():
+        if material not in molar_weight:
+            raise ValueError(f"Molar weight for '{material}' not defined.")
+        mass[material] = n_moles * molar_weight[material]
+
+    # Total mass
+    total_mass = sum(mass.values())
+
+    # Convert to weight percentages
+    percentages = {material: (m / total_mass) * 100 for material, m in mass.items()}
+
+    return percentages
 
 def Square_Meter_To_Square_Cm(b):
     
@@ -1933,7 +2245,7 @@ def Sec_To_Hour(t):
     return t
 
 
-def Radians_To_Degrees(num):
+def Radian_To_Degrees(num):
     """
     This function is used to convert radians to degrees.
 
@@ -1949,6 +2261,25 @@ def Radians_To_Degrees(num):
     """
     degree = num * 180 / math.pi
     return degree
+
+
+def Rockwell_To_Brinell(hrb):
+    '''
+    Convert Rockwell hardness (HRB) to Brinell hardness (HB).
+
+    Parameters
+    ----------
+    hrb : float
+        Hardness in Rockwell B scale.
+
+    Returns
+    -------
+    float
+        Hardness in Brinell scale.
+    '''
+    hb = (hrb * 5.0) + 50
+    return hb
+
 
 def Rpm_To_Hertz(b,/):
     '''
@@ -1983,6 +2314,23 @@ def Torr_To_Pascal(torr):
     """
     pa = torr * 133.322
     return pa
+
+def Ton_To_Kg(Ton):
+    """
+    Converts a mass value from metric tons to kilograms.
+
+    Parameters
+    ----------
+    Ton : float
+        The mass value in metric tons.
+
+    Returns
+    -------
+    float
+        The mass value in kilograms.
+    """
+    Kg = Ton * 1000
+    return Kg
 
 
 def Viscosity_To_Poise(pa_s):
@@ -2027,7 +2375,7 @@ def Viscosity_To_Pas(poise):
 
 
 
-def Yarn_Count_Converter(Yarn_Count, Current_System='tex', Desired_System='den'):
+def Yarn_Count_To_Other_System(Yarn_Count, Current_System='tex', Desired_System='den'):
     '''
     This function converts yarn count values in different systems.
 
