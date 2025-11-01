@@ -1,52 +1,3 @@
-'''
-Functions.py ==>
-
-
-'''
-
-#" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
-#                                               -W. Edwards Deming
-#------------------------------------------------------------------------------
-# Copyright 2023 The Gamlab Authors. All Rights Reserved.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#     http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#------------------------------------------------------------------------------
-''' 
-The Scientific experimental simulation library 
--------------------------------------------------------------------------------
-Graphen & Advanced Material Laboratory 
-
-it aimes to provide new scientist to use data,simlation, prepared data 
-and Artificial intelligence models.
-
-See http://gamlab.aut.ac.ir for complete documentation.
-'''
-__doc__='''
-
-@author: Ali Pilehvar Meibody (Alipilehvar1999@gmail.com)
-
-                                         888                    888
- .d8888b    .d88b.     88888b.d88b.      888         .d88b.     888
-d88P"      d88""88b    888 "888 "88b     888        d88""88b    88888PP
-888  8888  888  888    888  888  888     888        888  888    888  888
-Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
- "Y8888P8   "Y88P8888  888  888  888     888888888   "Y88P8888  88888888  
-
-
-@Director of Gamlab: Professor M. Naderi (Mnaderi@aut.ac.ir)    
-
-@Graphene Advanced Material Laboratory: https://www.GamLab.Aut.ac.ir
-
-'''
-
-
 #import-----------------------------------------
 import math
 import statistics
@@ -166,7 +117,7 @@ def Activity_Coef(wB,wC,wD,eBB,eCB,eDB):
 
 def Arithmetic_Sequence(start_num,common_difference,n):
     '''
-An arithmetic sequence is an ordered set of numbers that have a common difference between each consecutive term.
+    An arithmetic sequence is an ordered set of numbers that have a common difference between each consecutive term.
     Parameters
     ----------
     start_num : int
@@ -207,7 +158,7 @@ def Aeroscope_Stress_Concentration(max_stress, nominal_stresss):
     return K
 
 
-def archimedes_principle(density_fluid, volume_displaced, gravitational_acceleration):
+def Archimedes_Principle(density_fluid, volume_displaced, gravitational_acceleration):
     """
     Calculates the buoyant force acting on an object submerged in a fluid, based on Archimedes' principle.
 
@@ -342,8 +293,7 @@ def Austenite_Martensite_VC(C):
 
 
 
-
-
+"""
 def BMI_Calculation(W,H):
     '''
     
@@ -361,6 +311,7 @@ def BMI_Calculation(W,H):
 
     '''
     return(W/H**2)
+"""
 
 
 
@@ -411,7 +362,7 @@ def Burning_Rate(L, t):
 
 
 
-def boyles_law(initial_volume, initial_pressure, final_volume):
+def Boyles_Law(initial_volume, initial_pressure, final_volume):
     """
     Calculates the final pressure based on Boyle's Law (assuming constant temperature).
 
@@ -432,7 +383,7 @@ def boyles_law(initial_volume, initial_pressure, final_volume):
     return (initial_pressure * initial_volume) / final_volume
 
 
-def boltzmann_distribution(energy, temperature, boltzmann_constant):
+def Boltzmann_Distribution(energy, temperature, boltzmann_constant):
     """
     Calculates the probability of a particle being in a specific energy state according to the Boltzmann distribution.
 
@@ -583,7 +534,7 @@ def Brinell_Hardness_Calculation (d1,d2,D,p):
     return BHN
 
 
-def calculate_hardness_from_young_and_poisson(E, nu):
+def Calculate_Hardness_From_Young_And_Poisson(E, nu):
     """
     Estimate Vickers hardness (HV) from Young’s modulus and Poisson’s ratio.
 
@@ -604,7 +555,7 @@ def calculate_hardness_from_young_and_poisson(E, nu):
 
 
 
-def calculate_debye_temperature(velocity, atomic_mass, density, n_atoms):
+def Calculate_Debye_Temperature(velocity, atomic_mass, density, n_atoms):
     """
     Estimate the Debye temperature (θ_D) of a solid material.
 
@@ -741,7 +692,7 @@ def Circle_Perimeter(radius):
 
 
 
-def coulombs_law(charge1, charge2, distance):
+def Coulombs_Law(charge1, charge2, distance):
     """
     Calculates the electrostatic force between two point charges using Coulomb's Law.
 
@@ -927,7 +878,7 @@ def Copolymer_Type(Copolymer, Polymer_num=2):
       
 
 
-  
+'''
 def Cost_Indicators(ac, ev):
     """
     Calculates the Cost Variance (CV) and Cost Performance Index (CPI).
@@ -947,7 +898,7 @@ def Cost_Indicators(ac, ev):
     cv = ev - ac
     cpi = ev / ac
     return cv, cpi
-
+'''
 
 def Crystal_Percent(H, W, H100):
     """
@@ -1326,7 +1277,7 @@ def Degradation_Percentage(C0,Ct):
 
 
 
-def darcys_law(flow_rate, permeability, area, pressure_difference):
+def Darcys_Law(flow_rate, permeability, area, pressure_difference):
     """
     Calculates the value related to Darcy's Law for flow through a porous medium.
     Note: The formula provided returns the difference, not a direct calculation of a single variable.
@@ -1351,7 +1302,7 @@ def darcys_law(flow_rate, permeability, area, pressure_difference):
     return permeability * area * pressure_difference - flow_rate
 
 
-def doppler_effect(observed_frequency, source_frequency, velocity_observer, velocity_source, speed_of_sound):
+def Doppler_Effect(observed_frequency, source_frequency, velocity_observer, velocity_source, speed_of_sound):
     """
     Calculates the observed frequency of a wave due to the Doppler effect.
 
@@ -1718,7 +1669,7 @@ This function calculates the percentage of drug loaded in the carrier during dru
 
 
 
-def entropy_change(heat_transfer, temperature):
+def Entropy_Change(heat_transfer, temperature):
     """
     Calculates the change in entropy of a system.
 
@@ -1739,7 +1690,7 @@ def entropy_change(heat_transfer, temperature):
 
 
 
-def elastic_potential_energy(spring_constant, displacement):
+def Elastic_Potential_Energy(spring_constant, displacement):
     """
     Calculates the elastic potential energy stored in a spring.
 
@@ -2042,7 +1993,7 @@ def Fabric_weight(density,area):
 
 
 
-def faradays_law(induced_emf, time, magnetic_flux):
+def Faradays_Law(induced_emf, time, magnetic_flux):
     """
     Calculates a value based on Faraday's Law of induction.
     Note: The provided formula returns the difference, not a direct calculation of a single variable.
@@ -2362,7 +2313,7 @@ def Geometric_Sequence(first_variable,second_variable):
 
 
 
-def gauss_law(electric_field, surface_area, electric_flux):
+def Gauss_Law(electric_field, surface_area, electric_flux):
     """
     Calculates a value related to Gauss's Law for electricity.
     Note: The provided formula returns the difference, not a direct calculation of a single variable.
@@ -2390,7 +2341,7 @@ def gauss_law(electric_field, surface_area, electric_flux):
 
 
 
-def Gibs_free_energy(H0,T,S0):
+def Gibs_Free_Energy(H0,T,S0):
     '''
     Parameters
     ----------
@@ -2414,7 +2365,7 @@ def Gibs_free_energy(H0,T,S0):
 
 
 
-def Gravitational_force(G,FT):
+def Gravitational_Force(G,FT):
     '''
     Parameters
     ----------
@@ -2437,7 +2388,7 @@ def Gravitational_force(G,FT):
 
 
 
-def Gravitational_force_formula(g,m_mars,m_sun,r_mars_sun):
+def Gravitational_Force_Formula(g,m_mars,m_sun,r_mars_sun):
     '''
     
 
@@ -2572,7 +2523,7 @@ def Hooke(strain, young_modulus):
     return stress
 
 
-def heat_transfer(thermal_conductivity, area, temperature_difference, thickness):
+def Heat_Transfer(thermal_conductivity, area, temperature_difference, thickness):
     """
     Calculates the rate of heat transfer through a material by conduction using Fourier's Law.
 
@@ -2595,7 +2546,7 @@ def heat_transfer(thermal_conductivity, area, temperature_difference, thickness)
     return thermal_conductivity * area * temperature_difference / thickness
 
 
-def hookes_law(spring_constant, displacement):
+def Hookes_Law(spring_constant, displacement):
     """
     Calculates the force exerted by a spring according to Hooke's Law.
 
@@ -2614,7 +2565,7 @@ def hookes_law(spring_constant, displacement):
     return spring_constant * displacement
 
 
-def hadamard_product(matrix1, matrix2):
+def Hadamard_Product(matrix1, matrix2):
     """
     Calculates the Hadamard product (element-wise product) of two matrices.
 
@@ -2813,7 +2764,7 @@ def Ideal_Gas_low_with_unit(R = "(L.atm) / (K.mol)", V = 1, n = 1, T = 0):
 
 
 
-def ideal_gas_law(pressure, volume, temperature):
+def Ideal_Gas_Law(pressure, volume, temperature):
     """
     Calculates a value based on the Ideal Gas Law.
     Note: The provided formula returns the difference, not a direct calculation of the number of moles.
@@ -2838,7 +2789,7 @@ def ideal_gas_law(pressure, volume, temperature):
     return pressure * volume - gas_constant * temperature
 
 
-def ideal_diode_equation(current, saturation_current, thermal_voltage):
+def Ideal_Diode_Equation(current, saturation_current, thermal_voltage):
     """
     Calculates a value based on the Ideal Diode Equation (Shockley diode equation).
     Note: The provided formula returns the difference, not a direct calculation of the voltage across the diode.
@@ -2863,7 +2814,7 @@ def ideal_diode_equation(current, saturation_current, thermal_voltage):
     return current - saturation_current * (math.exp(current / thermal_voltage) - 1)
 
 
-
+'''
 def Income_Tax(a):
     """
     
@@ -2880,7 +2831,7 @@ def Income_Tax(a):
     """
     return (a-10000000)*0.09
 
-
+'''
 
 def Incompressible_Fluids_Pressure(d, h):
     """
@@ -2968,7 +2919,7 @@ def Indeterminate_degree_of_truss(m,j):
 
 
 
-def kinetic_energy(mass, velocity):
+def Kinetic_Energy(mass, velocity):
     """
     Calculates the kinetic energy of an object.
 
@@ -2987,7 +2938,7 @@ def kinetic_energy(mass, velocity):
     return 0.5 * mass * velocity**2
 
 
-def lorentz_force(charge, velocity, magnetic_field):
+def Lorentz_Force(charge, velocity, magnetic_field):
     """
     Calculates the magnetic force component of the Lorentz force acting on a moving charged particle.
 
@@ -3219,7 +3170,7 @@ def Mtt_Test(C1,C2):
     
 
 
-def mass_energy_equivalence(mass):
+def Mass_Energy_Equivalence(mass):
     """
     Calculates the energy equivalent of a given mass using Einstein's mass-energy equivalence principle (E=mc^2).
 
@@ -3237,7 +3188,7 @@ def mass_energy_equivalence(mass):
     return mass * speed_of_light**2
 
 
-def maxwells_equations(electric_field, magnetic_field, charge_density, current_density):
+def Maxwells_Equations(electric_field, magnetic_field, charge_density, current_density):
     """
     Represents a simplified form of two of Maxwell's equations: Gauss's law for electricity and Ampère-Maxwell's law.
     Note: This function assumes that the `div()` and `curl()` methods are defined for the input field objects and returns a tuple representing the differences from zero as stated by the laws in a vacuum (no free charges or currents). For the full equations in media, permittivity and permeability would need to be considered.
@@ -3607,7 +3558,7 @@ def newtons_second_law(force, mass, acceleration):
     return force - mass * acceleration
 
 
-def ohms_law(voltage, current, resistance):
+def Ohms_Law(voltage, current, resistance):
     """
     Calculates a value based on Ohm's law.
     Note: The provided formula returns the difference, not a direct calculation of a single variable.
@@ -3631,7 +3582,7 @@ def ohms_law(voltage, current, resistance):
     return voltage - current * resistance
 
 
-def poisson(transverse_strain, axial_strain):
+def Poisson(transverse_strain, axial_strain):
     """
     Calculates Poisson's ratio of a material under axial stress.
 
@@ -3774,7 +3725,7 @@ def Pythagorean(side1,side2):
 
 
 
-def pythagorean_theorem(a, b):
+def Pythagorean_Theorem(a, b):
     """
     Calculates the length of the hypotenuse of a right-angled triangle using the Pythagorean theorem.
 
@@ -3795,7 +3746,7 @@ def pythagorean_theorem(a, b):
 
 
 
-def photoelectric_effect(kinetic_energy, photon_energy, work_function):
+def Photoelectric_Effect(kinetic_energy, photon_energy, work_function):
     """
     Calculates a value related to the photoelectric effect.
     Note: The provided formula returns the difference, not a direct calculation of a single variable.
@@ -3996,7 +3947,7 @@ def Print_Time(Print_speed,Volume,Printer_efficiency):
 
 
 
-def predict_phase_from_gibbs(g1, g2, temp):
+def Predict_Phase_From_Gibbs(g1, g2, temp):
     """
     Predict which phase is thermodynamically favored at a given temperature.
 
@@ -4209,7 +4160,7 @@ def Rectangle_Perimeter(length,width):
 
 
 
-def root_degree2(a, b, c):
+def Root_Degree2(a, b, c):
     """
     Calculates the real roots of a quadratic equation of the form ax^2 + bx + c = 0.
 
@@ -4240,7 +4191,7 @@ def root_degree2(a, b, c):
     else:
         return None
 
-def rayleigh_scattering(intensity, wavelength, particle_size):
+def Rayleigh_Scattering(intensity, wavelength, particle_size):
     """
     Calculates a value related to the intensity of Rayleigh scattering.
     Note: The provided formula returns the difference, not the scattered intensity.
@@ -4264,7 +4215,7 @@ def rayleigh_scattering(intensity, wavelength, particle_size):
     return intensity - (particle_size / wavelength)**4
 
 
-def rydberg_formula(wavelength, rydberg_constant, principal_quantum_number):
+def Rydberg_Formula(wavelength, rydberg_constant, principal_quantum_number):
     """
     Calculates a value related to the Rydberg formula for the wavelengths of spectral lines of hydrogen-like atoms.
     Note: The provided formula returns the difference, not the inverse of the wavelength.
@@ -5163,27 +5114,8 @@ def Young_Modulus(stress, strain):
     return E
 
 
-def youngs_modulus(stress, strain):
-    """
-    Calculates a value based on the difference between stress and strain.
-    Note: This is not the standard formula for Young's modulus.
 
-    Parameters
-    ----------
-    stress : float
-        The stress experienced by the material.
-    strain : float
-        The strain of the material.
-
-    Returns
-    -------
-    float
-        The difference between stress and strain.
-    """
-    return stress - strain
-
-
-def wavelength_frequency_relation(speed_of_light, wavelength, frequency):
+def Wavelength_Frequency_Relation(speed_of_light, wavelength, frequency):
     """
     Calculates a value based on the relationship between the speed of light, wavelength, and frequency of an electromagnetic wave.
     Note: The provided formula returns the difference, not a direct calculation of one of the variables.
@@ -5209,7 +5141,7 @@ def wavelength_frequency_relation(speed_of_light, wavelength, frequency):
 
 
 
-def Wear_rate(V,F,S):
+def Wear_Rate(V,F,S):
     '''
     Parameters
     ----------
@@ -5233,38 +5165,7 @@ def Wear_rate(V,F,S):
 
 
 
-
-def Wear_Rate(v, f, s):
-    
-    '''
-    this function calculates abrasive wear rate
-    
-    Parametrs
-    ---------
-    1. v : float ---> (mm3)
-    v represents wear volume
-    
-    2. f: int ---> (nm) ---> (N)
-    f represents normal load.
-    
-    3. s: float ---> (m)
-    s represents sliding distance.
-    
-    Returns --> wear rate (w)
-        
-    '''
-    
-    w = v/(f*s)
-    
-    return w
-
-
-
-
-
-
-#William, Landel, Ferrry (WLF)
-def WLF(T,Tg,/):
+def William_Landel_Ferry(T,Tg,/):
     '''
     The WLF equation is a procedure for shifting data for amorphous polymers obtained at elevated temperatures to a reference temperature. 
 
@@ -5289,7 +5190,7 @@ def WLF(T,Tg,/):
     return aT
         
 
-
+"""
 def Web_Service_Analyze(services,resp_times,exe_CPU_costs,exe_Mem_costs,exe_Disk_costs,exe_Net_costs):
     '''
     
@@ -5384,7 +5285,7 @@ def Web_Service_Analyze(services,resp_times,exe_CPU_costs,exe_Mem_costs,exe_Disk
     print(web_services_analyze_data)
     return (web_services_analyze_data)
 
-
+"""
 
 
 def Welding_Heat_Input(Efficiency,Voltage,Amperage,Speed): 
@@ -5435,7 +5336,7 @@ def Welding_Deposition_Rate(Deposited_Metal_Mass,Welding_Time):
 
 
 
-def uncertainty_principle(delta_position, delta_momentum, hbar):
+def Uncertainty_Principle(delta_position, delta_momentum, hbar):
     """
     Calculates a value related to the Heisenberg uncertainty principle.
     Note: The provided formula returns the difference, not a direct evaluation of whether the principle is satisfied.
