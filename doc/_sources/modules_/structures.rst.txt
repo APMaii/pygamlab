@@ -1,0 +1,19 @@
+Structures Module
+=================
+
+Tools to **generate, manipulate, and analyze nanoscale and bulk materials**.
+
+Capabilities:
+
+- 0D (clusters, nanoparticles), 1D (nanowires, nanotubes), 2D (nanosheets, thin films), and bulk crystals
+- Automated builders for nanoclusters, nanotubes, and supercells
+- Geometric operations: rotation, translation, scaling, merging, slicing, symmetry analysis
+- Supports formats: `.cif`, `.xyz`, `.pdb`, `.vasp`, `.json`
+- Integration with ASE and Pymatgen via built-in converters
+
+
+.. automodule:: PyGamLab.structures
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :noindex:

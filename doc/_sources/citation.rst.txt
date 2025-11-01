@@ -1,0 +1,18 @@
+Citation
+========
+
+If you use **PyGamLab** in your research, please cite our work:
+
+.. code-block:: bibtex
+
+    @misc{pygamlab2025,
+        author = {Ali Pilehvar Meibody and Danial Nekoonam and Shokoofeh Karimi},
+        title = {PyGamLab: Python Tools for Nanostructure Generation and Materials Analysis},
+        year = {2025},
+        publisher = {GAMLab, Amirkabir University of Technology (AUT)},
+        howpublished = {\url{https://github.com/APMaii/pygamlab}}
+    }
+
+Please also consider citing relevant publications if you use specific models:
+
+- Shaoyu Zhao et al., DOI: https://doi.org/10.1007/s00366-022-01710-w

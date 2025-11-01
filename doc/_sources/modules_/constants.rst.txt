@@ -1,0 +1,12 @@
+Constants Module
+================
+
+This module provides comprehensive **scientific constants** in physics, chemistry, and engineering.
+
+Examples include Planck's constant, Boltzmann constant, speed of light, universal gas constant, and melting points of metals.
+
+.. automodule:: PyGamLab.Constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :noindex:

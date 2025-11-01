@@ -1,0 +1,17 @@
+Functions Module
+================
+
+Provides a wide collection of **scientific formulas and utility functions** commonly used in engineering applications.
+
+Examples:
+
+- Thermodynamics equations (Gibbs free energy)
+- Mechanical stress and strain calculations
+- Fluid dynamics formulas
+- General utility functions
+
+.. automodule:: PyGamLab.Functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :noindex:

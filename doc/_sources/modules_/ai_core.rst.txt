@@ -1,0 +1,19 @@
+
+AI Core Module
+==============
+
+Integrates **machine learning workflows** into materials research.
+
+Highlights:
+
+- Automated regression, classification, and clustering workflows
+- Access to 140+ pre-trained models
+- Fine-tuning and inference on user data
+- Predict material properties: band gap, formation energy, hardness
+- Built-in tools for data splitting, validation, and evaluation
+
+.. automodule:: PyGamLab.ai_core
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :noindex:
