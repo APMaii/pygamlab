@@ -1,4 +1,3 @@
-
 #" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
 #                                               -W. Edwards Deming
 #------------------------------------------------------------------------------
@@ -43,17 +42,9 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 '''
 
 
-__version__ = "1.0.0"
+__version__ = "1.9.9"
 
 
 
-__all__ = ["Constants", "Converters", "Functions", "Data_Analysis"]
-
-
-
-
-
-
-
-
+__all__ = ["Constants", "Converters", "Functions", "Data_Analysis","structures","databases","ai_core"]
 
