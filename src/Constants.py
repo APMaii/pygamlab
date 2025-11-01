@@ -1,2396 +1,2568 @@
-'''
-Constants.py ==> 
-This module contains scientific constants intended for use throughout the package.
-'''
 
-
-#" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
-#                                               -W. Edwards Deming
-#------------------------------------------------------------------------------
-# Copyright 2023 The Gamlab Authors. All Rights Reserved.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#     http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#------------------------------------------------------------------------------
-''' 
-The Scientific experimental simulation library 
--------------------------------------------------------------------------------
-Graphen & Advanced Material Laboratory 
-
-it aimes to provide new scientist to use data,simlation, prepared data 
-and Artificial intelligence models.
-
-See http://gamlab.aut.ac.ir for complete documentation.
-'''
-__doc__='''
-
-@author: Ali Pilehvar Meibody (Alipilehvar1999@gmail.com)
-
-                                         888                    888
- .d8888b    .d88b.     88888b.d88b.      888         .d88b.     888
-d88P"      d88""88b    888 "888 "88b     888        d88""88b    88888PP
-888  8888  888  888    888  888  888     888        888  888    888  888
-Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
- "Y8888P8   "Y88P8888  888  888  888     888888888   "Y88P8888  88888888  
-
-
-@Director of Gamlab: Professor M. Naderi (Mnaderi@aut.ac.ir)    
-
-@Graphene Advanced Material Laboratory: https://www.GamLab.Aut.ac.ir
-
-'''
 import math
 
-# ==============================================================================
-# Physical and Scientific Constants
-# ==============================================================================
-
-# A
-A_lattice_constant = 0.413  # lattice constant in nanometers
-alpha_stefan_boltzmann = 5.67e-8  # Stefan-Boltzmann constant (W/m²/K⁴)
-Avogadro_Number = 6.022e23  # Avogadro's number (mol⁻¹)
-
-# B
-Boltzmann_constant = 1.380649e-23  # More precise value (J/K)
-
-# C
-c_speed_of_light = 2.998e8  # Speed of light in vacuum (m/s)
-Conductivity_P3HT = 2.4  # Electrical conductivity of P3HT
-Conductivity_PLN = 10  # Electrical conductivity of PLN
-Conductivity_PPY = 105  # Electrical conductivity of polypyrrole
-Conductivity_pT = 33.7  # Electrical conductivity of polythiophene
-
-# D
-D_oxygen_diffusion_coeff = 2.3e-5  # Oxygen diffusion coefficient in water (µm²/s)
-density_of_Al = 2.7  # g/cm³
-density_of_Cu = 8.96  # g/cm³
-density_of_Fe = 7.87  # g/cm³
-
-# E
-Earth_Accel = 9.8  # Acceleration due to gravity on Earth (m/s²)
-Electron_Charge = 1.6e-19  # Elementary charge (C)
-e_euler_number = 2.718281828459045  # Euler's number
-Eutectic_Percent = 4.3  # Carbon % in eutectic reaction
-Eutectic_T = 1148  # Eutectic temperature (°C)
-Eutectoid_persent = 0.76  # Carbon % in eutectoid reaction
-Eutectoid_T = 727  # Eutectoid temperature (°C)
-
-# F
-Faraday_constant = 96485  # Faraday constant (C/mol)
-Fe_Density = 7.87  # Density of iron
-Fe_Tm_Alpha = 910  # Melting point of alpha-phase iron (°C)
-Fe_Tm_Delta = 1539  # Melting point of delta-phase iron (°C)
-Fe_Tm_Gama = 1495  # Melting point of gamma-phase iron (°C)
-
-# G
-G = 6.674e-11  # Gravitational constant (m³/kg/s²)
-G_Mol_Ba = 137.33  # Molar mass of barium
-G_Mol_O = 16.00  # Molar mass of oxygen
-G_Mol_Si = 28.09  # Molar mass of silicon
-G_Mol_Ti = 47.87  # Molar mass of titanium
-G_Mol_Zr = 91.22  # Molar mass of zirconium
-g = 9.81  # Standard gravity (m/s²)
-
-# H
-h_plank = 6.62607015e-34  # Planck’s constant (J·s)
-
-# I
-# (None explicitly declared)
-
-# K
-K_boltzman = 1.380649e-23   # Boltzmann constant (J/K)
-
-k_z_value_standard = 1.96  # Z value for standard normal distribution
-
-# L
-Latent_heat = 1.16e9  # Latent heat 
-
-# M
-max_C_inSteel = 2.11  # Max carbon % in steel before it becomes cast iron
-melting_point_of_Al = 660  # °C
-melting_point_of_Cu = 1085  # °C
-melting_point_of_Fe = 1538  # °C
-
-# N
-N_A = 6.022e23  # Avogadro’s constant
-
-
-# P
-P_0 = 101325  # Standard atmospheric pressure (Pa)
-phi_golden_ratio = 1.618  # Golden ratio
-Pi = 3.141592653589793  # Pi
-π = 3.141592653589793  # Duplicate with symbol
-
-# Q
-# (None explicitly declared)
-
-
-# R
-R = 8.314  # Ideal gas constant (J/mol·K)
-R_Cal = 1.987  # Gas constant in cal/(mol·K)
-R_LA = 0.08205  # Ideal gas constant in (L·atm)/(mol·K)
-
-# S
-S = 28.34  # Standard entropy for solid aluminum (J/mol·K)
-Speed_Of_Light = 2.99e8  # Another duplicate of c
-
-# T
-Tau = 2 * Pi  # Tau (2π)
-thermal_conductivity_coefficient_of_Al = 237  # W/m·K
-thermal_conductivity_coefficient_of_Cu = 385  # W/m·K
-thermal_conductivity_coefficient_of_Fe = 221  # W/m·K
-t_stu = 0.9277  # t-Student value
-
-# V
-vacuum_permeability = 1  # Simplified value
-
-# X, Z
-Xd = 0.95
-Xw = 0.05
-Zf = 0.25
-zeta = 1.202  # Riemann zeta function at 3 (used in physics)
-
-
-
-
-
-
-# --- Fluid Dynamics ---
-
-# Kinematic viscosity of air (m²/s)
-nu_air_kinematic = 1.48e-5  # m²/s
-
-# Kinematic viscosity of water at 20°C (m²/s)
-nu_water_kinematic = 1.004e-6  # m²/s
-
-
-# Dynamic Viscosity of air at 20°C (Pa·s)
-mu_air_20C = 1.81e-5  # Pa·s
-
-# Dynamic Viscosity of water at 20°C (Pa·s)
-mu_water_20C = 0.001002  # Pa·s
-
-# Speed of sound in air at 20°C (m/s)
-speed_of_sound_air = 343  # m/s
-
-# Speed of sound in water at 25°C (m/s)
-speed_of_sound_water = 1482  # m/s
-
-# Critical velocity for pipe flow (m/s)
-critical_velocity = 1.0  # m/s
-
-# Reynolds number for laminar flow (dimensionless)
-Re_laminar = 2000  # dimensionless
-
-# Reynolds number for turbulent flow (dimensionless)
-Re_turbulent = 4000  # dimensionless
-
-# --- Fluid Properties ---
-
-# Density of air at 20°C (kg/m³)
-density_air_20C = 1.204  # kg/m³
-
-# Density of water at 20°C (kg/m³)
-density_water_20C = 998  # kg/m³
-
-# Surface tension of water at 25°C (N/m)
-surface_tension_water_25C = 0.0728  # N/m
-
-# Vapor pressure of water at 25°C (Pa)
-vapor_pressure_water_25C = 3.17e3  # Pa
-
-
-
-
-# --- Thermal Conductivity ---
-
-# Thermal conductivity of air at 300K (W/m·K)
-thermal_conductivity_air = 0.0262  # W/m·K
-
-# Thermal conductivity of water at 25°C (W/m·K)
-thermal_conductivity_water = 0.606  # W/m·K
-
-
-# --- Heat Transfer Constants ---
-
-# Convective heat transfer coefficient for water (W/m²·K)
-convective_heat_transfer_water = 500  # W/m²·K
-
-# Convective heat transfer coefficient for air (W/m²·K)
-convective_heat_transfer_air = 10  # W/m²·K
-
-
-# Heat transfer coefficient for forced convection (W/m²·K)
-heat_transfer_coefficient_forced_convection = 100  # W/m²·K
-
-# Stefan-Boltzmann constant (W/m²·K⁴)
-stefan_boltzmann_constant = 5.67e-8  # W/m²·K⁴
-
-# Specific heat capacity of water at 25°C (J/g·K)
-specific_heat_water = 4.18  # J/g·K
-
-# Specific heat capacity of air at 25°C (J/g·K)
-specific_heat_air = 1.005  # J/g·K
-
-# Latent heat of fusion for ice (J/g)
-latent_heat_fusion_ice = 334  # J/g
-
-# Latent heat of vaporization for water (J/g)
-latent_heat_vaporization_water_25C = 2260  # J/g
-
-
-# --- Material Science ---
-
-# Young's Modulus for Steel (Pa)
-youngs_modulus_steel = 2.1e11  # Pa
-
-# Young's Modulus for Aluminum (Pa)
-youngs_modulus_aluminum = 7.0e10  # Pa
-
-# Poisson's Ratio for Steel
-poissons_ratio_steel = 0.3  # dimensionless
-
-# Poisson's Ratio for Aluminum
-poissons_ratio_aluminum = 0.33  # dimensionless
-
-# --- Mass Transfer Constants ---
-
-# Diffusion coefficient of oxygen in water at 25°C (m²/s)
-diffusion_oxygen_water = 2.3e-9  # m²/s
-
-# Diffusion coefficient of carbon dioxide in water at 25°C (m²/s)
-diffusion_CO2_water = 1.3e-9  # m²/s
-
-# Diffusion coefficient of air in water (m²/s)
-diffusion_air_water = 2.2e-5  # m²/s
-
-# Diffusion coefficient of hydrogen in water (m²/s)
-diffusion_hydrogen_water = 5.2e-9  # m²/s
-
-# Diffusion coefficient of sodium chloride in water (m²/s)
-diffusion_NaCl_water = 1.2e-9  # m²/s
-
-# --- Electrical Constants ---
-
-# Permittivity of free space (F/m)
-epsilon_0 = 8.854187817e-12  # F/m
-
-# Electric constant (C²/N·m²)
-epsilon_0_SI = 8.854187817e-12  # C²/N·m²
-
-# Vacuum permeability (T·m/A)
-mu_0 = 4 * Pi * 1e-7  # T·m/A
-
-# Electric potential of the electron (V)
-electric_potential_electron = 4.8032e-10  # V
-
-# Resistivity of Copper (Ω·m)
-resistivity_copper = 1.68e-8  # Ω·m
-
-# Resistivity of Aluminum (Ω·m)
-resistivity_aluminum = 2.82e-8  # Ω·m
-
-# Resistivity of Iron (Ω·m)
-resistivity_iron = 9.71e-8  # Ω·m
-
-# --- Magnetism & Electromagnetic Fields ---
-
-# Magnetic permeability of free space (T·m/A)
-magnetic_permeability = 4 * Pi * 1e-7  # T·m/A
-
-# Bohr magneton (J/T)
-bohr_magneton = 9.274e-24  # J/T
-
-# Magnetic field of the Earth (T)
-earth_magnetic_field = 25e-6  # T
-
-
-# --- Geophysical Constants ---
-
-# Earth's radius (m)
-radius_earth = 6.371e6  # meters
-
-# Earth's surface area (m²)
-area_earth = 4 * Pi * radius_earth**2  # m²
-
-# Earth's mass (kg)
-earth_mass = 5.972e24  # kg
-
-# Earth's volume (m³)
-earth_volume = 1.08321e12  # km³
-
-# Earth's surface area (m²)
-earth_surface_area = 5.100e14  # m²
-
-
-# --- Thermodynamic Constants ---
-
-# Critical temperature of water (K)
-critical_temperature_water = 647.1  # K
-
-# Critical pressure of water (Pa)
-critical_pressure_water = 22.064e6  # Pa
-
-# Latent heat of vaporization of water at 100°C (J/kg)
-latent_heat_vaporization_water = 2260e3  # J/kg
-
-
-# Standard enthalpy of formation of water at 25°C (kJ/mol)
-enthalpy_formation_water = -241.8  # kJ/mol
-
-# Standard Gibbs free energy of formation of water at 25°C (kJ/mol)
-gibbs_free_energy_water = -237.13  # kJ/mol
-
-# Boltzmann constant (J/K)
-boltzmann_constant = 1.380649e-23  # J/K
-
-# Ideal gas constant (J/mol·K)
-R_ideal = 8.314462618  # J/mol·K
-
-# Avogadro’s constant (mol⁻¹)
-avogadro_constant = 6.02214076e23  # mol⁻¹
-
-# --- Atomic Constants ---
-
-# Atomic mass unit (kg)
-atomic_mass_unit = 1.66053906660e-27  # kg
-
-# Rest mass of electron (kg)
-electron_mass = 9.10938356e-31  # kg
-
-# Rest mass of proton (kg)
-proton_mass = 1.6726219e-27  # kg
-
-# Rest mass of neutron (kg)
-neutron_mass = 1.675e-27  # kg
-
-# --- Quantum Mechanics ---
-
-# Reduced Planck's constant (J·s)
-h_bar = 1.0545718e-34  # J·s
-
-# Fine structure constant (dimensionless)
-alpha_fine_structure = 7.297e-3  # dimensionless
-
-# --- Fluid Dynamics ---
-
-# Reynolds number for transition (dimensionless)
-Re_transition = 2000  # dimensionless
-
-# Reynolds number for turbulence (dimensionless)
-Re_turbulence = 4000  # dimensionless
-
-
-# Fine-structure constant (dimensionless)
-alpha_fine_structure = 7.297e-3  # dimensionless
-
-# Compton wavelength of the electron (m)
-compton_wavelength_electron = 2.426e-12  # m
-
-# Planck length (m)
-planck_length = 1.616255e-35  # m
-
-# Planck mass (kg)
-planck_mass = 2.176434e-8  # kg
-
-# Planck time (s)
-planck_time = 5.391e-44  # s
-
-# Planck temperature (K)
-planck_temperature = 1.416784e32  # K
-
-
-
-# --- Electrochemistry ---
-
-# Electrode potential of the standard hydrogen electrode (V)
-standard_hydrogen_potential = 0  # Volts
-
-# --- Nuclear Physics ---
-
-# Rydberg constant (m⁻¹)
-rydberg_constant = 1.097373e7  # m⁻¹
-
-# Neutron capture cross-section for Uranium-235 (barns)
-neutron_capture_cross_section_U235 = 680  # barns
-
-# Nuclear fusion energy of Deuterium-Tritium reaction (J)
-fusion_energy_D_T = 17.6e6  # Joules
-
-# --- Optics ---
-
-# Refractive index of vacuum (dimensionless)
-n_vacuum = 1  # dimensionless
-
-# Refractive index of water (dimensionless)
-n_water = 1.333  # dimensionless
-
-# Refractive index of air (dimensionless)
-n_air = 1.0003  # dimensionless
-
-# --- Thermodynamics ---
-
-# Standard temperature (K)
-T_standard = 298.15  # K
-
-# Standard pressure (Pa)
-P_standard = 101325  # Pa
-
-
-
-# --- Surface Tension ---
-
-# Surface tension of water at 25°C (N/m)
-surface_tension_water = 0.0728  # N/m
-
-# Surface tension of mercury at 25°C (N/m)
-surface_tension_mercury = 0.485  # N/m
-
-
-
-#----------------------------
-#----------------------------
-#-----Material Properties----
-#----------------------------
-#----------------------------
-
-
-# Periodic Table: Elements and Their Melting Points (Tm in Kelvin)
-
-ELEMENTS_Tm = {
-    "H": 14.01,     # Hydrogen
-    "He": 0.95,     # Helium
-    "Li": 453.65,   # Lithium
-    "Be": 1560,     # Beryllium
-    "B": 2349,      # Boron
-    "C": 3823,      # Carbon (graphite)
-    "N": 63.15,     # Nitrogen
-    "O": 54.36,     # Oxygen
-    "F": 53.53,     # Fluorine
-    "Ne": 24.56,    # Neon
-    "Na": 370.87,   # Sodium
-    "Mg": 923,      # Magnesium
-    "Al": 933.47,   # Aluminum
-    "Si": 1687,     # Silicon
-    "P": 317.3,     # Phosphorus (white)
-    "S": 388.36,    # Sulfur
-    "Cl": 171.6,    # Chlorine
-    "Ar": 83.8,     # Argon
-    "K": 336.53,    # Potassium
-    "Ca": 1115,     # Calcium
-    "Sc": 1814,     # Scandium
-    "Ti": 1941,     # Titanium
-    "V": 2183,      # Vanadium
-    "Cr": 2180,     # Chromium
-    "Mn": 1519,     # Manganese
-    "Fe": 1811,     # Iron
-    "Co": 1768,     # Cobalt
-    "Ni": 1728,     # Nickel
-    "Cu": 1357.77,  # Copper
-    "Zn": 692.68,   # Zinc
-    "Ga": 302.91,   # Gallium
-    "Ge": 1211.4,   # Germanium
-    "As": 1090,     # Arsenic (sublimes)
-    "Se": 494,      # Selenium
-    "Br": 265.8,    # Bromine
-    "Kr": 115.78,   # Krypton
-    "Rb": 312.46,   # Rubidium
-    "Sr": 1050,     # Strontium
-    "Y": 1799,      # Yttrium
-    "Zr": 2128,     # Zirconium
-    "Nb": 2750,     # Niobium
-    "Mo": 2896,     # Molybdenum
-    "Tc": 2430,     # Technetium
-    "Ru": 2607,     # Ruthenium
-    "Rh": 2237,     # Rhodium
-    "Pd": 1828.05,  # Palladium
-    "Ag": 1234.93,  # Silver
-    "Cd": 594.22,   # Cadmium
-    "In": 429.75,   # Indium
-    "Sn": 505.08,   # Tin
-    "Sb": 903.78,   # Antimony
-    "Te": 722.66,   # Tellurium
-    "I": 386.85,    # Iodine
-    "Xe": 161.36,   # Xenon
-    "Cs": 301.59,   # Cesium
-    "Ba": 1000,     # Barium
-    "La": 1193,     # Lanthanum
-    "Ce": 1068,     # Cerium
-    "Pr": 1208,     # Praseodymium
-    "Nd": 1297,     # Neodymium
-    "Pm": 1315,     # Promethium
-    "Sm": 1345,     # Samarium
-    "Eu": 1099,     # Europium
-    "Gd": 1585,     # Gadolinium
-    "Tb": 1629,     # Terbium
-    "Dy": 1680,     # Dysprosium
-    "Ho": 1743,     # Holmium
-    "Er": 1802,     # Erbium
-    "Tm": 1818,     # Thulium
-    "Yb": 1097,     # Ytterbium
-    "Lu": 1925,     # Lutetium
-    "Hf": 2506,     # Hafnium
-    "Ta": 3290,     # Tantalum
-    "W": 3695,      # Tungsten
-    "Re": 3459,     # Rhenium
-    "Os": 3306,     # Osmium
-    "Ir": 2719,     # Iridium
-    "Pt": 2041.4,   # Platinum
-    "Au": 1337.33,  # Gold
-    "Hg": 234.43,   # Mercury
-    "Tl": 577,      # Thallium
-    "Pb": 600.61,   # Lead
-    "Bi": 544.7,    # Bismuth
-    "Po": 527,      # Polonium
-    "At": 575,      # Astatine (estimated)
-    "Rn": 202,      # Radon
-    "Fr": 300,      # Francium (estimated)
-    "Ra": 973,      # Radium
-    "Ac": 1323,     # Actinium
-    "Th": 2023,     # Thorium
-    "Pa": 1841,     # Protactinium
-    "U": 1405.3,    # Uranium
-    "Np": 917,      # Neptunium
-    "Pu": 912.5,    # Plutonium
-    "Am": 1449,     # Americium
-    "Cm": 1613,     # Curium
-    "Bk": 1323,     # Berkelium
-    "Cf": 1173,     # Californium
-    "Es": 1133,     # Einsteinium
-    "Fm": 1125,     # Fermium
-    "Md": 1100,     # Mendelevium (est.)
-    "No": 1100,     # Nobelium (est.)
-    "Lr": 1900,     # Lawrencium (est.)
-    "Rf": None,     # Rutherfordium (unknown)
-    "Db": None,     # Dubnium
-    "Sg": None,     # Seaborgium
-    "Bh": None,     # Bohrium
-    "Hs": None,     # Hassium
-    "Mt": None,     # Meitnerium
-    "Ds": None,     # Darmstadtium
-    "Rg": None,     # Roentgenium
-    "Cn": None,     # Copernicium
-    "Nh": None,     # Nihonium
-    "Fl": None,     # Flerovium
-    "Mc": None,     # Moscovium
-    "Lv": None,     # Livermorium
-    "Ts": None,     # Tennessine
-    "Og": None,     # Oganesson
-}
-
-
-
-
-# Periodic Table: Elements and Their Densities (g/cm³ at ~20°C)
-
-ELEMENTS_DENSITY = {
-    "H": 0.00008988,  # Hydrogen
-    "He": 0.0001785,  # Helium
-    "Li": 0.534,      # Lithium
-    "Be": 1.85,       # Beryllium
-    "B": 2.34,        # Boron
-    "C": 2.267,       # Carbon (graphite)
-    "N": 0.0012506,   # Nitrogen
-    "O": 0.001429,    # Oxygen
-    "F": 0.001696,    # Fluorine
-    "Ne": 0.0008999,  # Neon
-    "Na": 0.971,      # Sodium
-    "Mg": 1.738,      # Magnesium
-    "Al": 2.70,       # Aluminum
-    "Si": 2.3296,     # Silicon
-    "P": 1.82,        # Phosphorus (white)
-    "S": 2.067,       # Sulfur
-    "Cl": 0.003214,   # Chlorine
-    "Ar": 0.0017837,  # Argon
-    "K": 0.862,       # Potassium
-    "Ca": 1.54,       # Calcium
-    "Sc": 2.989,      # Scandium
-    "Ti": 4.54,       # Titanium
-    "V": 6.11,        # Vanadium
-    "Cr": 7.19,       # Chromium
-    "Mn": 7.21,       # Manganese
-    "Fe": 7.874,      # Iron
-    "Co": 8.90,       # Cobalt
-    "Ni": 8.908,      # Nickel
-    "Cu": 8.96,       # Copper
-    "Zn": 7.134,      # Zinc
-    "Ga": 5.91,       # Gallium
-    "Ge": 5.323,      # Germanium
-    "As": 5.776,      # Arsenic
-    "Se": 4.809,      # Selenium
-    "Br": 3.119,      # Bromine
-    "Kr": 0.003733,   # Krypton
-    "Rb": 1.532,      # Rubidium
-    "Sr": 2.64,       # Strontium
-    "Y": 4.469,       # Yttrium
-    "Zr": 6.52,       # Zirconium
-    "Nb": 8.57,       # Niobium
-    "Mo": 10.22,      # Molybdenum
-    "Tc": 11.5,       # Technetium
-    "Ru": 12.37,      # Ruthenium
-    "Rh": 12.41,      # Rhodium
-    "Pd": 12.02,      # Palladium
-    "Ag": 10.49,      # Silver
-    "Cd": 8.65,       # Cadmium
-    "In": 7.31,       # Indium
-    "Sn": 7.287,      # Tin
-    "Sb": 6.685,      # Antimony
-    "Te": 6.24,       # Tellurium
-    "I": 4.933,       # Iodine
-    "Xe": 0.005887,   # Xenon
-    "Cs": 1.873,      # Cesium
-    "Ba": 3.62,       # Barium
-    "La": 6.145,      # Lanthanum
-    "Ce": 6.770,      # Cerium
-    "Pr": 6.773,      # Praseodymium
-    "Nd": 7.007,      # Neodymium
-    "Pm": 7.26,       # Promethium
-    "Sm": 7.52,       # Samarium
-    "Eu": 5.243,      # Europium
-    "Gd": 7.90,       # Gadolinium
-    "Tb": 8.229,      # Terbium
-    "Dy": 8.55,       # Dysprosium
-    "Ho": 8.795,      # Holmium
-    "Er": 9.066,      # Erbium
-    "Tm": 9.321,      # Thulium
-    "Yb": 6.90,       # Ytterbium
-    "Lu": 9.841,      # Lutetium
-    "Hf": 13.31,      # Hafnium
-    "Ta": 16.69,      # Tantalum
-    "W": 19.25,       # Tungsten
-    "Re": 21.02,      # Rhenium
-    "Os": 22.59,      # Osmium (densest element)
-    "Ir": 22.56,      # Iridium
-    "Pt": 21.45,      # Platinum
-    "Au": 19.32,      # Gold
-    "Hg": 13.534,     # Mercury
-    "Tl": 11.85,      # Thallium
-    "Pb": 11.34,      # Lead
-    "Bi": 9.78,       # Bismuth
-    "Po": 9.196,      # Polonium
-    "At": 7.0,        # Astatine (estimated)
-    "Rn": 0.00973,    # Radon
-    "Fr": 1.87,       # Francium (estimated)
-    "Ra": 5.5,        # Radium
-    "Ac": 10.07,      # Actinium
-    "Th": 11.72,      # Thorium
-    "Pa": 15.37,      # Protactinium
-    "U": 18.95,       # Uranium
-    "Np": 20.45,      # Neptunium
-    "Pu": 19.84,      # Plutonium
-    "Am": 13.69,      # Americium
-    "Cm": 13.51,      # Curium
-    "Bk": 14.79,      # Berkelium
-    "Cf": 15.1,       # Californium
-    "Es": None,       # Einsteinium (unknown)
-    "Fm": None,       # Fermium
-    "Md": None,       # Mendelevium
-    "No": None,       # Nobelium
-    "Lr": None,       # Lawrencium
-    "Rf": None,       # Rutherfordium
-    "Db": None,       # Dubnium
-    "Sg": None,       # Seaborgium
-    "Bh": None,       # Bohrium
-    "Hs": None,       # Hassium
-    "Mt": None,       # Meitnerium
-    "Ds": None,       # Darmstadtium
-    "Rg": None,       # Roentgenium
-    "Cn": None,       # Copernicium
-    "Nh": None,       # Nihonium
-    "Fl": None,       # Flerovium
-    "Mc": None,       # Moscovium
-    "Lv": None,       # Livermorium
-    "Ts": None,       # Tennessine
-    "Og": None,       # Oganesson
-}
-
-
-
-
-electronegativity = {
-    "H": 2.20, "He": None,
-    "Li": 0.98, "Be": 1.57, "B": 2.04, "C": 2.55, "N": 3.04, "O": 3.44, "F": 3.98, "Ne": None,
-    "Na": 0.93, "Mg": 1.31, "Al": 1.61, "Si": 1.90, "P": 2.19, "S": 2.58, "Cl": 3.16, "Ar": None,
-    "K": 0.82, "Ca": 1.00, "Sc": 1.36, "Ti": 1.54, "V": 1.63, "Cr": 1.66, "Mn": 1.55, "Fe": 1.83, "Co": 1.88, "Ni": 1.91, "Cu": 1.90, "Zn": 1.65, "Ga": 1.81, "Ge": 2.01, "As": 2.18, "Se": 2.55, "Br": 2.96, "Kr": 3.00,
-    "Rb": 0.82, "Sr": 0.95, "Y": 1.22, "Zr": 1.33, "Nb": 1.6, "Mo": 2.16, "Tc": 1.9, "Ru": 2.2, "Rh": 2.28, "Pd": 2.20, "Ag": 1.93, "Cd": 1.69, "In": 1.78, "Sn": 1.96, "Sb": 2.05, "Te": 2.1, "I": 2.66, "Xe": 2.6,
-    "Cs": 0.79, "Ba": 0.89, "La": 1.10, "Ce": 1.12, "Pr": 1.13, "Nd": 1.14, "Pm": 1.13, "Sm": 1.17, "Eu": 1.2, "Gd": 1.2, "Tb": 1.1, "Dy": 1.22, "Ho": 1.23, "Er": 1.24, "Tm": 1.25, "Yb": 1.1, "Lu": 1.27,
-    "Hf": 1.3, "Ta": 1.5, "W": 2.36, "Re": 1.9, "Os": 2.2, "Ir": 2.20, "Pt": 2.28, "Au": 2.54, "Hg": 2.00, "Tl": 1.62, "Pb": 2.33, "Bi": 2.02, "Po": 2.0, "At": 2.2, "Rn": None,
-    "Fr": 0.7, "Ra": 0.9, "Ac": 1.1, "Th": 1.3, "Pa": 1.5, "U": 1.38, "Np": 1.36, "Pu": 1.28, "Am": 1.13, "Cm": 1.28, "Bk": 1.3, "Cf": 1.3, "Es": 1.3, "Fm": None, "Md": None, "No": None, "Lr": None,
-    "Rf": None, "Db": None, "Sg": None, "Bh": None, "Hs": None, "Mt": None, "Ds": None, "Rg": None, "Cn": None, "Nh": None, "Fl": None, "Mc": None, "Lv": None, "Ts": None, "Og": None
-}
-
-
-
-atomic_radius = {
-    "H": 31, "He": 28,
-    "Li": 128, "Be": 96, "B": 84, "C": 76, "N": 71, "O": 66, "F": 57, "Ne": 58,
-    "Na": 166, "Mg": 141, "Al": 121, "Si": 111, "P": 107, "S": 105, "Cl": 102, "Ar": 106,
-    "K": 203, "Ca": 176, "Sc": 170, "Ti": 160, "V": 153, "Cr": 139, "Mn": 139, "Fe": 132, "Co": 126, "Ni": 124, "Cu": 132, "Zn": 122, "Ga": 122, "Ge": 120, "As": 119, "Se": 120, "Br": 120, "Kr": 116,
-    "Rb": 220, "Sr": 195, "Y": 190, "Zr": 175, "Nb": 164, "Mo": 154, "Tc": 147, "Ru": 146, "Rh": 142, "Pd": 139, "Ag": 145, "Cd": 144, "In": 142, "Sn": 139, "Sb": 139, "Te": 138, "I": 139, "Xe": 140,
-    "Cs": 244, "Ba": 215, "La": 195, "Ce": 185, "Pr": 247, "Nd": 206, "Pm": 205, "Sm": 238, "Eu": 231, "Gd": 233, "Tb": 225, "Dy": 228, "Ho": 226, "Er": 226, "Tm": 222, "Yb": 222, "Lu": 217,
-    "Hf": 208, "Ta": 200, "W": 193, "Re": 188, "Os": 185, "Ir": 180, "Pt": 177, "Au": 174, "Hg": 171, "Tl": 156, "Pb": 154, "Bi": 143, "Po": 135, "At": 127, "Rn": 120,
-    "Fr": 260, "Ra": 221, "Ac": 215, "Th": 206, "Pa": 200, "U": 196, "Np": 190, "Pu": 187, "Am": 180, "Cm": 169, "Bk": 168, "Cf": 168, "Es": 165, "Fm": 167, "Md": None, "No": None, "Lr": None,
-    "Rf": None, "Db": None, "Sg": None, "Bh": None, "Hs": None, "Mt": None, "Ds": None, "Rg": None, "Cn": None, "Nh": None, "Fl": None, "Mc": None, "Lv": None, "Ts": None, "Og": None
-}
-
-
-
-#Thermal Conductivity (Unit: W/(m·K), at 300 K
-
-thermal_conductivity = {
-    "H": 0.1815, "He": 0.1513,
-    "Li": 84.7, "Be": 200, "B": 27, "C": 1400, "N": 0.02583, "O": 0.02658, "F": 0.0277, "Ne": 0.0491,
-    "Na": 142, "Mg": 156, "Al": 237, "Si": 149, "P": 0.236, "S": 0.269, "Cl": 0.0089, "Ar": 0.0177,
-    "K": 102, "Ca": 201, "Sc": 16, "Ti": 21.9, "V": 30.7, "Cr": 93.7, "Mn": 7.81, "Fe": 80.2, "Co": 100, "Ni": 90.9,
-    "Cu": 401, "Zn": 116, "Ga": 29, "Ge": 60.2, "As": 50, "Se": 0.52, "Br": 0.122, "Kr": 0.0095,
-    "Rb": 58.2, "Sr": 35.4, "Y": 17.2, "Zr": 22.7, "Nb": 53.7, "Mo": 138, "Tc": 50.6, "Ru": 117, "Rh": 150, "Pd": 71.8,
-    "Ag": 429, "Cd": 96.6, "In": 81.8, "Sn": 66.8, "Sb": 24.4, "Te": 2.35, "I": 0.449, "Xe": 0.00565,
-    "Cs": 36, "Ba": 18.4, "La": 13.4, "Ce": 11.3, "Pr": 12.5, "Nd": 16.5, "Pm": None, "Sm": 13.3, "Eu": 13.9,
-    "Gd": 10.6, "Tb": 11.1, "Dy": 10.7, "Ho": 16.2, "Er": 14.5, "Tm": 16.9, "Yb": 38.6, "Lu": 16.4,
-    "Hf": 23.0, "Ta": 57.5, "W": 173, "Re": 48, "Os": 87.6, "Ir": 147, "Pt": 71.6, "Au": 318, "Hg": 8.3,
-    "Tl": 46.1, "Pb": 35.3, "Bi": 7.97, "Po": None, "At": None, "Rn": 0.00361,
-    "Fr": None, "Ra": None, "Ac": None, "Th": 54, "Pa": None, "U": 27.5, "Np": None, "Pu": 6.74
-}
-
-
-
-
-#electrical Conductivity (Unit: 10⁶ S/m)
-electrical_conductivity = {
-    "Li": 10.7, "Be": 25, "B": 1e-4, "C": 1e-5, "Na": 21, "Mg": 22.7, "Al": 37.7, "Si": 1.56e-4,
-    "P": 1e-9, "S": 5e-13, "K": 14, "Ca": 29.8, "Sc": 18.4, "Ti": 2.38, "V": 5, "Cr": 7.9, "Mn": 0.62,
-    "Fe": 10, "Co": 17.1, "Ni": 14.3, "Cu": 59.6, "Zn": 16.6, "Ga": 7.1, "Ge": 2.0, "As": 0.8,
-    "Se": 1e-9, "Br": 1e-11, "Rb": 7.9, "Sr": 7.7, "Y": 7.1, "Zr": 2.4, "Nb": 6.7, "Mo": 18.7,
-    "Tc": 5.8, "Ru": 14.1, "Rh": 22.8, "Pd": 9.5, "Ag": 62.1, "Cd": 13, "In": 11.5, "Sn": 8.7,
-    "Sb": 2.5, "Te": 0.5, "I": 1e-10, "Cs": 5.5, "Ba": 3.7, "La": 1.7, "Ce": 1.4, "Nd": 1.1,
-    "Sm": 1.2, "Gd": 1.0, "Tb": 0.85, "Dy": 1.1, "Ho": 1.2, "Er": 1.1, "Tm": 1.1, "Yb": 3.5,
-    "Lu": 2.2, "Hf": 3.1, "Ta": 7.9, "W": 18.2, "Re": 5.6, "Os": 10.6, "Ir": 18.7, "Pt": 9.43,
-    "Au": 45.2, "Hg": 10.4, "Tl": 5.8, "Pb": 4.55, "Bi": 0.77, "U": 3.57
-}
-
-
-
-
-
-
-#======================================
-'''
-The Element class is a Python class used to represent the properties of a chemical element. It holds attributes for various properties that define each element in terms of its atomic structure, physical properties, and electrical behavior. The class is initialized with the following parameters:
-
-Parameters:
-
-symbol: (str) The chemical symbol of the element (e.g., "H" for Hydrogen, "O" for Oxygen).
-atomic_number: (int) The atomic number of the element, which represents the number of protons in the nucleus of an atom.
-atomic_mass: (float) The atomic mass of the element, typically given in unified atomic mass units (u).
-density: (float) The density of the element, given in grams per cubic centimeter (g/cm³).
-melting_point: (float) The temperature at which the element changes from a solid to a liquid, given in Kelvin (K).
-electronegativity: (float) The electronegativity of the element, which measures the ability of an atom to attract electrons towards itself when it forms a bond.
-thermal_conductivity: (float) The ability of the element to conduct heat, expressed in watts per meter per Kelvin (W/(m·K)).
-electrical_conductivity: (float) The ability of the element to conduct electricity, given in MegaSiemens per meter (MS/m).
-atomic_radius: (float) The average distance from the nucleus to the outermost electron shell of the atom, measured in picometers (pm).
-Methods:
-
-__repr__: This method defines a string representation for the element object, which is useful when inspecting or printing the object. It provides a readable format for displaying the properties of the element.
-'''
-
-
-
-
-
-class Element:
+def Atmosphere_To_Pascal(atm):
     """
-    A class representing a chemical element with key physical and atomic properties.
+    Convert the given value in atmospheres to pascals.
+
+    Parameters
+    ----------
+    atm : float
+        The value in atmospheres to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent value in pascals.
     
-    Attributes:
-    - symbol (str): The chemical symbol of the element (e.g., "H" for Hydrogen).
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Examples
+    --------
+    >>> Atmosphere_To_Pascal(1)
+    101325.0
+    >>> Atmosphere_To_Pascal(0.5)
+    50662.5
     """
-    def __init__(self, symbol, atomic_number, atomic_mass, density, melting_point,
-                 electronegativity, thermal_conductivity, electrical_conductivity, atomic_radius):
-        self.symbol = symbol
-        self.atomic_number = atomic_number
-        self.atomic_mass = atomic_mass
-        self.density = density
-        self.melting_point = melting_point
-        self.electronegativity = electronegativity
-        self.thermal_conductivity = thermal_conductivity
-        self.electrical_conductivity = electrical_conductivity
-        self.atomic_radius = atomic_radius
+    Pa = float(atm * 101325)
+    return Pa
+
+
+def Angstrom_To_Meter(A):
+    """
+    Convert the given value in angstroms to meters.
+
+    Parameters
+    ----------
+    A : float
+        The value in angstroms to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent value in meters.
+    
+    Examples
+    --------
+    >>> Angstrom_To_Meter(1)
+    1e-10
+    >>> Angstrom_To_Meter(5e3)
+    5e-07
+    """
+    return A * 1e-10
+
+
+def Angstrom_To_Millimeter(A):
+    """
+    Convert the given value in angstroms to millimeters.
+
+    Parameters
+    ----------
+    A : float
+        The value in angstroms to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent value in millimeters.
+    
+    Examples
+    --------
+    >>> Angstrom_To_Millimeter(1e7)
+    1.0
+    >>> Angstrom_To_Millimeter(5e6)
+    0.5
+    """
+    return A * 1e-7
+
+
+def Angstrom_To_Nanometer(Angstrom_value):
+    
+    '''
+    This function converts Angstroms to Nanometers.
+
+    Parameters
+    ----------
+    Angstrom_value: int or Float
+        Value in angstroms (Å).
+    
+    Returns
+    -------
+    Nanometer_value: int or Float
+        Equivalent value in Nanometers (nm).
+
+    '''
+    
+    # Examples
+    # --------
+    # >>> Angstrom_To_Nanometer(10)
+    # 1.0
+    # >>> Angstrom_To_Nanometer(25)
+    # 2.5
+    Nanometer_value= Angstrom_value/10
+    return Nanometer_value 
+
+
+
+
+def Angstrom_To_Micrometer(A):
+    """
+    Convert the given value in angstroms to micrometers.
+
+    Parameters
+    ----------
+    A : float
+        The value in angstroms to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent value in micrometers.
+    
+    Examples
+    --------
+    >>> Angstrom_To_Micrometer(10000)
+    1.0
+    >>> Angstrom_To_Micrometer(25000)
+    2.5
+    """
+    return A / 10000
+
+
+
+def Binary_To_Decimal(Num_bin):
+    """
+    Converts a binary number (given as an int, e.g. 1011) to its decimal representation.
+
+    Parameters
+    ----------
+    Num_bin : int
+        The binary number to convert.
+
+    Returns
+    -------
+    int
+        The decimal representation of the binary number.
+    
+    Examples
+    --------
+    >>> Binary_To_Decimal(1011)
+    11
+    >>> Binary_To_Decimal(11111111)
+    255
+    """
+    Dec = 0
+    i = 0
+    while Num_bin != 0:
+        r = Num_bin % 10
+        Dec = Dec + (r * (2**i))
+        Num_bin = Num_bin // 10
+        i = i + 1
+    return Dec
+
+
+def Byte_To_Kilobyte(b):
+    """
+    Convert the given value in bytes to kilobytes.
+
+    Parameters
+    ----------
+    b : int
+        The value in bytes to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent value in kilobytes.
+    
+    Examples
+    --------
+    >>> Byte_To_Kilobyte(1024)
+    1.0
+    >>> Byte_To_Kilobyte(512)
+    0.5
+    """
+    kb = 0.0009765625 * b
+    return kb
+
+
+
+def Bar_To_Pascal(bar):
+    """
+    Converts bar to pascal.
+
+    Parameters
+    ----------
+    bar : float
+        bar.
+
+    Returns
+    -------
+    Pa : float
+        pascal
+
+    Example
+    -------
+    >>> Bar_To_Pascal(1)
+    1e-05
+    """
+    
+    
+    Pa=bar*(10**(-5))
+    return Pa
+
+def Brinell_To_Rockwell(hb):
+    '''
+    convert Brinell hardness (HB) to Rockwell hardness (HRB)
+
+    Parameters
+    ----------
+    hb : float
+        hardness in Brinell scale.
+
+    Returns float: Hardness in Rochwell scale.
+
+    Examples
+    --------
+    >>> Brinell_To_Rockwell(100)
+    10.0
+    >>> Brinell_To_Rockwell(75)
+    5.0
+   
+
+    '''
+    
+    
+    hrb = (hb - 50) / 5.0
+    return hrb
+
+
+
+
+def Cubic_Meter_To_Liter(number_in_Cubic_Meter):
+    '''
+    This function converts cubic meters to liters.
+
+    Parameters
+    ----------
+    number_in_Cubic_Meter : int or float
+        Number per cubic meter unit. 
+    Liter : int or float
+        Number per liter unit.
+
+    '''
+
+    Liter= number_in_Cubic_Meter*1000
+    return Liter
+    
+
+
+def Celcius_To_Kelvin(Celcius):
+    """
+    Convert the given temperature in Celsius to Kelvin.
+
+    Parameters
+    ----------
+    Celcius : float
+        The temperature in Celsius to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent temperature in Kelvin.
+
+    Notes
+    -----
+    The temperature in Celsius is offset by 273.15 to convert to Kelvin.
+    
+    Examples
+    --------
+    >>> Celcius_To_Kelvin(0)
+    273.15
+    >>> Celcius_To_Kelvin(25)
+    298.15
+    """
+    Kelvin = Celcius + 273.15
+    return Kelvin
+
+
+def Coulomb_To_Electron_Volt(coulomb):
+    """
+    Convert the given value in coulombs to electron volts.
+
+    Parameters
+    ----------
+    coulomb : float
+        The value in coulombs to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent value in electron volts.
+
+    Notes
+    -----
+    1 coulomb = 6.24e18 electron volts.
+    
+    Examples
+    --------
+    >>> Coulomb_To_Electron_Volt(1)
+    6.24e+18
+    >>> Coulomb_To_Electron_Volt(1.6e-19)
+    0.9984
+    """
+    electron_volt = coulomb * 6.24e18
+    return electron_volt
+
+
+def Centigrade_To_Fahrenheit(C):
+    """
+    Convert the given temperature in Celsius (Centigrade) to Fahrenheit.
+
+    Parameters
+    ----------
+    C : float
+        The temperature in Celsius to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent temperature in Fahrenheit.
+    
+    Examples
+    --------
+    >>> Centigrade_To_Fahrenheit(0)
+    32.0
+    >>> Centigrade_To_Fahrenheit(100)
+    212.0
+    """
+    F = C * 1.8 + 32
+    return F
+
+def Centimeter_To_Inch(Centimeter):
+    '''
+    Parameters
+    ----------
+    Centimeter : float or int
+        One centimeter is equal to 0.393701 inches.
+        number per Centimeter unit.
+
+    Returns
+    -------
+    Inch : float
+        number per Inch unit.
+
+    '''
+
+    Inch = Centimeter / 2.54
+    return Inch
+
+def CmHg_To_Pascal(P1):
+    """
+    Convert the given pressure in centimeters of mercury to pascals.
+
+    Parameters
+    ----------
+    P1 : float
+        The pressure in centimeters of mercury to be converted.
+
+    Returns
+    -------
+    float
+        The equivalent pressure in pascals.
+    
+    Examples
+    --------
+    >>> CmHg_To_Pascal(1)
+    1333.22
+    >>> CmHg_To_Pascal(0.5)
+    666.61
+    """
+    P2 = P1 * 1333.22
+    return P2
+
+
+def Calories_To_Joules(cal):
+    """
+
+    Parameters
+    ----------
+    cal : float
+        Calories.
+
+    Returns
+    -------
+    J : float
+        Converts calories to joules.
+
+    """
+    
+
+    J=4.184*cal
+    return J
+
+
+def Centimeter_per_Minute_To_Meter_per_Hour_Welding_Speed_Converter(Centimeter_per_Minute):
+    '''
+    This function converts the Welding Speed from Centimeter per Minute to Meter per Hour.
+
+    Parameters
+    ----------
+    Centimeter_per_Minute : float
+        Centimeter_per_Minute is a unit for welding speed.
+
+    Returns
+    -------
+    Meter_per_Hour is a unit for welding speed.
+
+    '''     
+ 
+
+    Meter_per_Hour=Centimeter_per_Minute/1.7
+    #or
+    Meter_per_Hour = Centimeter_per_Minute * 0.6
+
+    return Meter_per_Hour
+
+
+def Current_Density_To_Mpy(Current_density,density,masschange,valency):
+    """
+    
+
+    Parameters
+    ----------
+    Current_density : float
+        Current density .(microA/cm2)
+    density : float
+       Material Density (g/cm3).
+    masschange : float 
+        amount of matter already corroded (g)
+    valency : intiger
+       How positive is the charge of the Material
+
+    Returns
+    -------
+   corrosion rate in mpy
+   
+
+    """
+
+    corrosion_rate_mpy=Current_density*1e-6*31536000*(1/density)*masschange*400*(1/(valency*96500))
+    return corrosion_rate_mpy
+
+def CC_per_Second_To_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter(CC_per_Second):
+    '''
+    This function converts the Welding Gas Flow Rate from CC per Second to Liter per Minute.
+
+    Parameters
+    ----------
+    CC_per_Second : float
+        CC_per_Second is a unit for gas flow rate in welding.
+
+    Returns
+    -------
+    Liter_per_Minute is a unit for gas flow rate in welding.
+
+    '''     
+ 
+
+    Liter_per_Minute=CC_per_Second/16.67
+    return Liter_per_Minute
+
+
+
+def Degree_To_Radian(deg):
+    """
+    Converts values of angle from degree to radian.
+
+    Parameters
+    ----------
+    deg : float
+        The angle value in degrees.
+
+    Returns
+    -------
+    float
+        The angle value in radians.
+    
+    Examples
+    --------
+    >>> Degree_To_Radian(180)
+    3.141592653589793
+    >>> Degree_To_Radian(90)
+    1.5707963267948966
+    """
+    rad = deg * 3.141592653589793 / 180
+    return rad
+
+
+def Decimal_To_Binary(Num_dec):
+    """
+    Converts a decimal number to its binary representation.
+
+    Parameters
+    ----------
+    Num_dec : int
+        The decimal number to convert.
+
+    Returns
+    -------
+    int
+        The binary representation of the decimal number.
+    
+    Examples
+    --------
+    >>> Decimal_To_Binary(11)
+    1011
+    >>> Decimal_To_Binary(255)
+    11111111
+    """
+    Bin = 0
+    i = 0
+    while Num_dec != 0:
+        r = Num_dec % 2
+        Bin = Bin + (r * (10**i))
+        Num_dec = Num_dec // 2
+        i = i + 1
+    return Bin
+
+
+def Electronvolt_To_Joule(e_v):
+    """
+    Converts energy value from electronvolts to joules.
+
+    Parameters
+    ----------
+    e_v : float
+        The energy value in electronvolts.
+
+    Returns
+    -------
+    float
+        The energy value in joules.
+    
+    Examples
+    --------
+    >>> Electronvolt_To_Joule(1)
+    1.6022e-19
+    >>> Electronvolt_To_Joule(6.241509074e18)
+    1.0000000001902376
+    """
+    Joule = e_v * 1.6022e-19
+    return Joule
+
+
+def Electron_volt_To_Coulomb(electron_volt):
+    """
+    Converts energy value from electronvolts to coulombs (assuming it refers to charge equivalent).
+    Note: This conversion is based on the elementary charge.
+
+    Parameters
+    ----------
+    electron_volt : float
+        The energy value in electronvolts.
+
+    Returns
+    -------
+    float
+        The equivalent charge value in coulombs.
+    
+    Examples
+    --------
+    >>> Electron_volt_To_Coulomb(1)
+    1.602e-19
+    >>> Electron_volt_To_Coulomb(6.241e18)
+    0.99999842
+    """
+    coulomb = electron_volt * 1.602e-19
+    return coulomb
+
+
+def Foot_To_Mile(ft):
+    """
+    Converts a length value from feet to miles.
+
+    Parameters
+    ----------
+    ft : float
+        The length value in feet.
+
+    Returns
+    -------
+    float
+        The length value in miles.
+    
+    Examples
+    --------
+    >>> Foot_To_Mile(5280)
+    1.00000000032
+    >>> Foot_To_Mile(2640)
+    0.50000000016
+    """
+    mi = 0.000189393939 * ft
+    return mi
+
+
+def Fahrenheit_To_Centigrade(F):
+    """
+    Converts a temperature value from Fahrenheit to Centigrade (Celsius).
+
+    Parameters
+    ----------
+    F : float
+        The temperature value in Fahrenheit.
+
+    Returns
+    -------
+    float
+        The temperature value in Centigrade (Celsius).
+    
+    Examples
+    --------
+    >>> Fahrenheit_To_Centigrade(32)
+    0.0
+    >>> Fahrenheit_To_Centigrade(212)
+    100.0
+    """
+    C = (F - 32) * 5/9
+    return C
+
+
+
+
+
+def Foot_Pound_To_Newton(Foot_Pounds):
+    '''
+    # This Conventor convert ft-lbs to Nm
+
+
+    Parameters
+    ----------
+    Foot_Pound : a unit of torque equal to the force of 1 lb acting perpendicularly to 
+    an axis of rotation at a distance of 1 foot.(ft-lbs)
+
+    Returns
+    -------
+    Newton_Meters : The newton-metre is the unit of torque.(Nm)
+
+
+    '''
+
+    Newton_Meters=Foot_Pounds*1.3558
+    return Newton_Meters
+
+
+def Fabric_GSM_To_GLM(Fabric_Weight,Fabric_Width):
+   '''
+    This function converts fabric weight in GSM unit to GLM unit.
+
+     Parameters
+     ----------
+     Fabric_Weight : int or float
+         fabric weight per GSM.
+     Fabric_Width : int or float
+         width of fabric per inches.
+     Fabric_GLM : int or float
+        Result.
+ 
+    '''
+
+   Fabric_GLM=(Fabric_Weight*Fabric_Width)/39.37
+   return Fabric_GLM
+
+
+def Fabric_GLM_To_GSM(Fabric_GLM, Fabric_Width):
+    '''
+    This function converts fabric weight in GLM unit to GSM unit.
+
+    Parameters
+    ----------
+    Fabric_GLM : int or float
+        Fabric weight per GLM.
+    Fabric_Width : int or float
+        Width of fabric in inches.
+
+    Returns
+    -------
+    Fabric_GSM : float
+        Fabric weight in GSM.
+    '''
+
+    Fabric_GSM = (Fabric_GLM * 39.37) / Fabric_Width
+    return Fabric_GSM
+
+
+def Force_CGS_To_SI (Force_in_CGS):
+    '''
+    
+
+    Parameters
+    ----------
+    Force_In_CGS : float
+        give your force value in CGS system.
+
+    Returns
+    -------
+    SI : float
+        return your force value in SI system.
+
+    '''
+    
+
+    SI = "{:e}".format(Force_in_CGS * 1e-5)
+    return SI
+
+def Force_SI_To_CGS (Force_in_SI) :
+    '''
+    
+
+    Parameters
+    ----------
+    Force_in_SI : float
+        give your force value in SI system.
+
+    Returns
+    -------
+    CGS : float
+        return your force value in CGS system.
+
+    '''
+    
+
+    CGS = "{:e}".format(Force_in_SI * 1e+5)
+    return CGS
+
+
+
+
 
-    def __repr__(self):
-        return (f"{self.symbol}: Atomic Number={self.atomic_number}, Mass={self.atomic_mass} u, "
-                f"Density={self.density} g/cm³, Melting Point={self.melting_point} K, "
-                f"Electronegativity={self.electronegativity}, Thermal Conductivity={self.thermal_conductivity} W/(m·K), "
-                f"Electrical Conductivity={self.electrical_conductivity} MS/m, Radius={self.atomic_radius} pm")
+def Gram_To_Mole(g,MW):
+    '''
+    This function calaculates the eqivalent amount of substance of a compound  in mole(s) base on mass in gram(s).
+
+    Parameters
+    ----------
+    g : float
+        g is the mass of a compound in gram(s).
+    MW : float
+        MW is the Molecular weight of a compound (gram/mol).
+
+    Returns
+    -------
+    Mole : float
+        Mole is the eqivalent amount of substance of a compound in mole(s).
 
+    '''
+
+    Mole = g / MW
+    return Mole
 
+
+
+def Hour_To_Sec(t):
+    """
+    Converts a time value from hours to seconds.
+
+    Parameters
+    ----------
+    t : float
+        The time value in hours.
+
+    Returns
+    -------
+    float
+        The time value in seconds.
+    
+    Examples
+    --------
+    >>> Hour_To_Sec(1)
+    3600
+    >>> Hour_To_Sec(2.5)
+    9000.0
+    """
+    t = t * 3600
+    return t
 
-# Specific element types
-class H_Type(Element):
+def Hertz_To_Rpm(a,/):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
-
+    A converter machine to convert frequency in Hertz(Hz) to frequency in rpm.
+    Parameters
+    ----------
+    a : int or float
+        frequency, Hertz(Hz).
+
+    Returns
+    b : int or float 
+    frequency, revolution per minute (rpm)
+
+    Examples
+    --------
+    >>> Hertz_To_Rpm(1)
+    60
+    >>> Hertz_To_Rpm(2.5)
+    150.0
+    '''
+    b=a*60
+    return b
+
+
+def Horsepower_To_Watt (Horsepower):
     '''
-    def __init__(self):
-        super().__init__("H", 1, 1.008, 0.00008988, 14.01, 2.20, 0.1815, None, 53)
+    
 
+    Parameters
+    ----------
+    Horsepower : float
+        give number in horsepower.
 
+    Returns
+    -------
+    watt : float
+        return your number in watt.
 
-class He_Type(Element):
+    Examples
+    --------
+    >>> Horsepower_To_Watt(1)
+    '7.457000e+02'
+    >>> Horsepower_To_Watt(2)
+    '1.491400e+03'
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Watt = "{:e}".format(Horsepower * 745.7)
+    return Watt
 
-    '''
-    def __init__(self):
-        super().__init__("He", 2, 4.0026, 0.0001785, 0.95, None, 0.1513, None, 31)
 
 
 
-class Li_Type(Element):
+def Inch_To_Centimeter(Inch):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    Inch : float or int
+        ne inch is equal to 2.54 centimeters.
+        number per Inch unit.
+
+    Returns
+    -------
+    Centimeter : float
+        number per Centimeter unit.
 
     '''
-    def __init__(self):
-        super().__init__("Li", 3, 6.94, 0.534, 453.65, 0.98, 84.7, 1.08e7, 167)
+    Centimeter=2.54*Inch
+    return Centimeter
 
+def Inch_To_Meter(In):
+    """
+    Converts a length value from inches to meters.
 
+    Parameters
+    ----------
+    In : float
+        The length value in inches.
 
-class Be_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Returns
+    -------
+    float
+        The length value in meters.
+    """
+    m = In / 39.3701
+    return m
 
-    '''
-    def __init__(self):
-        super().__init__("Be", 4, 9.0122, 1.848, 1560, 1.57, 200, 2.5e7, 112)
 
 
+def Joules_To_Calories(J):
+    """
 
-class B_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    J : float
+        Joules.
 
-    '''
-    def __init__(self):
-        super().__init__("B", 5, 10.81, 2.34, 2349, 2.04, 27, 1e4, 87)
+    Returns
+    -------
+    cal : float
+        Converts joules to calories.
 
+    """
+    
+    cal=J/4.184
+    return cal
 
+def Joule_To_Electronvolt(Joule):
+    """
+    Converts energy value from joules to electronvolts.
 
-class C_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    Joule : float
+        The energy value in joules.
 
+    Returns
+    -------
+    float
+        The energy value in electronvolts.
+    """
+    e_v = Joule / 1.6022e-19
+    return e_v
+
+
+def Joules_Per_Minute_To_Kilowatt(Joules_Per_Minute):
     '''
-    def __init__(self):
-        super().__init__("C", 6, 12.011, 2.267, 3823, 2.55, 140, 1e4, 67)
 
+    Parameters
+    ----------
+    Joules_Per_Minute : float
+        number per Joules unit.
 
+    Returns
+    -------
+    Kilowatt : float
+        number per Kilowatt unit.
 
-class N_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Kilowatt=(Joules_Per_Minute)/60000
+    return Kilowatt
 
-    '''
-    def __init__(self):
-        super().__init__("N", 7, 14.007, 0.0012506, 63.15, 3.04, 0.02583, None, 56)
 
 
 
-class O_Type(Element):
+def Kilogram_To_Pound(number_in_kilogram):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    This function converts the desired number from kilograms to pounds.
 
-    '''
-    def __init__(self):
-        super().__init__("O", 8, 15.999, 0.001429, 54.36, 3.44, 0.02658, None, 48)
+    Parameters
+    ----------
+    number_in_kilogram : int
+        Number per kilogram.
 
+    Returns
+    -------
+    pound : int
+        Number per pound.
 
+    '''
+    pound=number_in_kilogram*2.2046
+    return pound
 
-class F_Type(Element):
+def Kilowatt_To_Joules_Per_Minute(Kilowatt):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Converts power from kilowatts to joules per minute.
+
+    Parameters
+    ----------
+    Kilowatt : float
+        The power value in kilowatts.
 
+    Returns
+    -------
+    Joules_Per_Minute : float
+        The equivalent power in joules per minute.
     '''
-    def __init__(self):
-        super().__init__("F", 9, 18.998, 0.001696, 53.53, 3.98, 0.0277, None, 42)
+    Joules_Per_Minute = Kilowatt * 60000
+    return Joules_Per_Minute
 
 
 
-class Ne_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Kelvin_To_Celcius(Kelvin):
+    """
+    This function is used to convert Kelvin to Celsius.
+    The temperature in Celsius is different from the temperature in Kelvin by 273.15.
+
+    Parameters
+    ----------
+    Kelvin : float
+        The temperature value in Kelvin.
+
+    Returns
+    -------
+    float
+        The temperature value in Celsius.
+    
+    Examples
+    --------
+    >>> Kelvin_To_Celcius(273.15)
+    0.0
+    >>> Kelvin_To_Celcius(298.15)
+    25.0
+    """
+    Celcius = Kelvin - 273.15
+    return Celcius
+
+def Kilogeram_Per_Cubic_Meter_To_Pounds_Per_Cubic_Inch(KgPerCubicMeter):
+    """
+    Converts a density value from kilograms per cubic meter to pounds per cubic inch.
+
+    Parameters
+    ----------
+    KgPerCubicMeter : float
+        The density value in kilograms per cubic meter.
+
+    Returns
+    -------
+    float
+        The density value in pounds per cubic inch.
+    """
+    L = KgPerCubicMeter * 0.0000361273
+    return L
+
+
+def KiloMeter_To_LightYear(km):
+    """
+    Converts a distance value from kilometers to light-years.
+
+    Parameters
+    ----------
+    km : float
+        The distance value in kilometers.
+
+    Returns
+    -------
+    float
+        The distance value in light-years.
+    
+    Examples
+    --------
+    >>> KiloMeter_To_LightYear(9460730472801.1)
+    1.0
+    >>> round(KiloMeter_To_LightYear(4730365236400.55), 1)
+    0.5
+    """
+    ly = km / 9460730472801.1
+    return ly
+
+
+
+def Kmph_To_Mps(V1):
+    """
+    This function is used to convert kilometers per hour to meters per second.
+
+    Parameters
+    ----------
+    V1 : float
+        The speed value in kilometers per hour.
+
+    Returns
+    -------
+    float
+        The speed value in meters per second.
+    """
+    V2 = V1 / 3.6
+    return V2
+
+
+def Kilobyte_To_Byte(kb):
+    """
+    Converts a data size value from kilobytes to bytes.
+
+    Parameters
+    ----------
+    kb : float
+        The data size value in kilobytes.
+
+    Returns
+    -------
+    float
+        The data size value in bytes.
+    
+    Examples
+    --------
+    >>> Kilobyte_To_Byte(1)
+    1024
+    >>> Kilobyte_To_Byte(0.5)
+    512.0
+    """
+    b = 1024 * kb
+    return b
+
+
+
+def Kilometer_Per_Hour_To_Meter_Per_Second(kph):
+    """
+    Converts a speed value from kilometers per hour to meters per second.
+
+    Parameters
+    ----------
+    kph : float
+        The speed value in kilometers per hour.
+
+    Returns
+    -------
+    float
+        The speed value in meters per second.
+    
+    Examples
+    --------
+    >>> Kilometer_Per_Hour_To_Meter_Per_Second(3.6)
+    1.0
+    >>> Kilometer_Per_Hour_To_Meter_Per_Second(36)
+    10.0
+    """
+    mps = kph / 3.6
+    return mps
+
+
+def Kg_To_Ton(Kg):
+    """
+    Converts a mass value from kilograms to metric tons.
+
+    Parameters
+    ----------
+    Kg : float
+        The mass value in kilograms.
+
+    Returns
+    -------
+    float
+        The mass value in metric tons.
+    
+    Examples
+    --------
+    >>> Kg_To_Ton(1000)
+    1.0
+    >>> Kg_To_Ton(250)
+    0.25
+    """
+    Ton = Kg / 1000
+    return Ton
+
+
+def Kg_To_Lbm(Kg):
+    """
+    Converts a mass value from kilograms to pounds (lbm).
+
+    Parameters
+    ----------
+    Kg : float
+        The mass value in kilograms.
+
+    Returns
+    -------
+    float
+        The mass value in pounds (lbm).
+    
+    Examples
+    --------
+    >>> Kg_To_Lbm(1)
+    2.20462
+    >>> Kg_To_Lbm(5)
+    11.0231
+    """
+    Lbm = Kg * 2.20462
+    return Lbm
 
-    '''
-    def __init__(self):
-        super().__init__("Ne", 10, 20.180, 0.0008999, 24.56, None, 0.0491, None, 38)
+
 
 
+def Liter_To_Cubic_Meter(number_in_Liter):
+    '''
+    This function converts liters to cubic meters.
+
+    Parameters
+    ----------
+    number_in_Liter : int or float
+        Number per liter unit.
+    Cubic_Meter : int or float
+        Number per cubic meter unit.
+
+    '''
 
-class Na_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Cubic_Meter= number_in_Liter/1000
+    return (Cubic_Meter)
 
-    '''
-    def __init__(self):
-        super().__init__("Na", 11, 22.990, 0.971, 370.87, 0.93, 144, 2.1e7, 186)
 
 
+def LightYear_To_KiloMeter(ly):
+    """
+    Converts a distance value from light-years to kilometers.
 
-class Mg_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    ly : float
+        The distance value in light-years.
 
-    '''
-    def __init__(self):
-        super().__init__("Mg", 12, 24.305, 1.738, 923, 1.31, 156, 2.3e7, 160)
+    Returns
+    -------
+    float
+        The distance value in kilometers.
+    
+    Examples
+    --------
+    >>> LightYear_To_KiloMeter(1)
+    9460730472801.1
+    >>> LightYear_To_KiloMeter(0.5)
+    4730365236400.55
+    """
+    km = ly * 9460730472801.1
+    return km
 
 
+def Lbm_To_Kg(Lbm):
+    """
+    Converts a mass value from pounds (lbm) to kilograms.
 
-class Al_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    Lbm : float
+        The mass value in pounds (lbm).
 
-    '''
-    def __init__(self):
-        super().__init__("Al", 13, 26.982, 2.70, 933.47, 1.61, 235, 3.77e7, 143)
+    Returns
+    -------
+    float
+        The mass value in kilograms.
+    
+    Examples
+    --------
+    >>> Lbm_To_Kg(2.20462)
+    0.9999996694214878
+    >>> Lbm_To_Kg(1)
+    0.4535924254969406
+    """
+    Kg = Lbm / 2.20462
+    return Kg
 
 
 
-class Si_Type(Element):
+def Liter_Per_Minute_To_CC_Per_Second_Welding_Gas_Flow_Rate_Converter(Liter_per_Minute):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    This function converts the Welding Gas Flow Rate from Liter per Minute to CC per Second.
 
-    '''
-    def __init__(self):
-        super().__init__("Si", 14, 28.085, 2.329, 1687, 1.90, 149, 1.38e7, 118)
+    Parameters
+    ----------
+    Liter_per_Minute : float
+        Liter_per_Minute is a unit for gas flow rate in welding.
 
+    Returns
+    -------
+    CC_per_Second is a unit for gas flow rate in welding.
 
+    '''     
+ 
 
-class P_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    CC_per_Second=Liter_per_Minute*16.67
+    return CC_per_Second
 
-    '''
-    def __init__(self):
-        super().__init__("P", 15, 30.974, 1.82, 317.3, 2.19, 0.0185, None, 110)
+
 
 
+#--------m------
 
-class S_Type(Element):
+
+def Meter_To_MilliMeter(meter):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    
+
+    Parameters
+    ----------
+    meter : int
+        enter the length in meter.
+    
+    Returns
+    -------
+    milimeter : int
+        This function converts meter into milimeter.
 
     '''
-    def __init__(self):
-        super().__init__("S", 16, 32.06, 2.067, 388.36, 2.58, 0.205, None, 105)
+    milimeter=meter*1000
+    return milimeter
 
 
 
-class Cl_Type(Element):
+def MilliMeter_To_Meter (milimeter):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    
 
+    Parameters
+    ----------
+    milimeter : int
+        enter the length in milimeter.
+    
+    Returns
+    -------
+    meter : int
+        This function converts milimeter into meter.
+
     '''
-    def __init__(self):
-        super().__init__("Cl", 17, 35.45, 0.003214, 171.6, 3.16, 0.00898, None, 99)
+    meter=milimeter/1000
+    return meter
 
 
 
-class Ar_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Micrometer_To_Nanometer(micrometer):
+    """
+    converting micrometer to nanometer 
 
-    '''
-    def __init__(self):
-        super().__init__("Ar", 18, 39.948, 0.0017837, 83.80, None, 0.0163, None, 71)
+    Parameters
+    ----------
+    micrometer : float,dimension
+        DESCRIPTION. The default is 1.
 
+    Returns
+    -------
+    Nanometer : float,dimension
+        unit(nm)
 
-class K_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    """
+    Nanometer=micrometer*1000
+    return Nanometer
+
+def Megapascal_To_Pascal(Megapascal):
+    '''
+    #This Conventor Convert Megapascal to Pascal
+
+    Parameters
+    ----------
+    Megapascal : 1 Megapascal equals 1,000,000 Pascals.
+    
+
+    Returns
+    -------
+    Pascal : the unit of pressure or stress in SI.
+    '''
+    
+    Pascal=Megapascal/1000000
+    return Pascal
+
+
+def Mps_To_Kmph(V1):
+    """
+    This function is used to convert meter per second to kilometer per hour.
+
+    Parameters
+    ----------
+    V1 : float
+        The speed value in meters per second.
+
+    Returns
+    -------
+    float
+        The speed value in kilometers per hour.
+    """
+    V2 = V1 * 3.6
+    return V2
+
+
+def Mile_To_Foot(mi):
+    """
+    Converts a length value from miles to feet.
+
+    Parameters
+    ----------
+    mi : float
+        The length value in miles.
+
+    Returns
+    -------
+    float
+        The length value in feet.
+    """
+    ft = 5280 * mi
+    return ft
+
+
+def Meter_To_inch(m):
+    """
+    Converts a length value from meters to inches.
+
+    Parameters
+    ----------
+    m : float
+        The length value in meters.
+
+    Returns
+    -------
+    float
+        The length value in inches.
+    """
+    In = m * 39.3701
+    return In
+
+
+
+def Miller_To_Millerbrove(u,v,w):
+    
+    '''
+       this function converts miller index to miller_brove index
+
+     parameters: (miller indexes)
+     ---------------------------  
+        1. u: int
+        Intersection with axis a1
+        
+        2. v: int
+        Intersection with axis a2
+        
+        3. w: int
+        Intersection with axis z
+        
+    Returns --> (miller_brove indexes)
+            
+       1. l: int
+       Intersection with axis a1
+       
+       2. m: int
+       Intersection with axis a2
+       
+       3. n: int
+       Intersection with axis a3
+       
+       4. o: int
+       Intersection with axis z
+      
+  '''
+  
+    l = ((2*u)-v)/3
+    m = ((2*v)-u)/3
+    n = (-1)*(l+m)
+    o = w
+    
+    return l,m,n,o
+  
+
+def Millerbrove_To_Miller(l,m,n,o):
+
+    '''
+       this function converts miller_brove index to miller index
+
+    Parameters: (miller_brove indexes)
+    -----------------------------------
+        1. l: int
+       Intersection with axis a1
+       
+       2. m: int
+       Intersection with axis a2
+       
+       3. n: int
+       Intersection with axis a3
+       
+       4. o: int
+       Intersection with axis z
+       
+      Returns --> (miller indexes)
+             
+        1. u: int
+        Intersection with axis a1
+        
+        2. v: int
+        Intersection with axis a2
+        
+        3. w: int
+        Intersection with axis z
+  '''
+    u = (2*m) + l
+    v = (2*l) + m
+    w = o
+    
+    
+    return u,v,w
 
-    '''
-    def __init__(self):
-        super().__init__("K", 19, 39.098, 0.856, 336.53, 0.82, 102, 1.0e7, 196)
 
+def Meter_To_Angstrom(m):
+    """
+    Converts a length value from meters to Angstroms.
 
-class Ca_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    m : float
+        The length value in meters.
 
-    '''
-    def __init__(self):
-        super().__init__("Ca", 20, 40.078, 1.54, 1115, 1.00, 200, 2.3e7, 174)
+    Returns
+    -------
+    float
+        The length value in Angstroms.
+    """
+    return m * 1e10
 
 
+def Milimeter_To_Angstrom(mm):
+    """
+    Converts a length value from millimeters to Angstroms.
 
-class Sc_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    mm : float
+        The length value in millimeters.
 
-    '''
-    def __init__(self):
-        super().__init__("Sc", 21, 44.956, 2.989, 1814, 1.36, 15.6, 1.2e7, 162)
+    Returns
+    -------
+    float
+        The length value in Angstroms.
+    """
+    return mm * 1e7
 
 
+def Micrometer_To_Angstrom(um):
+    """
+    Converts a length value from micrometers to Angstroms.
 
-class Ti_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    um : float
+        The length value in micrometers.
 
-    '''
-    def __init__(self):
-        super().__init__("Ti", 22, 47.867, 4.506, 1941, 1.54, 21.9, 2.4e7, 147)
+    Returns
+    -------
+    float
+        The length value in Angstroms.
+    """
+    return um * 10000
 
 
 
-class V_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
+def Meter_Per_Second_To_Kilometer_Per_Hour(mps):
     '''
-    def __init__(self):
-        super().__init__("V", 23, 50.9415, 6.11, 2183, 1.63, 30.7, 5.6e7, 134)
+    Parameters
+    ----------
+    mps: float
+         number in meter per second
+    kph: float
+         number in kilometer per hour
+    '''
+    kph=mps/3.6
+    return kph
 
 
 
-class Cr_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
+
+
+def Mole_To_Gram(mol,MW):
     '''
-    def __init__(self):
-        super().__init__("Cr", 24, 52.00, 7.19, 2180, 1.66, 24.9, 6.0e7, 128)
+    This function calaculates the eqivalent mass of a compound in gram(s) base on amount of substance in mole(s).
 
+    Parameters
+    ----------
+    mol : float
+        mol is the eqivalent amount of substance of a compound in mole(s).
+    MW : float
+        MW is the Molecular weight of a compound (gram/mole).
 
+    Returns
+    -------
+    g : float
+        g is the eqivalent mass in of a compound in in gram(s).
 
-class Mn_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    g = mol * MW
+    return g
 
-    '''
-    def __init__(self):
-        super().__init__("Mn", 25, 54.938, 7.43, 1519, 1.55, 73, 1.7e7, 127)
 
 
 
-class Fe_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
+def Mass_To_Mole(Mass,Molar_Mass):
     '''
-    def __init__(self):
-        super().__init__("Fe", 26, 55.845, 7.874, 1811, 1.83, 100, 1.0e7, 126)
-
+    
 
+    Parameters
+    ----------
+    Mass : float
+        The mass of substance(g).
+    Molar_Mass : float
+        The mass of one mole of substance (g/mol).
 
-class Co_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Returns
+    -------
+    Mole: int
 
     '''
-    def __init__(self):
-        super().__init__("Co", 27, 58.933, 8.90, 1768, 1.88, 68, 1.2e7, 125)
+    Mole=Mass/Molar_Mass
+    return(Mole)
 
 
 
-class Ni_Type(Element):
+def Mole_To_Mass(Mole,Molar_Mass):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    
 
-    '''
-    def __init__(self):
-        super().__init__("Ni", 28, 58.693, 8.912, 1728, 1.91, 91, 1.4e7, 124)
+    Parameters
+    ----------
+    Mole : int
+        
+    Molar_Mass : float
+        The mass of one mole of substance (g/mol).
 
+    Returns
+    -------
+    Mass (g) : Float.
 
-class Cu_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Mass=Mole*Molar_Mass
+    return(Mass)
 
+
+def Mpa_To_Psi(Num_Mpa,/):
     '''
-    def __init__(self):
-        super().__init__("Cu", 29, 63.546, 8.96, 1357.77, 1.90, 398, 5.8e7, 135)
+    
 
+    Parameters
+    ----------
+    
+    Num_Mpa : float
+        Megapascals=Newton per square millimetre
 
+    Returns
+    -------
+    Psi : float
+        Psi=Pounds force per square inch 
 
-class Zn_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Psi=Num_Mpa*145
+    return Psi
+
 
+def Meter_Per_Hour_To_Centimeter_Per_Minute_Welding_Speed_Converter(Meter_per_Hour):
     '''
-    def __init__(self):
-        super().__init__("Zn", 30, 65.38, 7.14, 692.68, 1.65, 116, 2.4e7, 139)
+    This function converts the Welding Speed from Meter per Hour to Centimeter per Minute.
 
+    Parameters
+    ----------
+    Meter_per_Hour : float
+        Meter_per_Hour is a unit for welding speed.
 
+    Returns
+    -------
+    Centimeter_per_Minute is a unit for welding speed.
 
-class Ga_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    '''     
+ 
+    Centimeter_per_Minute=Meter_per_Hour*1.7
+    return Centimeter_per_Minute
 
-    '''
-    def __init__(self):
-        super().__init__("Ga", 31, 69.723, 5.91, 302.91, 1.81, 40, 4.5e7, 135)
 
 
+def Mm_Year_To_Mils_Year(milpy):
+    """
+    Converts a corrosion rate from millimeters per year (mm/yr) to mils per year (mpy).
+    1 mm/yr = 39.37 mpy
 
-class Ge_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    milpy : float
+        The corrosion rate in millimeters per year.
 
-    '''
-    def __init__(self):
-        super().__init__("Ge", 32, 72.630, 5.323, 1211.40, 2.01, 60, 4.0e7, 125)
+    Returns
+    -------
+    float
+        The corrosion rate in mils per year.
+    """
+    mpy = 39.37 * milpy
+    return mpy
 
 
+def Mils_Year_To_Mm_Year(mpy):
+    """
+    Converts a corrosion rate from mils per year (mpy) to millimeters per year (mm/yr).
+    1 mm/yr = 39.37 mpy
 
-class As_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    mpy : float
+        The corrosion rate in mils per year.
 
-    '''
-    def __init__(self):
-        super().__init__("As", 33, 74.922, 5.776, 1090, 2.18, 35, None, 120)
+    Returns
+    -------
+    float
+        The corrosion rate in millimeters per year.
+    """
+    Mm_year = mpy / 39.37
+    return Mm_year
 
 
 
-class Se_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def  Mpy_To_Current_Density(mpy,density,masschange,valency):
+    """
+    
 
-    '''
-    def __init__(self):
-        super().__init__("Se", 34, 78.971, 4.79, 494.15, 2.55, 51, None, 116)
+    Parameters
+    ----------
+    mpy : float
+        corrosion rate in mpy
+    density : float
+        materails density 
+    masschange : float
+        amount of mass corroded 
+    valency : int
+        how positive is the charge
 
+    Returns
+    -------
+    Current density 
 
+    """
+    Current_density=(mpy*1e6*density*2.5*valency*96500)/(31536000*masschange*1000)
+    return Current_density
 
-class Br_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
+
+def Minute_To_Second (Minute): 
     '''
-    def __init__(self):
-        super().__init__("Br", 35, 79.904, 3.12, 265.8, 2.96, 40, None, 114)
+    This function converts minutes to seconds 
 
+    Parameters
+    ----------
+    Minute : int
+       units of time in minute
 
+    Returns
+    
+    int
+        Minute_to_Second
 
-class Kr_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+       
+          
+    return (Minute*60)   
 
-    '''
-    def __init__(self):
-        super().__init__("Kr", 36, 83.798, 3.749, 115.79, None, 0.00894, None, 112)
 
 
-class Rb_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Rb", 37, 85.468, 1.532, 312.46, 0.82, 73, 1.2e7, 303)
 
+def Nanometer_To_Micrometer(nanometer):
+    """
+    converting nanometer to micrometer
 
+    Parameters
+    ----------
+    nanometer : float,dimension
+      unit (nm)
+      DESCRIPTION. The default is 1.
+      
+    Returns
+    -------
+    Micrometer : float,dimension
+      
 
-class Sr_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    """
+    Micrometer=nanometer/1000
+    return Micrometer
 
-    '''
-    def __init__(self):
-        super().__init__("Sr", 38, 87.62, 2.64, 1382, 0.95, 35, 1.5e7, 249)
 
+def Newton_To_Pound_Force(Newton):
+     # 1 Pound_Force = 4.448221619 New
+     
+     
+     Pound_Force = Newton / 4.448221619
+     '''
+     #It converts the Force from Newton to Pound_Force.
+     
+     Parameters:
+     ----------
+         
+     Newton : float
+         Unit musst be newton(N).
+         
+     '''
+     return Pound_Force
+ 
 
 
-class Y_Type(Element):
+def Normality_To_Molarity(Normality,n):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    
 
-    '''
-    def __init__(self):
-        super().__init__("Y", 39, 88.906, 4.469, 1795, 1.22, 29.3, 2.0e7, 220)
+    Parameters
+    ----------
+    Normality : float
+    n : int
+        Number of moles.
+
+    Returns
+    -------
+    Molarity.
 
+    '''
+    Molarity=Normality/n
+    return(Molarity)
+    
 
 
-class Zr_Type(Element):
+def Nanometer_To_Angstrom(Nanometer_value):
+    
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    This function converts Nanometers to Angstroms.
+    1 Nanometer(nm)= 10 Angstroms(Å)
+
+    Parameters
+    ----------
+    Nanometer_value: int or float
+        Value in Nanometers(nm).
+    
+    Returns
+    -------
+    Angstrom_value: int or float
+        Equivalent value in Angstroms(Å).
 
     '''
-    def __init__(self):
-        super().__init__("Zr", 40, 91.224, 6.52, 2128, 1.33, 20, 2.5e7, 206)
+    Angstrom_value= Nanometer_value*10
+    return Angstrom_value
 
 
 
-class Nb_Type(Element):
+def Newton_To_Foot_Pound(Newton_Meters):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    # This Conventor convert Nm to ft-lbs
 
-    '''
-    def __init__(self):
-        super().__init__("Nb", 41, 92.906, 8.57, 2750, 1.60, 24.7, 2.7e7, 198)
+    Parameters
+    ----------
+    Newton_Meters : The newton-metre is the unit of torque.(Nm)
 
+    Returns
+    -------
+    Foot_Pound : a unit of torque equal to the force of 1 lb acting perpendicularly to 
+    an axis of rotation at a distance of 1 foot.(ft-lbs)
 
+    '''    
+    
+    Foot_Pound=Newton_Meters*0.7376
+    return Foot_Pound
 
-class Mo_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Mo", 42, 95.95, 10.22, 2896, 2.16, 142, 3.1e7, 190)
 
 
+def Pounds_Per_Cubic_Inch_To_Kilogeram_Per_Cubic_Meter(LbPerCubicInch):
+    """
+    Converts a density value from pounds per cubic inch to kilograms per cubic meter.
 
-class Tc_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    LbPerCubicInch : float
+        The density value in pounds per cubic inch.
 
-    '''
-    def __init__(self):
-        super().__init__("Tc", 43, 98.0, 11.50, 2430, 1.9, 80, 2.8e7, 179)
+    Returns
+    -------
+    float
+        The density value in kilograms per cubic meter.
+    """
+    Kg = LbPerCubicInch * 27679.9
+    return Kg
 
 
 
-class Ru_Type(Element):
+def Pascal_To_Megapascal(Pascal):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    # This Conventor Convert Pascal to Megapascal
 
+    Parameters
+    ----------
+    Pascal : the unit of pressure or stress in SI.
+    
+    Returns
+    -------
+    Megapascal : 1 Megapascal equals 1,000,000 Pascals.
+
     '''
-    def __init__(self):
-        super().__init__("Ru", 44, 101.07, 12.37, 2607, 2.20, 123, 3.0e7, 171)
+    
+    Megapascal=1000000*Pascal
+    return Megapascal
 
 
 
-class Rh_Type(Element):
+  
+def Pound_Force_To_Newton(Pound_Force):
+    
+    Newton = Pound_Force * 4.448221619
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
-
+    It converts the Force from Pound_Force to Newton.
+    
+    Parameters:
+    ----------
+    
+    Pound_Force : float
+        Unit musst be lb.
+        
     '''
-    def __init__(self):
-        super().__init__("Rh", 45, 102.91, 12.41, 1964, 2.28, 123, 3.2e7, 169)
+    
+    return Newton
 
 
 
-class Pd_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Pascal_To_Atmosphere(Pa):
+    """
+    Converts a pressure value from Pascals to atmospheres.
 
-    '''
-    def __init__(self):
-        super().__init__("Pd", 46, 106.42, 12.02, 1828.05, 2.20, 96, 4.0e7, 165)
+    Parameters
+    ----------
+    Pa : float
+        The pressure value in Pascals.
 
+    Returns
+    -------
+    float
+        The pressure value in atmospheres.
+    """
+    atm = float(Pa / 101325)
+    return atm
 
 
-class Ag_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Percentages_To_Moles(total, percentages):
+    """
+    Calculates the number of moles of each component in a mixture given their percentages by weight and the total weight.
 
-    '''
-    def __init__(self):
-        super().__init__("Ag", 47, 107.87, 10.49, 1235.08, 1.93, 63.1, 6.3e7, 162)
+    Parameters
+    ----------
+    total : float
+        The total weight of the mixture.
+    percentages : dict
+        A dictionary where keys are the names of the materials and values are their weight percentages.
 
+    Returns
+    -------
+    dict
+        A dictionary where keys are the names of the materials and values are their corresponding number of moles.
+    """
+    # Define the molecular weight of the composite mixture
+    molar_weight = {'TEGDMA': 156.27, 'BIS_GMA': 512.67, 'UDMA': 398.48,
+                    'Silica dioxide': 60.08, 'Barium silicate': 233.39, 'Zirconium dioxide': 123.22
+                    }
 
+    # Calculate the moles of each material
+    moles = {}
+    for material, percent in percentages.items():
+        moles[material] = (percent / 100) * (total / molar_weight[material])
 
-class Cd_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    return moles
 
+
+
+def Pascal_To_MmHg(p):
     '''
-    def __init__(self):
-        super().__init__("Cd", 48, 112.41, 8.69, 594.22, 1.69, 62, 1.8e7, 158)
+    This function convert pascal to mmHg
 
+    Parameters
+    ----------
+    p : float
+        pressure (Pa).
 
+    Returns
+    -------
+    None.
 
-class In_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    mmHg=p/2
+    return mmHg
 
-    '''
-    def __init__(self):
-        super().__init__("In", 49, 114.82, 7.31, 156.6, 1.78, 82, 3.5e7, 156)
 
 
 
-class Sn_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Sn", 50, 118.71, 7.31, 231.93, 1.96, 66, 2.2e7, 145)
 
 
 
-class Sb_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Pascal_To_CmHg(P1):
+    """
+    This function is used to convert Pascal to centimeter mercury.
 
-    '''
-    def __init__(self):
-        super().__init__("Sb", 51, 121.76, 6.684, 904, 2.05, 8.6, None, 138)
+    Parameters
+    ----------
+    P1 : float
+        The pressure value in Pascals.
 
+    Returns
+    -------
+    float
+        The pressure value in centimeters of mercury (cmHg).
+    """
+    P2 = P1 / 1333.22
+    return P2
 
 
-class I_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Ppm_To_Percent(a):
+    """
+    Converts a concentration value from parts per million (ppm) to percent.
 
-    '''
-    def __init__(self):
-        super().__init__("I", 53, 126.90, 4.933, 113.7, 2.66, 0.149, None, 133)
+    Parameters
+    ----------
+    a : float
+        The ion concentration in ppm in brine.
 
+    Returns
+    -------
+    float
+        The ion percent in brine.
+    """
+    b = a / 10000
+    return b
 
 
-class Xe_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Percent_To_Ppm(a):
+    """
+    Converts a concentration value from percent to parts per million (ppm).
 
-    '''
-    def __init__(self):
-        super().__init__("Xe", 54, 131.29, 5.894, 165.03, None, 0.0055, None, 130)
+    Parameters
+    ----------
+    a : float
+        The ion percent in brine.
 
+    Returns
+    -------
+    float
+        The ion concentration in ppm in brine.
+    """
+    b = a * 10000
+    return b
 
 
-class Cs_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Pascal_To_Torr(pa):
+    """
+    This function converts Pascal to Torr.
 
-    '''
-    def __init__(self):
-        super().__init__("Cs", 55, 132.91, 1.93, 301.59, 0.79, 72, 1.0e7, 265)
+    Parameters
+    ----------
+    pa : float
+        The pressure value in Pascals.
 
+    Returns
+    -------
+    float
+        The pressure value in Torr.
+    """
+    torr = pa / 133.322
+    return torr
 
 
-class Ba_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Ba", 56, 137.33, 3.62, 1000, 0.89, 182, 1.2e7, 253)
 
+def Pascal_To_Bar(Pa):
+    """
 
+    Parameters
+    ----------
+    Pa : float
+        Pascal.
 
-class La_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Returns
+    -------
+    bar : float
+        Converts pascal to bar.
+
+    """
+    
+    bar=Pa*(10**5)
+    return bar
+
 
+def Psi_To_Mpa(Num_Psi,/):
     '''
-    def __init__(self):
-        super().__init__("La", 57, 138.91, 6.15, 1191, 1.10, 214, 2.1e7, 250)
+    
 
+    Parameters
+    ----------
+    
+    Num_Psi : float
+        Psi = Pounds force per square inch 
 
+    Returns
+    -------
+    Mpa : float
+        Megapascals=Newton per square millimetre
 
-class Ce_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Mpa=Num_Psi*(1/145)
+    return Mpa
 
-    '''
-    def __init__(self):
-        super().__init__("Ce", 58, 140.12, 6.77, 1071, 1.12, 175, 2.2e7, 249)
 
 
+ 
 
-class Pr_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Pr", 59, 140.91, 6.77, 1299, 1.13, 120, 2.3e7, 248)
 
 
 
-class Nd_Type(Element):
+def Pound_To_Kilogram(number_in_pound):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    This function converts the desired number from pounds to kilograms.
+
+    Parameters
+    ----------
+    number_in_pound : int
+        Number per pound.
+
+    Returns
+    -------
+    kilogram : int
+        Number per kilogram.
 
     '''
-    def __init__(self):
-        super().__init__("Nd", 60, 144.24, 7.01, 1294, 1.14, 102, 2.4e7, 246)
+    kilogram=number_in_pound/2.2046
+    return kilogram
 
 
+def Ppm_To_Weightpercent(ppm):
+    """
+    This function is used to convert ppm (parts per million) to weight percent.
 
-class Pm_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    ppm : float
+        The concentration in ppm.
 
-    '''
-    def __init__(self):
-        super().__init__("Pm", 61, 145.0, 7.26, 1380, 1.13, 50, 2.5e7, 245)
+    Returns
+    -------
+    float
+        The concentration in weight percent.
+    """
+    weight_percent = ppm / 10000
+    return weight_percent
 
 
 
-class Sm_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
+def Molarity_To_Normality(Molarity,n):
     '''
-    def __init__(self):
-        super().__init__("Sm", 62, 150.36, 7.52, 1347, 1.17, 110, 2.5e7, 243)
+    
 
+    Parameters
+    ----------
+    Molarity : float
+    n : int
+        Number of moles.
 
+    Returns
+    -------
+    Normality.
 
-class Eu_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Normality=Molarity*n
+    return(Normality)
 
-    '''
-    def __init__(self):
-        super().__init__("Eu", 63, 151.98, 5.243, 1527, 1.20, 59, 2.6e7, 242)
 
 
+def MmHg_To_Pascal(mmHg):
+    """
+    Convert pressure from millimeters of mercury (mmHg) to Pascal (Pa).
 
-class Gd_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Parameters
+    ----------
+    mmHg : float
+        Pressure in millimeters of mercury.
 
-    '''
-    def __init__(self):
-        super().__init__("Gd", 64, 157.25, 8.23, 1585, 1.20, 66, 2.7e7, 240)
+    Returns
+    -------
+    float
+        Pressure in Pascals.
+    """
+    Pa = mmHg * 133.322
+    return Pa
 
+def Moles_To_Percentages(moles):
+    """
+    Calculate weight percentages of each component from their moles.
 
+    Parameters
+    ----------
+    moles : dict
+        Dictionary where keys are material names and values are the number of moles.
 
-class Tb_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Returns
+    -------
+    dict
+        Dictionary where keys are material names and values are weight percentages.
+    """
+    molar_weight = {
+        'TEGDMA': 156.27,
+        'BIS_GMA': 512.67,
+        'UDMA': 398.48,
+        'Silica dioxide': 60.08,
+        'Barium silicate': 233.39,
+        'Zirconium dioxide': 123.22
+    }
 
-    '''
-    def __init__(self):
-        super().__init__("Tb", 65, 158.93, 8.23, 1629, 1.10, 80, 2.7e7, 239)
+    # Calculate mass of each component
+    mass = {}
+    for material, n_moles in moles.items():
+        if material not in molar_weight:
+            raise ValueError(f"Molar weight for '{material}' not defined.")
+        mass[material] = n_moles * molar_weight[material]
 
+    # Total mass
+    total_mass = sum(mass.values())
 
+    # Convert to weight percentages
+    percentages = {material: (m / total_mass) * 100 for material, m in mass.items()}
 
-class Dy_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    return percentages
 
+def Square_Meter_To_Square_Cm(b):
+    
     '''
-    def __init__(self):
-        super().__init__("Dy", 66, 162.50, 8.55, 1680, 1.22, 85, 2.8e7, 237)
-
-
-class Ho_Type(Element):
+    Parameters
+    ----------
+    b: int
+        Square_meter 
+    -------
+    c : int
+         Square_Cm
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    c =b*10000
+    return c
 
+def Square_Cm_To_Square_meter(a):
+    
     '''
-    def __init__(self):
-        super().__init__("Ho", 67, 164.93, 8.79, 1734, 1.23, 90, 2.8e7, 236)
-
+    Parameters
+    ----------
+    a : int
+        Square_Cm
+    -------
+    c : int
+       Square_Meter
+    '''
+    c=a/10000
+    return c
 
 
-class Er_Type(Element):
+def Second_To_Minute (Second):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+This function converts seconds to minutes
+        Parameters
+    ----------
+    Second : int
+        units of time in seconds
 
+    Returns
+    int
+       
+      Second_to_Minute
     '''
-    def __init__(self):
-        super().__init__("Er", 68, 167.26, 9.066, 1802, 1.24, 150, 2.9e7, 234)
-
+    
+    
+    return (Second/60)
 
 
-class Tm_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Sec_To_Hour(t):
+    """
+    Converts a time value from seconds to hours.
 
-    '''
-    def __init__(self):
-        super().__init__("Tm", 69, 168.93, 9.32, 1818, 1.25, 88, 3.0e7, 233)
+    Parameters
+    ----------
+    t : float
+        The time value in seconds.
 
+    Returns
+    -------
+    float
+        The time value in hours.
+    """
+    t = t / 3600
+    return t
 
 
-class Yb_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Radian_To_Degrees(num):
+    """
+    This function is used to convert radians to degrees.
 
-    '''
-    def __init__(self):
-        super().__init__("Yb", 70, 173.04, 6.98, 1092, 1.10, 90, 3.1e7, 231)
+    Parameters
+    ----------
+    num : float
+        The angle value in radians.
 
+    Returns
+    -------
+    float
+        The angle value in degrees.
+    """
+    degree = num * 180 / math.pi
+    return degree
 
 
-class Lu_Type(Element):
+def Rockwell_To_Brinell(hrb):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Convert Rockwell hardness (HRB) to Brinell hardness (HB).
 
-    '''
-    def __init__(self):
-        super().__init__("Lu", 71, 174.97, 9.84, 1925, 1.27, 52, 3.2e7, 229)
+    Parameters
+    ----------
+    hrb : float
+        Hardness in Rockwell B scale.
 
+    Returns
+    -------
+    float
+        Hardness in Brinell scale.
+    '''
+    hb = (hrb * 5.0) + 50
+    return hb
 
 
-class Hf_Type(Element):
+def Rpm_To_Hertz(b,/):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+   A converter machine to convert frequency in rpm to frequency in Herta(Hz).
+    Parameters
+    ----------
+    b : int or float
+        frequency, revolution per minute (rpm).
 
-    '''
-    def __init__(self):
-        super().__init__("Hf", 72, 178.49, 13.31, 2506, 1.30, 175, 3.3e7, 227)
+    Returns
+    a, frequency, Hertz(Hz)
 
+    '''
+    a=b/60
+    return a
 
 
-class Ta_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Ta", 73, 180.95, 16.65, 3290, 1.50, 68, 3.4e7, 225)
+def Torr_To_Pascal(torr):
+    """
+    This function converts Torr to Pascal.
 
+    Parameters
+    ----------
+    torr : float
+        The pressure value in Torr.
 
+    Returns
+    -------
+    float
+        The pressure value in Pascals.
+    """
+    pa = torr * 133.322
+    return pa
 
-class W_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Ton_To_Kg(Ton):
+    """
+    Converts a mass value from metric tons to kilograms.
 
-    '''
-    def __init__(self):
-        super().__init__("W", 74, 183.84, 19.25, 3422, 2.36, 174, 3.5e7, 223)
+    Parameters
+    ----------
+    Ton : float
+        The mass value in metric tons.
 
+    Returns
+    -------
+    float
+        The mass value in kilograms.
+    """
+    Kg = Ton * 1000
+    return Kg
 
 
-class Re_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Viscosity_To_Poise(pa_s):
+    """
+    Converts dynamic viscosity from Pascal-seconds (Pa·s) to Poise (P).
 
-    '''
-    def __init__(self):
-        super().__init__("Re", 75, 186.21, 21.02, 3186, 1.9, 130, 3.6e7, 222)
+    Parameters
+    ----------
+    pa_s : float
+        The dynamic viscosity in Pascal-seconds.
 
+    Returns
+    -------
+    float
+        The dynamic viscosity in Poise.
+    """
+    poise = pa_s * 10
+    return poise
 
 
-class Os_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+def Viscosity_To_Pas(poise):
+    """
+    Converts dynamic viscosity from Poise (P) to Pascal-seconds (Pa·s).
 
-    '''
-    def __init__(self):
-        super().__init__("Os", 76, 190.23, 22.59, 3306, 2.2, 140, 3.7e7, 220)
+    Parameters
+    ----------
+    poise : float
+        The dynamic viscosity in Poise.
 
+    Returns
+    -------
+    float
+        The dynamic viscosity in Pascal-seconds.
+    """
+    pa_s = poise / 10
+    return pa_s
 
+    
 
-class Ir_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Ir", 77, 192.22, 22.56, 2719, 2.2, 130, 3.8e7, 218)
 
 
 
-class Pt_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
+def Yarn_Count_To_Other_System(Yarn_Count, Current_System='tex', Desired_System='den'):
     '''
-    def __init__(self):
-        super().__init__("Pt", 78, 195.08, 21.45, 2041, 2.28, 156, 3.9e7, 216)
+    This function converts yarn count values in different systems.
 
+    Parameters
+    ----------
+    Yarn_Count : int or float
+        Number of yarn count.
+    Current_System : str, optional
+        Current yarn count system. The default is 'tex'.
+    Desired_System : str, optional
+        Expected yarn count system. The default is 'den'.
+    Yarn_Count : int or float
+        Result.
 
-
-class Au_Type(Element):
     '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    sys1=str(Current_System).lower()
+    sys2=str(Desired_System).lower()
 
-    '''
-    def __init__(self):
-        super().__init__("Au", 79, 196.97, 19.32, 1337.33, 2.54, 45, 4.1e7, 214)
+    if sys1=='tex' and sys2=='dtex':
+        Yarn_Count=Yarn_Count*10
+        return Yarn_Count
+    
+    elif sys1=='tex' and sys2=='den':
+        Yarn_Count=Yarn_Count*9
+        return Yarn_Count
 
+    elif sys1=='tex' and sys2=='nm':
+        Yarn_Count=1000/Yarn_Count
+        return Yarn_Count
+      
+    elif sys1=='tex' and sys2=='ne':
+        Yarn_Count=590.5/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='tex' and sys2=='nw':
+        Yarn_Count=885.8/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='dtex' and sys2=='tex':
+        Yarn_Count=Yarn_Count*0.1
+        return Yarn_Count
+    
+    elif sys1=='dtex' and sys2=='den':
+        Yarn_Count=Yarn_Count*0.9
+        return Yarn_Count
+    
+    elif sys1=='dtex' and sys2=='ne':
+        Yarn_Count=5905.4/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='dtex' and sys2=='nw':
+        Yarn_Count=8858/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='dtex' and sys2=='nm':
+        Yarn_Count=10000/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='den' and sys2=='tex':
+        Yarn_Count=Yarn_Count/9
+        return Yarn_Count
+        
+    elif sys1=='den' and sys2=='dtex':
+        Yarn_Count=Yarn_Count/0.9
+        return Yarn_Count
+    
+    elif sys1=='den' and sys2=='nm':
+        Yarn_Count=9000/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='den' and sys2=='ne':
+        Yarn_Count=5314.9/Yarn_Count
+        return Yarn_Count
+        
+    elif sys1=='den' and sys2=='nw':
+        Yarn_Count=7972/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='ne' and sys2=='tex':
+        Yarn_Count=590.6/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='ne' and sys2=='dtex':
+        Yarn_Count=5906/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='ne' and sys2=='den':
+        Yarn_Count=5315/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='ne' and sys2=='nm':
+        Yarn_Count=1.693*Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='ne' and sys2=='nw':
+        Yarn_Count=1.5*Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nm' and sys2=='tex':
+        Yarn_Count=1000/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nm' and sys2=='dtex':
+        Yarn_Count=10000/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nm' and sys2=='den':
+        Yarn_Count=9000/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nm' and sys2=='ne':
+        Yarn_Count=0.59*Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nm' and sys2=='nw':
+        Yarn_Count=0.89*Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nw' and sys2=='tex':
+        Yarn_Count=885.8/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nw' and sys2=='dtex':
+        Yarn_Count=8858/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nw' and sys2=='den':
+        Yarn_Count=7972/Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nw' and sys2=='nm':
+        Yarn_Count=1.129*Yarn_Count
+        return Yarn_Count
+    
+    elif sys1=='nw' and sys2=='ne':
+       Yarn_Count=(2/3)*Yarn_Count
+       return Yarn_Count 
+    
+    else:
+        
+        print("Your inputs are invalid!")
 
 
-class Hg_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Hg", 80, 200.59, 13.53, 234.32, 2.00, 8.3, 4.3e7, 212)
 
+def Weightpercent_To_ppm(num):
+    """
+    This function is used to convert weight percent to ppm (parts per million).
 
+    Parameters
+    ----------
+    num : float
+        The concentration in weight percent.
 
-class Tl_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Returns
+    -------
+    float
+        The concentration in ppm.
+    """
+    ppm = num * 10000
+    return ppm
 
-    '''
-    def __init__(self):
-        super().__init__("Tl", 81, 204.38, 11.85, 577, 1.62, 0.78, 4.5e7, 210)
 
+def Watt_To_Horsepower (Watt) :
+    '''
+    
 
+    Parameters
+    ----------
+    Watt : float
+        give number in Watt.
 
-class Pb_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
+    Returns
+    -------
+    Horsepower : float
+        return number in Horsepower.
 
     '''
-    def __init__(self):
-        super().__init__("Pb", 82, 207.2, 11.34, 600.61, 2.33, 35, 4.6e7, 208)
+    Horsepower = "{:e}".format(Watt / 745.7)
+    return Horsepower
 
 
 
-class Bi_Type(Element):
-    '''
-    Attributes:
-    - symbol (str): The chemical symbol of the element.
-    - atomic_number (int): The number of protons in the element's nucleus.
-    - atomic_mass (float): The atomic mass in unified atomic mass units (u).
-    - density (float): The density of the element in g/cm³.
-    - melting_point (float): The melting point of the element in Kelvin (K).
-    - electronegativity (float): The electronegativity of the element, a measure of its ability to attract electrons.
-    - thermal_conductivity (float): The thermal conductivity in W/(m·K).
-    - electrical_conductivity (float): The electrical conductivity in MS/m.
-    - atomic_radius (float): The atomic radius in picometers (pm).
 
-    '''
-    def __init__(self):
-        super().__init__("Bi", 83, 208.98, 9.78, 271.3, 2.02, 0.9, 4.7e7, 206)
 
 
+    
 
 
 
