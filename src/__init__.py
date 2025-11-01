@@ -1,3 +1,4 @@
+
 #" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
 #                                               -W. Edwards Deming
 #------------------------------------------------------------------------------
@@ -24,7 +25,6 @@ See http://gamlab.aut.ac.ir for complete documentation.
 '''
 __doc__='''
 
-@author: Ali Pilehvar Meibody (Alipilehvar1999@gmail.com)
 
                                          888                    888
  .d8888b    .d88b.     88888b.d88b.      888         .d88b.     888
@@ -38,7 +38,9 @@ Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888
 
 @Graphene Advanced Material Laboratory: https://www.GamLab.Aut.ac.ir
 
-
+@author: Ali Pilehvar Meibody (Alipilehvar1999@gmail.com)
+@Co Author : Danial Nekoonam
+@Contributor : Shokoofeh Karimi
 '''
 
 
@@ -47,4 +49,12 @@ __version__ = "1.9.9"
 
 
 __all__ = ["Constants", "Converters", "Functions", "Data_Analysis","structures","databases","ai_core"]
+
+
+
+
+
+
+
+
 
