@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "model_name": "Graphene-zigzag-linear-regression",
+        "model_type": "train/test",
+        "description": "It can be seen that at lower temperature the CTE remains negative and it turns to positive when the temperature is higher than around 520K.",
+        "author_name": "Anna Costine, Paige Delsa, Tianxi Li et al.",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": {
+            "MAE": 4.251557581149217e-07,
+            "MSE": 2.4832519088249174e-13,
+            "RMSE": 4.983223764617557e-07,
+            "R2": 0.6831720958714215,
+            "MAPE": 1.8565830251279756
+        },
+        "doi": "https://doi.org/10.1063/5.0017507",
+        "hyperparam_range": "None",
+        "best_params": "None"
+    },
+    "model_data": "gASVVQEAAAAAAACMGnNrbGVhcm4ubGluZWFyX21vZGVsLl9iYXNllIwQTGluZWFyUmVncmVzc2lvbpSTlCmBlH2UKIwNZml0X2ludGVyY2VwdJSIjAZjb3B5X1iUiIwGbl9qb2JzlE6MCHBvc2l0aXZllImMDm5fZmVhdHVyZXNfaW5flEsBjAVjb2VmX5SME2pvYmxpYi5udW1weV9waWNrbGWUjBFOdW1weUFycmF5V3JhcHBlcpSTlCmBlH2UKIwIc3ViY2xhc3OUjAVudW1weZSMB25kYXJyYXmUk5SMBXNoYXBllEsBhZSMBW9yZGVylIwBQ5SMBWR0eXBllGgRjAVkdHlwZZSTlIwCZjiUiYiHlFKUKEsDjAE8lE5OTkr/////Sv////9LAHSUYowKYWxsb3dfbW1hcJSIjBtudW1weV9hcnJheV9hbGlnbm1lbnRfYnl0ZXOUSxB1Yg/////////////////////iLq4LFODIPpU5AAAAAAAAAIwFcmFua1+USwGMCXNpbmd1bGFyX5RoDSmBlH2UKGgQaBNoFEsBhZRoFmgXaBhoHWggiGghSxB1YgX//////04Wr90hqf0/lV8AAAAAAAAAjAppbnRlcmNlcHRflIwVbnVtcHkuY29yZS5tdWx0aWFycmF5lIwGc2NhbGFylJOUaB1DCJHjnz32DsC+lIaUUpSMEF9za2xlYXJuX3ZlcnNpb26UjAUxLjQuMpR1Yi4="
+}

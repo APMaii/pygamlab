@@ -1,0 +1,25 @@
+{
+    "metadata": {
+        "model_name": "phosphorene-svr",
+        "model_type": "train/test",
+        "description": "Thickness of few-layer phosphorene on silicone substrate can be determined by the intensity ratio between the silicon Raman peak and phosphorene Raman peak.\nWith increasing the thickness of Phosphorene, the intensity of peak increases.",
+        "author_name": "Meysam Akhtar, George Anderson, Rong Zhao et al.",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": {
+            "MAE": 0.28888360780398475,
+            "MSE": 0.21333145996374825,
+            "RMSE": 0.46187818736518427,
+            "R2": 0.3109943516565944,
+            "MAPE": 2.235658941028282
+        },
+        "doi": "https://doi.org/10.1038/s41699-017-0007-5",
+        "hyperparam_range": {
+            "kernel": "rbf",
+            "C": 1.0,
+            "epsilon": 0.1
+        },
+        "best_params": "None"
+    },
+    "model_data": "gASVWgIAAAAAAACMFHNrbGVhcm4uc3ZtLl9jbGFzc2VzlIwDU1ZSlJOUKYGUfZQojAZrZXJuZWyUjANyYmaUjAZkZWdyZWWUSwOMBWdhbW1hlIwFc2NhbGWUjAVjb2VmMJRHAAAAAAAAAACMA3RvbJRHP1BiTdLxqfyMAUOURz/wAAAAAAAAjAJudZRHAAAAAAAAAACMB2Vwc2lsb26URz+5mZmZmZmajAlzaHJpbmtpbmeUiIwLcHJvYmFiaWxpdHmUiYwKY2FjaGVfc2l6ZZRLyIwMY2xhc3Nfd2VpZ2h0lE6MB3ZlcmJvc2WUiYwIbWF4X2l0ZXKUSv////+MDHJhbmRvbV9zdGF0ZZROjAdfc3BhcnNllImMDm5fZmVhdHVyZXNfaW5flEsBjAZfZ2FtbWGUjBVudW1weS5jb3JlLm11bHRpYXJyYXmUjAZzY2FsYXKUk5SMBW51bXB5lIwFZHR5cGWUk5SMAmY4lImIh5RSlChLA4wBPJROTk5K/////0r/////SwB0lGJDCBS37GRTsiZAlIaUUpSMCHN1cHBvcnRflIwTam9ibGliLm51bXB5X3BpY2tsZZSMEU51bXB5QXJyYXlXcmFwcGVylJOUKYGUfZQojAhzdWJjbGFzc5RoHIwHbmRhcnJheZSTlIwFc2hhcGWUSwiFlIwFb3JkZXKUaAyMBWR0eXBllGgejAJpNJSJiIeUUpQoSwNoIk5OTkr/////Sv////9LAHSUYowKYWxsb3dfbW1hcJSIjBtudW1weV9hcnJheV9hbGlnbm1lbnRfYnl0ZXOUSxB1Ygr/////////////AAAAAAEAAAACAAAAAwAAAAQAAAAGAAAABwAAAAgAAACVOAAAAAAAAACMEHN1cHBvcnRfdmVjdG9yc1+UaCopgZR9lChoLWgvaDBLCEsBhpRoMmgMaDNoIWg4iGg5SxB1Yg7//////////////////wAAAAAAgN0/AAAAAACA1D8AAAAAAAAAAABWVVVVVVU/AAAAAAAA8D9WVVVVVRXdP7CqqqqqqrI/VlVVVVXV2D+VMAAAAAAAAACMCl9uX3N1cHBvcnSUaCopgZR9lChoLWgvaDBLAoWUaDJoDGgzaDZoOIhoOUsQdWIG////////CAAAAAgAAACVMgAAAAAAAACMCmR1YWxfY29lZl+UaCopgZR9lChoLWgvaDBLAUsIhpRoMmgMaDNoIWg4iGg5SxB1Ygz///////////////8AAAAAAADwvwAAAAAAAPC/sViASYb+xb8AAAAAAADwv7PD7hLGr9k/AAAAAAAA8D/dq9WK6CvtP3cIE/7Ve+s/lTAAAAAAAAAAjAppbnRlcmNlcHRflGgqKYGUfZQoaC1oL2gwSwGFlGgyaAxoM2ghaDiIaDlLEHViBv///////+o48oICTvI/lSwAAAAAAAAAjAZfcHJvYkGUaCopgZR9lChoLWgvaDBLAIWUaDJoDGgzaCFoOIhoOUsQdWIC//+VLAAAAAAAAACMBl9wcm9iQpRoKimBlH2UKGgtaC9oMEsAhZRoMmgMaDNoIWg4iGg5SxB1Ygr/////////////lT8AAAAAAAAAjAtmaXRfc3RhdHVzX5RLAIwJX251bV9pdGVylGgqKYGUfZQoaC1oL2gwSwGFlGgyaAxoM2g2aDiIaDlLEHViB/////////8gAAAAlUQAAAAAAAAAjApzaGFwZV9maXRflEsJSwGGlIwLX2ludGVyY2VwdF+UaCopgZR9lChoLWgvaDBLAYWUaDJoDGgzaCFoOIhoOUsQdWIO///////////////////qOPKCAk7yP5UzAAAAAAAAAIwLX2R1YWxfY29lZl+UaCopgZR9lChoLWgvaDBLAUsIhpRoMmgMaDNoIWg4iGg5SxB1Ygv//////////////wAAAAAAAPC/AAAAAAAA8L+xWIBJhv7FvwAAAAAAAPC/s8PuEsav2T8AAAAAAADwP92r1YroK+0/dwgT/tV76z+VKgAAAAAAAACMB25faXRlcl+USyCMEF9za2xlYXJuX3ZlcnNpb26UjAUxLjQuMpR1Yi4="
+}

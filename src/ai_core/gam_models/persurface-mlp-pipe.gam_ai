@@ -1,0 +1,64 @@
+{
+    "metadata": {
+        "model_name": "persurface-mlp-pipe",
+        "model_type": "pipe",
+        "description": "The formation energy normalized by the surface area: the most negative formation energies for the close-packed structure and the less negative for the honeycomb structure. Therefore, from purely thermodynamics considerations, the close-packed structure should be the most stable.\n                    By the TMA molecule: the formation energy of the filled- honeycomb structure is lower than that for the other structures. This is because the guest TMA molecules within the pores have a weak interaction with the TMA network. The formation energy is more negative for the close-packed structure.",
+        "author_name": "Daniela K. Jacquelin, Federico A. Soria, Patricia A. Paredes-Olivera et al.",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": "(Pipeline(steps=[('scaler', MinMaxScaler()),\n                ('model',\n                 MLPRegressor(alpha=0.005, early_stopping=True,\n                              hidden_layer_sizes=(8, 8), max_iter=500,\n                              random_state=42, solver='lbfgs'))]), -0.12893253334656682)",
+        "doi": "https://doi.org/10.1021/acsanm.1c01759",
+        "hyperparam_range": {
+            "model__hidden_layer_sizes": [
+                [
+                    4
+                ],
+                [
+                    8
+                ],
+                [
+                    16
+                ],
+                [
+                    8,
+                    8
+                ]
+            ],
+            "model__activation": [
+                "relu",
+                "tanh"
+            ],
+            "model__solver": [
+                "adam",
+                "lbfgs"
+            ],
+            "model__alpha": [
+                0.0001,
+                0.001,
+                0.005,
+                0.01
+            ],
+            "model__learning_rate": [
+                "constant",
+                "adaptive"
+            ],
+            "model__max_iter": [
+                500,
+                1000,
+                2000
+            ],
+            "model__early_stopping": [
+                true
+            ],
+            "model__tol": [
+                0.0001,
+                1e-05
+            ],
+            "model__random_state": [
+                42
+            ]
+        },
+        "best_params": "None"
+    },
+    "model_data": "gASVLgIAAAAAAACMLXNrbGVhcm4ubmV1cmFsX25ldHdvcmsuX211bHRpbGF5ZXJfcGVyY2VwdHJvbpSMDE1MUFJlZ3Jlc3NvcpSTlCmBlH2UKIwKYWN0aXZhdGlvbpSMBHJlbHWUjAZzb2x2ZXKUjARhZGFtlIwFYWxwaGGURz8aNuLrHEMtjApiYXRjaF9zaXpllIwEYXV0b5SMDWxlYXJuaW5nX3JhdGWUjAhjb25zdGFudJSMEmxlYXJuaW5nX3JhdGVfaW5pdJRHP1BiTdLxqfyMB3Bvd2VyX3SURz/gAAAAAAAAjAhtYXhfaXRlcpRLyIwEbG9zc5SMDXNxdWFyZWRfZXJyb3KUjBJoaWRkZW5fbGF5ZXJfc2l6ZXOUS2SFlIwHc2h1ZmZsZZSIjAxyYW5kb21fc3RhdGWUTowDdG9slEc/Gjbi6xxDLYwHdmVyYm9zZZSJjAp3YXJtX3N0YXJ0lImMCG1vbWVudHVtlEc/7MzMzMzMzYwSbmVzdGVyb3ZzX21vbWVudHVtlIiMDmVhcmx5X3N0b3BwaW5nlImME3ZhbGlkYXRpb25fZnJhY3Rpb26URz+5mZmZmZmajAZiZXRhXzGURz/szMzMzMzNjAZiZXRhXzKURz/v987ZFocrjAdlcHNpbG9ulEc+RXmO4jCMOowQbl9pdGVyX25vX2NoYW5nZZRLCowHbWF4X2Z1bpRNmDqMEF9za2xlYXJuX3ZlcnNpb26UjAUxLjQuMpR1Yi4="
+}

@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "model_name": "phosphorene-linear-regression",
+        "model_type": "train/test",
+        "description": "Thickness of few-layer phosphorene on silicone substrate can be determined by the intensity ratio between the silicon Raman peak and phosphorene Raman peak.\nWith increasing the thickness of Phosphorene, the intensity of peak increases.",
+        "author_name": "Meysam Akhtar, George Anderson, Rong Zhao et al.",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": {
+            "MAE": 0.05772381778089203,
+            "MSE": 0.00719643717395286,
+            "RMSE": 0.08483181699075448,
+            "R2": 0.9767573621741277,
+            "MAPE": 0.410888738071078
+        },
+        "doi": "https://doi.org/10.1038/s41699-017-0007-5",
+        "hyperparam_range": "None",
+        "best_params": "None"
+    },
+    "model_data": "gASVVQEAAAAAAACMGnNrbGVhcm4ubGluZWFyX21vZGVsLl9iYXNllIwQTGluZWFyUmVncmVzc2lvbpSTlCmBlH2UKIwNZml0X2ludGVyY2VwdJSIjAZjb3B5X1iUiIwGbl9qb2JzlE6MCHBvc2l0aXZllImMDm5fZmVhdHVyZXNfaW5flEsBjAVjb2VmX5SME2pvYmxpYi5udW1weV9waWNrbGWUjBFOdW1weUFycmF5V3JhcHBlcpSTlCmBlH2UKIwIc3ViY2xhc3OUjAVudW1weZSMB25kYXJyYXmUk5SMBXNoYXBllEsBhZSMBW9yZGVylIwBQ5SMBWR0eXBllGgRjAVkdHlwZZSTlIwCZjiUiYiHlFKUKEsDjAE8lE5OTkr/////Sv////9LAHSUYowKYWxsb3dfbW1hcJSIjBtudW1weV9hcnJheV9hbGlnbm1lbnRfYnl0ZXOUSxB1Yg////////////////////+YRar0la3yP5U5AAAAAAAAAIwFcmFua1+USwGMCXNpbmd1bGFyX5RoDSmBlH2UKGgQaBNoFEsBhZRoFmgXaBhoHWggiGghSxB1YgX//////3i/ecNYf+w/lV8AAAAAAAAAjAppbnRlcmNlcHRflIwVbnVtcHkuY29yZS5tdWx0aWFycmF5lIwGc2NhbGFylJOUaB1DCCn2dkGuEeQ/lIaUUpSMEF9za2xlYXJuX3ZlcnNpb26UjAUxLjQuMpR1Yi4="
+}
