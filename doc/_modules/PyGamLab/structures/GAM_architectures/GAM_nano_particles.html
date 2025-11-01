@@ -1,0 +1,1212 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="author" title="About these documents" href="../../../../about.html" /><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>PyGamLab.structures.GAM_architectures.GAM_nano_particles - PyGamLab 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">PyGamLab 2.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../../_static/logo_dark.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../../_static/logo_dark.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">PyGamLab 2.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules.html">🧩 Modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 🧩 Modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/structures.html">Structures Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/databases.html">Databases Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/ai_core.html">AI Core Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/data_analysis.html">Data_Analysis Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/constants.html">Constants Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/converters.html">Convertors Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/functions.html">Functions Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../examples.html">💡 Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 💡 Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples_/data_analysis_example.html">Data Analysis Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples_/structures_example.html">Structures Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples_/ai_workflow_example.html">AI Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../collaborate.html">Collaborate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About PyGamLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for PyGamLab.structures.GAM_architectures.GAM_nano_particles</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">..Primatom</span><span class="w"> </span><span class="kn">import</span> <span class="n">GAM_Atom</span> <span class="p">,</span> <span class="n">GAM_Bond</span> 
+<span class="c1">#from gam_atom import GAM_Atom , GAM_Bond</span>
+<span class="c1">#from gam_atom import REFERENCE_PERIODIC_TABLE_CONFIG</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">asdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase</span><span class="w"> </span><span class="kn">import</span> <span class="n">Atoms</span>
+
+
+<span class="c1">#from ..Primatom.gam_atom import REFERENCE_PERIODIC_TABLE_CONFIG</span>
+
+<span class="n">REFERENCE_PERIODIC_TABLE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;H&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span>   <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;1s1&#39;</span><span class="p">,</span>                 <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.53</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;He&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">4.003</span><span class="p">,</span>   <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;1s2&#39;</span><span class="p">,</span>                 <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.31</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">6.941</span><span class="p">,</span>   <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[He] 2s1&#39;</span><span class="p">,</span>            <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.67</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.49</span><span class="p">},</span>  <span class="c1"># bcc</span>
+    <span class="s1">&#39;Be&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">9.012</span><span class="p">,</span>   <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[He] 2s2&#39;</span><span class="p">,</span>            <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.12</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">2.29</span><span class="p">},</span>  <span class="c1"># hcp</span>
+    <span class="s1">&#39;B&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">10.811</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[He] 2s2 2p1&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">8.73</span><span class="p">},</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">12.011</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[He] 2s2 2p2&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.67</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.57</span><span class="p">},</span>  <span class="c1"># diamond</span>
+    <span class="s1">&#39;N&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">14.007</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[He] 2s2 2p3&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.56</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;O&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">15.999</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[He] 2s2 2p4&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.48</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;F&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>  <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">18.998</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[He] 2s2 2p5&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.42</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;Ne&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">20.180</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[He] 2s2 2p6&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.38</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;Na&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">22.990</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ne] 3s1&#39;</span><span class="p">,</span>            <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.90</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.23</span><span class="p">},</span>  <span class="c1"># bcc</span>
+    <span class="s1">&#39;Mg&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">24.305</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ne] 3s2&#39;</span><span class="p">,</span>            <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.45</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.21</span><span class="p">},</span>  <span class="c1"># hcp</span>
+    <span class="s1">&#39;Al&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">26.982</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ne] 3s2 3p1&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.18</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.05</span><span class="p">},</span>  <span class="c1"># fcc</span>
+    <span class="s1">&#39;Si&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">28.085</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ne] 3s2 3p2&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.11</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">5.43</span><span class="p">},</span>  <span class="c1"># diamond</span>
+    <span class="s1">&#39;P&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">30.974</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ne] 3s2 3p3&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.06</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">7.17</span><span class="p">},</span>
+    <span class="s1">&#39;S&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">32.06</span><span class="p">,</span>   <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ne] 3s2 3p4&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.02</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;Cl&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">35.453</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ne] 3s2 3p5&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;Ar&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">39.948</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ne] 3s2 3p6&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="s1">&#39;K&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">39.098</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ar] 4s1&#39;</span><span class="p">,</span>            <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">2.43</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">5.23</span><span class="p">},</span>  <span class="c1"># bcc</span>
+    <span class="s1">&#39;Ca&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">40.078</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ar] 4s2&#39;</span><span class="p">,</span>            <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.94</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">5.58</span><span class="p">},</span>  <span class="c1"># fcc</span>
+    <span class="s1">&#39;Fe&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">55.845</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ar] 3d6 4s2&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.56</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">2.87</span><span class="p">},</span>  <span class="c1"># bcc</span>
+    <span class="s1">&#39;Cu&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">63.546</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ar] 3d10 4s1&#39;</span><span class="p">,</span>       <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.45</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.61</span><span class="p">},</span>  <span class="c1"># fcc</span>
+    <span class="s1">&#39;Zn&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">65.38</span><span class="p">,</span>   <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ar] 3d10 4s2&#39;</span><span class="p">,</span>       <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.42</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">2.66</span><span class="p">},</span>  <span class="c1"># hcp</span>
+    <span class="s1">&#39;Ag&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">47</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">107.868</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Kr] 4d10 5s1&#39;</span><span class="p">,</span>       <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.65</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.09</span><span class="p">},</span>  <span class="c1"># fcc</span>
+    <span class="s1">&#39;Cd&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">112.411</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Kr] 4d10 5s2&#39;</span><span class="p">,</span>       <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.55</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">2.98</span><span class="p">},</span>  <span class="c1"># hcp</span>
+    <span class="s1">&#39;W&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">74</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">183.84</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Xe] 4f14 5d4 6s2&#39;</span><span class="p">,</span>   <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.35</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.16</span><span class="p">},</span>  <span class="c1"># bcc</span>
+    <span class="s1">&#39;Pt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">195.084</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Xe] 4f14 5d9 6s1&#39;</span><span class="p">,</span>   <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.39</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.92</span><span class="p">},</span>  <span class="c1"># fcc</span>
+    <span class="s1">&#39;Au&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">196.967</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Xe] 4f14 5d10 6s1&#39;</span><span class="p">,</span>  <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.44</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.08</span><span class="p">},</span>  <span class="c1"># fcc</span>
+    <span class="s1">&#39;Ta&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">73</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">180.948</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Xe] 4f14 5d3 6s2&#39;</span><span class="p">,</span>   <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.43</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.30</span><span class="p">},</span>  <span class="c1"># bcc</span>
+    <span class="s1">&#39;Nb&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">92.906</span><span class="p">,</span>  <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Kr] 4d4 5s1&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.46</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.30</span><span class="p">},</span>  <span class="c1"># bcc</span>
+    <span class="s1">&#39;Mo&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;number&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="mf">95.94</span><span class="p">,</span>   <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="s1">&#39;[Kr] 4d5 5s1&#39;</span><span class="p">,</span>        <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="mf">1.39</span><span class="p">,</span> <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.15</span><span class="p">},</span>  <span class="c1"># bcc</span>
+<span class="p">}</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AtomicData</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Store atomic data for different elements.&quot;&quot;&quot;</span>
+    
+    <span class="c1"># Atomic radii in Angstroms (covalent radii)</span>
+    <span class="n">ATOMIC_RADII</span><span class="o">=</span><span class="p">{</span><span class="n">element</span> <span class="p">:</span> <span class="n">properties</span><span class="p">[</span><span class="s1">&#39;radius&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">element</span><span class="p">,</span><span class="n">properties</span> <span class="ow">in</span> <span class="n">REFERENCE_PERIODIC_TABLE_CONFIG</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    
+    <span class="c1"># Lattice parameters in Angstroms</span>
+    <span class="n">LATTICE_CONSTANTS</span> <span class="o">=</span> <span class="p">{</span><span class="n">element</span> <span class="p">:</span> <span class="n">properties</span><span class="p">[</span><span class="s1">&#39;lattice_constant&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">element</span><span class="p">,</span><span class="n">properties</span> <span class="ow">in</span> <span class="n">REFERENCE_PERIODIC_TABLE_CONFIG</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+
+
+<div class="viewcode-block" id="Nanoparticle_Generator">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Nanoparticle_Generator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    General-purpose nanoparticle structure generator for atomistic simulations.</span>
+
+<span class="sd">    The `Nanoparticle_Generator` class provides a flexible and modular tool for</span>
+<span class="sd">    constructing atomic-scale models of nanoparticles with arbitrary geometries,</span>
+<span class="sd">    materials, and orientations. It supports the creation of finite clusters,</span>
+<span class="sd">    spherical or polyhedral nanoparticles, and core–shell architectures with</span>
+<span class="sd">    user-defined crystallography and dimensions.</span>
+
+<span class="sd">    This class can be used to prepare atomic coordinates for density functional</span>
+<span class="sd">    theory (DFT), molecular dynamics (MD), or machine learning (ML) workflows.</span>
+<span class="sd">    It is particularly suited for generating input structures for nanomaterials</span>
+<span class="sd">    research involving metals, semiconductors, and hybrid systems.</span>
+
+<span class="sd">    Supported features include:</span>
+<span class="sd">        - Generation of finite nanoparticles with specified radius, shape, and lattice</span>
+<span class="sd">        - Core–shell or multi-layered structures</span>
+<span class="sd">        - Selection of crystalline structure (FCC, BCC, HCP, etc.)</span>
+<span class="sd">        - Randomized orientation and rotation of particles</span>
+<span class="sd">        - Atom-based filtering for specific elements or sublattices</span>
+<span class="sd">        - Export to standard formats such as XYZ or ASE-compatible structures</span>
+
+<span class="sd">    The implementation can be extended to support:</span>
+<span class="sd">        - Nanorods, nanowires, and anisotropic morphologies</span>
+<span class="sd">        - Surface relaxation or reconstruction</span>
+<span class="sd">        - Doping, vacancies, and alloy generation</span>
+<span class="sd">        - Integration with LAMMPS, VASP, or ASE simulation interfaces</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    element : str</span>
+<span class="sd">        Chemical symbol of the atomic species (e.g., &#39;Au&#39;, &#39;Ag&#39;, &#39;Si&#39;).</span>
+<span class="sd">    lattice_constant : float</span>
+<span class="sd">        Lattice constant of the crystal in Ångströms.</span>
+<span class="sd">    structure_type : {&#39;FCC&#39;, &#39;BCC&#39;, &#39;HCP&#39;, &#39;diamond&#39;, ...}</span>
+<span class="sd">        Crystal structure used for atomic packing.</span>
+<span class="sd">    radius : float</span>
+<span class="sd">        Radius of the nanoparticle in Ångströms.</span>
+<span class="sd">    center : tuple of float, optional</span>
+<span class="sd">        Cartesian coordinates of the nanoparticle center. Default is (0.0, 0.0, 0.0).</span>
+<span class="sd">    core_element : str, optional</span>
+<span class="sd">        If specified, the core region of the nanoparticle will use this element.</span>
+<span class="sd">    core_radius : float, optional</span>
+<span class="sd">        Radius of the core region (Å) when building core–shell particles.</span>
+<span class="sd">    random_orientation : bool, optional</span>
+<span class="sd">        If True, applies a random rotation to the generated particle. Default is False.</span>
+<span class="sd">    vacuum : float, optional</span>
+<span class="sd">        Optional vacuum spacing in Ångströms for periodic export. Default is 10.0 Å.</span>
+<span class="sd">    save_path : str, optional</span>
+<span class="sd">        Path for saving generated structures in `.xyz` or `.cif` format.</span>
+<span class="sd">    seed : int, optional</span>
+<span class="sd">        Random seed for reproducibility.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    atoms : list of GAM_Atom</span>
+<span class="sd">        List of atoms with positions, element type, and optional metadata.</span>
+<span class="sd">    bonds : list of GAM_Bond</span>
+<span class="sd">        List of identified bonds (if neighbor detection is used).</span>
+<span class="sd">    lattice_vectors : numpy.ndarray</span>
+<span class="sd">        Lattice vectors defining the crystal unit cell.</span>
+<span class="sd">    meta : dict</span>
+<span class="sd">        Metadata dictionary containing generation parameters and history.</span>
+<span class="sd">    center : tuple of float</span>
+<span class="sd">        Center of the nanoparticle in Cartesian coordinates.</span>
+<span class="sd">    radius : float</span>
+<span class="sd">        Radius of the nanoparticle in Ångströms.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    build() -&gt; None</span>
+<span class="sd">        Construct the nanoparticle structure from the given parameters.</span>
+<span class="sd">    generate_core_shell(core_element: str, core_radius: float) -&gt; None</span>
+<span class="sd">        Create a core–shell nanoparticle by replacing atoms within the core radius.</span>
+<span class="sd">    apply_rotation(angle: float, axis: str = &#39;z&#39;) -&gt; None</span>
+<span class="sd">        Rotate the nanoparticle by a given angle around a specified axis.</span>
+<span class="sd">    translate(dx: float, dy: float, dz: float) -&gt; None</span>
+<span class="sd">        Translate all atoms by the specified vector.</span>
+<span class="sd">    nearest_neighbors(r_cut: float | None = None) -&gt; None</span>
+<span class="sd">        Identify bonds based on a distance cutoff.</span>
+<span class="sd">    filter_atoms(element: str) -&gt; list[GAM_Atom]</span>
+<span class="sd">        Return atoms belonging to a specific element.</span>
+<span class="sd">    get_positions() -&gt; list[tuple[float, float, float]]</span>
+<span class="sd">        Return atomic positions as (x, y, z) tuples.</span>
+<span class="sd">    get_elements() -&gt; list[str]</span>
+<span class="sd">        Return a list of all atomic species in the nanoparticle.</span>
+<span class="sd">    to_xyz(path: str) -&gt; None</span>
+<span class="sd">        Export the nanoparticle to an XYZ file.</span>
+<span class="sd">    to_ase() -&gt; ase.Atoms</span>
+<span class="sd">        Convert the nanoparticle to an ASE-compatible `Atoms` object.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The atomic cutoff radius for neighbor detection should be set according</span>
+<span class="sd">      to the typical bond length of the chosen element (e.g., 1.2× nearest-neighbor distance).</span>
+<span class="sd">    - The nanoparticle surface morphology depends on both lattice type and radius.</span>
+<span class="sd">    - Randomized orientation can be used to eliminate orientation bias in ML datasets.</span>
+<span class="sd">    - Large nanoparticles (&gt;10,000 atoms) may require optimized neighbor-search algorithms.</span>
+<span class="sd">    - The class is designed to be modular, allowing integration with simulation workflows</span>
+<span class="sd">      such as VASP, Quantum ESPRESSO, LAMMPS, or CP2K.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; # Generate a 5 nm gold nanoparticle</span>
+<span class="sd">    &gt;&gt;&gt; from pygamlab import Nanoparticle_Generator</span>
+<span class="sd">    &gt;&gt;&gt; npg = Nanoparticle_Generator(element=&#39;Au&#39;, lattice_constant=4.08,</span>
+<span class="sd">    ...                              structure_type=&#39;FCC&#39;, radius=25.0)</span>
+<span class="sd">    &gt;&gt;&gt; npg.build()</span>
+<span class="sd">    &gt;&gt;&gt; npg.to_xyz(&#39;Au_nanoparticle.xyz&#39;)</span>
+
+<span class="sd">    &gt;&gt;&gt; # Generate a core–shell Ag@Au nanoparticle</span>
+<span class="sd">    &gt;&gt;&gt; cs = Nanoparticle_Generator(element=&#39;Au&#39;, lattice_constant=4.08,</span>
+<span class="sd">    ...                             structure_type=&#39;FCC&#39;, radius=30.0)</span>
+<span class="sd">    &gt;&gt;&gt; cs.generate_core_shell(core_element=&#39;Ag&#39;, core_radius=15.0)</span>
+<span class="sd">    &gt;&gt;&gt; cs.to_xyz(&#39;AgAu_core_shell.xyz&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size_nm</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> 
+                 <span class="n">shape</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;sphere&#39;</span><span class="p">,</span> <span class="n">doping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">coating</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">crystal_structure</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;FCC&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a nanoparticle with specified parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            element: Primary element for the nanoparticle (e.g., &#39;Au&#39;)</span>
+<span class="sd">            size_nm: Particle size in nanometers</span>
+<span class="sd">            shape: Shape type (&#39;sphere&#39;, &#39;rod&#39;, &#39;cube&#39;, &#39;octahedron&#39;)</span>
+<span class="sd">            doping: Optional dictionary of doping elements with percentages</span>
+<span class="sd">            coating: Optional tuple of (material, thickness_nm)</span>
+<span class="sd">            crystal_structure: Crystal structure (&#39;FCC&#39;, &#39;BCC&#39;, &#39;hexagonal&#39;, &#39;diamond&#39;)</span>
+<span class="sd">            **kwargs: Additional parameters (surface_roughness, lattice_constant, etc.)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Validate size_nm to ensure it&#39;s a positive value</span>
+        <span class="k">if</span> <span class="n">size_nm</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Particle size must be a positive value. Provided size: </span><span class="si">{</span><span class="n">size_nm</span><span class="si">}</span><span class="s2"> nm.&quot;</span><span class="p">)</span>
+        
+        
+        <span class="c1"># Validate doping percentages</span>
+        <span class="k">if</span> <span class="n">doping</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">percentage</span> <span class="ow">in</span> <span class="n">doping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">percentage</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Doping percentage for </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2"> exceeds 100%. Provided: </span><span class="si">{</span><span class="n">percentage</span><span class="si">}</span><span class="s2">%.&quot;</span><span class="p">)</span>
+        
+        
+        
+        <span class="c1"># Store basic parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GAM_Atom</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GAM_Bond</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="n">element</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span><span class="p">]</span>  <span class="c1"># Keep for backward compatibility</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size_nm</span> <span class="o">=</span> <span class="n">size_nm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doping</span> <span class="o">=</span> <span class="n">doping</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coating</span> <span class="o">=</span> <span class="n">coating</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crystal_structure</span> <span class="o">=</span> <span class="n">crystal_structure</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+        
+        <span class="c1"># Store additional parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">surface_roughness</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;surface_roughness&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lattice_constant</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lattice_constant&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">custom_parameters</span> <span class="o">=</span> <span class="n">kwargs</span>
+        
+        <span class="c1"># Initialize atomic data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">AtomicData</span><span class="p">()</span>
+        
+        <span class="c1"># Store all parameters in a dictionary</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;element&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">,</span>
+            <span class="s1">&#39;elements&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">,</span>
+            <span class="s1">&#39;size_nm&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">size_nm</span><span class="p">,</span>
+            <span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+            <span class="s1">&#39;doping&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">doping</span><span class="p">,</span>
+            <span class="s1">&#39;coating&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">coating</span><span class="p">,</span>
+            <span class="s1">&#39;crystal_structure&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">crystal_structure</span><span class="p">,</span>
+            <span class="s1">&#39;surface_roughness&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_roughness</span><span class="p">,</span>
+            <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">lattice_constant</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">}</span>
+        
+        <span class="c1"># Generate the nanoparticle structure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">()</span>
+        
+        
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_lattice_constant</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the lattice constant for the primary element.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Lattice constant in Angstroms</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lattice_constant</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lattice_constant</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">LATTICE_CONSTANTS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">LATTICE_CONSTANTS</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Default lattice constant</span>
+            <span class="k">return</span> <span class="mf">4.0</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_unit_cell_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate unit cell positions based on crystal structure.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple of (positions array, atom types list)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lattice_constant</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crystal_structure</span> <span class="o">==</span> <span class="s1">&#39;FCC&#39;</span><span class="p">:</span>
+            <span class="c1"># Face-centered cubic</span>
+            <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+            <span class="p">])</span> <span class="o">*</span> <span class="n">a</span>
+            <span class="n">atom_types</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">crystal_structure</span> <span class="o">==</span> <span class="s1">&#39;BCC&#39;</span><span class="p">:</span>
+            <span class="c1"># Body-centered cubic</span>
+            <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+            <span class="p">])</span> <span class="o">*</span> <span class="n">a</span>
+            <span class="n">atom_types</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">crystal_structure</span> <span class="o">==</span> <span class="s1">&#39;HEXAGONAL&#39;</span><span class="p">:</span>
+            <span class="c1"># Hexagonal close-packed</span>
+            <span class="n">c_a_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;c_a_ratio&#39;</span><span class="p">,</span> <span class="mf">1.633</span><span class="p">)</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c_a_ratio</span>
+            <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+            <span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+            <span class="n">atom_types</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">crystal_structure</span> <span class="o">==</span> <span class="s1">&#39;DIAMOND&#39;</span><span class="p">:</span>
+            <span class="c1"># Diamond cubic</span>
+            <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]</span>
+            <span class="p">])</span> <span class="o">*</span> <span class="n">a</span>
+            <span class="n">atom_types</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported crystal structure: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">crystal_structure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="n">atom_types</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_lattice_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate lattice positions by replicating unit cells.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple of (positions array, atom types list)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">unit_positions</span><span class="p">,</span> <span class="n">unit_atom_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_unit_cell_positions</span><span class="p">()</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lattice_constant</span><span class="p">()</span>
+        
+        <span class="c1"># Determine number of unit cells needed</span>
+        <span class="n">size_angstrom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size_nm</span> <span class="o">*</span> <span class="mi">10</span>  <span class="c1"># Convert nm to Angstrom</span>
+        <span class="n">n_cells</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">size_angstrom</span> <span class="o">/</span> <span class="n">a</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+        
+        <span class="n">all_positions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_atom_types</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1"># Replicate unit cell</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">n_cells</span><span class="p">,</span> <span class="n">n_cells</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">n_cells</span><span class="p">,</span> <span class="n">n_cells</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">n_cells</span><span class="p">,</span> <span class="n">n_cells</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">])</span> <span class="o">*</span> <span class="n">a</span>
+                    <span class="n">shifted_positions</span> <span class="o">=</span> <span class="n">unit_positions</span> <span class="o">+</span> <span class="n">offset</span>
+                    
+                    <span class="n">all_positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shifted_positions</span><span class="p">)</span>
+                    <span class="n">all_atom_types</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">unit_atom_types</span><span class="p">)</span>
+        
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">all_positions</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="n">all_atom_types</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_shape_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">positions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply shape constraints to filter atomic positions.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            positions: Array of atomic positions</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Boolean mask for positions within the shape</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">size_angstrom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size_nm</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Half-size in Angstrom</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="s1">&#39;sphere&#39;</span><span class="p">:</span>
+            <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">distances</span> <span class="o">&lt;=</span> <span class="n">size_angstrom</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="s1">&#39;cube&#39;</span><span class="p">:</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">size_angstrom</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="s1">&#39;rod&#39;</span><span class="p">:</span>
+            <span class="c1"># Rod along z-axis</span>
+            <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;aspect_ratio&#39;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+            <span class="n">rod_length</span> <span class="o">=</span> <span class="n">size_angstrom</span> <span class="o">*</span> <span class="n">aspect_ratio</span>
+            <span class="n">rod_radius</span> <span class="o">=</span> <span class="n">size_angstrom</span> <span class="o">/</span> <span class="n">aspect_ratio</span>
+            
+            <span class="n">xy_distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">positions</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">z_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">rod_length</span>
+            <span class="n">xy_mask</span> <span class="o">=</span> <span class="n">xy_distances</span> <span class="o">&lt;=</span> <span class="n">rod_radius</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">z_mask</span> <span class="o">&amp;</span> <span class="n">xy_mask</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="s1">&#39;octahedron&#39;</span><span class="p">:</span>
+            <span class="c1"># Regular octahedron</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">+</span> 
+                   <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]))</span> <span class="o">&lt;=</span> <span class="n">size_angstrom</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported shape: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">mask</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_doping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply doping by randomly replacing atoms.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            atom_types: Original atom types</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Modified atom types with doping</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">doping</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">atom_types</span>
+        
+        <span class="n">doped_types</span> <span class="o">=</span> <span class="n">atom_types</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">n_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">atom_types</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">dopant</span><span class="p">,</span> <span class="n">percentage</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">doping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">n_dopant</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_atoms</span> <span class="o">*</span> <span class="n">percentage</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_atoms</span><span class="p">),</span> <span class="n">n_dopant</span><span class="p">)</span>
+            
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+                <span class="n">doped_types</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">dopant</span>
+        
+        <span class="k">return</span> <span class="n">doped_types</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_coating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">positions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">atom_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add coating layer to the nanoparticle.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            positions: Core positions</span>
+<span class="sd">            atom_types: Core atom types</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple of (all positions, all atom types) including coating</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">coating</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="n">atom_types</span>
+        
+        <span class="n">coating_material</span><span class="p">,</span> <span class="n">coating_thickness_nm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coating</span>
+        <span class="n">coating_thickness_angstrom</span> <span class="o">=</span> <span class="n">coating_thickness_nm</span> <span class="o">*</span> <span class="mi">10</span>
+        
+        <span class="c1"># Find surface atoms (simplified approach)</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">distances_from_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">positions</span> <span class="o">-</span> <span class="n">center</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">surface_threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">distances_from_center</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="n">surface_mask</span> <span class="o">=</span> <span class="n">distances_from_center</span> <span class="o">&gt;=</span> <span class="n">surface_threshold</span>
+        <span class="n">surface_positions</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">surface_mask</span><span class="p">]</span>
+        
+        <span class="c1"># Generate coating positions</span>
+        <span class="n">coating_positions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">coating_types</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">surface_positions</span><span class="p">:</span>
+            <span class="n">direction</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">pos</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span>
+            <span class="c1"># Add multiple layers</span>
+            <span class="n">n_layers</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">coating_thickness_angstrom</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_layers</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">coat_pos</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">+</span> <span class="n">direction</span> <span class="o">*</span> <span class="n">layer</span> <span class="o">*</span> <span class="mf">2.0</span>
+                <span class="n">coating_positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coat_pos</span><span class="p">)</span>
+                <span class="n">coating_types</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coating_material</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">coating_positions</span><span class="p">:</span>
+            <span class="n">all_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">positions</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coating_positions</span><span class="p">)])</span>
+            <span class="n">all_types</span> <span class="o">=</span> <span class="n">atom_types</span> <span class="o">+</span> <span class="n">coating_types</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">all_positions</span> <span class="o">=</span> <span class="n">positions</span>
+            <span class="n">all_types</span> <span class="o">=</span> <span class="n">atom_types</span>
+        
+        <span class="k">return</span> <span class="n">all_positions</span><span class="p">,</span> <span class="n">all_types</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_surface_roughness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">positions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply surface roughness by adding random displacement.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            positions: Original positions</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Positions with surface roughness applied</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_roughness</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">positions</span>
+        
+        <span class="c1"># Find surface atoms</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">distances_from_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">positions</span> <span class="o">-</span> <span class="n">center</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">surface_threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">distances_from_center</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+        <span class="n">surface_mask</span> <span class="o">=</span> <span class="n">distances_from_center</span> <span class="o">&gt;=</span> <span class="n">surface_threshold</span>
+        
+        <span class="c1"># Apply random displacement to surface atoms</span>
+        <span class="n">roughness_positions</span> <span class="o">=</span> <span class="n">positions</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">surface_displacement</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_roughness</span><span class="p">,</span> 
+                                              <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">surface_mask</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">roughness_positions</span><span class="p">[</span><span class="n">surface_mask</span><span class="p">]</span> <span class="o">+=</span> <span class="n">surface_displacement</span>
+        
+        <span class="k">return</span> <span class="n">roughness_positions</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the complete nanoparticle structure.&quot;&quot;&quot;</span>
+        <span class="c1"># Generate initial lattice</span>
+        <span class="n">positions</span><span class="p">,</span> <span class="n">atom_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_lattice_positions</span><span class="p">()</span>
+        
+        <span class="c1"># Apply shape constraint</span>
+        <span class="n">shape_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_shape_constraint</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">shape_mask</span><span class="p">]</span>
+        <span class="n">atom_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom_types</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shape_mask</span><span class="p">)</span> <span class="k">if</span> <span class="n">mask</span><span class="p">]</span>
+        
+        <span class="c1"># Apply doping</span>
+        <span class="n">atom_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_doping</span><span class="p">(</span><span class="n">atom_types</span><span class="p">)</span>
+        
+        <span class="c1"># Add coating</span>
+        <span class="n">positions</span><span class="p">,</span> <span class="n">atom_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_coating</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">atom_types</span><span class="p">)</span>
+        
+        <span class="c1"># Apply surface roughness</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_surface_roughness</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+        
+        <span class="c1"># Center the nanoparticle</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">positions</span> <span class="o">-=</span> <span class="n">center</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="o">=</span> <span class="n">positions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span> <span class="o">=</span> <span class="n">atom_types</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">)):</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="c1"># unpack coordinates</span>
+            <span class="n">each_atom</span> <span class="o">=</span> <span class="n">GAM_Atom</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">each_atom</span><span class="p">)</span>
+            
+            
+        
+        
+<div class="viewcode-block" id="Nanoparticle_Generator.translate">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.translate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">dy</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">dz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Translate all atoms by (dx, dy, dz).&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">dz</span>
+        
+        <span class="c1"># Update ASE atoms positions as well</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">atom</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">):</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">position</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span><span class="p">])</span>
+
+        <span class="c1"># Update origin in metadata</span>
+        <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="p">(</span><span class="n">ox</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">dy</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span></div>
+
+        
+        <span class="c1">#return self.atoms</span>
+        
+    
+<div class="viewcode-block" id="Nanoparticle_Generator.rotate">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.rotate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle_deg</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">about_center</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate structure about z-axis.&quot;&quot;&quot;</span>
+        <span class="n">angle_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">)</span>
+        <span class="n">cos_a</span><span class="p">,</span> <span class="n">sin_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
+        
+        <span class="c1"># Get center of mass</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">])</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">about_center</span><span class="p">:</span>
+            <span class="c1"># Rotate about center of mass</span>
+            <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+                <span class="n">x_rel</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">y_rel</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">atom</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x_rel</span> <span class="o">*</span> <span class="n">cos_a</span> <span class="o">-</span> <span class="n">y_rel</span> <span class="o">*</span> <span class="n">sin_a</span>
+                <span class="n">atom</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x_rel</span> <span class="o">*</span> <span class="n">sin_a</span> <span class="o">+</span> <span class="n">y_rel</span> <span class="o">*</span> <span class="n">cos_a</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Rotate about (0, 0)</span>
+            <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+                <span class="n">x_old</span><span class="p">,</span> <span class="n">y_old</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span>
+                <span class="n">atom</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x_old</span> <span class="o">*</span> <span class="n">cos_a</span> <span class="o">-</span> <span class="n">y_old</span> <span class="o">*</span> <span class="n">sin_a</span>
+                <span class="n">atom</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">x_old</span> <span class="o">*</span> <span class="n">sin_a</span> <span class="o">+</span> <span class="n">y_old</span> <span class="o">*</span> <span class="n">cos_a</span>
+        
+        <span class="c1"># Update ASE atoms positions as well</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">atom</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">):</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">x</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">y</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">z</span>
+
+        <span class="c1"># Update rotation in metadata</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rotation</span> <span class="o">+</span> <span class="n">angle_deg</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;rotation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotation</span></div>
+
+        <span class="c1">#return self.atoms</span>
+
+    
+<div class="viewcode-block" id="Nanoparticle_Generator.copy">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.copy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a deep copy of the structure.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="Nanoparticle_Generator.add_element">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.add_element">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">percentage</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">distribution</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;random&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add an element to create an alloy nanoparticle.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            element: Element symbol to add (e.g., &#39;Ag&#39;, &#39;Cu&#39;)</span>
+<span class="sd">            percentage: Percentage of the new element (0-100)</span>
+<span class="sd">            distribution: Distribution method (&#39;random&#39;, &#39;surface&#39;, &#39;core&#39;, &#39;layered&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">percentage</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Percentage must be between 0 and 100. Provided: </span><span class="si">{</span><span class="n">percentage</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">element</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">ATOMIC_RADII</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2"> not supported. Available elements: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atomic_data</span><span class="o">.</span><span class="n">ATOMIC_RADII</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Add to elements list</span>
+        <span class="k">if</span> <span class="n">element</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        
+        <span class="c1"># Calculate number of atoms to replace</span>
+        <span class="n">n_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">)</span>
+        <span class="n">n_to_replace</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_atoms</span> <span class="o">*</span> <span class="n">percentage</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span><span class="p">:</span>
+            <span class="c1"># Random distribution throughout the nanoparticle</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_atoms</span><span class="p">),</span> <span class="n">n_to_replace</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">element</span>
+                
+        <span class="k">elif</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;surface&#39;</span><span class="p">:</span>
+            <span class="c1"># Replace atoms on the surface</span>
+            <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">distances_from_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="o">-</span> <span class="n">center</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">surface_threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">distances_from_center</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+            <span class="n">surface_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">distances_from_center</span> <span class="o">&gt;=</span> <span class="n">surface_threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">n_to_replace</span><span class="p">:</span>
+                <span class="n">selected_indices</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">),</span> <span class="n">n_to_replace</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">selected_indices</span> <span class="o">=</span> <span class="n">surface_indices</span>
+                <span class="c1"># Fill remaining with random selection</span>
+                <span class="n">remaining</span> <span class="o">=</span> <span class="n">n_to_replace</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">)</span>
+                <span class="n">other_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_atoms</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">surface_indices</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">other_indices</span><span class="p">:</span>
+                    <span class="n">selected_indices</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">other_indices</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">remaining</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_indices</span><span class="p">))))</span>
+            
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">selected_indices</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">element</span>
+                
+        <span class="k">elif</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;core&#39;</span><span class="p">:</span>
+            <span class="c1"># Replace atoms in the core</span>
+            <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">distances_from_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="o">-</span> <span class="n">center</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">core_threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">distances_from_center</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+            <span class="n">core_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">distances_from_center</span> <span class="o">&lt;=</span> <span class="n">core_threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">core_indices</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">n_to_replace</span><span class="p">:</span>
+                <span class="n">selected_indices</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">core_indices</span><span class="p">),</span> <span class="n">n_to_replace</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">selected_indices</span> <span class="o">=</span> <span class="n">core_indices</span>
+                <span class="c1"># Fill remaining with random selection</span>
+                <span class="n">remaining</span> <span class="o">=</span> <span class="n">n_to_replace</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">core_indices</span><span class="p">)</span>
+                <span class="n">other_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_atoms</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">core_indices</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">other_indices</span><span class="p">:</span>
+                    <span class="n">selected_indices</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">other_indices</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">remaining</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_indices</span><span class="p">))))</span>
+            
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">selected_indices</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">element</span>
+                
+        <span class="k">elif</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;layered&#39;</span><span class="p">:</span>
+            <span class="c1"># Create layered structure (core-shell or alternating layers)</span>
+            <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">distances_from_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="o">-</span> <span class="n">center</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            
+            <span class="c1"># Sort atoms by distance from center</span>
+            <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">distances_from_center</span><span class="p">)</span>
+            
+            <span class="c1"># Replace atoms in specific layers</span>
+            <span class="n">layer_size</span> <span class="o">=</span> <span class="n">n_atoms</span> <span class="o">//</span> <span class="mi">4</span>  <span class="c1"># Divide into 4 layers</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">n_to_replace</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">)):</span>
+                <span class="n">layer_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="n">layer_size</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span>
+                <span class="k">if</span> <span class="n">layer_idx</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Replace in odd-numbered layers</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">element</span>
+                    
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported distribution method: </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s2">. Use &#39;random&#39;, &#39;surface&#39;, &#39;core&#39;, or &#39;layered&#39;&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Update atoms list</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">atom_type</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="n">atom_type</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Create new atom if needed</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">new_atom</span> <span class="o">=</span> <span class="n">GAM_Atom</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">atom_type</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_atom</span><span class="p">)</span>
+        
+        <span class="c1"># Update metadata</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Added </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">percentage</span><span class="si">}</span><span class="s2">%) with </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s2"> distribution&quot;</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="Nanoparticle_Generator.get_composition">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.get_composition">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_composition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the current composition of the nanoparticle as percentages.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary mapping element symbols to their percentages</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        
+        <span class="n">unique_elements</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">total_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">)</span>
+        
+        <span class="n">composition</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique_elements</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+            <span class="n">composition</span><span class="p">[</span><span class="n">element</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="n">total_atoms</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+        
+        <span class="k">return</span> <span class="n">composition</span></div>
+
+    
+<div class="viewcode-block" id="Nanoparticle_Generator.get_atoms">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.get_atoms">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_atoms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a copy of the atoms in this molecule.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        List[str]</span>
+<span class="sd">            A list of atom symbols.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span></div>
+
+    
+    
+<div class="viewcode-block" id="Nanoparticle_Generator.get_positions">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.get_positions">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return positions of all atoms as a list of (x, y, z) tuples.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Nanoparticle_Generator.get_elements">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.get_elements">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return list of element symbols in the molecule.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">element</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span></div>
+
+    
+        
+<div class="viewcode-block" id="Nanoparticle_Generator.to_xyz">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.to_xyz">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_xyz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build (if needed) and save structure directly to XYZ file.&quot;&quot;&quot;</span>
+
+        
+        <span class="c1"># Prepare XYZ string directly</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">))]</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        comment_parts = []</span>
+<span class="sd">        for key, value in self.meta.items():</span>
+<span class="sd">            comment_parts.append(f&quot;{key}={value}&quot;)</span>
+<span class="sd">        lines.append(&quot;Silicene structure: &quot; + &quot;, &quot;.join(comment_parts))</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Generated by PyGamlab&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">element</span><span class="si">:</span><span class="s2">2s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">y</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">z</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Save directly</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span></div>
+
+        
+        
+
+<div class="viewcode-block" id="Nanoparticle_Generator.to_ase">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.to_ase">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_ase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Export structure to ASE Atoms object (if ASE is available).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            ASE Atoms object or None if ASE not available</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">element</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">position</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span>
+        
+        <span class="n">atoms_obj</span> <span class="o">=</span> <span class="n">Atoms</span><span class="p">(</span><span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="n">positions</span><span class="p">)</span>
+        
+        <span class="c1"># Add metadata</span>
+        <span class="n">atoms_obj</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">atoms_obj</span></div>
+
+    
+    
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_to_xyz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save nanoparticle atomic positions to an XYZ file.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            file_path: Path to save the XYZ file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Nanoparticle structure not generated&quot;</span><span class="p">)</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="c1"># Write number of atoms</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># Write comment line with nanoparticle info</span>
+            <span class="n">comment</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nanoparticle: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;Size: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">size_nm</span><span class="si">}</span><span class="s2"> nm, Shape: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;Crystal: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">crystal_structure</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">comment</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># Write atomic coordinates</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">atom_type</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">)):</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">atom_type</span><span class="si">:</span><span class="s2">2s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nanoparticle structure saved to </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_to_ase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return an ASE Atoms object (requires ASE installation).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            ASE Atoms object containing the nanoparticle structure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Nanoparticle structure not generated&quot;</span><span class="p">)</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">ase</span><span class="w"> </span><span class="kn">import</span> <span class="n">Atoms</span>
+            <span class="n">atoms</span> <span class="o">=</span> <span class="n">Atoms</span><span class="p">(</span><span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">atoms</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ASE not available. Install with: pip install ase&quot;</span><span class="p">)</span>
+            <span class="c1"># Return a simple dictionary instead</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;symbols&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">,</span>
+                <span class="s1">&#39;positions&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">,</span>
+                <span class="s1">&#39;cell&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s1">&#39;pbc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+            <span class="p">}</span>
+    
+    
+    
+    
+<div class="viewcode-block" id="Nanoparticle_Generator.get_info">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.get_info">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get comprehensive information about the nanoparticle.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary containing nanoparticle information</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta</span>
+        
+        <span class="c1"># Calculate additional properties</span>
+        <span class="n">unique_elements</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_types</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">composition</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_elements</span><span class="p">,</span> <span class="n">counts</span><span class="p">))</span>
+        
+        <span class="n">center_of_mass</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">max_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span> <span class="o">-</span> <span class="n">center_of_mass</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">actual_size_nm</span> <span class="o">=</span> <span class="n">max_distance</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">10</span>  <span class="c1"># Convert to nm</span>
+        
+        <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">info</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;n_atoms&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">),</span>
+            <span class="s1">&#39;composition&#39;</span><span class="p">:</span> <span class="n">composition</span><span class="p">,</span>
+            <span class="s1">&#39;actual_size_nm&#39;</span><span class="p">:</span> <span class="n">actual_size_nm</span><span class="p">,</span>
+            <span class="s1">&#39;center_of_mass&#39;</span><span class="p">:</span> <span class="n">center_of_mass</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+            <span class="s1">&#39;bounding_box&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;x_range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())],</span>
+                <span class="s1">&#39;y_range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())],</span>
+                <span class="s1">&#39;z_range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        
+        <span class="k">return</span> <span class="n">info</span></div>
+
+    
+
+<div class="viewcode-block" id="Nanoparticle_Generator.save_parameters">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nanoparticle_Generator.save_parameters">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save nanoparticle parameters to a JSON file.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            file_path: Path to save the parameters file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameters saved to </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+
+
+
+    
+
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Ali Pilehvar Meibody
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=79f5c508"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

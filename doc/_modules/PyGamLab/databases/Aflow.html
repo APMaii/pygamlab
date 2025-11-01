@@ -1,0 +1,768 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="author" title="About these documents" href="../../../about.html" /><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>PyGamLab.databases.Aflow - PyGamLab 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">PyGamLab 2.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../_static/logo_dark.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../_static/logo_dark.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">PyGamLab 2.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html">🧩 Modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 🧩 Modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/structures.html">Structures Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/databases.html">Databases Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/ai_core.html">AI Core Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/data_analysis.html">Data_Analysis Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/constants.html">Constants Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/converters.html">Convertors Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/functions.html">Functions Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples.html">💡 Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 💡 Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples_/data_analysis_example.html">Data Analysis Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples_/structures_example.html">Structures Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples_/ai_workflow_example.html">AI Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collaborate.html">Collaborate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About PyGamLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for PyGamLab.databases.Aflow</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">aflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">search</span><span class="p">,</span> <span class="n">K</span>
+
+
+
+
+<div class="viewcode-block" id="Aflow_Explorer">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.Aflow_Explorer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Aflow_Explorer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A unified interface to search and fetch various material properties from the AFLOW database.</span>
+
+<span class="sd">    This class allows searching by species or chemical formula, and fetching electronic, mechanical,</span>
+<span class="sd">    thermodynamic, and structural properties of materials using AFLOW keys.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    all_entries : list</span>
+<span class="sd">        Stores the results of the latest search query.</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Stores the latest fetched data for a material.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; explorer = Aflow_Explorer()</span>
+<span class="sd">    &gt;&gt;&gt; results = explorer.search_materials(formula=&quot;MoS2&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; explorer.fetch_electronic_properties(&quot;aflow-123&quot;)</span>
+<span class="sd">    {&#39;formula&#39;: &#39;MoS2&#39;, &#39;bandgap&#39;: 1.23, ...}</span>
+<span class="sd">    &gt;&gt;&gt; all_data = explorer.fetch_all_data(&quot;aflow-123&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; all_data[&#39;electronic_prop&#39;][&#39;bandgap&#39;]</span>
+<span class="sd">    1.23</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the AFLOW Explorer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;electronic_prop&#39;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s1">&#39;mechanical_prop&#39;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s1">&#39;thermo_prop&#39;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s1">&#39;structure&#39;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s1">&#39;meta_data&#39;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="Aflow_Explorer.search_materials">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.Aflow_Explorer.search_materials">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search_materials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for materials in AFLOW by species or chemical formula.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        species : str or list[str], optional</span>
+<span class="sd">            Element(s) to search for.</span>
+<span class="sd">        formula : str, optional</span>
+<span class="sd">            Chemical formula to search for.</span>
+<span class="sd">        max_results : int, default 5</span>
+<span class="sd">            Maximum number of results to return.</span>
+<span class="sd">        batch_size : int, default 10</span>
+<span class="sd">            Number of entries retrieved per batch from AFLOW.</span>
+<span class="sd">        description : bool, default True</span>
+<span class="sd">            If True, returns detailed information for each entry.</span>
+<span class="sd">            If False, returns only AFLOW unique IDs (AUIDs).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of dict</span>
+<span class="sd">            List of results containing AUID and optionally detailed description.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; explorer = Aflow_Explorer()</span>
+<span class="sd">        &gt;&gt;&gt; explorer.search_materials(formula=&quot;MoS2&quot;, max_results=3)</span>
+<span class="sd">        [{&#39;auid&#39;: &#39;aflow-123&#39;, &#39;prototype&#39;: &#39;MoS2&#39;, &#39;spacegroup_relax&#39;: 187, ...}]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># -------------------- Clean .select() --------------------</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span>
+        
+        <span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">search</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">auid</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">compound</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">species</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">composition</span><span class="p">,</span>
+
+                <span class="c1"># Electronic</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">Egap</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">Egap_fit</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">Egap_type</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">delta_electronic_energy_convergence</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">delta_electronic_energy_threshold</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">ldau_TLUJ</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">dft_type</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">bader_atomic_volumes</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">bader_net_charges</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">spinD</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">spinF</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">spin_atom</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">spin_cell</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">scintillation_attenuation_length</span><span class="p">,</span>
+
+                <span class="c1"># Mechanical</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">ael_bulk_modulus_reuss</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">ael_bulk_modulus_voigt</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">ael_bulk_modulus_vrh</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">ael_shear_modulus_reuss</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">ael_shear_modulus_voigt</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">ael_shear_modulus_vrh</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">ael_poisson_ratio</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">ael_elastic_anisotropy</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">stress_tensor</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">forces</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">Pulay_stress</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">pressure</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">pressure_residual</span><span class="p">,</span>
+
+                <span class="c1"># Thermodynamic</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">agl_acoustic_debye</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">agl_debye</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">agl_gruneisen</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">agl_heat_capacity_Cp_300K</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">agl_heat_capacity_Cv_300K</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">agl_thermal_conductivity_300K</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">agl_thermal_expansion_300K</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">agl_bulk_modulus_isothermal_300K</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">agl_bulk_modulus_static_300K</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">eentropy_atom</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">eentropy_cell</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">enthalpy_atom</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">enthalpy_cell</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">enthalpy_formation_atom</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">enthalpy_formation_cell</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">energy_atom</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">energy_cell</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">energy_cutoff</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">entropic_temperature</span><span class="p">,</span>
+
+                <span class="c1"># Structural</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">Bravais_lattice_orig</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">Bravais_lattice_relax</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">Pearson_symbol_orig</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">Pearson_symbol_relax</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">lattice_system_orig</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">lattice_system_relax</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">lattice_variation_orig</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">lattice_variation_relax</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">spacegroup_orig</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">spacegroup_relax</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">sg</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">sg2</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">prototype</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">stoich</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">stoichiometry</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">natoms</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">nspecies</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">nbondxx</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">species_pp</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">species_pp_ZVAL</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">species_pp_version</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">positions_cartesian</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">positions_fractional</span><span class="p">,</span><span class="n">K</span><span class="o">.</span><span class="n">valence_cell_iupac</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">valence_cell_std</span><span class="p">,</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">volume_atom</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">volume_cell</span><span class="p">,</span><span class="n">K</span><span class="o">.</span><span class="n">density</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+
+        <span class="c1"># -------------------- Filters --------------------</span>
+        <span class="k">if</span> <span class="n">species</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">species</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">species</span><span class="p">:</span>
+                    <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">species</span> <span class="o">==</span> <span class="n">el</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">species</span> <span class="o">==</span> <span class="n">species</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">formula</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">compound</span> <span class="o">==</span> <span class="n">formula</span><span class="p">)</span>
+
+        <span class="n">all_entries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">max_results</span><span class="p">:</span>
+                    <span class="n">all_entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span> <span class="o">=</span> <span class="n">all_entries</span>
+            
+            <span class="c1">#return all_entries</span>
+        
+            <span class="k">if</span> <span class="n">description</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">=</span><span class="p">[]</span>
+                <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span><span class="p">:</span>
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;auid&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;auid&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                                    <span class="s1">&#39;prototype&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;prototype&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                                    <span class="s1">&#39;spacegroup_relax&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spacegroup_relax&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                                    <span class="s1">&#39;dft_type&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;dft_type&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                                    <span class="s1">&#39;spinD&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spinD&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                                    <span class="s1">&#39;spinF&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spinF&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                                    <span class="s1">&#39;enthalpy_formation_cell&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;enthalpy_formation_cell&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                                    <span class="s1">&#39;natoms&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;natoms&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)})</span>
+                <span class="k">return</span> <span class="n">results</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">=</span><span class="p">[]</span>
+                <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span><span class="p">:</span>
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;auid&#39;</span><span class="p">:</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;auid&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)})</span>
+                <span class="k">return</span> <span class="n">results</span>
+                
+            <span class="c1">#    return</span>
+        <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No results found for this query.&quot;</span><span class="p">)</span>
+            <span class="k">return</span></div>
+
+
+    <span class="c1"># -------------------- Electronic properties --------------------</span>
+<div class="viewcode-block" id="Aflow_Explorer.fetch_electronic_properties">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.Aflow_Explorer.fetch_electronic_properties">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_electronic_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">auid</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch electronic properties for a given AFLOW AUID.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        auid : str</span>
+<span class="sd">            AFLOW unique ID of the material.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary containing electronic properties such as bandgap, spin polarization, etc.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; explorer.fetch_electronic_properties(&quot;aflow-123&quot;)</span>
+<span class="sd">        {&#39;formula&#39;: &#39;MoS2&#39;, &#39;bandgap&#39;: 1.23, ...}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First use search_materials function&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+        <span class="c1">#entry = next((e for e in self.all_entries if e.get(&quot;auid&quot;) == auid), None)</span>
+        
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">auid</span><span class="o">==</span><span class="n">auid</span><span class="p">:</span>
+                <span class="n">entry</span><span class="o">=</span><span class="n">r</span>
+                
+                
+                
+        
+        <span class="k">if</span> <span class="n">entry</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;auid </span><span class="si">{</span><span class="n">auid</span><span class="si">}</span><span class="s2"> not found in current search results.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+
+
+        <span class="n">electronic_results</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;compound&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bandgap&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;Egap&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bandgap_fit&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;Egap_fit&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bandgap_type&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;Egap_type&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;delta_elec_energy_convergence&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;delta_electronic_energy_convergence&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;delta_elec_energy_threshold&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;delta_electronic_energy_threshold&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;ldau_TLUJ&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ldau_TLUJ&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;dft_type&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;dft_type&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bader_atomic_volumes&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;bader_atomic_volumes&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bader_net_charges&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;bader_net_charges&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;spinD&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spinD&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;spinF&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spinF&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;spin_atom&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spin_atom&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;spin_cell&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spin_cell&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;scintillation_attenuation_length&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;scintillation_attenuation_length&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;electronic_prop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">electronic_results</span>
+        <span class="k">return</span> <span class="n">electronic_results</span></div>
+
+
+    <span class="c1"># -------------------- Mechanical properties --------------------</span>
+<div class="viewcode-block" id="Aflow_Explorer.fetch_mechanical_properties">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.Aflow_Explorer.fetch_mechanical_properties">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_mechanical_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">auid</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch mechanical properties for a given AFLOW AUID.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        auid : str</span>
+<span class="sd">            AFLOW unique ID of the material.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary containing bulk modulus, shear modulus, elastic tensors, etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First use search_materials function&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+        
+        
+        <span class="c1">#entry = next((e for e in self.all_entries if e.get(&quot;auid&quot;) == auid), None)</span>
+        
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">auid</span><span class="o">==</span><span class="n">auid</span><span class="p">:</span>
+                <span class="n">entry</span><span class="o">=</span><span class="n">r</span>
+        
+        <span class="k">if</span> <span class="n">entry</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;auid </span><span class="si">{</span><span class="n">auid</span><span class="si">}</span><span class="s2"> not found in current search results.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+
+        <span class="n">mechanical_results</span><span class="o">=</span><span class="p">{</span> <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;compound&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bulk_modulus_reuss&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ael_bulk_modulus_reuss&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bulk_modulus_voigt&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ael_bulk_modulus_voigt&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bulk_modulus_vrh&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ael_bulk_modulus_vrh&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;shear_modulus_reuss&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ael_shear_modulus_reuss&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;shear_modulus_voigt&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ael_shear_modulus_voigt&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;shear_modulus_vrh&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ael_shear_modulus_vrh&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;poisson_ratio&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ael_poisson_ratio&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;elastic_anisotropy&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;ael_elastic_anisotropy&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;stress_tensor&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;stress_tensor&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;forces&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;forces&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;Pulay_stress&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;Pulay_stress&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;pressure&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;pressure&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;pressure_residual&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;pressure_residual&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mechanical_prop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mechanical_results</span>
+        <span class="k">return</span> <span class="n">mechanical_results</span></div>
+
+
+    <span class="c1"># -------------------- Thermodynamic properties --------------------</span>
+<div class="viewcode-block" id="Aflow_Explorer.fetch_thermodynamic_properties">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.Aflow_Explorer.fetch_thermodynamic_properties">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_thermodynamic_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">auid</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch thermodynamic properties for a given AFLOW AUID.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        auid : str</span>
+<span class="sd">            AFLOW unique ID of the material.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary containing Debye temperature, heat capacity, enthalpy, and related properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First use search_materials function&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+        
+        <span class="c1">#entry = next((e for e in self.all_entries if e.get(&quot;auid&quot;) == auid), None)</span>
+        
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">auid</span><span class="o">==</span><span class="n">auid</span><span class="p">:</span>
+                <span class="n">entry</span><span class="o">=</span><span class="n">r</span>
+        
+        <span class="k">if</span> <span class="n">entry</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;auid </span><span class="si">{</span><span class="n">auid</span><span class="si">}</span><span class="s2"> not found in current search results.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+
+        <span class="n">thermo_results</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;compound&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;acoustic_debye&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_acoustic_debye&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;debye&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_debye&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;gruneisen&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_gruneisen&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;heat_capacity_Cp_300K&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_heat_capacity_Cp_300K&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;heat_capacity_Cv_300K&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_heat_capacity_Cv_300K&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;thermal_conductivity_300K&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_thermal_conductivity_300K&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;thermal_expansion_300K&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_thermal_expansion_300K&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bulk_modulus_isothermal_300K&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_bulk_modulus_isothermal_300K&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;bulk_modulus_static_300K&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;agl_bulk_modulus_static_300K&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;entropy_atom&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;eentropy_atom&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;entropy_cell&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;eentropy_cell&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;enthalpy_atom&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;enthalpy_atom&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;enthalpy_cell&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;enthalpy_cell&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;enthalpy_formation_atom&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;enthalpy_formation_atom&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;enthalpy_formation_cell&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;enthalpy_formation_cell&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;energy_atom&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;energy_atom&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;energy_cell&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;energy_cell&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;energy_cutoff&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;energy_cutoff&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;entropic_temperature&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;entropic_temperature&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;thermo_prop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thermo_results</span>
+        <span class="k">return</span> <span class="n">thermo_results</span></div>
+
+
+    <span class="c1"># -------------------- Structural properties --------------------</span>
+<div class="viewcode-block" id="Aflow_Explorer.fetch_structure">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.Aflow_Explorer.fetch_structure">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">auid</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch structural properties for a given AFLOW AUID.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        auid : str</span>
+<span class="sd">            AFLOW unique ID of the material.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary containing lattice, space group, atomic positions, density, and valence info.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First use search_materials function&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+       <span class="c1"># entry = next((e for e in self.all_entries if e.get(&quot;auid&quot;) == auid), None)</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">auid</span><span class="o">==</span><span class="n">auid</span><span class="p">:</span>
+                <span class="n">entry</span><span class="o">=</span><span class="n">r</span>
+        
+        <span class="k">if</span> <span class="n">entry</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;auid </span><span class="si">{</span><span class="n">auid</span><span class="si">}</span><span class="s2"> not found in current search results.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+
+        <span class="n">structure_results</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;compound&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;Bravais_lattice_orig&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;Bravais_lattice_orig&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;Bravais_lattice_relax&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;Bravais_lattice_relax&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;Pearson_symbol_orig&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;Pearson_symbol_orig&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;Pearson_symbol_relax&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;Pearson_symbol_relax&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;lattice_system_orig&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;lattice_system_orig&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;lattice_system_relax&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;lattice_system_relax&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;lattice_variation_orig&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;lattice_variation_orig&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;lattice_variation_relax&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;lattice_variation_relax&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;spacegroup_orig&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spacegroup_orig&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;spacegroup_relax&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;spacegroup_relax&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;sg&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;sg&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;sg2&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;sg2&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;prototype&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;prototype&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;stoich&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;stoich&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;stoichiometry&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;stoichiometry&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;geometry&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;natoms&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;natoms&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;nspecies&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;nspecies&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;nbondxx&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;nbondxx&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;composition&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;composition&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;compound&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;compound&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;species_pp&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;species_pp&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;species_pp_ZVAL&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;species_pp_ZVAL&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;species_pp_version&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;species_pp_version&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;positions_cartesian&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;positions_cartesian&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;positions_fractional&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;positions_fractional&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+
+            <span class="c1"># Valence info</span>
+            <span class="s2">&quot;valence_cell_iupac&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;valence_cell_iupac&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;valence_cell_std&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;valence_cell_std&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;volume_atom&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;volume_atom&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;volume_cell&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;volume_cell&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;density&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&quot;density&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;structure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">structure_results</span>
+        <span class="k">return</span> <span class="n">structure_results</span></div>
+
+    <span class="c1"># -------------------- Aggregate all data --------------------</span>
+<div class="viewcode-block" id="Aflow_Explorer.fetch_all_data">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.Aflow_Explorer.fetch_all_data">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_all_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">auid</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch all available data (electronic, mechanical, thermodynamic, structure) for a material.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        auid : str</span>
+<span class="sd">            AFLOW unique ID of the material.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary with keys: &#39;electronic_prop&#39;, &#39;mechanical_prop&#39;, &#39;thermo_prop&#39;, &#39;structure&#39;.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; all_data = explorer.fetch_all_data(&quot;aflow-123&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; all_data[&#39;electronic_prop&#39;][&#39;bandgap&#39;]</span>
+<span class="sd">        1.23</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_entries</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;first use search_materials function&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">electro</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+        <span class="n">mechanical</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+        <span class="n">thermo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+        <span class="n">structure</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span></div>
+</div>
+
+    
+    
+
+    
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Ali Pilehvar Meibody
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=79f5c508"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>
