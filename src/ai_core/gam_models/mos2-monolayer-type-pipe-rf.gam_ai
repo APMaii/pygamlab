@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "model_name": "mos2-monolayer-type-pipe-rf",
+        "model_type": "pipe",
+        "description": "\n    Effect of Mo precursor temperature, S precursor temperature, type of substrate, growth temperature & time & pressure on number of layers & raman peak position.\n    The most discernible trend is found in the Mo precursor temperature\n    Figure S7a, where it can be inferred that at higher Mo precursor temperatures, bilayer or multilayer MoS2 thin films were formed.\n    For the Sulfur precursor temperature the monolayer regime starts at lower temperature, and the growth temperature (substrate temperature) extends to higher values for the Not a monolayer regime. This suggests that the concentration of the Mo precursor is the critical parameter to achieve control over the number of layers. \n    The Raman peak is around 19 cm\u22121 for monolayer MoS2, 21 for bilayers and 25 for more than 4 layers.\n    ",
+        "author_name": "SF. Lin, Y. Xiang, Hui-Shen Shen",
+        "author_email": "None",
+        "trainer_name": "Ali Pilehvar Meibody",
+        "best_accuracy": 1.0,
+        "doi": "http://dx.doi.org/10.1016/j.compositesb.2016.12.004",
+        "hyperparam_range": {
+            "model__n_estimators": [
+                50,
+                100,
+                200
+            ],
+            "model__max_depth": [
+                5,
+                10,
+                null
+            ],
+            "model__min_samples_split": [
+                2,
+                5
+            ],
+            "model__criterion": [
+                "gini",
+                "entropy"
+            ]
+        },
+        "best_params": {
+            "model__criterion": "gini",
+            "model__max_depth": 5,
+            "model__min_samples_split": 2,
+            "model__n_estimators": 50
+        }
+    },
+    "model_data": "gASVfwIAAAAAAACMGHNrbGVhcm4uZW5zZW1ibGUuX2ZvcmVzdJSMFlJhbmRvbUZvcmVzdENsYXNzaWZpZXKUk5QpgZR9lCiMCWVzdGltYXRvcpSMFXNrbGVhcm4udHJlZS5fY2xhc3Nlc5SMFkRlY2lzaW9uVHJlZUNsYXNzaWZpZXKUk5QpgZR9lCiMCWNyaXRlcmlvbpSMBGdpbmmUjAhzcGxpdHRlcpSMBGJlc3SUjAltYXhfZGVwdGiUTowRbWluX3NhbXBsZXNfc3BsaXSUSwKMEG1pbl9zYW1wbGVzX2xlYWaUSwGMGG1pbl93ZWlnaHRfZnJhY3Rpb25fbGVhZpRHAAAAAAAAAACMDG1heF9mZWF0dXJlc5ROjA5tYXhfbGVhZl9ub2Rlc5ROjAxyYW5kb21fc3RhdGWUTowVbWluX2ltcHVyaXR5X2RlY3JlYXNllEcAAAAAAAAAAIwMY2xhc3Nfd2VpZ2h0lE6MCWNjcF9hbHBoYZRHAAAAAAAAAACMDW1vbm90b25pY19jc3SUTowQX3NrbGVhcm5fdmVyc2lvbpSMBTEuNi4xlHVijAxuX2VzdGltYXRvcnOUS2SMEGVzdGltYXRvcl9wYXJhbXOUKGgLaA9oEGgRaBJoE2gUaBZoFWgYaBl0lIwJYm9vdHN0cmFwlIiMCW9vYl9zY29yZZSJjAZuX2pvYnOUTmgVSyqMB3ZlcmJvc2WUSwCMCndhcm1fc3RhcnSUiWgXTowLbWF4X3NhbXBsZXOUTmgLaAxoD05oEEsCaBFLAWgSRwAAAAAAAAAAaBOMBHNxcnSUaBROaBZHAAAAAAAAAABoGU5oGEcAAAAAAAAAAGgaaBt1Yi4="
+}

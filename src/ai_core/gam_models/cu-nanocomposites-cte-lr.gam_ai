@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "model_name": "cu-nanocomposites-cte-lr",
+        "model_type": "train/test",
+        "description": "The presence of vacancy defects in graphene negatively affects the structural behaviors of the composite beams to a certain degree. So, increasing the temperature & defects decrease the mechanical properties, Increasing the percentage of Graphene increase the mechanical properties.",
+        "author_name": "Shaoyu Zhao, Yingyan Zhang, Yihe Zhang et al.",
+        "author_email": "None",
+        "trainer_name": "Ali Pilehvar Meibody",
+        "best_accuracy": {
+            "MAE": 0.3576723571557358,
+            "MSE": 0.1743102211284927,
+            "RMSE": 0.41750475581541907,
+            "MAPE": 0.02454525846028176,
+            "R2": 0.9401234863666696
+        },
+        "doi": "https://doi.org/10.1007/s00366-022-01710-w",
+        "hyperparam_range": null,
+        "best_params": null
+    },
+    "model_data": "gASVVQEAAAAAAACMGnNrbGVhcm4ubGluZWFyX21vZGVsLl9iYXNllIwQTGluZWFyUmVncmVzc2lvbpSTlCmBlH2UKIwNZml0X2ludGVyY2VwdJSIjAZjb3B5X1iUiIwGbl9qb2JzlE6MCHBvc2l0aXZllImMDm5fZmVhdHVyZXNfaW5flEsCjAVjb2VmX5SME2pvYmxpYi5udW1weV9waWNrbGWUjBFOdW1weUFycmF5V3JhcHBlcpSTlCmBlH2UKIwIc3ViY2xhc3OUjAVudW1weZSMB25kYXJyYXmUk5SMBXNoYXBllEsChZSMBW9yZGVylIwBQ5SMBWR0eXBllGgRjAVkdHlwZZSTlIwCZjiUiYiHlFKUKEsDjAE8lE5OTkr/////Sv////9LAHSUYowKYWxsb3dfbW1hcJSIjBtudW1weV9hcnJheV9hbGlnbm1lbnRfYnl0ZXOUSxB1Yg////////////////////9HUzsedN0QwAcDaE8t9gdAlTkAAAAAAAAAjAVyYW5rX5RLAowJc2luZ3VsYXJflGgNKYGUfZQoaBBoE2gUSwKFlGgWaBdoGGgdaCCIaCFLEHViDf////////////////9Fk0KHv9sEQD9DWaVmjwNAlV8AAAAAAAAAjAppbnRlcmNlcHRflIwVbnVtcHkuY29yZS5tdWx0aWFycmF5lIwGc2NhbGFylJOUaB1DCBBlW5rojS9AlIaUUpSMEF9za2xlYXJuX3ZlcnNpb26UjAUxLjYuMZR1Yi4="
+}
