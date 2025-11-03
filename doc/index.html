@@ -2,7 +2,8 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>PyGamLab V2 - کتابخانه علمی پایتون</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,6 +19,14 @@
             color: #e0e7ff;
             overflow-x: hidden;
             direction: rtl;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
         .particles-container {
@@ -241,9 +250,24 @@
         body.mobile-menu-open .mobile-overlay {
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            nav .logo {
+                font-size: 1.1rem;
+            }
+
+            nav .logo-img {
+                width: 35px;
+                height: 35px;
+                margin-right: 0.5rem;
+            }
+
             nav .nav-links {
                 display: none;
                 flex-direction: column;
@@ -323,11 +347,17 @@
 
             nav .nav-links a {
                 display: block;
-                padding: 0.8rem;
-                font-size: 1.2rem;
+                padding: 1rem 0.8rem;
+                font-size: 1.1rem;
                 font-weight: 600;
                 color: #00d4ff;
                 text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(0, 212, 255, 0.2);
             }
 
             nav .nav-links a:hover {
@@ -351,10 +381,14 @@
                 color: #00d4ff;
                 font-size: 1.8rem;
                 cursor: pointer;
-                padding: 0.5rem;
+                padding: 0.75rem;
+                min-width: 44px;
+                min-height: 44px;
                 transition: transform 0.3s;
                 z-index: 1000;
                 position: relative;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
             }
 
             .mobile-menu-toggle:hover {
@@ -372,17 +406,229 @@
                 color: #ff8c00;
                 font-size: 2.5rem;
                 cursor: pointer;
-                padding: 0.5rem;
+                padding: 0.75rem;
+                min-width: 44px;
+                min-height: 44px;
                 transition: transform 0.3s;
                 position: fixed;
                 top: 1rem;
                 right: 1rem;
                 z-index: 1001;
                 text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
             }
 
             nav.mobile-open .mobile-close-btn:hover {
                 transform: rotate(90deg) scale(1.1);
+            }
+
+            /* Hero section mobile */
+            .hero-section {
+                padding: 1rem;
+                min-height: calc(100vh - 70px);
+                padding-top: 80px;
+            }
+
+            .hero-title-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .main-title {
+                font-size: 2rem;
+                line-height: 1.2;
+                word-wrap: break-word;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+                padding: 0 1rem;
+                line-height: 1.7;
+            }
+
+            /* Container mobile */
+            .container {
+                padding: 0 1rem;
+            }
+
+            /* Sections mobile */
+            section {
+                margin-bottom: 3rem;
+                scroll-margin-top: 80px;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+                margin-bottom: 2rem;
+                padding: 0 1rem;
+            }
+
+            /* Cards mobile */
+            .card {
+                padding: 1.5rem;
+            }
+
+            /* Code blocks mobile */
+            .code-block {
+                font-size: 0.8rem;
+                padding: 1rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                word-break: break-word;
+            }
+
+            .code-block pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+
+            /* Modules grid mobile */
+            .modules-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .module-card {
+                padding: 1.5rem;
+            }
+
+            .module-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .module-card p {
+                font-size: 0.9rem;
+            }
+
+            /* CTA buttons mobile */
+            .cta-button {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+                display: block;
+                text-align: center;
+                margin-top: 1rem;
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+
+            /* Contributor section mobile */
+            .contributor-section {
+                padding: 0;
+            }
+
+            /* Footer mobile */
+            footer {
+                padding: 2rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            /* What is library section mobile */
+            .what-is-library {
+                padding: 2rem 1rem !important;
+            }
+
+            .what-is-library .card {
+                padding: 1.5rem !important;
+            }
+
+            .what-is-library h2 {
+                font-size: 1.75rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .what-is-library p {
+                font-size: 1rem !important;
+                line-height: 1.8 !important;
+            }
+
+            .what-is-library h3 {
+                font-size: 1.2rem !important;
+            }
+
+            .what-is-library ul {
+                font-size: 0.95rem !important;
+                line-height: 2 !important;
+            }
+
+            .what-is-library pre {
+                font-size: 0.8rem !important;
+                padding: 1rem !important;
+                overflow-x: auto;
+            }
+
+            /* Scroll indicator mobile */
+            .scroll-indicator {
+                bottom: 1rem;
+            }
+
+            /* Language selector buttons mobile */
+            .language-selector button {
+                min-height: 44px;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.95rem;
+                touch-action: manipulation;
+            }
+
+            /* Logo intro mobile */
+            .logo-intro img {
+                max-width: 250px;
+                width: 70%;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.75rem;
+            }
+
+            .hero-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 1.25rem;
+            }
+
+            .module-card {
+                padding: 1.25rem;
+            }
+
+            .code-block {
+                font-size: 0.75rem;
+                padding: 0.875rem;
+            }
+
+            .logo-intro img {
+                max-width: 200px;
+            }
+
+            .cta-button {
+                width: 100%;
+                margin-bottom: 0.75rem;
+            }
+
+            /* Stack multiple CTA buttons */
+            #contribute .card a.cta-button,
+            #cite .card a.cta-button {
+                display: block;
+                width: 100%;
+                margin-bottom: 0.75rem;
             }
         }
 
@@ -561,6 +807,13 @@
             font-size: 0.9rem;
             color: #00d4ff;
             overflow-x: auto;
+            word-wrap: break-word;
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         .modules-grid {
@@ -1118,6 +1371,13 @@ PyGamLab یک کتابخانه علمی پایتون است که برای محق
                     closeMobileMenu();
                 }
             });
+        });
+
+        // Close mobile menu when clicking on overlay
+        document.getElementById('mobileOverlay').addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                closeMobileMenu();
+            }
         });
 
         // Language switcher
