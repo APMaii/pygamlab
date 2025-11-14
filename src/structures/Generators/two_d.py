@@ -10,8 +10,6 @@ from ase.io.pov import get_bondpairs
 import copy
 from ase.build import graphene
 from ase.build import mx2
-
-
 from ase.atoms import Atoms
 import copy
 
