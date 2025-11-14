@@ -6,8 +6,6 @@ from matplotlib.patches import Circle
 import copy
 from typing import List, Tuple, Union, Optional, Dict, Any
 import io
-
-
 # Optional imports
 try:
     import plotly.graph_objects as go
