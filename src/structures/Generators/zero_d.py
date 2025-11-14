@@ -17,9 +17,6 @@ import itertools
 import copy
 
 
-
-
-
 class Nano_ZeroD_Builder:
     """
     High-level atomistic builder for 0D nanostructures.
