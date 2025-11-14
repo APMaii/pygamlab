@@ -14,8 +14,6 @@ try:
 except ImportError:
     HAS_ASE = False
     
-     
-
 DEFAULT_LATTICE_DB = {
     'Cu': {'crystal_structure': 'fcc', 'a': 3.615},
     'Ni': {'crystal_structure': 'fcc', 'a': 3.52},
