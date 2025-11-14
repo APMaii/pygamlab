@@ -1,4 +1,3 @@
-
 #" IN GOD WE TRUST, ALL OTHERS MUST BRING DATA"
 #                                               -W. Edwards Deming
 #------------------------------------------------------------------------------
