@@ -10,8 +10,6 @@ from typing import Dict, List, Tuple, Optional, Any, Union
 import json
 from dataclasses import dataclass, asdict
 from ase import Atoms
-
-
 #from ..Primatom.gam_atom import REFERENCE_PERIODIC_TABLE_CONFIG
 
 REFERENCE_PERIODIC_TABLE_CONFIG = {
