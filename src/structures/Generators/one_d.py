@@ -1,5 +1,4 @@
 from ..Primatom import GAM_Atom , GAM_Bond
-
 from math import gcd, sqrt
 import numpy as np
 from ase.atoms import Atoms
