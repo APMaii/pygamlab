@@ -7,6 +7,8 @@
 
 <p align="center"><i>PyGamLab is a scientific Python library for researchers, engineers, and students who need powerful tools for nanostructure generation, alloy design, material data exploration, and AI-driven analysis. Designed for simplicity, clarity, and usability.</i></p>
 
+
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/pygamlab?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pygamlab)
 ---
 
 ## 📌 Overview
