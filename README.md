@@ -15,16 +15,20 @@
     <img src="https://img.shields.io/pypi/v/PyGamLab?color=blue&label=PyPI&logo=pypi" alt="PyPI Version">
   </a>
 
-  <!-- GitHub Stars -->
+  <!-- GitHub Stars 
   <a href="https://github.com/APMaii/pygamlab">
     <img src="https://img.shields.io/github/stars/APMaii/pygamlab?style=social" alt="GitHub Stars">
-  </a>
+  </a>-->
 
-  <!-- GitHub Actions Build -->
+  <!-- GitHub Actions Build 
   <a href="https://github.com/APMaii/pygamlab/actions">
     <img src="https://img.shields.io/github/actions/workflow/status/APMaii/pygamlab/python-package.yml?label=build&logo=github" alt="Build Status">
-  </a>
+  </a>-->
 
+  <!-- PyPI Downloads (pepy.tech total) -->
+  <a href="https://pepy.tech/projects/pygamlab">
+    <img src="https://static.pepy.tech/personalized-badge/pygamlab?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads" alt="Total Downloads">
+  </a>
   <!-- Documentation -->
   <a href="https://apmaii.github.io/pygamlab/documentation.html">
     <img src="https://img.shields.io/badge/docs-latest-brightgreen?logo=readthedocs" alt="Documentation">
@@ -33,11 +37,6 @@
   <!-- PyPI Downloads (Shields.io) -->
   <a href="https://pypi.org/project/PyGamLab/">
     <img src="https://img.shields.io/pypi/dm/PyGamLab?label=downloads&logo=pypi" alt="PyPI Downloads">
-  </a>
-
-  <!-- PyPI Downloads (pepy.tech total) -->
-  <a href="https://pepy.tech/projects/pygamlab">
-    <img src="https://static.pepy.tech/personalized-badge/pygamlab?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads" alt="Total Downloads">
   </a>
 
   <!-- License -->
