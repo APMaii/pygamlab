@@ -8,7 +8,43 @@
 <p align="center"><i>PyGamLab is a scientific Python library for researchers, engineers, and students who need powerful tools for nanostructure generation, alloy design, material data exploration, and AI-driven analysis. Designed for simplicity, clarity, and usability.</i></p>
 
 
-[![PyPI Downloads](https://static.pepy.tech/personalized-badge/pygamlab?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pygamlab)
+
+<p align="center">
+  <!-- PyPI Version -->
+  <a href="https://pypi.org/project/PyGamLab/">
+    <img src="https://img.shields.io/pypi/v/PyGamLab?color=blue&label=PyPI&logo=pypi" alt="PyPI Version">
+  </a>
+
+  <!-- GitHub Stars -->
+  <a href="https://github.com/APMaii/pygamlab">
+    <img src="https://img.shields.io/github/stars/APMaii/pygamlab?style=social" alt="GitHub Stars">
+  </a>
+
+  <!-- GitHub Actions Build -->
+  <a href="https://github.com/APMaii/pygamlab/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/APMaii/pygamlab/python-package.yml?label=build&logo=github" alt="Build Status">
+  </a>
+
+  <!-- Documentation -->
+  <a href="https://apmaii.github.io/pygamlab/documentation.html">
+    <img src="https://img.shields.io/badge/docs-latest-brightgreen?logo=readthedocs" alt="Documentation">
+  </a>
+
+  <!-- PyPI Downloads (Shields.io) -->
+  <a href="https://pypi.org/project/PyGamLab/">
+    <img src="https://img.shields.io/pypi/dm/PyGamLab?label=downloads&logo=pypi" alt="PyPI Downloads">
+  </a>
+
+  <!-- PyPI Downloads (pepy.tech total) -->
+  <a href="https://pepy.tech/projects/pygamlab">
+    <img src="https://static.pepy.tech/personalized-badge/pygamlab?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads" alt="Total Downloads">
+  </a>
+
+  <!-- License -->
+  <a href="https://github.com/APMaii/pygamlab/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/APMaii/pygamlab?label=license" alt="License">
+  </a>
+</p>
 ---
 
 ## 📌 Overview
