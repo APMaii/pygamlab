@@ -14,8 +14,6 @@ from scipy.optimize import brentq
 from scipy.integrate import simpson  # Corrected import
 
 
-
-
 def DSC(data, application="plot", prominence=0.5, distance=5, sample_mass=1.0, heating_rate=1., orientation=None):
     """
     Perform Differential Scanning Calorimetry (DSC) data processing, analysis, and visualization.
@@ -6429,9 +6427,4 @@ def Fatigue_Test_Analysis(data, application):
 
     raise ValueError("Invalid application. Choose a valid option.")
     
-
-
-
-
-
 
