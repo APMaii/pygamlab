@@ -1,10 +1,7 @@
 import math
-
-
 # ==============================================================================
 # Physical and Scientific Constants
 # ==============================================================================
-
 # A
 A_lattice_constant = 0.413  # lattice constant in nanometers
 alpha_stefan_boltzmann = 5.67e-8  # Stefan-Boltzmann constant (W/m²/K⁴)
@@ -2939,19 +2936,6 @@ Plaster_Gypsum_Thermal_Conductivity = 0.48 #temperature=20
 Plaster_Gypsum_Density = 1440 
 Plaster_Gypsum_Specific_heat = 0.84 
 Plaster_Gypsum_Thermal_Diffusivity = 4.0 * 10**-7 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
