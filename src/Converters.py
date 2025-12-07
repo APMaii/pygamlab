@@ -2555,14 +2555,3 @@ def Watt_To_Horsepower (Watt) :
     '''
     Horsepower = "{:e}".format(Watt / 745.7)
     return Horsepower
-
-
-
-
-
-
-    
-
-
-
-
