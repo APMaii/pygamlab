@@ -7,11 +7,6 @@ import matplotlib as plt
 from scipy.integrate import quad
 
 
-
-
-
-
-
 def Activation_Energy(k,k0,T):
     """
     Calculates the activation energy (Ea) using the Arrhenius equation.
@@ -37,8 +32,6 @@ def Activation_Energy(k,k0,T):
     K0=math.log(k0)
     Ea=(K0-K)*R*T
     return Ea 
-
-
 
 
 
@@ -5358,6 +5351,4 @@ def Uncertainty_Principle(delta_position, delta_momentum, hbar):
         This function calculates the left-hand side minus the right-hand side. A non-negative result indicates that the principle is satisfied (within the limits of equality).
     """
     return delta_position * delta_momentum - hbar / 2
-
-
 
