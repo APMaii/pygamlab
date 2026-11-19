@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pygamlab",
-    version="2.0.0",
+    version="2.0.1",
     author="Ali Pilehvar Meibody",
     author_email="alipilehvar1999@gmail.com",
     description="A scientific Python library with constants, unit convertors, formulas, and data analysis tools.",

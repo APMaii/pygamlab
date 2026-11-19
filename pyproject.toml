@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygamlab"
-version = "2.0.0"
+version = "2.0.1"
 description = "A scientific Python library with constants, unit convertors, formulas, and data analysis tools."
 authors = [
   { name="Ali Pilehvar Meibody", email="alipilehvar1999@gmail.com" }
