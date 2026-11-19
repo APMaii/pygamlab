@@ -2,3 +2,9 @@
 **/.DS_Store
 .env
 **/.env
+
+# setuptools / wheel build output
+dist/
+build/
+*.egg-info/
+.eggs/
