@@ -1,0 +1,787 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="PyGamLab package" href="PyGamLab.html" /><link rel="prev" title="PyGamLab.Data_Analysis Module" href="data_analysis.html" />
+
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/APMaii/pygamlab/refs/heads/main/pics/pygamlab_html_logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>PyGamLab - PyGamLab 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --font_stack: Segoe UI, Tahoma, Arial, sans-serif;
+  --color-brand-primary: #005F6A;
+  --color-brand-content: #2D2D2D;
+  --color-background: #FFFFFF;
+  --color-link: #005F6A;
+  --color-sidebar-text: #333333;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-content: #F2F7F9;
+  --color-background: #1E1E1E;
+  --color-link: #A8D8D1;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-content: #F2F7F9;
+  --color-background: #1E1E1E;
+  --color-link: #A8D8D1;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">PyGamLab 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://raw.githubusercontent.com/APMaii/pygamlab/refs/heads/main/pics/pygamlab_docs_logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">PyGamLab 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">🔰 Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorial.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorial</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#📦-Modules">📦 Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#📦-Requirements">📦 Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#How-to-install-🚀">How to install 🚀</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#How-to-Import">How to Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#Constants.">Constants.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#Convertors.py">Convertors.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#Functions.py">Functions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#Data-Analysis">Data Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#Development-in-Version.2">Development in Version.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intro_on_PyGamLab.html#Further-Information">Further Information</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🔢 Core Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">PyGamLab.Constants Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convertors.html">PyGamLab.Convertors Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">PyGamLab.Functions Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">PyGamLab.Data_Analysis Module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">📚 API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">PyGamLab</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of PyGamLab</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="PyGamLab.html">PyGamLab package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🛠️ Developer Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to PyGamLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="pygamlab">
+<h1>PyGamLab<a class="headerlink" href="#pygamlab" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PyGamLab.html">PyGamLab package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PyGamLab.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyGamLab.html#module-PyGamLab.Constants">PyGamLab.Constants module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ag_Type"><code class="docutils literal notranslate"><span class="pre">Ag_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Al_Type"><code class="docutils literal notranslate"><span class="pre">Al_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ar_Type"><code class="docutils literal notranslate"><span class="pre">Ar_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.As_Type"><code class="docutils literal notranslate"><span class="pre">As_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Au_Type"><code class="docutils literal notranslate"><span class="pre">Au_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.B_Type"><code class="docutils literal notranslate"><span class="pre">B_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ba_Type"><code class="docutils literal notranslate"><span class="pre">Ba_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Be_Type"><code class="docutils literal notranslate"><span class="pre">Be_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Bi_Type"><code class="docutils literal notranslate"><span class="pre">Bi_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Br_Type"><code class="docutils literal notranslate"><span class="pre">Br_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.C_Type"><code class="docutils literal notranslate"><span class="pre">C_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ca_Type"><code class="docutils literal notranslate"><span class="pre">Ca_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Cd_Type"><code class="docutils literal notranslate"><span class="pre">Cd_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ce_Type"><code class="docutils literal notranslate"><span class="pre">Ce_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Cl_Type"><code class="docutils literal notranslate"><span class="pre">Cl_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Co_Type"><code class="docutils literal notranslate"><span class="pre">Co_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Cr_Type"><code class="docutils literal notranslate"><span class="pre">Cr_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Cs_Type"><code class="docutils literal notranslate"><span class="pre">Cs_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Cu_Type"><code class="docutils literal notranslate"><span class="pre">Cu_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Dy_Type"><code class="docutils literal notranslate"><span class="pre">Dy_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Element"><code class="docutils literal notranslate"><span class="pre">Element</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Er_Type"><code class="docutils literal notranslate"><span class="pre">Er_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Eu_Type"><code class="docutils literal notranslate"><span class="pre">Eu_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.F_Type"><code class="docutils literal notranslate"><span class="pre">F_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Fe_Type"><code class="docutils literal notranslate"><span class="pre">Fe_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ga_Type"><code class="docutils literal notranslate"><span class="pre">Ga_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Gd_Type"><code class="docutils literal notranslate"><span class="pre">Gd_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ge_Type"><code class="docutils literal notranslate"><span class="pre">Ge_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.H_Type"><code class="docutils literal notranslate"><span class="pre">H_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.He_Type"><code class="docutils literal notranslate"><span class="pre">He_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Hf_Type"><code class="docutils literal notranslate"><span class="pre">Hf_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Hg_Type"><code class="docutils literal notranslate"><span class="pre">Hg_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ho_Type"><code class="docutils literal notranslate"><span class="pre">Ho_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.I_Type"><code class="docutils literal notranslate"><span class="pre">I_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.In_Type"><code class="docutils literal notranslate"><span class="pre">In_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ir_Type"><code class="docutils literal notranslate"><span class="pre">Ir_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.K_Type"><code class="docutils literal notranslate"><span class="pre">K_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Kr_Type"><code class="docutils literal notranslate"><span class="pre">Kr_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.La_Type"><code class="docutils literal notranslate"><span class="pre">La_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Li_Type"><code class="docutils literal notranslate"><span class="pre">Li_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Lu_Type"><code class="docutils literal notranslate"><span class="pre">Lu_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Mg_Type"><code class="docutils literal notranslate"><span class="pre">Mg_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Mn_Type"><code class="docutils literal notranslate"><span class="pre">Mn_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Mo_Type"><code class="docutils literal notranslate"><span class="pre">Mo_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.N_Type"><code class="docutils literal notranslate"><span class="pre">N_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Na_Type"><code class="docutils literal notranslate"><span class="pre">Na_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Nb_Type"><code class="docutils literal notranslate"><span class="pre">Nb_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Nd_Type"><code class="docutils literal notranslate"><span class="pre">Nd_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ne_Type"><code class="docutils literal notranslate"><span class="pre">Ne_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ni_Type"><code class="docutils literal notranslate"><span class="pre">Ni_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.O_Type"><code class="docutils literal notranslate"><span class="pre">O_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Os_Type"><code class="docutils literal notranslate"><span class="pre">Os_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.P_Type"><code class="docutils literal notranslate"><span class="pre">P_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Pb_Type"><code class="docutils literal notranslate"><span class="pre">Pb_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Pd_Type"><code class="docutils literal notranslate"><span class="pre">Pd_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Pm_Type"><code class="docutils literal notranslate"><span class="pre">Pm_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Pr_Type"><code class="docutils literal notranslate"><span class="pre">Pr_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Pt_Type"><code class="docutils literal notranslate"><span class="pre">Pt_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Rb_Type"><code class="docutils literal notranslate"><span class="pre">Rb_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Re_Type"><code class="docutils literal notranslate"><span class="pre">Re_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Rh_Type"><code class="docutils literal notranslate"><span class="pre">Rh_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ru_Type"><code class="docutils literal notranslate"><span class="pre">Ru_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.S_Type"><code class="docutils literal notranslate"><span class="pre">S_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Sb_Type"><code class="docutils literal notranslate"><span class="pre">Sb_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Sc_Type"><code class="docutils literal notranslate"><span class="pre">Sc_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Se_Type"><code class="docutils literal notranslate"><span class="pre">Se_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Si_Type"><code class="docutils literal notranslate"><span class="pre">Si_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Sm_Type"><code class="docutils literal notranslate"><span class="pre">Sm_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Sn_Type"><code class="docutils literal notranslate"><span class="pre">Sn_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Sr_Type"><code class="docutils literal notranslate"><span class="pre">Sr_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ta_Type"><code class="docutils literal notranslate"><span class="pre">Ta_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Tb_Type"><code class="docutils literal notranslate"><span class="pre">Tb_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Tc_Type"><code class="docutils literal notranslate"><span class="pre">Tc_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Ti_Type"><code class="docutils literal notranslate"><span class="pre">Ti_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Tl_Type"><code class="docutils literal notranslate"><span class="pre">Tl_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Tm_Type"><code class="docutils literal notranslate"><span class="pre">Tm_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.V_Type"><code class="docutils literal notranslate"><span class="pre">V_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.W_Type"><code class="docutils literal notranslate"><span class="pre">W_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Xe_Type"><code class="docutils literal notranslate"><span class="pre">Xe_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Y_Type"><code class="docutils literal notranslate"><span class="pre">Y_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Yb_Type"><code class="docutils literal notranslate"><span class="pre">Yb_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Zn_Type"><code class="docutils literal notranslate"><span class="pre">Zn_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.Zr_Type"><code class="docutils literal notranslate"><span class="pre">Zr_Type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Constants.electrical_conductivity"><code class="docutils literal notranslate"><span class="pre">electrical_conductivity</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PyGamLab.html#module-PyGamLab.Convertors">PyGamLab.Convertors module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Angstrom_To_Meter"><code class="docutils literal notranslate"><span class="pre">Angstrom_To_Meter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Angstrom_To_Micrometer"><code class="docutils literal notranslate"><span class="pre">Angstrom_To_Micrometer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Angstrom_To_Millimeter"><code class="docutils literal notranslate"><span class="pre">Angstrom_To_Millimeter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Angstrom_To_Nanometer"><code class="docutils literal notranslate"><span class="pre">Angstrom_To_Nanometer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Annual_To_Monthly_Loss"><code class="docutils literal notranslate"><span class="pre">Annual_To_Monthly_Loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Atmosphere_To_Pascal"><code class="docutils literal notranslate"><span class="pre">Atmosphere_To_Pascal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Bar_To_Pascal"><code class="docutils literal notranslate"><span class="pre">Bar_To_Pascal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Brinell_To_Rockwell"><code class="docutils literal notranslate"><span class="pre">Brinell_To_Rockwell()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Byte_To_Kilobyte"><code class="docutils literal notranslate"><span class="pre">Byte_To_Kilobyte()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.CC_per_Second_To_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter"><code class="docutils literal notranslate"><span class="pre">CC_per_Second_To_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Calories_To_Joules"><code class="docutils literal notranslate"><span class="pre">Calories_To_Joules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Celcius_To_Kelvin"><code class="docutils literal notranslate"><span class="pre">Celcius_To_Kelvin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Centigrade_To_Fahrenheit"><code class="docutils literal notranslate"><span class="pre">Centigrade_To_Fahrenheit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Centimeter_per_Minute_To_Meter_per_Hour_Welding_Speed_Converter"><code class="docutils literal notranslate"><span class="pre">Centimeter_per_Minute_To_Meter_per_Hour_Welding_Speed_Converter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.CmHg_To_Pascal"><code class="docutils literal notranslate"><span class="pre">CmHg_To_Pascal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Coulomb_To_Electron_volt"><code class="docutils literal notranslate"><span class="pre">Coulomb_To_Electron_volt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Cubic_Meter_To_Liter"><code class="docutils literal notranslate"><span class="pre">Cubic_Meter_To_Liter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Current_density_To_mpy"><code class="docutils literal notranslate"><span class="pre">Current_density_To_mpy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Decimal_To_Binary"><code class="docutils literal notranslate"><span class="pre">Decimal_To_Binary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Degree_To_Radian"><code class="docutils literal notranslate"><span class="pre">Degree_To_Radian()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Electron_volt_To_Coulomb"><code class="docutils literal notranslate"><span class="pre">Electron_volt_To_Coulomb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Electronvolt_To_Joule"><code class="docutils literal notranslate"><span class="pre">Electronvolt_To_Joule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Fabric_GSM_to_GLM"><code class="docutils literal notranslate"><span class="pre">Fabric_GSM_to_GLM()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Fahrenheit_To_Centigrade"><code class="docutils literal notranslate"><span class="pre">Fahrenheit_To_Centigrade()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Foot_Pound_To_Newton"><code class="docutils literal notranslate"><span class="pre">Foot_Pound_To_Newton()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Foot_To_Mile"><code class="docutils literal notranslate"><span class="pre">Foot_To_Mile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Force_CGS_To_SI"><code class="docutils literal notranslate"><span class="pre">Force_CGS_To_SI()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Force_SI_To_CGS"><code class="docutils literal notranslate"><span class="pre">Force_SI_To_CGS()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Gram_To_Mole"><code class="docutils literal notranslate"><span class="pre">Gram_To_Mole()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Hertz_To_Rpm"><code class="docutils literal notranslate"><span class="pre">Hertz_To_Rpm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Horsepower_To_Watt"><code class="docutils literal notranslate"><span class="pre">Horsepower_To_Watt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Hour_To_Sec"><code class="docutils literal notranslate"><span class="pre">Hour_To_Sec()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Inch_To_Centimeter"><code class="docutils literal notranslate"><span class="pre">Inch_To_Centimeter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Inch_To_Meter"><code class="docutils literal notranslate"><span class="pre">Inch_To_Meter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Joules_Per_Minute_To_Kilowatt"><code class="docutils literal notranslate"><span class="pre">Joules_Per_Minute_To_Kilowatt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Joules_To_Calories"><code class="docutils literal notranslate"><span class="pre">Joules_To_Calories()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Kelvin_to_Celcius"><code class="docutils literal notranslate"><span class="pre">Kelvin_to_Celcius()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Kg_To_Lbm"><code class="docutils literal notranslate"><span class="pre">Kg_To_Lbm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Kg_To_Ton"><code class="docutils literal notranslate"><span class="pre">Kg_To_Ton()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.KiloMeter_To_LightYear"><code class="docutils literal notranslate"><span class="pre">KiloMeter_To_LightYear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Kilobyte_To_Byte"><code class="docutils literal notranslate"><span class="pre">Kilobyte_To_Byte()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Kilogeram_Per_Cubic_Meter_To_Pounds_Per_Cubic_Inch"><code class="docutils literal notranslate"><span class="pre">Kilogeram_Per_Cubic_Meter_To_Pounds_Per_Cubic_Inch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Kilogram_To_Pound"><code class="docutils literal notranslate"><span class="pre">Kilogram_To_Pound()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Kilometer_Per_Hour_To_Meter_Per_Second"><code class="docutils literal notranslate"><span class="pre">Kilometer_Per_Hour_To_Meter_Per_Second()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Kmph_To_Mps"><code class="docutils literal notranslate"><span class="pre">Kmph_To_Mps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Lbm_To_Kg"><code class="docutils literal notranslate"><span class="pre">Lbm_To_Kg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.LightYear_To_KiloMeter"><code class="docutils literal notranslate"><span class="pre">LightYear_To_KiloMeter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Liter_To_Cubic_Meter"><code class="docutils literal notranslate"><span class="pre">Liter_To_Cubic_Meter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Liter_per_Minute_To_CC_per_Second_Welding_Gas_Flow_Rate_Converter"><code class="docutils literal notranslate"><span class="pre">Liter_per_Minute_To_CC_per_Second_Welding_Gas_Flow_Rate_Converter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mass_To_Mole"><code class="docutils literal notranslate"><span class="pre">Mass_To_Mole()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Megapascal_To_Pascal"><code class="docutils literal notranslate"><span class="pre">Megapascal_To_Pascal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Meter_Per_Second_To_Kilometer_Per_Hour"><code class="docutils literal notranslate"><span class="pre">Meter_Per_Second_To_Kilometer_Per_Hour()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Meter_To_Angstrom"><code class="docutils literal notranslate"><span class="pre">Meter_To_Angstrom()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Meter_To_MilliMeter"><code class="docutils literal notranslate"><span class="pre">Meter_To_MilliMeter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Meter_To_inch"><code class="docutils literal notranslate"><span class="pre">Meter_To_inch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Meter_per_Hour_To_Centimeter_per_Minute_Welding_Speed_Converter"><code class="docutils literal notranslate"><span class="pre">Meter_per_Hour_To_Centimeter_per_Minute_Welding_Speed_Converter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Micrometer_To_Angstrom"><code class="docutils literal notranslate"><span class="pre">Micrometer_To_Angstrom()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Micrometer_To_Nanometer"><code class="docutils literal notranslate"><span class="pre">Micrometer_To_Nanometer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mile_To_Foot"><code class="docutils literal notranslate"><span class="pre">Mile_To_Foot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Milimeter_To_Angstrom"><code class="docutils literal notranslate"><span class="pre">Milimeter_To_Angstrom()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Miller_To_Millerbrove"><code class="docutils literal notranslate"><span class="pre">Miller_To_Millerbrove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Millerbrove_To_Miller"><code class="docutils literal notranslate"><span class="pre">Millerbrove_To_Miller()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.MilliMeter_To_Meter"><code class="docutils literal notranslate"><span class="pre">MilliMeter_To_Meter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mils_year_To_Mm_year"><code class="docutils literal notranslate"><span class="pre">Mils_year_To_Mm_year()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Minute_To_Second"><code class="docutils literal notranslate"><span class="pre">Minute_To_Second()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mm_year_To_Mils_year"><code class="docutils literal notranslate"><span class="pre">Mm_year_To_Mils_year()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Molarity_To_Normality"><code class="docutils literal notranslate"><span class="pre">Molarity_To_Normality()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mole_To_Gram"><code class="docutils literal notranslate"><span class="pre">Mole_To_Gram()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mole_To_Mass"><code class="docutils literal notranslate"><span class="pre">Mole_To_Mass()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mpa_To_Psi"><code class="docutils literal notranslate"><span class="pre">Mpa_To_Psi()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mps_To_Kmph"><code class="docutils literal notranslate"><span class="pre">Mps_To_Kmph()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Mpy_To_current_density"><code class="docutils literal notranslate"><span class="pre">Mpy_To_current_density()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Nanometer_To_Angstrom"><code class="docutils literal notranslate"><span class="pre">Nanometer_To_Angstrom()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Nanometer_To_Micrometer"><code class="docutils literal notranslate"><span class="pre">Nanometer_To_Micrometer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Newton_TO_Pound_Force"><code class="docutils literal notranslate"><span class="pre">Newton_TO_Pound_Force()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Newton_To_Foot_Pound"><code class="docutils literal notranslate"><span class="pre">Newton_To_Foot_Pound()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Normality_To_Molarity"><code class="docutils literal notranslate"><span class="pre">Normality_To_Molarity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pascal_To_Atmosphere"><code class="docutils literal notranslate"><span class="pre">Pascal_To_Atmosphere()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pascal_To_Bar"><code class="docutils literal notranslate"><span class="pre">Pascal_To_Bar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pascal_To_CmHg"><code class="docutils literal notranslate"><span class="pre">Pascal_To_CmHg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pascal_To_Megapascal"><code class="docutils literal notranslate"><span class="pre">Pascal_To_Megapascal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pascal_To_Torr"><code class="docutils literal notranslate"><span class="pre">Pascal_To_Torr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pascal_to_mmHg"><code class="docutils literal notranslate"><span class="pre">Pascal_to_mmHg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Percent_To_Ppm"><code class="docutils literal notranslate"><span class="pre">Percent_To_Ppm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Percentages_To_Moles"><code class="docutils literal notranslate"><span class="pre">Percentages_To_Moles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pound_Force_To_Newton"><code class="docutils literal notranslate"><span class="pre">Pound_Force_To_Newton()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pound_To_Kilogram"><code class="docutils literal notranslate"><span class="pre">Pound_To_Kilogram()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Pounds_Per_Cubic_Inch_To_Kilogeram_Per_Cubic_Meter"><code class="docutils literal notranslate"><span class="pre">Pounds_Per_Cubic_Inch_To_Kilogeram_Per_Cubic_Meter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Ppm_To_Percent"><code class="docutils literal notranslate"><span class="pre">Ppm_To_Percent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Psi_To_Mpa"><code class="docutils literal notranslate"><span class="pre">Psi_To_Mpa()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Radians_To_Degrees"><code class="docutils literal notranslate"><span class="pre">Radians_To_Degrees()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Rpm_To_Hertz"><code class="docutils literal notranslate"><span class="pre">Rpm_To_Hertz()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Sec_To_Hour"><code class="docutils literal notranslate"><span class="pre">Sec_To_Hour()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Second_To_Minute"><code class="docutils literal notranslate"><span class="pre">Second_To_Minute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Square_Cm_To_Square_meter"><code class="docutils literal notranslate"><span class="pre">Square_Cm_To_Square_meter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Square_Meter_To_Square_Cm"><code class="docutils literal notranslate"><span class="pre">Square_Meter_To_Square_Cm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Torr_To_Pascal"><code class="docutils literal notranslate"><span class="pre">Torr_To_Pascal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Viscosity_To_Pas"><code class="docutils literal notranslate"><span class="pre">Viscosity_To_Pas()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Viscosity_To_Poise"><code class="docutils literal notranslate"><span class="pre">Viscosity_To_Poise()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Watt_To_Horsepower"><code class="docutils literal notranslate"><span class="pre">Watt_To_Horsepower()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Weightpercent_To_ppm"><code class="docutils literal notranslate"><span class="pre">Weightpercent_To_ppm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Convertors.Yarn_Count_Converter"><code class="docutils literal notranslate"><span class="pre">Yarn_Count_Converter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PyGamLab.html#module-PyGamLab.Functions">PyGamLab.Functions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Activation_Energy"><code class="docutils literal notranslate"><span class="pre">Activation_Energy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Activity_Coef"><code class="docutils literal notranslate"><span class="pre">Activity_Coef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Aeroscope_Stress_Concentration"><code class="docutils literal notranslate"><span class="pre">Aeroscope_Stress_Concentration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Arithmetic_Sequence"><code class="docutils literal notranslate"><span class="pre">Arithmetic_Sequence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Atomic_Packing_Factor"><code class="docutils literal notranslate"><span class="pre">Atomic_Packing_Factor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Atomic_Percentage"><code class="docutils literal notranslate"><span class="pre">Atomic_Percentage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Austenite_Martensite_VC"><code class="docutils literal notranslate"><span class="pre">Austenite_Martensite_VC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.BMI_Calculation"><code class="docutils literal notranslate"><span class="pre">BMI_Calculation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Beer_Lambert_Law"><code class="docutils literal notranslate"><span class="pre">Beer_Lambert_Law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Binomial_Probability"><code class="docutils literal notranslate"><span class="pre">Binomial_Probability()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Biomaterial_Degredation_Rate"><code class="docutils literal notranslate"><span class="pre">Biomaterial_Degredation_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Bouyancy_Force"><code class="docutils literal notranslate"><span class="pre">Bouyancy_Force()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Bragg_Law"><code class="docutils literal notranslate"><span class="pre">Bragg_Law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Brinell_Hardness_Calculation"><code class="docutils literal notranslate"><span class="pre">Brinell_Hardness_Calculation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Burning_Rate"><code class="docutils literal notranslate"><span class="pre">Burning_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Calculate_ECB"><code class="docutils literal notranslate"><span class="pre">Calculate_ECB()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Calculate_Pipe_Heat_Transfer"><code class="docutils literal notranslate"><span class="pre">Calculate_Pipe_Heat_Transfer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Carnot_Efficiency"><code class="docutils literal notranslate"><span class="pre">Carnot_Efficiency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Change_In_Pressure_Of_a_Mercury_OR_Water_Column_Manometer"><code class="docutils literal notranslate"><span class="pre">Change_In_Pressure_Of_a_Mercury_OR_Water_Column_Manometer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Circle_Area"><code class="docutils literal notranslate"><span class="pre">Circle_Area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Circle_Perimeter"><code class="docutils literal notranslate"><span class="pre">Circle_Perimeter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Cohen"><code class="docutils literal notranslate"><span class="pre">Cohen()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Component"><code class="docutils literal notranslate"><span class="pre">Component()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Concentration_Calculator"><code class="docutils literal notranslate"><span class="pre">Concentration_Calculator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Contact_Angle"><code class="docutils literal notranslate"><span class="pre">Contact_Angle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Convective_Heat_Transfer_Internal_Flow_Dittus_Boelter"><code class="docutils literal notranslate"><span class="pre">Convective_Heat_Transfer_Internal_Flow_Dittus_Boelter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Convert_Gas_Constant"><code class="docutils literal notranslate"><span class="pre">Convert_Gas_Constant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Copolymer_Type"><code class="docutils literal notranslate"><span class="pre">Copolymer_Type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Corrosion_Rate"><code class="docutils literal notranslate"><span class="pre">Corrosion_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Cost_Indicators"><code class="docutils literal notranslate"><span class="pre">Cost_Indicators()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Critical_Diameter"><code class="docutils literal notranslate"><span class="pre">Critical_Diameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Crystal_Percent"><code class="docutils literal notranslate"><span class="pre">Crystal_Percent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Debye_Temperature_Heat_Capacity"><code class="docutils literal notranslate"><span class="pre">Debye_Temperature_Heat_Capacity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Defect_Density"><code class="docutils literal notranslate"><span class="pre">Defect_Density()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Degradation_Percentage"><code class="docutils literal notranslate"><span class="pre">Degradation_Percentage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Density"><code class="docutils literal notranslate"><span class="pre">Density()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Diffusion_Coefficient_Calculator"><code class="docutils literal notranslate"><span class="pre">Diffusion_Coefficient_Calculator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Diffusion_in_Gases"><code class="docutils literal notranslate"><span class="pre">Diffusion_in_Gases()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Diffusivity"><code class="docutils literal notranslate"><span class="pre">Diffusivity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Distance"><code class="docutils literal notranslate"><span class="pre">Distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Drag_Force"><code class="docutils literal notranslate"><span class="pre">Drag_Force()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Electrical_Resistance"><code class="docutils literal notranslate"><span class="pre">Electrical_Resistance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Encapsulation_Efficiency"><code class="docutils literal notranslate"><span class="pre">Encapsulation_Efficiency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Error_Function"><code class="docutils literal notranslate"><span class="pre">Error_Function()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Euler_Diff_Solver"><code class="docutils literal notranslate"><span class="pre">Euler_Diff_Solver()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Euler_Method"><code class="docutils literal notranslate"><span class="pre">Euler_Method()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Fabric_Drape_Coefficient"><code class="docutils literal notranslate"><span class="pre">Fabric_Drape_Coefficient()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Fabric_GSM"><code class="docutils literal notranslate"><span class="pre">Fabric_GSM()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Fabric_Porosity"><code class="docutils literal notranslate"><span class="pre">Fabric_Porosity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Fabric_weight"><code class="docutils literal notranslate"><span class="pre">Fabric_weight()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Factorial"><code class="docutils literal notranslate"><span class="pre">Factorial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Faraday_Corrosion"><code class="docutils literal notranslate"><span class="pre">Faraday_Corrosion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Fibonachi_Sequence"><code class="docutils literal notranslate"><span class="pre">Fibonachi_Sequence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Fick_Sec_Thin"><code class="docutils literal notranslate"><span class="pre">Fick_Sec_Thin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Filler_Weight"><code class="docutils literal notranslate"><span class="pre">Filler_Weight()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Final_Temp_Irreversible_Adiabatic"><code class="docutils literal notranslate"><span class="pre">Final_Temp_Irreversible_Adiabatic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.First_Row_Pascal_Triangle"><code class="docutils literal notranslate"><span class="pre">First_Row_Pascal_Triangle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Fracture_Toughness"><code class="docutils literal notranslate"><span class="pre">Fracture_Toughness()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Friction_Law"><code class="docutils literal notranslate"><span class="pre">Friction_Law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Geometric_Sequence"><code class="docutils literal notranslate"><span class="pre">Geometric_Sequence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Gibs_free_energy"><code class="docutils literal notranslate"><span class="pre">Gibs_free_energy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Gravitational_force"><code class="docutils literal notranslate"><span class="pre">Gravitational_force()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Gravitational_force_formula"><code class="docutils literal notranslate"><span class="pre">Gravitational_force_formula()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Half_Inhibitory_Concentration"><code class="docutils literal notranslate"><span class="pre">Half_Inhibitory_Concentration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Hall_Petch"><code class="docutils literal notranslate"><span class="pre">Hall_Petch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Hall_Petch_Relationship"><code class="docutils literal notranslate"><span class="pre">Hall_Petch_Relationship()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Hardness_vickers"><code class="docutils literal notranslate"><span class="pre">Hardness_vickers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Heat_Capacity"><code class="docutils literal notranslate"><span class="pre">Heat_Capacity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Heat_Exchanger_Transfer"><code class="docutils literal notranslate"><span class="pre">Heat_Exchanger_Transfer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Heat_Transfer_Rate"><code class="docutils literal notranslate"><span class="pre">Heat_Transfer_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.HeatTransferCoefficient"><code class="docutils literal notranslate"><span class="pre">HeatـTransferـCoefficient()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Hooke"><code class="docutils literal notranslate"><span class="pre">Hooke()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Ideal_Gas_low_with_unit"><code class="docutils literal notranslate"><span class="pre">Ideal_Gas_low_with_unit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Income_Tax"><code class="docutils literal notranslate"><span class="pre">Income_Tax()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Incompressible_Fluids_Pressure"><code class="docutils literal notranslate"><span class="pre">Incompressible_Fluids_Pressure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Indeterminate_degree_of_truss"><code class="docutils literal notranslate"><span class="pre">Indeterminate_degree_of_truss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Insertion_Sort"><code class="docutils literal notranslate"><span class="pre">Insertion_Sort()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Latice_Parameter"><code class="docutils literal notranslate"><span class="pre">Latice_Parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Lattice_Parameter"><code class="docutils literal notranslate"><span class="pre">Lattice_Parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Lennard_Jones_Potential"><code class="docutils literal notranslate"><span class="pre">Lennard_Jones_Potential()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Lorentz_Lorenz_Constant"><code class="docutils literal notranslate"><span class="pre">Lorentz_Lorenz_Constant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Mandaliof_Properties"><code class="docutils literal notranslate"><span class="pre">Mandaliof_Properties()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Mass_Of_Rubber_In_Internal_Mixer"><code class="docutils literal notranslate"><span class="pre">Mass_Of_Rubber_In_Internal_Mixer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Mass_Transfer_Intensity"><code class="docutils literal notranslate"><span class="pre">Mass_Transfer_Intensity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Mc_Cabe"><code class="docutils literal notranslate"><span class="pre">Mc_Cabe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Miner_Rule_Fatigue"><code class="docutils literal notranslate"><span class="pre">Miner_Rule_Fatigue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Mtt_Test"><code class="docutils literal notranslate"><span class="pre">Mtt_Test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Nanoparticle_Aspect_Ratio"><code class="docutils literal notranslate"><span class="pre">Nanoparticle_Aspect_Ratio()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Nanoparticle_Surface_Area"><code class="docutils literal notranslate"><span class="pre">Nanoparticle_Surface_Area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Nanoparticle_Volume"><code class="docutils literal notranslate"><span class="pre">Nanoparticle_Volume()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.PengRobinson"><code class="docutils literal notranslate"><span class="pre">PengRobinson()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Planks_Fix"><code class="docutils literal notranslate"><span class="pre">Planks_Fix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Polygonal_Diameters"><code class="docutils literal notranslate"><span class="pre">Polygonal_Diameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Power_Factor"><code class="docutils literal notranslate"><span class="pre">Power_Factor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Principal_Stress"><code class="docutils literal notranslate"><span class="pre">Principal_Stress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Print_Time"><code class="docutils literal notranslate"><span class="pre">Print_Time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Pythagorean"><code class="docutils literal notranslate"><span class="pre">Pythagorean()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Quadratic_Equation"><code class="docutils literal notranslate"><span class="pre">Quadratic_Equation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Quantum_Harmonic_Oscillator_Energy"><code class="docutils literal notranslate"><span class="pre">Quantum_Harmonic_Oscillator_Energy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Rectangle_Area"><code class="docutils literal notranslate"><span class="pre">Rectangle_Area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Rectangle_Perimeter"><code class="docutils literal notranslate"><span class="pre">Rectangle_Perimeter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Rejection"><code class="docutils literal notranslate"><span class="pre">Rejection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Reynolds_Number_Pipe"><code class="docutils literal notranslate"><span class="pre">Reynolds_Number_Pipe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Rolling_Parameters_Calculator"><code class="docutils literal notranslate"><span class="pre">Rolling_Parameters_Calculator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Sample_Size_Calculation"><code class="docutils literal notranslate"><span class="pre">Sample_Size_Calculation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Shear_Rate"><code class="docutils literal notranslate"><span class="pre">Shear_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Shear_Stress"><code class="docutils literal notranslate"><span class="pre">Shear_Stress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Solidification_Front_Composition"><code class="docutils literal notranslate"><span class="pre">Solidification_Front_Composition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Solubility"><code class="docutils literal notranslate"><span class="pre">Solubility()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Sphere_Area"><code class="docutils literal notranslate"><span class="pre">Sphere_Area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Sphere_Surface_Area"><code class="docutils literal notranslate"><span class="pre">Sphere_Surface_Area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Sphere_Volume"><code class="docutils literal notranslate"><span class="pre">Sphere_Volume()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Standard_Deviation"><code class="docutils literal notranslate"><span class="pre">Standard_Deviation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Stress"><code class="docutils literal notranslate"><span class="pre">Stress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Stress_Intensity_Factor"><code class="docutils literal notranslate"><span class="pre">Stress_Intensity_Factor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.TB"><code class="docutils literal notranslate"><span class="pre">TB()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.TD"><code class="docutils literal notranslate"><span class="pre">TD()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Tensile_Strength"><code class="docutils literal notranslate"><span class="pre">Tensile_Strength()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Total_Solidification_Time_of_Casting"><code class="docutils literal notranslate"><span class="pre">Total_Solidification_Time_of_Casting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Transient_Heat_Conduction_Semi_Infinite_Solid"><code class="docutils literal notranslate"><span class="pre">Transient_Heat_Conduction_Semi_Infinite_Solid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Trapezium_Area"><code class="docutils literal notranslate"><span class="pre">Trapezium_Area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Trapezium_Perimeter"><code class="docutils literal notranslate"><span class="pre">Trapezium_Perimeter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Tresca_Yield_For_Biaxial_Tension"><code class="docutils literal notranslate"><span class="pre">Tresca_Yield_For_Biaxial_Tension()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Tresca_Yield_For_Principal_Stresses"><code class="docutils literal notranslate"><span class="pre">Tresca_Yield_For_Principal_Stresses()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Triangle_Area"><code class="docutils literal notranslate"><span class="pre">Triangle_Area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Triangle_Environment"><code class="docutils literal notranslate"><span class="pre">Triangle_Environment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Velocity_Equation"><code class="docutils literal notranslate"><span class="pre">Velocity_Equation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Vicker_Hardness_Calculation"><code class="docutils literal notranslate"><span class="pre">Vicker_Hardness_Calculation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Voltage_Standing_Wave_Ratio"><code class="docutils literal notranslate"><span class="pre">Voltage_Standing_Wave_Ratio()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.WLF"><code class="docutils literal notranslate"><span class="pre">WLF()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Wear_Rate"><code class="docutils literal notranslate"><span class="pre">Wear_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Wear_rate"><code class="docutils literal notranslate"><span class="pre">Wear_rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Web_Service_Analyze"><code class="docutils literal notranslate"><span class="pre">Web_Service_Analyze()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Welding_Deposition_Rate"><code class="docutils literal notranslate"><span class="pre">Welding_Deposition_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Welding_Heat_Input"><code class="docutils literal notranslate"><span class="pre">Welding_Heat_Input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.Young_Modulus"><code class="docutils literal notranslate"><span class="pre">Young_Modulus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.archimedes_principle"><code class="docutils literal notranslate"><span class="pre">archimedes_principle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.boltzmann_distribution"><code class="docutils literal notranslate"><span class="pre">boltzmann_distribution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.boyles_law"><code class="docutils literal notranslate"><span class="pre">boyles_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.calculate_debye_temperature"><code class="docutils literal notranslate"><span class="pre">calculate_debye_temperature()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.calculate_hardness_from_young_and_poisson"><code class="docutils literal notranslate"><span class="pre">calculate_hardness_from_young_and_poisson()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.coulombs_law"><code class="docutils literal notranslate"><span class="pre">coulombs_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.darcys_law"><code class="docutils literal notranslate"><span class="pre">darcys_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.doppler_effect"><code class="docutils literal notranslate"><span class="pre">doppler_effect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.elastic_potential_energy"><code class="docutils literal notranslate"><span class="pre">elastic_potential_energy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.entropy_change"><code class="docutils literal notranslate"><span class="pre">entropy_change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.faradays_law"><code class="docutils literal notranslate"><span class="pre">faradays_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.gauss_law"><code class="docutils literal notranslate"><span class="pre">gauss_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.hadamard_product"><code class="docutils literal notranslate"><span class="pre">hadamard_product()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.heat_transfer"><code class="docutils literal notranslate"><span class="pre">heat_transfer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.hookes_law"><code class="docutils literal notranslate"><span class="pre">hookes_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.ideal_diode_equation"><code class="docutils literal notranslate"><span class="pre">ideal_diode_equation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.ideal_gas_law"><code class="docutils literal notranslate"><span class="pre">ideal_gas_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.is_Pythagorean"><code class="docutils literal notranslate"><span class="pre">is_Pythagorean()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.kinetic_energy"><code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.lorentz_force"><code class="docutils literal notranslate"><span class="pre">lorentz_force()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.mass_energy_equivalence"><code class="docutils literal notranslate"><span class="pre">mass_energy_equivalence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.maxwells_equations"><code class="docutils literal notranslate"><span class="pre">maxwells_equations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.newtons_second_law"><code class="docutils literal notranslate"><span class="pre">newtons_second_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.ohms_law"><code class="docutils literal notranslate"><span class="pre">ohms_law()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.pH_Which"><code class="docutils literal notranslate"><span class="pre">pH_Which()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.photoelectric_effect"><code class="docutils literal notranslate"><span class="pre">photoelectric_effect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.poisson"><code class="docutils literal notranslate"><span class="pre">poisson()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.predict_phase_from_gibbs"><code class="docutils literal notranslate"><span class="pre">predict_phase_from_gibbs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.pythagorean_theorem"><code class="docutils literal notranslate"><span class="pre">pythagorean_theorem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.rayleigh_scattering"><code class="docutils literal notranslate"><span class="pre">rayleigh_scattering()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.root_degree2"><code class="docutils literal notranslate"><span class="pre">root_degree2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.rydberg_formula"><code class="docutils literal notranslate"><span class="pre">rydberg_formula()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.uncertainty_principle"><code class="docutils literal notranslate"><span class="pre">uncertainty_principle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.wavelength_frequency_relation"><code class="docutils literal notranslate"><span class="pre">wavelength_frequency_relation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Functions.youngs_modulus"><code class="docutils literal notranslate"><span class="pre">youngs_modulus()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PyGamLab.html#module-PyGamLab.Data_Analysis">PyGamLab.Data_Analysis module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Blood_Pressure"><code class="docutils literal notranslate"><span class="pre">Blood_Pressure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Brain_Data_example"><code class="docutils literal notranslate"><span class="pre">Brain_Data_example()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Brain_Plot_3D"><code class="docutils literal notranslate"><span class="pre">Brain_Plot_3D()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.CV"><code class="docutils literal notranslate"><span class="pre">CV()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Color_Feature"><code class="docutils literal notranslate"><span class="pre">Color_Feature()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Compression_Test"><code class="docutils literal notranslate"><span class="pre">Compression_Test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Conversion"><code class="docutils literal notranslate"><span class="pre">Conversion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.DMTA_Test"><code class="docutils literal notranslate"><span class="pre">DMTA_Test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Desulfurization_Rate"><code class="docutils literal notranslate"><span class="pre">Desulfurization_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Diabetes_Dataset"><code class="docutils literal notranslate"><span class="pre">Diabetes_Dataset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Echelon_Matrix"><code class="docutils literal notranslate"><span class="pre">Echelon_Matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Energie"><code class="docutils literal notranslate"><span class="pre">Energie()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Energie2"><code class="docutils literal notranslate"><span class="pre">Energie2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.FTIR"><code class="docutils literal notranslate"><span class="pre">FTIR()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Fatigue_Test_Analysis"><code class="docutils literal notranslate"><span class="pre">Fatigue_Test_Analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Find_Max_Vertical_Velocity"><code class="docutils literal notranslate"><span class="pre">Find_Max_Vertical_Velocity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Gradient_descent"><code class="docutils literal notranslate"><span class="pre">Gradient_descent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Imerssion_Test"><code class="docutils literal notranslate"><span class="pre">Imerssion_Test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Import_Data"><code class="docutils literal notranslate"><span class="pre">Import_Data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Income_Developer"><code class="docutils literal notranslate"><span class="pre">Income_Developer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.LN_S_E"><code class="docutils literal notranslate"><span class="pre">LN_S_E()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Load_Position_Convertor"><code class="docutils literal notranslate"><span class="pre">Load_Position_Convertor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Membrane_Rejection"><code class="docutils literal notranslate"><span class="pre">Membrane_Rejection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.New_Case_Corona_Propotion"><code class="docutils literal notranslate"><span class="pre">New_Case_Corona_Propotion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Oxygen_Heat_Capacity_Analysis"><code class="docutils literal notranslate"><span class="pre">Oxygen_Heat_Capacity_Analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Particles_Size"><code class="docutils literal notranslate"><span class="pre">Particles_Size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Polarization"><code class="docutils literal notranslate"><span class="pre">Polarization()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Pore_Size"><code class="docutils literal notranslate"><span class="pre">Pore_Size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Porosity"><code class="docutils literal notranslate"><span class="pre">Porosity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Price_BTC"><code class="docutils literal notranslate"><span class="pre">Price_BTC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Price_Change"><code class="docutils literal notranslate"><span class="pre">Price_Change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Product_Of_Vectors"><code class="docutils literal notranslate"><span class="pre">Product_Of_Vectors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Pulse"><code class="docutils literal notranslate"><span class="pre">Pulse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.SI_Calculation"><code class="docutils literal notranslate"><span class="pre">SI_Calculation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Sakhti_ab"><code class="docutils literal notranslate"><span class="pre">Sakhti_ab()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Signal_To_Noise_Ratio"><code class="docutils literal notranslate"><span class="pre">Signal_To_Noise_Ratio()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Solidification_Start"><code class="docutils literal notranslate"><span class="pre">Solidification_Start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Statitical_Analysis"><code class="docutils literal notranslate"><span class="pre">Statitical_Analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Stress_Strain1"><code class="docutils literal notranslate"><span class="pre">Stress_Strain1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Stress_Strain2"><code class="docutils literal notranslate"><span class="pre">Stress_Strain2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Stress_Strain3"><code class="docutils literal notranslate"><span class="pre">Stress_Strain3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Stress_Strain4"><code class="docutils literal notranslate"><span class="pre">Stress_Strain4()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Stress_Strain5"><code class="docutils literal notranslate"><span class="pre">Stress_Strain5()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Stress_Strain6"><code class="docutils literal notranslate"><span class="pre">Stress_Strain6()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Tensile_Analysis"><code class="docutils literal notranslate"><span class="pre">Tensile_Analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Tortuosity"><code class="docutils literal notranslate"><span class="pre">Tortuosity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Wear_Bar"><code class="docutils literal notranslate"><span class="pre">Wear_Bar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Wear_Rate"><code class="docutils literal notranslate"><span class="pre">Wear_Rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.XRD4"><code class="docutils literal notranslate"><span class="pre">XRD4()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.XRD_Analysis"><code class="docutils literal notranslate"><span class="pre">XRD_Analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.XRD_Analysis2"><code class="docutils literal notranslate"><span class="pre">XRD_Analysis2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.XRD_ZnO"><code class="docutils literal notranslate"><span class="pre">XRD_ZnO()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.Xrd_Analysis"><code class="docutils literal notranslate"><span class="pre">Xrd_Analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.aerospace2"><code class="docutils literal notranslate"><span class="pre">aerospace2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.aerospace_analysis"><code class="docutils literal notranslate"><span class="pre">aerospace_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.fatigue"><code class="docutils literal notranslate"><span class="pre">fatigue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.polarization_control"><code class="docutils literal notranslate"><span class="pre">polarization_control()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyGamLab.html#PyGamLab.Data_Analysis.pressure_volume_ideal_gases"><code class="docutils literal notranslate"><span class="pre">pressure_volume_ideal_gases()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PyGamLab.html#module-PyGamLab">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="PyGamLab.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">PyGamLab package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="data_analysis.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">PyGamLab.Data_Analysis Module</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=a12e3537"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>
