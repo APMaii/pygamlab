@@ -1,0 +1,50 @@
+{
+    "metadata": {
+        "model_name": "Graphene-armchair-random-forest-pipe",
+        "model_type": "pipe",
+        "description": "It can be seen that at lower temperature the CTE remains negative and it turns to positive when the temperature is higher than around 520K.",
+        "author_name": "Anna Costine, Paige Delsa, Tianxi Li et al.",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": "(Pipeline(steps=[('scaler', MinMaxScaler()),\n                ('model',\n                 RandomForestRegressor(criterion='absolute_error', max_depth=5,\n                                       max_features='sqrt', min_samples_leaf=2,\n                                       min_samples_split=4, n_estimators=50))]), -0.6417047365542262)",
+        "doi": "https://doi.org/10.1063/5.0017507",
+        "hyperparam_range": {
+            "model__n_estimators": [
+                50,
+                100,
+                200
+            ],
+            "model__criterion": [
+                "squared_error",
+                "absolute_error"
+            ],
+            "model__max_depth": [
+                2,
+                3,
+                4,
+                5,
+                null
+            ],
+            "model__min_samples_split": [
+                2,
+                4,
+                6
+            ],
+            "model__min_samples_leaf": [
+                1,
+                2,
+                3
+            ],
+            "model__max_features": [
+                1.0,
+                "sqrt"
+            ],
+            "model__bootstrap": [
+                true,
+                false
+            ]
+        },
+        "best_params": "None"
+    },
+    "model_data": "gASVhwIAAAAAAACMGHNrbGVhcm4uZW5zZW1ibGUuX2ZvcmVzdJSMFVJhbmRvbUZvcmVzdFJlZ3Jlc3NvcpSTlCmBlH2UKIwJZXN0aW1hdG9ylIwVc2tsZWFybi50cmVlLl9jbGFzc2VzlIwVRGVjaXNpb25UcmVlUmVncmVzc29ylJOUKYGUfZQojAljcml0ZXJpb26UjA1zcXVhcmVkX2Vycm9ylIwIc3BsaXR0ZXKUjARiZXN0lIwJbWF4X2RlcHRolE6MEW1pbl9zYW1wbGVzX3NwbGl0lEsCjBBtaW5fc2FtcGxlc19sZWFmlEsBjBhtaW5fd2VpZ2h0X2ZyYWN0aW9uX2xlYWaURwAAAAAAAAAAjAxtYXhfZmVhdHVyZXOUTowObWF4X2xlYWZfbm9kZXOUTowMcmFuZG9tX3N0YXRllE6MFW1pbl9pbXB1cml0eV9kZWNyZWFzZZRHAAAAAAAAAACMDGNsYXNzX3dlaWdodJROjAljY3BfYWxwaGGURwAAAAAAAAAAjA1tb25vdG9uaWNfY3N0lE6MEF9za2xlYXJuX3ZlcnNpb26UjAUxLjQuMpR1YowMbl9lc3RpbWF0b3JzlEtkjBBlc3RpbWF0b3JfcGFyYW1zlChoC2gPaBBoEWgSaBNoFGgWaBVoGGgZdJSMCWJvb3RzdHJhcJSIjAlvb2Jfc2NvcmWUiYwGbl9qb2JzlE5oFU6MB3ZlcmJvc2WUSwCMCndhcm1fc3RhcnSUiWgXTowLbWF4X3NhbXBsZXOUTmgLaAxoD05oEEsCaBFLAWgSRwAAAAAAAAAAaBNHP/AAAAAAAABoFE5oFkcAAAAAAAAAAGgYRwAAAAAAAAAAaBlOaBpoG3ViLg=="
+}

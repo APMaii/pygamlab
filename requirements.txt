@@ -1,1 +1,12 @@
-
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+scikit-learn
+ase
+plotly
+PyQt5
+jarvis
+mp_api
+aflow

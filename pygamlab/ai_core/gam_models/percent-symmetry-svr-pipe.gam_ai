@@ -1,0 +1,50 @@
+{
+    "metadata": {
+        "model_name": "percent-symmetry-svr-pipe",
+        "model_type": "pipe",
+        "description": "At the lowest temperatures, where the rotation of the carboxylic groups is less likely, proton transfer processes prevail and are responsible for the loss of C3h symmetry. In the case of the close-packed structure, the C3h symmetry of TMA molecules is maintained in a wide temperature range because proton exchange does not occur in cyclic trimers. On the contrary, the percentage of C3h molecules rapidly falls to 20% in the case of the honeycomb structure.",
+        "author_name": "F. Lin, Y. Xiang, Hui-Shen Shen",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": "(Pipeline(steps=[('scaler', MinMaxScaler()),\n                ('model',\n                 SVR(C=1, degree=2, epsilon=0.05, kernel='poly',\n                     max_iter=5000))]), -0.7812546949606151)",
+        "doi": "http://dx.doi.org/10.1016/j.compositesb.2016.12.004",
+        "hyperparam_range": {
+            "model__n_estimators": [
+                10,
+                25,
+                50
+            ],
+            "model__criterion": [
+                "squared_error",
+                "absolute_error"
+            ],
+            "model__max_depth": [
+                2,
+                3,
+                4
+            ],
+            "model__min_samples_split": [
+                3,
+                5,
+                7
+            ],
+            "model__min_samples_leaf": [
+                2,
+                3,
+                4
+            ],
+            "model__max_features": [
+                "sqrt",
+                "log2"
+            ],
+            "model__bootstrap": [
+                true
+            ],
+            "model__random_state": [
+                42
+            ]
+        },
+        "best_params": "None"
+    },
+    "model_data": "gASVIQEAAAAAAACMFHNrbGVhcm4uc3ZtLl9jbGFzc2VzlIwDU1ZSlJOUKYGUfZQojAZrZXJuZWyUjANyYmaUjAZkZWdyZWWUSwOMBWdhbW1hlIwFc2NhbGWUjAVjb2VmMJRHAAAAAAAAAACMA3RvbJRHP1BiTdLxqfyMAUOURz/wAAAAAAAAjAJudZRHAAAAAAAAAACMB2Vwc2lsb26URz+5mZmZmZmajAlzaHJpbmtpbmeUiIwLcHJvYmFiaWxpdHmUiYwKY2FjaGVfc2l6ZZRLyIwMY2xhc3Nfd2VpZ2h0lE6MB3ZlcmJvc2WUiYwIbWF4X2l0ZXKUSv////+MDHJhbmRvbV9zdGF0ZZROjBBfc2tsZWFybl92ZXJzaW9ulIwFMS40LjKUdWIu"
+}

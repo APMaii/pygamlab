@@ -210,14 +210,14 @@ git clone https://github.com/APMaii/pygamlab.git
 ## 📖 Usage Example
 
 ```python
-import PyGamLab
+import pygamlab
 
 
 
 
 
 #--------------Constants-----------------------
-import PyGamLab.Constants as gamcn
+import pygamlab.Constants as gamcn
 
 print(gamcn.melting_point_of_Cu)
 print(gamcn.melting_point_of_Al)
@@ -229,7 +229,7 @@ print(gamcn.Faraday_Constant)
 
 
 #----------Converters------------------------
-import PyGamLab.Converters as gamcv
+import pygamlab.Converters as gamcv
 
 print(gamcv.Kelvin_to_Celcius(300))           # Convert 300 K to °C
 print(gamcv.Coulomb_To_Electron_volt(1))      # Convert 1 Coulomb to eV
@@ -237,7 +237,7 @@ print(gamcv.Angstrom_To_Milimeter(1))         # Convert 1 Å to mm
 print(gamcv.Bar_To_Pascal(1))                 # Convert 1 bar to Pascal
 
 #-----------Functions------------------------
-import PyGamLab.Functions as gamfunc
+import pygamlab.Functions as gamfunc
 
 # Gibb's Free Energy: G = H0 - T*S0
 H0 = 100  # Enthalpy in kJ/mol
@@ -261,7 +261,7 @@ print(gamfunc.Hall_Petch(d_grain, sigma0, k))
 
 
 #-----------Data_Analysis--------------------
-import PyGamLab.Data_Analysis as gamdat
+import pygamlab.Data_Analysis as gamdat
 import pandas as pd
 
 df= pd.read_csv('/users/apm/....../data.csv')
@@ -281,13 +281,13 @@ gamdat.Xrd_Analysis(data,'line graph')
 
 #-----------Structures--------------------
 
-from PyGamLab.structures.Generators import Nano_ZeroD_Builder
+from pygamlab.structures.Generators import Nano_ZeroD_Builder
 
 builder=Nano_ZeroD_Builder(material='Au', crystal_structure='fcc', lattice_constant=2.14)
 
 Au_atoms=builder.get_atoms()
 
-from PyGamLab.structures.gamvis import Molecular_Visualizer
+from pygamlab.structures.gamvis import Molecular_Visualizer
 
 Molecular_Visualizer(Au_atoms,format='gamvis')
 
@@ -301,13 +301,13 @@ Molecular_Visualizer(Au_atoms,format='matplotlib')
 
 
 
-from PyGamLab.structures.GAM_architectures import Nano_ZeroD_Builder
+from pygamlab.structures.GAM_architectures import Nano_ZeroD_Builder
 
 builder=Graphene(lattice_constant=2.46, width=10, length=82, edge_type='zigzag' )
 
 graphene_atoms=builder.get_atoms()
 
-from PyGamLab.structures.gamvis import Molecular_Visualizer
+from pygamlab.structures.gamvis import Molecular_Visualizer
 
 Molecular_Visualizer(graphene_atoms,format='gamvis')
 
@@ -320,7 +320,7 @@ Molecular_Visualizer(graphene_atoms,format='matplotlib')
 
 #-----------databases--------------------
 
-from PyGamLab.databases.Main_DB import GAM_Explorer
+from pygamlab.databases.Main_DB import GAM_Explorer
 
 
 
@@ -337,7 +337,7 @@ electronic_properties=explorer.fetch_electronic_properties()
 
 
 #--------------Ai Core--------------------
-from PyGamLab.ai_core import Gam_Ai_Workflow
+from pygamlab.ai_core import Gam_Ai_Workflow
 
 
 workflow=Gam_Ai_Workflow('Graphene-armchair-rf')

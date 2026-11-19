@@ -1,0 +1,854 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="author" title="About these documents" href="../../../about.html" /><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>PyGamLab.databases.Main_DB - PyGamLab 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">PyGamLab 2.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../_static/logo_dark.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../_static/logo_dark.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">PyGamLab 2.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html">🧩 Modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 🧩 Modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/structures.html">Structures Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/databases.html">Databases Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/ai_core.html">AI Core Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/data_analysis.html">Data_Analysis Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/constants.html">Constants Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/converters.html">Convertors Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules_/functions.html">Functions Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples.html">💡 Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 💡 Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples_/data_analysis_example.html">Data Analysis Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples_/structures_example.html">Structures Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples_/ai_workflow_example.html">AI Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collaborate.html">Collaborate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About PyGamLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for PyGamLab.databases.Main_DB</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">.COD</span><span class="w"> </span><span class="kn">import</span> <span class="n">COD_Explorer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Material_projects</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaterialsProject_Explorer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Jarvis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jarvis_Explorer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Aflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">Aflow_Explorer</span>
+
+
+<div class="viewcode-block" id="GAM_Explorer">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.GAM_Explorer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GAM_Explorer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unified interface to explore material properties from multiple databases:</span>
+<span class="sd">    Materials Project, COD (Crystallography Open Database), Jarvis (NIST), and AFLOW.</span>
+
+<span class="sd">    This class allows searching and fetching electronic, mechanical, thermodynamic,</span>
+<span class="sd">    and structural properties from a selected backend or from all backends simultaneously.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    backend : str, default=&#39;jarvis&#39;</span>
+<span class="sd">        Backend database to use. Options are:</span>
+<span class="sd">        &#39;material_project&#39;, &#39;cod&#39;, &#39;jarvis&#39;, &#39;aflow&#39;, &#39;all&#39;.</span>
+<span class="sd">    timeout : int, default=60</span>
+<span class="sd">        Timeout in seconds for database queries (applies to COD).</span>
+<span class="sd">    api_key : str, optional</span>
+<span class="sd">        API key required for Materials Project access.</span>
+<span class="sd">    dataset : str, default=&#39;dft_3d&#39;</span>
+<span class="sd">        Dataset to use when querying Jarvis.</span>
+<span class="sd">    max_results : int, default=5 </span>
+<span class="sd">        Maximum number of materials to return for search queries.</span>
+<span class="sd">    batch_size : int, default=10</span>
+<span class="sd">        Batch size for queries (applies to AFLOW).</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    backend : str</span>
+<span class="sd">        Normalized backend name.</span>
+<span class="sd">    _explorer : object</span>
+<span class="sd">        Instance of the selected backend explorer.</span>
+<span class="sd">    search_results : dict or list</span>
+<span class="sd">        Stores results from the last search query.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    # Example 1: Using Jarvis backend to search and fetch properties</span>
+<span class="sd">    &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;jarvis&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; results = gam.search_materials(formula=&quot;MoS2&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; electronic_props = gam.fetch_electronic_properties(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; mechanical_props = gam.fetch_mechanical_properties(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; thermo_props = gam.fetch_thermodynamic_properties(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; structure = gam.fetch_structure(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; all_data = gam.fetch_all_data(gam_id=&quot;JARVIS-123&quot;)</span>
+
+<span class="sd">    # Example 2: Using Materials Project backend</span>
+<span class="sd">    &gt;&gt;&gt; gam_mp = GAM_Explorer(backend=&#39;material_project&#39;, api_key=&quot;MP_API_KEY&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; results_mp = gam_mp.search_materials(elements=[&quot;Mo&quot;,&quot;S&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; electronic_mp = gam_mp.fetch_electronic_properties(gam_id=&quot;mp-123&quot;)</span>
+
+<span class="sd">    # Example 3: Using AFLOW backend</span>
+<span class="sd">    &gt;&gt;&gt; gam_aflow = GAM_Explorer(backend=&#39;aflow&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; results_aflow = gam_aflow.search_materials(species=&quot;MoS2&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; mechanical_aflow = gam_aflow.fetch_mechanical_properties(gam_id=&quot;aflow-456&quot;)</span>
+
+<span class="sd">    # Example 4: Using COD backend for structure data</span>
+<span class="sd">    &gt;&gt;&gt; gam_cod = GAM_Explorer(backend=&#39;cod&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; results_cod = gam_cod.search_materials(formula=&quot;MoS2&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; structure_cod = gam_cod.fetch_structure(gam_id=&quot;COD-789&quot;)</span>
+
+<span class="sd">    # Example 5: Using all backends simultaneously</span>
+<span class="sd">    &gt;&gt;&gt; gam_all = GAM_Explorer(backend=&#39;all&#39;, api_key=&quot;MP_API_KEY&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; results_all = gam_all.search_materials(formula=&quot;MoS2&quot;, elements=[&quot;Mo&quot;,&quot;S&quot;], species=&quot;MoS2&quot;, mp_ids=[&quot;mp-123&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; all_props = gam_all.fetch_all_data(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;, code_id=&quot;COD-789&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; all_electronic = gam_all.fetch_electronic_properties(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; all_mechanical = gam_all.fetch_mechanical_properties(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; all_thermo = gam_all.fetch_thermodynamic_properties(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; all_structures = gam_all.fetch_structure(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;, code_id=&quot;COD-789&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;jarvis&#39;</span><span class="p">,</span><span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span><span class="n">api_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;dft_3d&quot;</span><span class="p">,</span>
+                 <span class="n">max_results</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_results</span><span class="o">=</span><span class="n">max_results</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="o">=</span><span class="kc">None</span>
+        
+
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;material_project&#39;</span><span class="p">,</span><span class="s1">&#39;material project&#39;</span> <span class="p">,</span><span class="s1">&#39;materials_project&#39;</span><span class="p">,</span><span class="s1">&#39;materials project&#39;</span> <span class="p">,</span><span class="s1">&#39;mp&#39;</span><span class="p">,</span><span class="s1">&#39;mpapi&#39;</span><span class="p">,</span><span class="s1">&#39;mp-api&#39;</span><span class="p">,</span><span class="s1">&#39;mp_api&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">api_key</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide an API key for Materials Project.&quot;</span><span class="p">)</span>
+                
+            <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">=</span><span class="s1">&#39;mp&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">=</span><span class="n">MaterialsProject_Explorer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">)</span>
+                
+                
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cod&#39;</span><span class="p">,</span><span class="s1">&#39;crystallography open database&#39;</span><span class="p">,</span><span class="s1">&#39;crystallography&#39;</span><span class="p">,</span><span class="s1">&#39;crystallography_open_database&#39;</span><span class="p">]:</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">=</span><span class="s1">&#39;cod&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">=</span><span class="n">COD_Explorer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+            
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;nist&#39;</span><span class="p">,</span><span class="s1">&#39;jarvis&#39;</span><span class="p">]:</span>
+            
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">=</span><span class="s1">&#39;jarvis&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">=</span><span class="n">Jarvis_Explorer</span><span class="p">()</span>
+            
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;aflow&#39;</span><span class="p">,</span><span class="s1">&#39;aflowlib&#39;</span><span class="p">,</span><span class="s1">&#39;aflow ++&#39;</span><span class="p">]:</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">=</span><span class="s1">&#39;aflow&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">=</span><span class="n">Aflow_Explorer</span><span class="p">()</span>
+            
+
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">api_key</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide an API key for Materials Project.&quot;</span><span class="p">)</span>
+                         
+            <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">=</span><span class="s1">&#39;all&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_explorer1</span><span class="o">=</span><span class="n">MaterialsProject_Explorer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_explorer2</span><span class="o">=</span><span class="n">COD_Explorer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_explorer3</span><span class="o">=</span><span class="n">Jarvis_Explorer</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_explorer4</span><span class="o">=</span><span class="n">Aflow_Explorer</span><span class="p">()</span>
+            
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Options for Backend is [material_project,&#39;crystallography open database&#39;,&#39;jarvis&#39;,&#39;aflow&#39;,&#39;all&#39;&quot;</span><span class="p">)</span>
+            
+            
+        
+        
+<div class="viewcode-block" id="GAM_Explorer.search_materials">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.GAM_Explorer.search_materials">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search_materials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">formula</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">elements</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">mp_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">species</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for materials using the selected backend.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        formula : str, optional</span>
+<span class="sd">            Chemical formula to search for.</span>
+<span class="sd">        elements : list, optional</span>
+<span class="sd">            Elements to search for (only for Materials Project).</span>
+<span class="sd">        mp_ids : list, optional</span>
+<span class="sd">            Materials Project IDs (only for Materials Project backend).</span>
+<span class="sd">        species : str or list, optional</span>
+<span class="sd">            Species for AFLOW backend.</span>
+<span class="sd">        description : bool, default=True</span>
+<span class="sd">            If True, returns detailed descriptions. Otherwise, only IDs.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list or dict</span>
+<span class="sd">            Search results. Dict is returned if backend=&#39;all&#39;.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If backend-specific arguments are used incorrectly.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="o">=</span><span class="n">description</span>
+        <span class="k">if</span> <span class="n">mp_ids</span><span class="o">!=</span><span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">!=</span><span class="s1">&#39;mp&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;only Material Project Backend has mp_ids argument&#39;</span><span class="p">)</span>
+            
+        <span class="k">if</span> <span class="n">species</span><span class="o">!=</span><span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">!=</span><span class="s1">&#39;aflow&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;only Aflow Backend has Species argument&#39;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">elements</span><span class="o">!=</span><span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">!=</span><span class="s1">&#39;mp&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;only Material Project Backend has Elements argument&#39;</span><span class="p">)</span>
+            
+            
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;mp&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span><span class="n">formula</span><span class="p">,</span><span class="n">mp_ids</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">max_results</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+            
+        
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;cod&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span>
+
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;jarvis&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">max_results</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;aflow&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">species</span><span class="p">,</span><span class="n">formula</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">max_results</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="o">=</span><span class="p">{}</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="p">[</span><span class="s1">&#39;Material Project&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer1</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span><span class="n">formula</span><span class="p">,</span><span class="n">mp_ids</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">max_results</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="p">[</span><span class="s1">&#39;COD&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer2</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="p">[</span><span class="s1">&#39;Jarvis&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer3</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">max_results</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span><span class="p">[</span><span class="s1">&#39;Aflow&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer4</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">species</span><span class="p">,</span><span class="n">formula</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">max_results</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+            
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_results</span></div>
+
+
+            
+            
+            
+
+<div class="viewcode-block" id="GAM_Explorer.fetch_electronic_properties">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.GAM_Explorer.fetch_electronic_properties">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_electronic_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">gam_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">mp_id</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">juid</span><span class="o">=</span><span class="kc">None</span> <span class="p">,</span> <span class="n">auid</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch electronic properties for a material.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gam_id : str, optional</span>
+<span class="sd">            Material ID for single backend (Jarvis, AFLOW, or Materials Project).</span>
+<span class="sd">        mp_id : str, optional</span>
+<span class="sd">            Materials Project ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        juid : str, optional</span>
+<span class="sd">            Jarvis ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        auid : str, optional</span>
+<span class="sd">            AFLOW ID (required when backend=&#39;all&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict or None</span>
+<span class="sd">            Electronic properties of the material. Returns a dictionary containing</span>
+<span class="sd">            results from multiple backends if backend=&#39;all&#39;. Returns None for COD backend.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If required IDs are not provided.</span>
+<span class="sd">        NotImplementedError</span>
+<span class="sd">            If COD backend is selected.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;jarvis&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_electronic_properties(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">        {&#39;band_gap&#39;: 1.5, &#39;eigenvalues&#39;: [...], ...}</span>
+
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;all&#39;, api_key=&quot;MP_API_KEY&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_electronic_properties(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;)</span>
+<span class="sd">        {&#39;Material Project&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}, &#39;COD&#39;: None}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+  
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mp_id</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">juid</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">auid</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your mp_id, juid and auid for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">electronic_result</span><span class="o">=</span><span class="p">{}</span>
+                <span class="n">electronic_result</span><span class="p">[</span><span class="s1">&#39;Material Project&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer1</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="n">mp_id</span><span class="p">)</span>
+                <span class="n">electronic_result</span><span class="p">[</span><span class="s1">&#39;Jarvis&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer3</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="n">juid</span><span class="p">)</span>
+                <span class="n">electronic_result</span><span class="p">[</span><span class="s1">&#39;Aflow&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer4</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+                <span class="n">electronic_result</span><span class="p">[</span><span class="s1">&#39;COD&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;cod&#39;</span><span class="p">:</span>
+            <span class="n">electronic_result</span><span class="o">=</span><span class="kc">None</span>
+            
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;COD backend does not support fetching electronic properties. &quot;</span>
+            <span class="s2">&quot;Only structure data is available.&quot;</span>
+        <span class="p">)</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gam_id</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your gam_id for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="n">electronic_result</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="n">gam_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">electronic_result</span></div>
+
+        
+        
+        
+<div class="viewcode-block" id="GAM_Explorer.fetch_mechanical_properties">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.GAM_Explorer.fetch_mechanical_properties">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_mechanical_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">gam_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">mp_id</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">juid</span><span class="o">=</span><span class="kc">None</span> <span class="p">,</span> <span class="n">auid</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch mechanical properties for a material.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gam_id : str, optional</span>
+<span class="sd">            Material ID for single backend (Jarvis, AFLOW, or Materials Project).</span>
+<span class="sd">        mp_id : str, optional</span>
+<span class="sd">            Materials Project ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        juid : str, optional</span>
+<span class="sd">            Jarvis ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        auid : str, optional</span>
+<span class="sd">            AFLOW ID (required when backend=&#39;all&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict or None</span>
+<span class="sd">            Mechanical properties of the material. Returns a dictionary containing</span>
+<span class="sd">            results from multiple backends if backend=&#39;all&#39;. Returns None for COD backend.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If required IDs are not provided.</span>
+<span class="sd">        NotImplementedError</span>
+<span class="sd">            If COD backend is selected.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;jarvis&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_mechanical_properties(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">        {&#39;bulk_modulus_reuss&#39;: 120.5, &#39;bulk_modulus_voigt&#39;: 123.0, ...}</span>
+
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;all&#39;, api_key=&quot;MP_API_KEY&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_mechanical_properties(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;)</span>
+<span class="sd">        {&#39;Material Project&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}, &#39;COD&#39;: None}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mp_id</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">juid</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">auid</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your mp_id, juid and auid for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">mechanical_result</span><span class="o">=</span><span class="p">{}</span>
+                <span class="n">mechanical_result</span><span class="p">[</span><span class="s1">&#39;Material Project&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer1</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="n">mp_id</span><span class="p">)</span>
+                <span class="n">mechanical_result</span><span class="p">[</span><span class="s1">&#39;Jarvis&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer3</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="n">juid</span><span class="p">)</span>
+                <span class="n">mechanical_result</span><span class="p">[</span><span class="s1">&#39;Aflow&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer4</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+                <span class="n">mechanical_result</span><span class="p">[</span><span class="s1">&#39;COD&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;cod&#39;</span><span class="p">:</span>
+            <span class="n">mechanical_result</span><span class="o">=</span><span class="kc">None</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;COD backend does not support fetching electronic properties. &quot;</span>
+            <span class="s2">&quot;Only structure data is available.&quot;</span>
+        <span class="p">)</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gam_id</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your gam_id for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="n">mechanical_result</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="n">gam_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">mechanical_result</span></div>
+
+        
+        
+<div class="viewcode-block" id="GAM_Explorer.fetch_thermodynamic_properties">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.GAM_Explorer.fetch_thermodynamic_properties">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_thermodynamic_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">gam_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">mp_id</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">juid</span><span class="o">=</span><span class="kc">None</span> <span class="p">,</span> <span class="n">auid</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch thermodynamic properties for a material.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gam_id : str, optional</span>
+<span class="sd">            Material ID for single backend (Jarvis, AFLOW, or Materials Project).</span>
+<span class="sd">        mp_id : str, optional</span>
+<span class="sd">            Materials Project ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        juid : str, optional</span>
+<span class="sd">            Jarvis ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        auid : str, optional</span>
+<span class="sd">            AFLOW ID (required when backend=&#39;all&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict or None</span>
+<span class="sd">            Thermodynamic properties of the material. Returns a dictionary containing</span>
+<span class="sd">            results from multiple backends if backend=&#39;all&#39;. Returns None for COD backend.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If required IDs are not provided.</span>
+<span class="sd">        NotImplementedError</span>
+<span class="sd">            If COD backend is selected.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;jarvis&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_thermodynamic_properties(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">        {&#39;enthalpy_formation_cell&#39;: -5.4, &#39;entropy_cell&#39;: 12.3, ...}</span>
+
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;all&#39;, api_key=&quot;MP_API_KEY&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_thermodynamic_properties(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;)</span>
+<span class="sd">        {&#39;Material Project&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}, &#39;COD&#39;: None}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mp_id</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">juid</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">auid</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your mp_id, juid and auid for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">thermo_result</span><span class="o">=</span><span class="p">{}</span>
+                <span class="n">thermo_result</span><span class="p">[</span><span class="s1">&#39;Material Project&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer1</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="n">mp_id</span><span class="p">)</span>
+                <span class="n">thermo_result</span><span class="p">[</span><span class="s1">&#39;Jarvis&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer3</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="n">juid</span><span class="p">)</span>
+                <span class="n">thermo_result</span><span class="p">[</span><span class="s1">&#39;Aflow&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer4</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+                <span class="n">thermo_result</span><span class="p">[</span><span class="s1">&#39;COD&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span>
+            
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;cod&#39;</span><span class="p">:</span>
+            <span class="n">thermo_result</span><span class="o">=</span><span class="kc">None</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;COD backend does not support fetching electronic properties. &quot;</span>
+            <span class="s2">&quot;Only structure data is available.&quot;</span>
+        <span class="p">)</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gam_id</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your gam_id for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="n">thermo_result</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="n">gam_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">thermo_result</span></div>
+
+        
+        
+<div class="viewcode-block" id="GAM_Explorer.fetch_structure">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.GAM_Explorer.fetch_structure">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">gam_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">mp_id</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">juid</span><span class="o">=</span><span class="kc">None</span> <span class="p">,</span> <span class="n">auid</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">code_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch structural properties for a material.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gam_id : str, optional</span>
+<span class="sd">            Material ID for single backend (Jarvis, AFLOW, or Materials Project).</span>
+<span class="sd">        mp_id : str, optional</span>
+<span class="sd">            Materials Project ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        juid : str, optional</span>
+<span class="sd">            Jarvis ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        auid : str, optional</span>
+<span class="sd">            AFLOW ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        code_id : str, optional</span>
+<span class="sd">            COD ID (required when backend=&#39;all&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict or None</span>
+<span class="sd">            Structural properties of the material. Returns a dictionary containing</span>
+<span class="sd">            results from multiple backends if backend=&#39;all&#39;.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If required IDs are not provided.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;jarvis&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_structure(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">        {&#39;spacegroup_relax&#39;: 194, &#39;Bravais_lattice_relax&#39;: &#39;hexagonal&#39;, ...}</span>
+
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;all&#39;, api_key=&quot;MP_API_KEY&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_structure(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;, code_id=&quot;COD-789&quot;)</span>
+<span class="sd">        {&#39;Material Project&#39;: {...}, &#39;COD&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mp_id</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">juid</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">auid</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">code_id</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your mp_id, juid , auid and code_id for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">structure_result</span><span class="o">=</span><span class="p">{}</span>
+                <span class="n">structure_result</span><span class="p">[</span><span class="s1">&#39;Material Project&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer1</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">mp_id</span><span class="p">)</span>
+                <span class="n">structure_result</span><span class="p">[</span><span class="s1">&#39;COD&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer2</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">code_id</span><span class="p">)</span>
+                <span class="n">structure_result</span><span class="p">[</span><span class="s1">&#39;Jarvis&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer3</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">juid</span><span class="p">)</span>
+                <span class="n">structure_result</span><span class="p">[</span><span class="s1">&#39;Aflow&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer4</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gam_id</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your gam_id for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="n">structure_result</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">gam_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">structure_result</span></div>
+
+    
+       
+        
+        
+<div class="viewcode-block" id="GAM_Explorer.fetch_all_data">
+<a class="viewcode-back" href="../../../modules_/databases.html#PyGamLab.databases.GAM_Explorer.fetch_all_data">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_all_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">gam_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">mp_id</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">juid</span><span class="o">=</span><span class="kc">None</span> <span class="p">,</span> <span class="n">auid</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">code_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch all available properties (electronic, mechanical, thermodynamic, structure)</span>
+<span class="sd">        for a material.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gam_id : str, optional</span>
+<span class="sd">            Material ID for single backend (Jarvis, AFLOW, or Materials Project).</span>
+<span class="sd">        mp_id : str, optional</span>
+<span class="sd">            Materials Project ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        juid : str, optional</span>
+<span class="sd">            Jarvis ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        auid : str, optional</span>
+<span class="sd">            AFLOW ID (required when backend=&#39;all&#39;).</span>
+<span class="sd">        code_id : str, optional</span>
+<span class="sd">            COD ID (required when backend=&#39;all&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary of all properties. If backend=&#39;all&#39;, returns results</span>
+<span class="sd">            from all backends; otherwise, returns results from the selected backend.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If required IDs are not provided.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;jarvis&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_all_data(gam_id=&quot;JARVIS-123&quot;)</span>
+<span class="sd">        {&#39;electronic_prop&#39;: {...}, &#39;mechanical_prop&#39;: {...}, &#39;thermo_prop&#39;: {...}, &#39;structure&#39;: {...}}</span>
+
+<span class="sd">        &gt;&gt;&gt; gam = GAM_Explorer(backend=&#39;all&#39;, api_key=&quot;MP_API_KEY&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; gam.fetch_all_data(mp_id=&quot;mp-123&quot;, juid=&quot;JARVIS-123&quot;, auid=&quot;aflow-456&quot;, code_id=&quot;COD-789&quot;)</span>
+<span class="sd">        {&#39;Material Project&#39;: {...}, &#39;COD&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">==</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mp_id</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">juid</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">auid</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your mp_id, juid and auid for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">all_result</span><span class="o">=</span><span class="p">{}</span>
+                <span class="n">all_result</span><span class="p">[</span><span class="s1">&#39;Material Project&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer1</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="n">mp_id</span><span class="p">)</span>
+                <span class="n">all_result</span><span class="p">[</span><span class="s1">&#39;COD&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer2</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="n">code_id</span><span class="p">)</span>
+                <span class="n">all_result</span><span class="p">[</span><span class="s1">&#39;Jarvis&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer3</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="n">juid</span><span class="p">)</span>
+                <span class="n">all_result</span><span class="p">[</span><span class="s1">&#39;Aflow&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer4</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="n">auid</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gam_id</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You must insert your gam_id for fetching data&#39;</span><span class="p">)</span>
+                
+            <span class="n">all_result</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorer</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="n">gam_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">all_result</span></div>
+</div>
+
+    
+    
+            
+            
+            
+        
+        
+        
+        
+        
+        
+        
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Ali Pilehvar Meibody
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=79f5c508"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

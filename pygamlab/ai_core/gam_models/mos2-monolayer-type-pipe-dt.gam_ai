@@ -1,0 +1,35 @@
+{
+    "metadata": {
+        "model_name": "mos2-monolayer-type-pipe-dt",
+        "model_type": "pipe",
+        "description": "\n    Effect of Mo precursor temperature, S precursor temperature, type of substrate, growth temperature & time & pressure on number of layers & raman peak position.\n    The most discernible trend is found in the Mo precursor temperature\n    Figure S7a, where it can be inferred that at higher Mo precursor temperatures, bilayer or multilayer MoS2 thin films were formed.\n    For the Sulfur precursor temperature the monolayer regime starts at lower temperature, and the growth temperature (substrate temperature) extends to higher values for the Not a monolayer regime. This suggests that the concentration of the Mo precursor is the critical parameter to achieve control over the number of layers. \n    The Raman peak is around 19 cm\u22121 for monolayer MoS2, 21 for bilayers and 25 for more than 4 layers.\n    ",
+        "author_name": "SF. Lin, Y. Xiang, Hui-Shen Shen",
+        "author_email": "None",
+        "trainer_name": "Ali Pilehvar Meibody",
+        "best_accuracy": 1.0,
+        "doi": "http://dx.doi.org/10.1016/j.compositesb.2016.12.004",
+        "hyperparam_range": {
+            "model__criterion": [
+                "gini",
+                "entropy"
+            ],
+            "model__max_depth": [
+                3,
+                5,
+                10,
+                null
+            ],
+            "model__min_samples_split": [
+                2,
+                5,
+                10
+            ]
+        },
+        "best_params": {
+            "model__criterion": "gini",
+            "model__max_depth": 3,
+            "model__min_samples_split": 2
+        }
+    },
+    "model_data": "gASVYgEAAAAAAACMFXNrbGVhcm4udHJlZS5fY2xhc3Nlc5SMFkRlY2lzaW9uVHJlZUNsYXNzaWZpZXKUk5QpgZR9lCiMCWNyaXRlcmlvbpSMBGdpbmmUjAhzcGxpdHRlcpSMBGJlc3SUjAltYXhfZGVwdGiUTowRbWluX3NhbXBsZXNfc3BsaXSUSwKMEG1pbl9zYW1wbGVzX2xlYWaUSwGMGG1pbl93ZWlnaHRfZnJhY3Rpb25fbGVhZpRHAAAAAAAAAACMDG1heF9mZWF0dXJlc5ROjA5tYXhfbGVhZl9ub2Rlc5ROjAxyYW5kb21fc3RhdGWUSyqMFW1pbl9pbXB1cml0eV9kZWNyZWFzZZRHAAAAAAAAAACMDGNsYXNzX3dlaWdodJROjAljY3BfYWxwaGGURwAAAAAAAAAAjA1tb25vdG9uaWNfY3N0lE6MEF9za2xlYXJuX3ZlcnNpb26UjAUxLjYuMZR1Yi4="
+}

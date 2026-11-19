@@ -1,0 +1,2856 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/APMaii/pygamlab/refs/heads/main/pics/pygamlab_html_logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>PyGamLab.Convertors - PyGamLab 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --font_stack: Segoe UI, Tahoma, Arial, sans-serif;
+  --color-brand-primary: #005F6A;
+  --color-brand-content: #2D2D2D;
+  --color-background: #FFFFFF;
+  --color-link: #005F6A;
+  --color-sidebar-text: #333333;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-content: #F2F7F9;
+  --color-background: #1E1E1E;
+  --color-link: #A8D8D1;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-content: #F2F7F9;
+  --color-background: #1E1E1E;
+  --color-link: #A8D8D1;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">PyGamLab 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://raw.githubusercontent.com/APMaii/pygamlab/refs/heads/main/pics/pygamlab_docs_logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">PyGamLab 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">🔰 Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorial.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorial</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#📦-Modules">📦 Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#📦-Requirements">📦 Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#How-to-install-🚀">How to install 🚀</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#How-to-Import">How to Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#Constants.">Constants.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#Convertors.py">Convertors.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#Functions.py">Functions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#Data-Analysis">Data Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#Development-in-Version.2">Development in Version.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Intro_on_PyGamLab.html#Further-Information">Further Information</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🔢 Core Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../constants.html">PyGamLab.Constants Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convertors.html">PyGamLab.Convertors Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../functions.html">PyGamLab.Functions Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_analysis.html">PyGamLab.Data_Analysis Module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">📚 API Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">PyGamLab</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of PyGamLab</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../PyGamLab.html">PyGamLab package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🛠️ Developer Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to PyGamLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for PyGamLab.Convertors</h1><div class="highlight"><pre>
+<span></span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Convertors.py :</span>
+
+<span class="sd">This module provides converter functions for transforming values between different units of measurement.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1">#&quot; IN GOD WE TRUST, ALL OTHERS MUST BRING DATA&quot;</span>
+<span class="c1">#                                               -W. Edwards Deming</span>
+<span class="c1">#------------------------------------------------------------------------------</span>
+<span class="c1"># Copyright 2023 The Gamlab Authors. All Rights Reserved.</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#------------------------------------------------------------------------------</span>
+
+<span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">The Scientific experimental simulation library </span>
+<span class="sd">-------------------------------------------------------------------------------</span>
+<span class="sd">Graphen &amp; Advanced Material Laboratory </span>
+
+<span class="sd">it aimes to provide new scientist to use data,simlation, prepared data </span>
+<span class="sd">and Artificial intelligence models.</span>
+
+<span class="sd">See http://gamlab.aut.ac.ir for complete documentation.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="vm">__doc__</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+
+<span class="s1">@author: Ali Pilehvar Meibody (Alipilehvar1999@gmail.com)</span>
+
+<span class="s1">                                         888                    888</span>
+<span class="s1"> .d8888b    .d88b.     88888b.d88b.      888         .d88b.     888</span>
+<span class="s1">d88P&quot;      d88&quot;&quot;88b    888 &quot;888 &quot;88b     888        d88&quot;&quot;88b    88888PP</span>
+<span class="s1">888  8888  888  888    888  888  888     888        888  888    888  888</span>
+<span class="s1">Y88b.  88  Y88..88PP.  888  888  888     888......  Y88..88PP.  888  888</span>
+<span class="s1"> &quot;Y8888P8   &quot;Y88P8888  888  888  888     888888888   &quot;Y88P8888  88888888  </span>
+
+
+<span class="s1">@Director of Gamlab: Professor M. Naderi (Mnaderi@aut.ac.ir)    </span>
+
+<span class="s1">@Graphene Advanced Material Laboratory: https://www.GamLab.Aut.ac.ir</span>
+
+
+<span class="s1">@Co-authors: </span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<div class="viewcode-block" id="Atmosphere_To_Pascal">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Atmosphere_To_Pascal">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Atmosphere_To_Pascal</span><span class="p">(</span><span class="n">atm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given value in atmospheres to pascals.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    atm : float</span>
+<span class="sd">        The value in atmospheres to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent value in pascals.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Pa</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">atm</span> <span class="o">*</span> <span class="mi">101325</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Pa</span></div>
+
+
+
+<div class="viewcode-block" id="Angstrom_To_Meter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Angstrom_To_Meter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Angstrom_To_Meter</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given value in angstroms to meters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    A : float</span>
+<span class="sd">        The value in angstroms to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent value in meters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="mf">1e-10</span></div>
+
+
+
+<div class="viewcode-block" id="Angstrom_To_Millimeter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Angstrom_To_Millimeter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Angstrom_To_Millimeter</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given value in angstroms to millimeters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    A : float</span>
+<span class="sd">        The value in angstroms to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent value in millimeters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="mf">1e-7</span></div>
+
+
+
+<div class="viewcode-block" id="Angstrom_To_Nanometer">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Angstrom_To_Nanometer">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Angstrom_To_Nanometer</span><span class="p">(</span><span class="n">Angstrom_value</span><span class="p">):</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts Angstroms to Nanometers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Angstrom_value: int or Float</span>
+<span class="sd">        Value in angstroms (Å).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Nanometer_value: int or Float</span>
+<span class="sd">        Equivalent value in Nanometers (nm).</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Nanometer_value</span><span class="o">=</span> <span class="n">Angstrom_value</span><span class="o">/</span><span class="mi">10</span>
+    <span class="k">return</span> <span class="n">Nanometer_value</span> </div>
+
+
+
+
+
+<div class="viewcode-block" id="Angstrom_To_Micrometer">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Angstrom_To_Micrometer">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Angstrom_To_Micrometer</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given value in angstroms to micrometers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    A : float</span>
+<span class="sd">        The value in angstroms to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent value in micrometers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">/</span> <span class="mi">10000</span></div>
+
+
+
+<div class="viewcode-block" id="Annual_To_Monthly_Loss">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Annual_To_Monthly_Loss">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Annual_To_Monthly_Loss</span><span class="p">(</span><span class="n">annual_loss</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    annual_loss : int</span>
+<span class="sd">        the annual loss of an Economic enterprise.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">        the monthly loss of an Economic enterprise.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">(</span><span class="n">annual_loss</span><span class="p">)</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span> 
+        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;error! bad parameter!&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">annual_loss</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Byte_To_Kilobyte">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Byte_To_Kilobyte">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Byte_To_Kilobyte</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given value in bytes to kilobytes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    b : int</span>
+<span class="sd">        The value in bytes to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent value in kilobytes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kb</span> <span class="o">=</span> <span class="mf">0.0009765625</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">kb</span></div>
+
+
+
+
+<div class="viewcode-block" id="Bar_To_Pascal">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Bar_To_Pascal">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Bar_To_Pascal</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts bar to pascal.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bar : float</span>
+<span class="sd">        bar.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Pa : float</span>
+<span class="sd">        pascal</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">Pa</span><span class="o">=</span><span class="n">bar</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Pa</span></div>
+
+
+<div class="viewcode-block" id="Brinell_To_Rockwell">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Brinell_To_Rockwell">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Brinell_To_Rockwell</span><span class="p">(</span><span class="n">hb</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    convert Brinell hardness (HB) to Rockwell hardness (HRB)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    hb : float</span>
+<span class="sd">        hardness in Brinell scale.</span>
+
+<span class="sd">    Returns float: Hardness in Rochwell scale.</span>
+<span class="sd">   </span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">hrb</span> <span class="o">=</span> <span class="p">(</span><span class="n">hb</span> <span class="o">-</span> <span class="mi">50</span><span class="p">)</span> <span class="o">/</span> <span class="mf">5.0</span>
+    <span class="k">return</span> <span class="n">hrb</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Cubic_Meter_To_Liter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Cubic_Meter_To_Liter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Cubic_Meter_To_Liter</span><span class="p">(</span><span class="n">number_in_Cubic_Meter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts cubic meters to liters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_in_Cubic_Meter : int or float</span>
+<span class="sd">        Number per cubic meter unit. </span>
+<span class="sd">    Liter : int or float</span>
+<span class="sd">        Number per liter unit.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Liter</span><span class="o">=</span> <span class="n">number_in_Cubic_Meter</span><span class="o">*</span><span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">Liter</span></div>
+
+    
+
+
+<div class="viewcode-block" id="Celcius_To_Kelvin">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Celcius_To_Kelvin">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Celcius_To_Kelvin</span><span class="p">(</span><span class="n">Celcius</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given temperature in Celsius to Kelvin.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Celcius : float</span>
+<span class="sd">        The temperature in Celsius to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent temperature in Kelvin.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The temperature in Celsius is offset by 273.15 to convert to Kelvin.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Kelvin</span> <span class="o">=</span> <span class="n">Celcius</span> <span class="o">+</span> <span class="mf">273.15</span>
+    <span class="k">return</span> <span class="n">Kelvin</span></div>
+
+
+
+<div class="viewcode-block" id="Coulomb_To_Electron_volt">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Coulomb_To_Electron_volt">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Coulomb_To_Electron_volt</span><span class="p">(</span><span class="n">coulomb</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given value in coulombs to electron volts.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    coulomb : float</span>
+<span class="sd">        The value in coulombs to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent value in electron volts.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    1 coulomb = 6.24e18 electron volts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">electron_volt</span> <span class="o">=</span> <span class="n">coulomb</span> <span class="o">*</span> <span class="mf">6.24e18</span>
+    <span class="k">return</span> <span class="n">electron_volt</span></div>
+
+
+
+<div class="viewcode-block" id="Centigrade_To_Fahrenheit">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Centigrade_To_Fahrenheit">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Centigrade_To_Fahrenheit</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given temperature in Celsius (Centigrade) to Fahrenheit.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    C : float</span>
+<span class="sd">        The temperature in Celsius to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent temperature in Fahrenheit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="mf">1.8</span> <span class="o">+</span> <span class="mi">32</span>
+    <span class="k">return</span> <span class="n">F</span></div>
+
+
+
+<div class="viewcode-block" id="CmHg_To_Pascal">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.CmHg_To_Pascal">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">CmHg_To_Pascal</span><span class="p">(</span><span class="n">P1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert the given pressure in centimeters of mercury to pascals.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    P1 : float</span>
+<span class="sd">        The pressure in centimeters of mercury to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent pressure in pascals.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">P2</span> <span class="o">=</span> <span class="n">P1</span> <span class="o">*</span> <span class="mf">1333.22</span>
+    <span class="k">return</span> <span class="n">P2</span></div>
+
+
+
+<div class="viewcode-block" id="Calories_To_Joules">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Calories_To_Joules">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Calories_To_Joules</span><span class="p">(</span><span class="n">cal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cal : float</span>
+<span class="sd">        Calories.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    J : float</span>
+<span class="sd">        Converts calories to joules.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">J</span><span class="o">=</span><span class="mf">4.184</span><span class="o">*</span><span class="n">cal</span>
+    <span class="k">return</span> <span class="n">J</span></div>
+
+
+
+<div class="viewcode-block" id="Centimeter_per_Minute_To_Meter_per_Hour_Welding_Speed_Converter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Centimeter_per_Minute_To_Meter_per_Hour_Welding_Speed_Converter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Centimeter_per_Minute_To_Meter_per_Hour_Welding_Speed_Converter</span><span class="p">(</span><span class="n">Centimeter_per_Minute</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts the Welding Speed from Centimeter per Minute to Meter per Hour.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Centimeter_per_Minute : float</span>
+<span class="sd">        Centimeter_per_Minute is a unit for welding speed.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Meter_per_Hour is a unit for welding speed.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>     
+ 
+    <span class="n">Meter_per_Hour</span><span class="o">=</span><span class="n">Centimeter_per_Minute</span><span class="o">/</span><span class="mf">1.7</span>
+    <span class="k">return</span> <span class="n">Meter_per_Hour</span></div>
+
+
+
+<div class="viewcode-block" id="Current_density_To_mpy">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Current_density_To_mpy">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Current_density_To_mpy</span><span class="p">(</span><span class="n">Current_density</span><span class="p">,</span><span class="n">density</span><span class="p">,</span><span class="n">masschange</span><span class="p">,</span><span class="n">valency</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Current_density : float</span>
+<span class="sd">        Current density .(microA/cm2)</span>
+<span class="sd">    density : float</span>
+<span class="sd">       Material Density (g/cm3).</span>
+<span class="sd">    masschange : float </span>
+<span class="sd">        amount of matter already corroded (g)</span>
+<span class="sd">    valency : intiger</span>
+<span class="sd">       How positive is the charge of the Material</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">   corrosion rate in mpy</span>
+<span class="sd">   </span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">corrosion_rate_mpy</span><span class="o">=</span><span class="n">Current_density</span><span class="o">*</span><span class="mf">1e-6</span><span class="o">*</span><span class="mi">31536000</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">density</span><span class="p">)</span><span class="o">*</span><span class="n">masschange</span><span class="o">*</span><span class="mi">400</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">valency</span><span class="o">*</span><span class="mi">96500</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">corrosion_rate_mpy</span></div>
+
+
+<div class="viewcode-block" id="CC_per_Second_To_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.CC_per_Second_To_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">CC_per_Second_To_Liter_per_Minute_Welding_Gas_Flow_Rate_Converter</span><span class="p">(</span><span class="n">CC_per_Second</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts the Welding Gas Flow Rate from CC per Second to Liter per Minute.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    CC_per_Second : float</span>
+<span class="sd">        CC_per_Second is a unit for gas flow rate in welding.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Liter_per_Minute is a unit for gas flow rate in welding.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>     
+ 
+    <span class="n">Liter_per_Minute</span><span class="o">=</span><span class="n">CC_per_Second</span><span class="o">/</span><span class="mf">16.67</span>
+    <span class="k">return</span> <span class="n">Liter_per_Minute</span></div>
+
+
+
+
+<div class="viewcode-block" id="Degree_To_Radian">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Degree_To_Radian">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Degree_To_Radian</span><span class="p">(</span><span class="n">deg</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts values of angle from degree to radian.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    deg : float</span>
+<span class="sd">        The angle value in degrees.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The angle value in radians.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rad</span> <span class="o">=</span> <span class="n">deg</span> <span class="o">*</span> <span class="mf">3.141592653589793</span> <span class="o">/</span> <span class="mi">180</span>
+    <span class="k">return</span> <span class="n">rad</span></div>
+
+
+
+<div class="viewcode-block" id="Decimal_To_Binary">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Decimal_To_Binary">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Decimal_To_Binary</span><span class="p">(</span><span class="n">Num_dec</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a decimal number to its binary representation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Num_dec : int</span>
+<span class="sd">        The decimal number to convert.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int</span>
+<span class="sd">        The binary representation of the decimal number.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Bin</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">Num_dec</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">Num_dec</span> <span class="o">%</span> <span class="mi">2</span>
+        <span class="n">Bin</span> <span class="o">=</span> <span class="n">Bin</span> <span class="o">+</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">Num_dec</span> <span class="o">=</span> <span class="n">Num_dec</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">Bin</span></div>
+
+
+
+<div class="viewcode-block" id="Electronvolt_To_Joule">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Electronvolt_To_Joule">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Electronvolt_To_Joule</span><span class="p">(</span><span class="n">e_v</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts energy value from electronvolts to joules.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    e_v : float</span>
+<span class="sd">        The energy value in electronvolts.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The energy value in joules.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Joule</span> <span class="o">=</span> <span class="n">e_v</span> <span class="o">*</span> <span class="mf">1.6022e-19</span>
+    <span class="k">return</span> <span class="n">Joule</span></div>
+
+
+
+<div class="viewcode-block" id="Electron_volt_To_Coulomb">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Electron_volt_To_Coulomb">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Electron_volt_To_Coulomb</span><span class="p">(</span><span class="n">electron_volt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts energy value from electronvolts to coulombs (assuming it refers to charge equivalent).</span>
+<span class="sd">    Note: This conversion is based on the elementary charge.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    electron_volt : float</span>
+<span class="sd">        The energy value in electronvolts.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The equivalent charge value in coulombs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coulomb</span> <span class="o">=</span> <span class="n">electron_volt</span> <span class="o">*</span> <span class="mf">1.602e-19</span>
+    <span class="k">return</span> <span class="n">coulomb</span></div>
+
+
+
+<div class="viewcode-block" id="Foot_To_Mile">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Foot_To_Mile">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Foot_To_Mile</span><span class="p">(</span><span class="n">ft</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a length value from feet to miles.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ft : float</span>
+<span class="sd">        The length value in feet.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The length value in miles.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mi</span> <span class="o">=</span> <span class="mf">0.000189393939</span> <span class="o">*</span> <span class="n">ft</span>
+    <span class="k">return</span> <span class="n">mi</span></div>
+
+
+
+<div class="viewcode-block" id="Fahrenheit_To_Centigrade">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Fahrenheit_To_Centigrade">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Fahrenheit_To_Centigrade</span><span class="p">(</span><span class="n">F</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a temperature value from Fahrenheit to Centigrade (Celsius).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    F : float</span>
+<span class="sd">        The temperature value in Fahrenheit.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The temperature value in Centigrade (Celsius).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
+    <span class="k">return</span> <span class="n">C</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Foot_Pound_To_Newton">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Foot_Pound_To_Newton">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Foot_Pound_To_Newton</span><span class="p">(</span><span class="n">Foot_Pounds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    # This Conventor convert ft-lbs to Nm</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Foot_Pound : a unit of torque equal to the force of 1 lb acting perpendicularly to </span>
+<span class="sd">    an axis of rotation at a distance of 1 foot.(ft-lbs)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Newton_Meters : The newton-metre is the unit of torque.(Nm)</span>
+
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">Newton_Meters</span><span class="o">=</span><span class="n">Foot_Pounds</span><span class="o">*</span><span class="mf">1.3558</span>
+    <span class="k">return</span> <span class="n">Newton_Meters</span></div>
+
+
+
+<div class="viewcode-block" id="Fabric_GSM_to_GLM">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Fabric_GSM_to_GLM">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Fabric_GSM_to_GLM</span><span class="p">(</span><span class="n">Fabric_Weight</span><span class="p">,</span><span class="n">Fabric_Width</span><span class="p">):</span>
+<span class="w">   </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts fabric weight in GSM unit to GLM unit.</span>
+
+<span class="sd">     Parameters</span>
+<span class="sd">     ----------</span>
+<span class="sd">     Fabric_Weight : int or float</span>
+<span class="sd">         fabric weight per GSM.</span>
+<span class="sd">     Fabric_Width : int or float</span>
+<span class="sd">         width of fabric per inches.</span>
+<span class="sd">     Fabric_GLM : int or float</span>
+<span class="sd">        Result.</span>
+<span class="sd"> </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+   <span class="n">Fabric_GLM</span><span class="o">=</span><span class="p">(</span><span class="n">Fabric_Weight</span><span class="o">*</span><span class="n">Fabric_Width</span><span class="p">)</span><span class="o">/</span><span class="mf">39.37</span>
+   <span class="k">return</span> <span class="n">Fabric_GLM</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Force_CGS_To_SI">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Force_CGS_To_SI">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Force_CGS_To_SI</span> <span class="p">(</span><span class="n">Force_in_CGS</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Force_In_CGS : float</span>
+<span class="sd">        give your force value in CGS system.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    SI : float</span>
+<span class="sd">        return your force value in SI system.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">SI</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Force_in_CGS</span> <span class="o">*</span> <span class="mf">1e-5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SI</span></div>
+
+
+<div class="viewcode-block" id="Force_SI_To_CGS">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Force_SI_To_CGS">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Force_SI_To_CGS</span> <span class="p">(</span><span class="n">Force_in_SI</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Force_in_SI : float</span>
+<span class="sd">        give your force value in SI system.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CGS : float</span>
+<span class="sd">        return your force value in CGS system.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">CGS</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Force_in_SI</span> <span class="o">*</span> <span class="mf">1e+5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CGS</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Gram_To_Mole">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Gram_To_Mole">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Gram_To_Mole</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">MW</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function calaculates the eqivalent amount of substance of a compound  in mole(s) base on mass in gram(s).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    g : float</span>
+<span class="sd">        g is the mass of a compound in gram(s).</span>
+<span class="sd">    MW : float</span>
+<span class="sd">        MW is the Molecular weight of a compound (gram/mol).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Mole : float</span>
+<span class="sd">        Mole is the eqivalent amount of substance of a compound in mole(s).</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Mole</span> <span class="o">=</span> <span class="n">g</span> <span class="o">/</span> <span class="n">MW</span>
+    <span class="k">return</span> <span class="n">Mole</span></div>
+
+
+
+
+<div class="viewcode-block" id="Hour_To_Sec">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Hour_To_Sec">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Hour_To_Sec</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a time value from hours to seconds.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t : float</span>
+<span class="sd">        The time value in hours.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The time value in seconds.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="mi">3600</span>
+    <span class="k">return</span> <span class="n">t</span></div>
+
+
+<div class="viewcode-block" id="Hertz_To_Rpm">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Hertz_To_Rpm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Hertz_To_Rpm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="o">/</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A converter machine to convert frequency in Hertz(Hz) to frequency in rpm.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a : int or float</span>
+<span class="sd">        frequency, Hertz(Hz).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    b : int or float </span>
+<span class="sd">    frequency, revolution per minute (rpm)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="mi">60</span>
+    <span class="k">return</span> <span class="n">b</span></div>
+
+
+
+<div class="viewcode-block" id="Horsepower_To_Watt">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Horsepower_To_Watt">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Horsepower_To_Watt</span> <span class="p">(</span><span class="n">Horsepower</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Horsepower : float</span>
+<span class="sd">        give number in horsepower.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    watt : float</span>
+<span class="sd">        return your number in watt.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Watt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Horsepower</span> <span class="o">*</span> <span class="mf">745.7</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Watt</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Inch_To_Centimeter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Inch_To_Centimeter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Inch_To_Centimeter</span><span class="p">(</span><span class="n">Inch</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Inch : float or int</span>
+<span class="sd">        ne inch is equal to 2.54 centimeters.</span>
+<span class="sd">        number per Inch unit.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Centimeter : float</span>
+<span class="sd">        number per Centimeter unit.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Centimeter</span><span class="o">=</span><span class="mf">2.54</span><span class="o">*</span><span class="n">Inch</span>
+    <span class="k">return</span> <span class="n">Centimeter</span></div>
+
+
+<div class="viewcode-block" id="Inch_To_Meter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Inch_To_Meter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Inch_To_Meter</span><span class="p">(</span><span class="n">In</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a length value from inches to meters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    In : float</span>
+<span class="sd">        The length value in inches.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The length value in meters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">In</span> <span class="o">/</span> <span class="mf">39.3701</span>
+    <span class="k">return</span> <span class="n">m</span></div>
+
+
+
+
+<div class="viewcode-block" id="Joules_To_Calories">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Joules_To_Calories">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Joules_To_Calories</span><span class="p">(</span><span class="n">J</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    J : float</span>
+<span class="sd">        Joules.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cal : float</span>
+<span class="sd">        Converts joules to calories.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">cal</span><span class="o">=</span><span class="n">J</span><span class="o">/</span><span class="mf">4.184</span>
+    <span class="k">return</span> <span class="n">cal</span></div>
+
+
+<div class="viewcode-block" id="Joules_Per_Minute_To_Kilowatt">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Joules_Per_Minute_To_Kilowatt">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Joules_Per_Minute_To_Kilowatt</span><span class="p">(</span><span class="n">Joules_Per_Minute</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Joules_Per_Minute : float</span>
+<span class="sd">        number per Joules unit.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Kilowatt : float</span>
+<span class="sd">        number per Kilowatt unit.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Kilowatt</span><span class="o">=</span><span class="p">(</span><span class="n">Joules_Per_Minute</span><span class="p">)</span><span class="o">/</span><span class="mi">60000</span>
+    <span class="k">return</span> <span class="n">Kilowatt</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Kilogram_To_Pound">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Kilogram_To_Pound">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Kilogram_To_Pound</span><span class="p">(</span><span class="n">number_in_kilogram</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts the desired number from kilograms to pounds.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_in_kilogram : int</span>
+<span class="sd">        Number per kilogram.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pound : int</span>
+<span class="sd">        Number per pound.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">pound</span><span class="o">=</span><span class="n">number_in_kilogram</span><span class="o">*</span><span class="mf">2.2046</span>
+    <span class="k">return</span> <span class="n">pound</span></div>
+
+
+
+<div class="viewcode-block" id="Kelvin_to_Celcius">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Kelvin_to_Celcius">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Kelvin_to_Celcius</span><span class="p">(</span><span class="n">Kelvin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function is used to convert Kelvin to Celsius.</span>
+<span class="sd">    The temperature in Celsius is different from the temperature in Kelvin by 273.15.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Kelvin : float</span>
+<span class="sd">        The temperature value in Kelvin.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The temperature value in Celsius.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Celcius</span> <span class="o">=</span> <span class="n">Kelvin</span> <span class="o">-</span> <span class="mf">273.15</span>
+    <span class="k">return</span> <span class="n">Celcius</span></div>
+
+
+<div class="viewcode-block" id="Kilogeram_Per_Cubic_Meter_To_Pounds_Per_Cubic_Inch">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Kilogeram_Per_Cubic_Meter_To_Pounds_Per_Cubic_Inch">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Kilogeram_Per_Cubic_Meter_To_Pounds_Per_Cubic_Inch</span><span class="p">(</span><span class="n">KgPerCubicMeter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a density value from kilograms per cubic meter to pounds per cubic inch.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    KgPerCubicMeter : float</span>
+<span class="sd">        The density value in kilograms per cubic meter.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The density value in pounds per cubic inch.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">KgPerCubicMeter</span> <span class="o">*</span> <span class="mf">0.0000361273</span>
+    <span class="k">return</span> <span class="n">L</span></div>
+
+
+
+<div class="viewcode-block" id="KiloMeter_To_LightYear">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.KiloMeter_To_LightYear">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">KiloMeter_To_LightYear</span><span class="p">(</span><span class="n">km</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a distance value from kilometers to light-years.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    km : float</span>
+<span class="sd">        The distance value in kilometers.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The distance value in light-years.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ly</span> <span class="o">=</span> <span class="n">km</span> <span class="o">/</span> <span class="mf">9460730472801.1</span>
+    <span class="k">return</span> <span class="n">ly</span></div>
+
+
+
+
+<div class="viewcode-block" id="Kmph_To_Mps">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Kmph_To_Mps">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Kmph_To_Mps</span><span class="p">(</span><span class="n">V1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function is used to convert kilometers per hour to meters per second.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    V1 : float</span>
+<span class="sd">        The speed value in kilometers per hour.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The speed value in meters per second.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">V2</span> <span class="o">=</span> <span class="n">V1</span> <span class="o">/</span> <span class="mf">3.6</span>
+    <span class="k">return</span> <span class="n">V2</span></div>
+
+
+
+<div class="viewcode-block" id="Kilobyte_To_Byte">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Kilobyte_To_Byte">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Kilobyte_To_Byte</span><span class="p">(</span><span class="n">kb</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a data size value from kilobytes to bytes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    kb : float</span>
+<span class="sd">        The data size value in kilobytes.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The data size value in bytes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="n">kb</span>
+    <span class="k">return</span> <span class="n">b</span></div>
+
+
+
+
+<div class="viewcode-block" id="Kilometer_Per_Hour_To_Meter_Per_Second">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Kilometer_Per_Hour_To_Meter_Per_Second">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Kilometer_Per_Hour_To_Meter_Per_Second</span><span class="p">(</span><span class="n">kph</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a speed value from kilometers per hour to meters per second.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    kph : float</span>
+<span class="sd">        The speed value in kilometers per hour.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The speed value in meters per second.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mps</span> <span class="o">=</span> <span class="n">kph</span> <span class="o">/</span> <span class="mf">3.6</span>
+    <span class="k">return</span> <span class="n">mps</span></div>
+
+
+
+<div class="viewcode-block" id="Kg_To_Ton">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Kg_To_Ton">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Kg_To_Ton</span><span class="p">(</span><span class="n">Kg</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a mass value from kilograms to metric tons.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Kg : float</span>
+<span class="sd">        The mass value in kilograms.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The mass value in metric tons.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Ton</span> <span class="o">=</span> <span class="n">Kg</span> <span class="o">/</span> <span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">Ton</span></div>
+
+
+
+<div class="viewcode-block" id="Kg_To_Lbm">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Kg_To_Lbm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Kg_To_Lbm</span><span class="p">(</span><span class="n">Kg</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a mass value from kilograms to pounds (lbm).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Kg : float</span>
+<span class="sd">        The mass value in kilograms.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The mass value in pounds (lbm).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Lbm</span> <span class="o">=</span> <span class="n">Kg</span> <span class="o">*</span> <span class="mf">2.20462</span>
+    <span class="k">return</span> <span class="n">Lbm</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Liter_To_Cubic_Meter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Liter_To_Cubic_Meter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Liter_To_Cubic_Meter</span><span class="p">(</span><span class="n">number_in_Liter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts liters to cubic meters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_in_Liter : int or float</span>
+<span class="sd">        Number per liter unit.</span>
+<span class="sd">    Cubic_Meter : int or float</span>
+<span class="sd">        Number per cubic meter unit.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Cubic_Meter</span><span class="o">=</span> <span class="n">number_in_Liter</span><span class="o">/</span><span class="mi">1000</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">Cubic_Meter</span><span class="p">)</span></div>
+
+
+
+
+<div class="viewcode-block" id="LightYear_To_KiloMeter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.LightYear_To_KiloMeter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">LightYear_To_KiloMeter</span><span class="p">(</span><span class="n">ly</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a distance value from light-years to kilometers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ly : float</span>
+<span class="sd">        The distance value in light-years.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The distance value in kilometers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">ly</span> <span class="o">*</span> <span class="mf">9460730472801.1</span>
+    <span class="k">return</span> <span class="n">km</span></div>
+
+
+
+<div class="viewcode-block" id="Lbm_To_Kg">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Lbm_To_Kg">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Lbm_To_Kg</span><span class="p">(</span><span class="n">Lbm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a mass value from pounds (lbm) to kilograms.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Lbm : float</span>
+<span class="sd">        The mass value in pounds (lbm).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The mass value in kilograms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Kg</span> <span class="o">=</span> <span class="n">Lbm</span> <span class="o">/</span> <span class="mf">2.20462</span>
+    <span class="k">return</span> <span class="n">Kg</span></div>
+
+
+
+
+<div class="viewcode-block" id="Liter_per_Minute_To_CC_per_Second_Welding_Gas_Flow_Rate_Converter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Liter_per_Minute_To_CC_per_Second_Welding_Gas_Flow_Rate_Converter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Liter_per_Minute_To_CC_per_Second_Welding_Gas_Flow_Rate_Converter</span><span class="p">(</span><span class="n">Liter_per_Minute</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts the Welding Gas Flow Rate from Liter per Minute to CC per Second.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Liter_per_Minute : float</span>
+<span class="sd">        Liter_per_Minute is a unit for gas flow rate in welding.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CC_per_Second is a unit for gas flow rate in welding.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>     
+ 
+    <span class="n">CC_per_Second</span><span class="o">=</span><span class="n">Liter_per_Minute</span><span class="o">*</span><span class="mf">16.67</span>
+    <span class="k">return</span> <span class="n">CC_per_Second</span></div>
+
+
+
+
+
+<span class="c1">#--------m------</span>
+
+
+<div class="viewcode-block" id="Meter_To_MilliMeter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Meter_To_MilliMeter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Meter_To_MilliMeter</span><span class="p">(</span><span class="n">meter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    meter : int</span>
+<span class="sd">        enter the length in meter.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    milimeter : int</span>
+<span class="sd">        This function converts meter into milimeter.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">milimeter</span><span class="o">=</span><span class="n">meter</span><span class="o">*</span><span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">milimeter</span></div>
+
+
+
+
+<div class="viewcode-block" id="MilliMeter_To_Meter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.MilliMeter_To_Meter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">MilliMeter_To_Meter</span> <span class="p">(</span><span class="n">milimeter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    milimeter : int</span>
+<span class="sd">        enter the length in milimeter.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    meter : int</span>
+<span class="sd">        This function converts milimeter into meter.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">meter</span><span class="o">=</span><span class="n">milimeter</span><span class="o">/</span><span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">meter</span></div>
+
+
+
+
+<div class="viewcode-block" id="Micrometer_To_Nanometer">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Micrometer_To_Nanometer">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Micrometer_To_Nanometer</span><span class="p">(</span><span class="n">micrometer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    converting micrometer to nanometer </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    micrometer : float,dimension</span>
+<span class="sd">        DESCRIPTION. The default is 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Nanometer : float,dimension</span>
+<span class="sd">        unit(nm)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Nanometer</span><span class="o">=</span><span class="n">micrometer</span><span class="o">*</span><span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">Nanometer</span></div>
+
+
+<div class="viewcode-block" id="Megapascal_To_Pascal">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Megapascal_To_Pascal">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Megapascal_To_Pascal</span><span class="p">(</span><span class="n">Megapascal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    #This Conventor Convert Megapascal to Pascal</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Megapascal : 1 Megapascal equals 1,000,000 Pascals.</span>
+<span class="sd">    </span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Pascal : the unit of pressure or stress in SI.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">Pascal</span><span class="o">=</span><span class="n">Megapascal</span><span class="o">/</span><span class="mi">1000000</span>
+    <span class="k">return</span> <span class="n">Pascal</span></div>
+
+
+
+<div class="viewcode-block" id="Mps_To_Kmph">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mps_To_Kmph">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mps_To_Kmph</span><span class="p">(</span><span class="n">V1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function is used to convert meter per second to kilometer per hour.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    V1 : float</span>
+<span class="sd">        The speed value in meters per second.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The speed value in kilometers per hour.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">V2</span> <span class="o">=</span> <span class="n">V1</span> <span class="o">*</span> <span class="mf">3.6</span>
+    <span class="k">return</span> <span class="n">V2</span></div>
+
+
+
+<div class="viewcode-block" id="Mile_To_Foot">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mile_To_Foot">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mile_To_Foot</span><span class="p">(</span><span class="n">mi</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a length value from miles to feet.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mi : float</span>
+<span class="sd">        The length value in miles.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The length value in feet.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ft</span> <span class="o">=</span> <span class="mi">5280</span> <span class="o">*</span> <span class="n">mi</span>
+    <span class="k">return</span> <span class="n">ft</span></div>
+
+
+
+<div class="viewcode-block" id="Meter_To_inch">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Meter_To_inch">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Meter_To_inch</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a length value from meters to inches.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    m : float</span>
+<span class="sd">        The length value in meters.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The length value in inches.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">In</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mf">39.3701</span>
+    <span class="k">return</span> <span class="n">In</span></div>
+
+
+
+
+<div class="viewcode-block" id="Miller_To_Millerbrove">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Miller_To_Millerbrove">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Miller_To_Millerbrove</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">       this function converts miller index to miller_brove index</span>
+
+<span class="sd">     parameters: (miller indexes)</span>
+<span class="sd">     ---------------------------  </span>
+<span class="sd">        1. u: int</span>
+<span class="sd">        Intersection with axis a1</span>
+<span class="sd">        </span>
+<span class="sd">        2. v: int</span>
+<span class="sd">        Intersection with axis a2</span>
+<span class="sd">        </span>
+<span class="sd">        3. w: int</span>
+<span class="sd">        Intersection with axis z</span>
+<span class="sd">        </span>
+<span class="sd">    Returns --&gt; (miller_brove indexes)</span>
+<span class="sd">            </span>
+<span class="sd">       1. l: int</span>
+<span class="sd">       Intersection with axis a1</span>
+<span class="sd">       </span>
+<span class="sd">       2. m: int</span>
+<span class="sd">       Intersection with axis a2</span>
+<span class="sd">       </span>
+<span class="sd">       3. n: int</span>
+<span class="sd">       Intersection with axis a3</span>
+<span class="sd">       </span>
+<span class="sd">       4. o: int</span>
+<span class="sd">       Intersection with axis z</span>
+<span class="sd">      </span>
+<span class="sd">  &#39;&#39;&#39;</span>
+  
+    <span class="n">l</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">w</span>
+    
+    <span class="k">return</span> <span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">o</span></div>
+
+  
+
+<div class="viewcode-block" id="Millerbrove_To_Miller">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Millerbrove_To_Miller">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Millerbrove_To_Miller</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">o</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">       this function converts miller_brove index to miller index</span>
+
+<span class="sd">    Parameters: (miller_brove indexes)</span>
+<span class="sd">    -----------------------------------</span>
+<span class="sd">        1. l: int</span>
+<span class="sd">       Intersection with axis a1</span>
+<span class="sd">       </span>
+<span class="sd">       2. m: int</span>
+<span class="sd">       Intersection with axis a2</span>
+<span class="sd">       </span>
+<span class="sd">       3. n: int</span>
+<span class="sd">       Intersection with axis a3</span>
+<span class="sd">       </span>
+<span class="sd">       4. o: int</span>
+<span class="sd">       Intersection with axis z</span>
+<span class="sd">       </span>
+<span class="sd">      Returns --&gt; (miller indexes)</span>
+<span class="sd">             </span>
+<span class="sd">        1. u: int</span>
+<span class="sd">        Intersection with axis a1</span>
+<span class="sd">        </span>
+<span class="sd">        2. v: int</span>
+<span class="sd">        Intersection with axis a2</span>
+<span class="sd">        </span>
+<span class="sd">        3. w: int</span>
+<span class="sd">        Intersection with axis z</span>
+<span class="sd">  &#39;&#39;&#39;</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="n">l</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">o</span>
+    
+    
+    <span class="k">return</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span></div>
+
+
+
+<div class="viewcode-block" id="Meter_To_Angstrom">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Meter_To_Angstrom">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Meter_To_Angstrom</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a length value from meters to Angstroms.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    m : float</span>
+<span class="sd">        The length value in meters.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The length value in Angstroms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">m</span> <span class="o">*</span> <span class="mf">1e10</span></div>
+
+
+
+<div class="viewcode-block" id="Milimeter_To_Angstrom">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Milimeter_To_Angstrom">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Milimeter_To_Angstrom</span><span class="p">(</span><span class="n">mm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a length value from millimeters to Angstroms.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mm : float</span>
+<span class="sd">        The length value in millimeters.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The length value in Angstroms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mm</span> <span class="o">*</span> <span class="mf">1e7</span></div>
+
+
+
+<div class="viewcode-block" id="Micrometer_To_Angstrom">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Micrometer_To_Angstrom">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Micrometer_To_Angstrom</span><span class="p">(</span><span class="n">um</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a length value from micrometers to Angstroms.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    um : float</span>
+<span class="sd">        The length value in micrometers.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The length value in Angstroms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">um</span> <span class="o">*</span> <span class="mi">10000</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Meter_Per_Second_To_Kilometer_Per_Hour">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Meter_Per_Second_To_Kilometer_Per_Hour">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Meter_Per_Second_To_Kilometer_Per_Hour</span><span class="p">(</span><span class="n">mps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mps: float</span>
+<span class="sd">         number in meter per second</span>
+<span class="sd">    kph: float</span>
+<span class="sd">         number in kilometer per hour</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">kph</span><span class="o">=</span><span class="n">mps</span><span class="o">/</span><span class="mf">3.6</span>
+    <span class="k">return</span> <span class="n">kph</span></div>
+
+
+
+
+
+
+
+<div class="viewcode-block" id="Mole_To_Gram">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mole_To_Gram">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mole_To_Gram</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span><span class="n">MW</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function calaculates the eqivalent mass of a compound in gram(s) base on amount of substance in mole(s).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mol : float</span>
+<span class="sd">        mol is the eqivalent amount of substance of a compound in mole(s).</span>
+<span class="sd">    MW : float</span>
+<span class="sd">        MW is the Molecular weight of a compound (gram/mole).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    g : float</span>
+<span class="sd">        g is the eqivalent mass in of a compound in in gram(s).</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">mol</span> <span class="o">*</span> <span class="n">MW</span>
+    <span class="k">return</span> <span class="n">g</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Mass_To_Mole">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mass_To_Mole">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mass_To_Mole</span><span class="p">(</span><span class="n">Mass</span><span class="p">,</span><span class="n">Molar_Mass</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Mass : float</span>
+<span class="sd">        The mass of substance(g).</span>
+<span class="sd">    Molar_Mass : float</span>
+<span class="sd">        The mass of one mole of substance (g/mol).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Mole: int</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Mole</span><span class="o">=</span><span class="n">Mass</span><span class="o">/</span><span class="n">Molar_Mass</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">Mole</span><span class="p">)</span></div>
+
+
+
+
+<div class="viewcode-block" id="Mole_To_Mass">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mole_To_Mass">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mole_To_Mass</span><span class="p">(</span><span class="n">Mole</span><span class="p">,</span><span class="n">Molar_Mass</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Mole : int</span>
+<span class="sd">        </span>
+<span class="sd">    Molar_Mass : float</span>
+<span class="sd">        The mass of one mole of substance (g/mol).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Mass (g) : Float.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Mass</span><span class="o">=</span><span class="n">Mole</span><span class="o">*</span><span class="n">Molar_Mass</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">Mass</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Mpa_To_Psi">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mpa_To_Psi">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mpa_To_Psi</span><span class="p">(</span><span class="n">Num_Mpa</span><span class="p">,</span><span class="o">/</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    </span>
+<span class="sd">    Num_Mpa : float</span>
+<span class="sd">        Megapascals=Newton per square millimetre</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Psi : float</span>
+<span class="sd">        Psi=Pounds force per square inch </span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Psi</span><span class="o">=</span><span class="n">Num_Mpa</span><span class="o">*</span><span class="mi">145</span>
+    <span class="k">return</span> <span class="n">Psi</span></div>
+
+
+
+<div class="viewcode-block" id="Meter_per_Hour_To_Centimeter_per_Minute_Welding_Speed_Converter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Meter_per_Hour_To_Centimeter_per_Minute_Welding_Speed_Converter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Meter_per_Hour_To_Centimeter_per_Minute_Welding_Speed_Converter</span><span class="p">(</span><span class="n">Meter_per_Hour</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts the Welding Speed from Meter per Hour to Centimeter per Minute.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Meter_per_Hour : float</span>
+<span class="sd">        Meter_per_Hour is a unit for welding speed.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Centimeter_per_Minute is a unit for welding speed.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>     
+ 
+    <span class="n">Centimeter_per_Minute</span><span class="o">=</span><span class="n">Meter_per_Hour</span><span class="o">*</span><span class="mf">1.7</span>
+    <span class="k">return</span> <span class="n">Centimeter_per_Minute</span></div>
+
+
+
+
+<div class="viewcode-block" id="Mm_year_To_Mils_year">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mm_year_To_Mils_year">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mm_year_To_Mils_year</span><span class="p">(</span><span class="n">milpy</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a corrosion rate from millimeters per year (mm/yr) to mils per year (mpy).</span>
+<span class="sd">    1 mm/yr = 39.37 mpy</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    milpy : float</span>
+<span class="sd">        The corrosion rate in millimeters per year.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The corrosion rate in mils per year.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mpy</span> <span class="o">=</span> <span class="mf">39.37</span> <span class="o">*</span> <span class="n">milpy</span>
+    <span class="k">return</span> <span class="n">mpy</span></div>
+
+
+
+<div class="viewcode-block" id="Mils_year_To_Mm_year">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mils_year_To_Mm_year">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mils_year_To_Mm_year</span><span class="p">(</span><span class="n">mpy</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a corrosion rate from mils per year (mpy) to millimeters per year (mm/yr).</span>
+<span class="sd">    1 mm/yr = 39.37 mpy</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mpy : float</span>
+<span class="sd">        The corrosion rate in mils per year.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The corrosion rate in millimeters per year.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Mm_year</span> <span class="o">=</span> <span class="n">mpy</span> <span class="o">/</span> <span class="mf">39.37</span>
+    <span class="k">return</span> <span class="n">Mm_year</span></div>
+
+
+
+
+<div class="viewcode-block" id="Mpy_To_current_density">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Mpy_To_current_density">[docs]</a>
+<span class="k">def</span><span class="w">  </span><span class="nf">Mpy_To_current_density</span><span class="p">(</span><span class="n">mpy</span><span class="p">,</span><span class="n">density</span><span class="p">,</span><span class="n">masschange</span><span class="p">,</span><span class="n">valency</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mpy : float</span>
+<span class="sd">        corrosion rate in mpy</span>
+<span class="sd">    density : float</span>
+<span class="sd">        materails density </span>
+<span class="sd">    masschange : float</span>
+<span class="sd">        amount of mass corroded </span>
+<span class="sd">    valency : int</span>
+<span class="sd">        how positive is the charge</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Current density </span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Current_density</span><span class="o">=</span><span class="p">(</span><span class="n">mpy</span><span class="o">*</span><span class="mf">1e6</span><span class="o">*</span><span class="n">density</span><span class="o">*</span><span class="mf">2.5</span><span class="o">*</span><span class="n">valency</span><span class="o">*</span><span class="mi">96500</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">31536000</span><span class="o">*</span><span class="n">masschange</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Current_density</span></div>
+
+
+
+
+<div class="viewcode-block" id="Minute_To_Second">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Minute_To_Second">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Minute_To_Second</span> <span class="p">(</span><span class="n">Minute</span><span class="p">):</span> 
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts minutes to seconds </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Minute : int</span>
+<span class="sd">       units of time in minute</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    </span>
+<span class="sd">    int</span>
+<span class="sd">        Minute_to_Second</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+       
+          
+    <span class="k">return</span> <span class="p">(</span><span class="n">Minute</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>   </div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Nanometer_To_Micrometer">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Nanometer_To_Micrometer">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Nanometer_To_Micrometer</span><span class="p">(</span><span class="n">nanometer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    converting nanometer to micrometer</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    nanometer : float,dimension</span>
+<span class="sd">      unit (nm)</span>
+<span class="sd">      DESCRIPTION. The default is 1.</span>
+<span class="sd">      </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Micrometer : float,dimension</span>
+<span class="sd">      </span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Micrometer</span><span class="o">=</span><span class="n">nanometer</span><span class="o">/</span><span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">Micrometer</span></div>
+
+
+
+<div class="viewcode-block" id="Newton_TO_Pound_Force">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Newton_TO_Pound_Force">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Newton_TO_Pound_Force</span><span class="p">(</span><span class="n">Newton</span><span class="p">):</span>
+     <span class="c1"># 1 Pound_Force = 4.448221619 New</span>
+     
+     
+     <span class="n">Pound_Force</span> <span class="o">=</span> <span class="n">Newton</span> <span class="o">/</span> <span class="mf">4.448221619</span>
+<span class="w">     </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">     #It converts the Force from Newton to Pound_Force.</span>
+<span class="sd">     </span>
+<span class="sd">     Parameters:</span>
+<span class="sd">     ----------</span>
+<span class="sd">         </span>
+<span class="sd">     Newton : float</span>
+<span class="sd">         Unit musst be newton(N).</span>
+<span class="sd">         </span>
+<span class="sd">     &#39;&#39;&#39;</span>
+     <span class="k">return</span> <span class="n">Pound_Force</span></div>
+
+ 
+
+
+<div class="viewcode-block" id="Normality_To_Molarity">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Normality_To_Molarity">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Normality_To_Molarity</span><span class="p">(</span><span class="n">Normality</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Normality : float</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of moles.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Molarity.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Molarity</span><span class="o">=</span><span class="n">Normality</span><span class="o">/</span><span class="n">n</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">Molarity</span><span class="p">)</span></div>
+
+    
+
+
+<div class="viewcode-block" id="Nanometer_To_Angstrom">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Nanometer_To_Angstrom">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Nanometer_To_Angstrom</span><span class="p">(</span><span class="n">Nanometer_value</span><span class="p">):</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts Nanometers to Angstroms.</span>
+<span class="sd">    1 Nanometer(nm)= 10 Angstroms(Å)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Nanometer_value: int or float</span>
+<span class="sd">        Value in Nanometers(nm).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Angstrom_value: int or float</span>
+<span class="sd">        Equivalent value in Angstroms(Å).</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Angstrom_value</span><span class="o">=</span> <span class="n">Nanometer_value</span><span class="o">*</span><span class="mi">10</span>
+    <span class="k">return</span> <span class="n">Angstrom_value</span></div>
+
+
+<div class="viewcode-block" id="Newton_To_Foot_Pound">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Newton_To_Foot_Pound">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Newton_To_Foot_Pound</span><span class="p">(</span><span class="n">Newton_Meters</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    # This Conventor convert Nm to ft-lbs</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Newton_Meters : The newton-metre is the unit of torque.(Nm)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Foot_Pound : a unit of torque equal to the force of 1 lb acting perpendicularly to </span>
+<span class="sd">    an axis of rotation at a distance of 1 foot.(ft-lbs)</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>    
+    
+    <span class="n">Foot_Pound</span><span class="o">=</span><span class="n">Newton_Meters</span><span class="o">*</span><span class="mf">0.7376</span>
+    <span class="k">return</span> <span class="n">Foot_Pound</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Pounds_Per_Cubic_Inch_To_Kilogeram_Per_Cubic_Meter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pounds_Per_Cubic_Inch_To_Kilogeram_Per_Cubic_Meter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pounds_Per_Cubic_Inch_To_Kilogeram_Per_Cubic_Meter</span><span class="p">(</span><span class="n">LbPerCubicInch</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a density value from pounds per cubic inch to kilograms per cubic meter.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    LbPerCubicInch : float</span>
+<span class="sd">        The density value in pounds per cubic inch.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The density value in kilograms per cubic meter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Kg</span> <span class="o">=</span> <span class="n">LbPerCubicInch</span> <span class="o">*</span> <span class="mf">27679.9</span>
+    <span class="k">return</span> <span class="n">Kg</span></div>
+
+
+
+
+<div class="viewcode-block" id="Pascal_To_Megapascal">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pascal_To_Megapascal">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pascal_To_Megapascal</span><span class="p">(</span><span class="n">Pascal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    # This Conventor Convert Pascal to Megapascal</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Pascal : the unit of pressure or stress in SI.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Megapascal : 1 Megapascal equals 1,000,000 Pascals.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">Megapascal</span><span class="o">=</span><span class="mi">1000000</span><span class="o">*</span><span class="n">Pascal</span>
+    <span class="k">return</span> <span class="n">Megapascal</span></div>
+
+
+
+
+  
+<div class="viewcode-block" id="Pound_Force_To_Newton">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pound_Force_To_Newton">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pound_Force_To_Newton</span><span class="p">(</span><span class="n">Pound_Force</span><span class="p">):</span>
+    
+    <span class="n">Newton</span> <span class="o">=</span> <span class="n">Pound_Force</span> <span class="o">*</span> <span class="mf">4.448221619</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    It converts the Force from Pound_Force to Newton.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    ----------</span>
+<span class="sd">    </span>
+<span class="sd">    Pound_Force : float</span>
+<span class="sd">        Unit musst be lb.</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="k">return</span> <span class="n">Newton</span></div>
+
+
+
+
+<div class="viewcode-block" id="Pascal_To_Atmosphere">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pascal_To_Atmosphere">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pascal_To_Atmosphere</span><span class="p">(</span><span class="n">Pa</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a pressure value from Pascals to atmospheres.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Pa : float</span>
+<span class="sd">        The pressure value in Pascals.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The pressure value in atmospheres.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">atm</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">Pa</span> <span class="o">/</span> <span class="mi">101325</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">atm</span></div>
+
+
+
+<div class="viewcode-block" id="Percentages_To_Moles">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Percentages_To_Moles">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Percentages_To_Moles</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">percentages</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the number of moles of each component in a mixture given their percentages by weight and the total weight.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    total : float</span>
+<span class="sd">        The total weight of the mixture.</span>
+<span class="sd">    percentages : dict</span>
+<span class="sd">        A dictionary where keys are the names of the materials and values are their weight percentages.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        A dictionary where keys are the names of the materials and values are their corresponding number of moles.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Define the molecular weight of the composite mixture</span>
+    <span class="n">molar_weight</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;TEGDMA&#39;</span><span class="p">:</span> <span class="mf">156.27</span><span class="p">,</span> <span class="s1">&#39;BIS_GMA&#39;</span><span class="p">:</span> <span class="mf">512.67</span><span class="p">,</span> <span class="s1">&#39;UDMA&#39;</span><span class="p">:</span> <span class="mf">398.48</span><span class="p">,</span>
+                    <span class="s1">&#39;Silica dioxide&#39;</span><span class="p">:</span> <span class="mf">60.08</span><span class="p">,</span> <span class="s1">&#39;Barium silicate&#39;</span><span class="p">:</span> <span class="mf">233.39</span><span class="p">,</span> <span class="s1">&#39;Zirconium dioxide&#39;</span><span class="p">:</span> <span class="mf">123.22</span>
+                    <span class="p">}</span>
+
+    <span class="c1"># Calculate the moles of each material</span>
+    <span class="n">moles</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">material</span><span class="p">,</span> <span class="n">percent</span> <span class="ow">in</span> <span class="n">percentages</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">moles</span><span class="p">[</span><span class="n">material</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">percent</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="n">molar_weight</span><span class="p">[</span><span class="n">material</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">moles</span></div>
+
+
+
+
+<div class="viewcode-block" id="Pascal_to_mmHg">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pascal_to_mmHg">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pascal_to_mmHg</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function convert pascal to mmHg</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    p : float</span>
+<span class="sd">        pressure (Pa).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">mmHg</span><span class="o">=</span><span class="n">p</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">mmHg</span></div>
+
+
+
+
+
+
+
+
+
+<div class="viewcode-block" id="Pascal_To_CmHg">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pascal_To_CmHg">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pascal_To_CmHg</span><span class="p">(</span><span class="n">P1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function is used to convert Pascal to centimeter mercury.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    P1 : float</span>
+<span class="sd">        The pressure value in Pascals.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The pressure value in centimeters of mercury (cmHg).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">P2</span> <span class="o">=</span> <span class="n">P1</span> <span class="o">/</span> <span class="mf">1333.22</span>
+    <span class="k">return</span> <span class="n">P2</span></div>
+
+
+
+<div class="viewcode-block" id="Ppm_To_Percent">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Ppm_To_Percent">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Ppm_To_Percent</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a concentration value from parts per million (ppm) to percent.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a : float</span>
+<span class="sd">        The ion concentration in ppm in brine.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The ion percent in brine.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="mi">10000</span>
+    <span class="k">return</span> <span class="n">b</span></div>
+
+
+
+<div class="viewcode-block" id="Percent_To_Ppm">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Percent_To_Ppm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Percent_To_Ppm</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a concentration value from percent to parts per million (ppm).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a : float</span>
+<span class="sd">        The ion percent in brine.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The ion concentration in ppm in brine.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">10000</span>
+    <span class="k">return</span> <span class="n">b</span></div>
+
+
+
+<div class="viewcode-block" id="Pascal_To_Torr">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pascal_To_Torr">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pascal_To_Torr</span><span class="p">(</span><span class="n">pa</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function converts Pascal to Torr.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pa : float</span>
+<span class="sd">        The pressure value in Pascals.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The pressure value in Torr.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">torr</span> <span class="o">=</span> <span class="n">pa</span> <span class="o">/</span> <span class="mf">133.322</span>
+    <span class="k">return</span> <span class="n">torr</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Pascal_To_Bar">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pascal_To_Bar">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pascal_To_Bar</span><span class="p">(</span><span class="n">Pa</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Pa : float</span>
+<span class="sd">        Pascal.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bar : float</span>
+<span class="sd">        Converts pascal to bar.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">bar</span><span class="o">=</span><span class="n">Pa</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bar</span></div>
+
+
+
+<div class="viewcode-block" id="Psi_To_Mpa">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Psi_To_Mpa">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Psi_To_Mpa</span><span class="p">(</span><span class="n">Num_Psi</span><span class="p">,</span><span class="o">/</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    </span>
+<span class="sd">    Num_Psi : float</span>
+<span class="sd">        Psi = Pounds force per square inch </span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Mpa : float</span>
+<span class="sd">        Megapascals=Newton per square millimetre</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Mpa</span><span class="o">=</span><span class="n">Num_Psi</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">145</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Mpa</span></div>
+
+
+
+
+ 
+
+
+
+
+
+<div class="viewcode-block" id="Pound_To_Kilogram">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Pound_To_Kilogram">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pound_To_Kilogram</span><span class="p">(</span><span class="n">number_in_pound</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts the desired number from pounds to kilograms.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_in_pound : int</span>
+<span class="sd">        Number per pound.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    kilogram : int</span>
+<span class="sd">        Number per kilogram.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">kilogram</span><span class="o">=</span><span class="n">number_in_pound</span><span class="o">/</span><span class="mf">2.2046</span>
+    <span class="k">return</span> <span class="n">kilogram</span></div>
+
+
+
+
+
+
+
+
+<div class="viewcode-block" id="Molarity_To_Normality">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Molarity_To_Normality">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Molarity_To_Normality</span><span class="p">(</span><span class="n">Molarity</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Molarity : float</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of moles.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Normality.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Normality</span><span class="o">=</span><span class="n">Molarity</span><span class="o">*</span><span class="n">n</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">Normality</span><span class="p">)</span></div>
+
+
+
+
+
+
+<div class="viewcode-block" id="Square_Meter_To_Square_Cm">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Square_Meter_To_Square_Cm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Square_Meter_To_Square_Cm</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    b: int</span>
+<span class="sd">        Square_meter </span>
+<span class="sd">    -------</span>
+<span class="sd">    c : int</span>
+<span class="sd">         Square_Cm</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">c</span> <span class="o">=</span><span class="n">b</span><span class="o">*</span><span class="mi">10000</span>
+    <span class="k">return</span> <span class="n">c</span></div>
+
+
+<div class="viewcode-block" id="Square_Cm_To_Square_meter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Square_Cm_To_Square_meter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Square_Cm_To_Square_meter</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a : int</span>
+<span class="sd">        Square_Cm</span>
+<span class="sd">    -------</span>
+<span class="sd">    c : int</span>
+<span class="sd">       Square_Meter</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">/</span><span class="mi">10000</span>
+    <span class="k">return</span> <span class="n">c</span></div>
+
+
+
+<div class="viewcode-block" id="Second_To_Minute">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Second_To_Minute">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Second_To_Minute</span> <span class="p">(</span><span class="n">Second</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This function converts seconds to minutes</span>
+<span class="sd">        Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Second : int</span>
+<span class="sd">        units of time in seconds</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    int</span>
+<span class="sd">       </span>
+<span class="sd">      Second_to_Minute</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">Second</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Sec_To_Hour">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Sec_To_Hour">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Sec_To_Hour</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a time value from seconds to hours.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t : float</span>
+<span class="sd">        The time value in seconds.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The time value in hours.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">3600</span>
+    <span class="k">return</span> <span class="n">t</span></div>
+
+
+
+<div class="viewcode-block" id="Radians_To_Degrees">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Radians_To_Degrees">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Radians_To_Degrees</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function is used to convert radians to degrees.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    num : float</span>
+<span class="sd">        The angle value in radians.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The angle value in degrees.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">degree</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+    <span class="k">return</span> <span class="n">degree</span></div>
+
+
+<div class="viewcode-block" id="Rpm_To_Hertz">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Rpm_To_Hertz">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Rpm_To_Hertz</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="o">/</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">   A converter machine to convert frequency in rpm to frequency in Herta(Hz).</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    b : int or float</span>
+<span class="sd">        frequency, revolution per minute (rpm).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    a, frequency, Hertz(Hz)</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="o">/</span><span class="mi">60</span>
+    <span class="k">return</span> <span class="n">a</span></div>
+
+
+
+
+<div class="viewcode-block" id="Torr_To_Pascal">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Torr_To_Pascal">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Torr_To_Pascal</span><span class="p">(</span><span class="n">torr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function converts Torr to Pascal.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    torr : float</span>
+<span class="sd">        The pressure value in Torr.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The pressure value in Pascals.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pa</span> <span class="o">=</span> <span class="n">torr</span> <span class="o">*</span> <span class="mf">133.322</span>
+    <span class="k">return</span> <span class="n">pa</span></div>
+
+
+
+<div class="viewcode-block" id="Viscosity_To_Poise">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Viscosity_To_Poise">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Viscosity_To_Poise</span><span class="p">(</span><span class="n">pa_s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts dynamic viscosity from Pascal-seconds (Pa·s) to Poise (P).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pa_s : float</span>
+<span class="sd">        The dynamic viscosity in Pascal-seconds.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The dynamic viscosity in Poise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">poise</span> <span class="o">=</span> <span class="n">pa_s</span> <span class="o">*</span> <span class="mi">10</span>
+    <span class="k">return</span> <span class="n">poise</span></div>
+
+
+
+<div class="viewcode-block" id="Viscosity_To_Pas">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Viscosity_To_Pas">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Viscosity_To_Pas</span><span class="p">(</span><span class="n">poise</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts dynamic viscosity from Poise (P) to Pascal-seconds (Pa·s).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    poise : float</span>
+<span class="sd">        The dynamic viscosity in Poise.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The dynamic viscosity in Pascal-seconds.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pa_s</span> <span class="o">=</span> <span class="n">poise</span> <span class="o">/</span> <span class="mi">10</span>
+    <span class="k">return</span> <span class="n">pa_s</span></div>
+
+
+    
+
+
+
+
+
+
+<div class="viewcode-block" id="Yarn_Count_Converter">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Yarn_Count_Converter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Yarn_Count_Converter</span><span class="p">(</span><span class="n">Yarn_Count</span><span class="p">,</span> <span class="n">Current_System</span><span class="o">=</span><span class="s1">&#39;tex&#39;</span><span class="p">,</span> <span class="n">Desired_System</span><span class="o">=</span><span class="s1">&#39;den&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function converts yarn count values in different systems.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Yarn_Count : int or float</span>
+<span class="sd">        Number of yarn count.</span>
+<span class="sd">    Current_System : str, optional</span>
+<span class="sd">        Current yarn count system. The default is &#39;tex&#39;.</span>
+<span class="sd">    Desired_System : str, optional</span>
+<span class="sd">        Expected yarn count system. The default is &#39;den&#39;.</span>
+<span class="sd">    Yarn_Count : int or float</span>
+<span class="sd">        Result.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">sys1</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">Current_System</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">sys2</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">Desired_System</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="n">Yarn_Count</span><span class="o">*</span><span class="mi">10</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;den&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="n">Yarn_Count</span><span class="o">*</span><span class="mi">9</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">1000</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+      
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">590.5</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">885.8</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="n">Yarn_Count</span><span class="o">*</span><span class="mf">0.1</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;den&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="n">Yarn_Count</span><span class="o">*</span><span class="mf">0.9</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">5905.4</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">8858</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">10000</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;den&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="n">Yarn_Count</span><span class="o">/</span><span class="mi">9</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+        
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;den&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="n">Yarn_Count</span><span class="o">/</span><span class="mf">0.9</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;den&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">9000</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;den&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">5314.9</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+        
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;den&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">7972</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">590.6</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">5906</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;den&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">5315</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">1.693</span><span class="o">*</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">1.5</span><span class="o">*</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">1000</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">10000</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;den&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">9000</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">0.59</span><span class="o">*</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">0.89</span><span class="o">*</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;tex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">885.8</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;dtex&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">8858</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;den&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mi">7972</span><span class="o">/</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;nm&#39;</span><span class="p">:</span>
+        <span class="n">Yarn_Count</span><span class="o">=</span><span class="mf">1.129</span><span class="o">*</span><span class="n">Yarn_Count</span>
+        <span class="k">return</span> <span class="n">Yarn_Count</span>
+    
+    <span class="k">elif</span> <span class="n">sys1</span><span class="o">==</span><span class="s1">&#39;nw&#39;</span> <span class="ow">and</span> <span class="n">sys2</span><span class="o">==</span><span class="s1">&#39;ne&#39;</span><span class="p">:</span>
+       <span class="n">Yarn_Count</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">Yarn_Count</span>
+       <span class="k">return</span> <span class="n">Yarn_Count</span> 
+    
+    <span class="k">else</span><span class="p">:</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your inputs are invalid!&quot;</span><span class="p">)</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Weightpercent_To_ppm">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Weightpercent_To_ppm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Weightpercent_To_ppm</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function is used to convert weight percent to ppm (parts per million).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    num : float</span>
+<span class="sd">        The concentration in weight percent.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The concentration in ppm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ppm</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">10000</span>
+    <span class="k">return</span> <span class="n">ppm</span></div>
+
+
+
+<div class="viewcode-block" id="Watt_To_Horsepower">
+<a class="viewcode-back" href="../../convertors.html#PyGamLab.Convertors.Watt_To_Horsepower">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">Watt_To_Horsepower</span> <span class="p">(</span><span class="n">Watt</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Watt : float</span>
+<span class="sd">        give number in Watt.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Horsepower : float</span>
+<span class="sd">        return number in Horsepower.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Horsepower</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Watt</span> <span class="o">/</span> <span class="mf">745.7</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Horsepower</span></div>
+
+
+
+
+
+
+
+    
+
+
+
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=a12e3537"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

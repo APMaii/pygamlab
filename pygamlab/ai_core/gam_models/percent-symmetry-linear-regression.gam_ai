@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "model_name": "percent-symmetry-linear-regression",
+        "model_type": "train/test",
+        "description": "At the lowest temperatures, where the rotation of the carboxylic groups is less likely, proton transfer processes prevail and are responsible for the loss of C3h symmetry. In the case of the close-packed structure, the C3h symmetry of TMA molecules is maintained in a wide temperature range because proton exchange does not occur in cyclic trimers. On the contrary, the percentage of C3h molecules rapidly falls to 20% in the case of the honeycomb structure.",
+        "author_name": "F. Lin, Y. Xiang, Hui-Shen Shen",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": {
+            "MAE": 17.656086754715385,
+            "MSE": 474.8057843358526,
+            "RMSE": 21.790038649251006,
+            "R2": 0.4586269904042545,
+            "MAPE": 0.313502011549735
+        },
+        "doi": "http://dx.doi.org/10.1016/j.compositesb.2016.12.004",
+        "hyperparam_range": "None",
+        "best_params": "None"
+    },
+    "model_data": "gASVVQEAAAAAAACMGnNrbGVhcm4ubGluZWFyX21vZGVsLl9iYXNllIwQTGluZWFyUmVncmVzc2lvbpSTlCmBlH2UKIwNZml0X2ludGVyY2VwdJSIjAZjb3B5X1iUiIwGbl9qb2JzlE6MCHBvc2l0aXZllImMDm5fZmVhdHVyZXNfaW5flEsCjAVjb2VmX5SME2pvYmxpYi5udW1weV9waWNrbGWUjBFOdW1weUFycmF5V3JhcHBlcpSTlCmBlH2UKIwIc3ViY2xhc3OUjAVudW1weZSMB25kYXJyYXmUk5SMBXNoYXBllEsChZSMBW9yZGVylIwBQ5SMBWR0eXBllGgRjAVkdHlwZZSTlIwCZjiUiYiHlFKUKEsDjAE8lE5OTkr/////Sv////9LAHSUYowKYWxsb3dfbW1hcJSIjBtudW1weV9hcnJheV9hbGlnbm1lbnRfYnl0ZXOUSxB1Yg////////////////////+ZG6K7AhFPwNym3KDl+0HAlTkAAAAAAAAAjAVyYW5rX5RLAowJc2luZ3VsYXJflGgNKYGUfZQoaBBoE2gUSwKFlGgWaBdoGGgdaCCIaCFLEHViDf////////////////+3n9sJ6c38P/nD+qwfv/U/lV8AAAAAAAAAjAppbnRlcmNlcHRflIwVbnVtcHkuY29yZS5tdWx0aWFycmF5lIwGc2NhbGFylJOUaB1DCNAHPxcIQVxAlIaUUpSMEF9za2xlYXJuX3ZlcnNpb26UjAUxLjQuMpR1Yi4="
+}

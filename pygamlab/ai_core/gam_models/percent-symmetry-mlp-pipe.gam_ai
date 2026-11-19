@@ -1,0 +1,59 @@
+{
+    "metadata": {
+        "model_name": "percent-symmetry-mlp-pipe",
+        "model_type": "pipe",
+        "description": "At the lowest temperatures, where the rotation of the carboxylic groups is less likely, proton transfer processes prevail and are responsible for the loss of C3h symmetry. In the case of the close-packed structure, the C3h symmetry of TMA molecules is maintained in a wide temperature range because proton exchange does not occur in cyclic trimers. On the contrary, the percentage of C3h molecules rapidly falls to 20% in the case of the honeycomb structure.",
+        "author_name": "F. Lin, Y. Xiang, Hui-Shen Shen",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": "(Pipeline(steps=[('scaler', MinMaxScaler()),\n                ('model',\n                 MLPRegressor(activation='tanh', alpha=0.01,\n                              early_stopping=True, hidden_layer_sizes=(4, 4),\n                              max_iter=1000, random_state=42,\n                              solver='lbfgs'))]), -0.34405117510654354)",
+        "doi": "http://dx.doi.org/10.1016/j.compositesb.2016.12.004",
+        "hyperparam_range": {
+            "model__hidden_layer_sizes": [
+                [
+                    4
+                ],
+                [
+                    6
+                ],
+                [
+                    4,
+                    4
+                ]
+            ],
+            "model__activation": [
+                "tanh",
+                "relu"
+            ],
+            "model__solver": [
+                "lbfgs",
+                "adam"
+            ],
+            "model__alpha": [
+                0.001,
+                0.005,
+                0.01
+            ],
+            "model__learning_rate": [
+                "constant"
+            ],
+            "model__max_iter": [
+                300,
+                600,
+                1000
+            ],
+            "model__early_stopping": [
+                true
+            ],
+            "model__tol": [
+                0.0001,
+                0.001
+            ],
+            "model__random_state": [
+                42
+            ]
+        },
+        "best_params": "None"
+    },
+    "model_data": "gASVLgIAAAAAAACMLXNrbGVhcm4ubmV1cmFsX25ldHdvcmsuX211bHRpbGF5ZXJfcGVyY2VwdHJvbpSMDE1MUFJlZ3Jlc3NvcpSTlCmBlH2UKIwKYWN0aXZhdGlvbpSMBHJlbHWUjAZzb2x2ZXKUjARhZGFtlIwFYWxwaGGURz8aNuLrHEMtjApiYXRjaF9zaXpllIwEYXV0b5SMDWxlYXJuaW5nX3JhdGWUjAhjb25zdGFudJSMEmxlYXJuaW5nX3JhdGVfaW5pdJRHP1BiTdLxqfyMB3Bvd2VyX3SURz/gAAAAAAAAjAhtYXhfaXRlcpRLyIwEbG9zc5SMDXNxdWFyZWRfZXJyb3KUjBJoaWRkZW5fbGF5ZXJfc2l6ZXOUS2SFlIwHc2h1ZmZsZZSIjAxyYW5kb21fc3RhdGWUTowDdG9slEc/Gjbi6xxDLYwHdmVyYm9zZZSJjAp3YXJtX3N0YXJ0lImMCG1vbWVudHVtlEc/7MzMzMzMzYwSbmVzdGVyb3ZzX21vbWVudHVtlIiMDmVhcmx5X3N0b3BwaW5nlImME3ZhbGlkYXRpb25fZnJhY3Rpb26URz+5mZmZmZmajAZiZXRhXzGURz/szMzMzMzNjAZiZXRhXzKURz/v987ZFocrjAdlcHNpbG9ulEc+RXmO4jCMOowQbl9pdGVyX25vX2NoYW5nZZRLCowHbWF4X2Z1bpRNmDqMEF9za2xlYXJuX3ZlcnNpb26UjAUxLjQuMpR1Yi4="
+}

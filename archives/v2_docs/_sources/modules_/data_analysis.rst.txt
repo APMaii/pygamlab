@@ -1,0 +1,18 @@
+Data_Analysis Module
+====================
+
+Tools for **data preprocessing, analysis, and visualization**.
+
+Features:
+
+- Read and preprocess data from files or DataFrames
+- Filtering, normalization, and feature extraction
+- Publication-ready plots: line, scatter, histogram, heatmap
+- 68+ experimental analysis tools (NMR, XPS, XRD, UV-Vis, Raman)
+- Scientific constants, unit converters, and utilities
+
+.. automodule:: PyGamLab.Data_Analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :noindex:

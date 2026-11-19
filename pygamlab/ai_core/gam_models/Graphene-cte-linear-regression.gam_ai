@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "model_name": "Graphene-cte-linear-regression",
+        "model_type": "train/test",
+        "description": "For calculating the in-plane stretching rigidity C11 and C22, where 11 denotes the zigzag direction and 22 denotes the armchair direction, uniaxial tensile forces are applied on each atom on one pair of opposite edges. For in-plane shear rigidity C66 calculation, forces are applied on four edges so that the graphene is essentially in pure shear state.\n                   It can be seen that the surface moduli C11 and C22 are decreased with increase in\n                   temperature, and the surface shear modulus C66 weakly depends on the temperature variation.",
+        "author_name": "F. Lin, Y. Xiang, Hui-Shen Shen",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": {
+            "MAE": 52.96232241316363,
+            "MSE": 3184.406991873029,
+            "RMSE": 56.43055016454322,
+            "R2": 0.7281893026889867,
+            "MAPE": 0.24708277717031085
+        },
+        "doi": "http://dx.doi.org/10.1016/j.compositesb.2016.12.004",
+        "hyperparam_range": "None",
+        "best_params": "None"
+    },
+    "model_data": "gASVVQEAAAAAAACMGnNrbGVhcm4ubGluZWFyX21vZGVsLl9iYXNllIwQTGluZWFyUmVncmVzc2lvbpSTlCmBlH2UKIwNZml0X2ludGVyY2VwdJSIjAZjb3B5X1iUiIwGbl9qb2JzlE6MCHBvc2l0aXZllImMDm5fZmVhdHVyZXNfaW5flEsCjAVjb2VmX5SME2pvYmxpYi5udW1weV9waWNrbGWUjBFOdW1weUFycmF5V3JhcHBlcpSTlCmBlH2UKIwIc3ViY2xhc3OUjAVudW1weZSMB25kYXJyYXmUk5SMBXNoYXBllEsChZSMBW9yZGVylIwBQ5SMBWR0eXBllGgRjAVkdHlwZZSTlIwCZjiUiYiHlFKUKEsDjAE8lE5OTkr/////Sv////9LAHSUYowKYWxsb3dfbW1hcJSIjBtudW1weV9hcnJheV9hbGlnbm1lbnRfYnl0ZXOUSxB1Yg/////////////////////Kh1V5HY85wHIUpZ6wwWjAlTkAAAAAAAAAjAVyYW5rX5RLAowJc2luZ3VsYXJflGgNKYGUfZQoaBBoE2gUSwKFlGgWaBdoGGgdaCCIaCFLEHViDf////////////////9e98PPL9/8P63fgYhPmfY/lV8AAAAAAAAAjAppbnRlcmNlcHRflIwVbnVtcHkuY29yZS5tdWx0aWFycmF5lIwGc2NhbGFylJOUaB1DCJdybIG6O3dAlIaUUpSMEF9za2xlYXJuX3ZlcnNpb26UjAUxLjQuMpR1Yi4="
+}
