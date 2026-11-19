@@ -1,0 +1,34 @@
+{
+    "metadata": {
+        "model_name": "mos2-monolayer-type-pipe-knn",
+        "model_type": "pipe",
+        "description": "\n    Effect of Mo precursor temperature, S precursor temperature, type of substrate, growth temperature & time & pressure on number of layers & raman peak position.\n    The most discernible trend is found in the Mo precursor temperature\n    Figure S7a, where it can be inferred that at higher Mo precursor temperatures, bilayer or multilayer MoS2 thin films were formed.\n    For the Sulfur precursor temperature the monolayer regime starts at lower temperature, and the growth temperature (substrate temperature) extends to higher values for the Not a monolayer regime. This suggests that the concentration of the Mo precursor is the critical parameter to achieve control over the number of layers. \n    The Raman peak is around 19 cm\u22121 for monolayer MoS2, 21 for bilayers and 25 for more than 4 layers.\n    ",
+        "author_name": "SF. Lin, Y. Xiang, Hui-Shen Shen",
+        "author_email": "None",
+        "trainer_name": "Ali Pilehvar Meibody",
+        "best_accuracy": 0.8142857142857143,
+        "doi": "http://dx.doi.org/10.1016/j.compositesb.2016.12.004",
+        "hyperparam_range": {
+            "model__n_neighbors": [
+                3,
+                5,
+                7,
+                9
+            ],
+            "model__weights": [
+                "uniform",
+                "distance"
+            ],
+            "model__p": [
+                1,
+                2
+            ]
+        },
+        "best_params": {
+            "model__n_neighbors": 3,
+            "model__p": 1,
+            "model__weights": "uniform"
+        }
+    },
+    "model_data": "gASV5gAAAAAAAACMIXNrbGVhcm4ubmVpZ2hib3JzLl9jbGFzc2lmaWNhdGlvbpSMFEtOZWlnaGJvcnNDbGFzc2lmaWVylJOUKYGUfZQojAtuX25laWdoYm9yc5RLBYwGcmFkaXVzlE6MCWFsZ29yaXRobZSMBGF1dG+UjAlsZWFmX3NpemWUSx6MBm1ldHJpY5SMCW1pbmtvd3NraZSMDW1ldHJpY19wYXJhbXOUTowBcJRLAowGbl9qb2JzlE6MB3dlaWdodHOUjAd1bmlmb3JtlIwQX3NrbGVhcm5fdmVyc2lvbpSMBTEuNi4xlHViLg=="
+}

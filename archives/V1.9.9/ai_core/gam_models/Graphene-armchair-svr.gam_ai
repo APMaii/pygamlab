@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "model_name": "Graphene-armchair-svr",
+        "model_type": "train/test",
+        "description": "It can be seen that at lower temperature the CTE remains negative and it turns to positive when the temperature is higher than around 520K.",
+        "author_name": "Anna Costine, Paige Delsa, Tianxi Li et al.",
+        "author_email": "None",
+        "trainer_name": "Danial Nekoonam",
+        "best_accuracy": {
+            "MAE": 1.1767399999980962e-06,
+            "MSE": 1.5370901664952995e-12,
+            "RMSE": 1.2397944049298253e-06,
+            "R2": -1.736607974153734,
+            "MAPE": 6.229452752233366
+        },
+        "doi": "https://doi.org/10.1063/5.0017507",
+        "hyperparam_range": "None",
+        "best_params": "None"
+    },
+    "model_data": "gASVWgIAAAAAAACMFHNrbGVhcm4uc3ZtLl9jbGFzc2VzlIwDU1ZSlJOUKYGUfZQojAZrZXJuZWyUjANyYmaUjAZkZWdyZWWUSwOMBWdhbW1hlIwFc2NhbGWUjAVjb2VmMJRHAAAAAAAAAACMA3RvbJRHP1BiTdLxqfyMAUOURz/wAAAAAAAAjAJudZRHAAAAAAAAAACMB2Vwc2lsb26URz+5mZmZmZmajAlzaHJpbmtpbmeUiIwLcHJvYmFiaWxpdHmUiYwKY2FjaGVfc2l6ZZRLyIwMY2xhc3Nfd2VpZ2h0lE6MB3ZlcmJvc2WUiYwIbWF4X2l0ZXKUSv////+MDHJhbmRvbV9zdGF0ZZROjAdfc3BhcnNllImMDm5fZmVhdHVyZXNfaW5flEsBjAZfZ2FtbWGUjBVudW1weS5jb3JlLm11bHRpYXJyYXmUjAZzY2FsYXKUk5SMBW51bXB5lIwFZHR5cGWUk5SMAmY4lImIh5RSlChLA4wBPJROTk5K/////0r/////SwB0lGJDCPh9HZyrcyVAlIaUUpSMCHN1cHBvcnRflIwTam9ibGliLm51bXB5X3BpY2tsZZSMEU51bXB5QXJyYXlXcmFwcGVylJOUKYGUfZQojAhzdWJjbGFzc5RoHIwHbmRhcnJheZSTlIwFc2hhcGWUSwCFlIwFb3JkZXKUaAyMBWR0eXBllGgejAJpNJSJiIeUUpQoSwNoIk5OTkr/////Sv////9LAHSUYowKYWxsb3dfbW1hcJSIjBtudW1weV9hcnJheV9hbGlnbm1lbnRfYnl0ZXOUSxB1Ygr/////////////lTgAAAAAAAAAjBBzdXBwb3J0X3ZlY3RvcnNflGgqKYGUfZQoaC1oL2gwSwBLAYaUaDJoDGgzaCFoOIhoOUsQdWIO//////////////////+VMAAAAAAAAACMCl9uX3N1cHBvcnSUaCopgZR9lChoLWgvaDBLAoWUaDJoDGgzaDZoOIhoOUsQdWIG////////AAAAAAAAAACVMgAAAAAAAACMCmR1YWxfY29lZl+UaCopgZR9lChoLWgvaDBLAUsAhpRoMmgMaDNoIWg4iGg5SxB1Ygz///////////////+VMAAAAAAAAACMCmludGVyY2VwdF+UaCopgZR9lChoLWgvaDBLAYWUaDJoDGgzaCFoOIhoOUsQdWIG////////AIA9HL8Ys76VLAAAAAAAAACMBl9wcm9iQZRoKimBlH2UKGgtaC9oMEsAhZRoMmgMaDNoIWg4iGg5SxB1YgL//5UsAAAAAAAAAIwGX3Byb2JClGgqKYGUfZQoaC1oL2gwSwCFlGgyaAxoM2ghaDiIaDlLEHViCv////////////+VPwAAAAAAAACMC2ZpdF9zdGF0dXNflEsAjAlfbnVtX2l0ZXKUaCopgZR9lChoLWgvaDBLAYWUaDJoDGgzaDZoOIhoOUsQdWIH/////////wAAAACVRAAAAAAAAACMCnNoYXBlX2ZpdF+USyVLAYaUjAtfaW50ZXJjZXB0X5RoKimBlH2UKGgtaC9oMEsBhZRoMmgMaDNoIWg4iGg5SxB1Yg7//////////////////wCAPRy/GLO+lTMAAAAAAAAAjAtfZHVhbF9jb2VmX5RoKimBlH2UKGgtaC9oMEsBSwCGlGgyaAxoM2ghaDiIaDlLEHViC///////////////lSoAAAAAAAAAjAduX2l0ZXJflEsAjBBfc2tsZWFybl92ZXJzaW9ulIwFMS40LjKUdWIu"
+}

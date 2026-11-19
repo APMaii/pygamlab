@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "model_name": "cu-nanocomposites-porosity-svr",
+        "model_type": "train/test",
+        "description": "The presence of vacancy defects in graphene negatively affects the structural behaviors of the composite beams to a certain degree. So, increasing the temperature & defects decrease the mechanical properties, Increasing the percentage of Graphene increase the mechanical properties.",
+        "author_name": "Shaoyu Zhao, Yingyan Zhang, Yihe Zhang et al.",
+        "author_email": "None",
+        "trainer_name": "Ali Pilehvar Meibody",
+        "best_accuracy": {
+            "MAE": 0.06885293818184274,
+            "MSE": 0.008375107445569914,
+            "RMSE": 0.09151561312459155,
+            "MAPE": 0.00834294406833463,
+            "R2": 0.9513488780793803
+        },
+        "doi": "https://doi.org/10.1007/s00366-022-01710-w",
+        "hyperparam_range": null,
+        "best_params": null
+    },
+    "model_data": "gASVWgIAAAAAAACMFHNrbGVhcm4uc3ZtLl9jbGFzc2VzlIwDU1ZSlJOUKYGUfZQojAZrZXJuZWyUjANyYmaUjAZkZWdyZWWUSwOMBWdhbW1hlIwFc2NhbGWUjAVjb2VmMJRHAAAAAAAAAACMA3RvbJRHP1BiTdLxqfyMAUOURz/wAAAAAAAAjAJudZRHAAAAAAAAAACMB2Vwc2lsb26URz+5mZmZmZmajAlzaHJpbmtpbmeUiIwLcHJvYmFiaWxpdHmUiYwKY2FjaGVfc2l6ZZRLyIwMY2xhc3Nfd2VpZ2h0lE6MB3ZlcmJvc2WUiYwIbWF4X2l0ZXKUSv////+MDHJhbmRvbV9zdGF0ZZROjAdfc3BhcnNllImMDm5fZmVhdHVyZXNfaW5flEsCjAZfZ2FtbWGUjBVudW1weS5jb3JlLm11bHRpYXJyYXmUjAZzY2FsYXKUk5SMBW51bXB5lIwFZHR5cGWUk5SMAmY4lImIh5RSlChLA4wBPJROTk5K/////0r/////SwB0lGJDCE+mRCJa3hNAlIaUUpSMCHN1cHBvcnRflIwTam9ibGliLm51bXB5X3BpY2tsZZSMEU51bXB5QXJyYXlXcmFwcGVylJOUKYGUfZQojAhzdWJjbGFzc5RoHIwHbmRhcnJheZSTlIwFc2hhcGWUSwmFlIwFb3JkZXKUaAyMBWR0eXBllGgejAJpNJSJiIeUUpQoSwNoIk5OTkr/////Sv////9LAHSUYowKYWxsb3dfbW1hcJSIjBtudW1weV9hcnJheV9hbGlnbm1lbnRfYnl0ZXOUSxB1Ygr/////////////BgAAAAcAAAAJAAAAEQAAABIAAAAaAAAAIAAAACsAAAAtAAAAlTgAAAAAAAAAjBBzdXBwb3J0X3ZlY3RvcnNflGgqKYGUfZQoaC1oL2gwSwlLAoaUaDJoDGgzaCFoOIhoOUsQdWIK/////////////yOO2n6GsMc/AAAAAAAAAAAAAAAAAAAAANy2bdu2bes/AAAAAAAAAACSJEmSJEniP////////+8/27Zt27Zt2z/////////vP5IkSZIkSeI/////////7z+SJEmSJEnCPwAAAAAAAAAAkiRJkiRJwj/////////vPwAAAAAAAPA/AAAAAAAAAAAAAAAAAADwP5UwAAAAAAAAAIwKX25fc3VwcG9ydJRoKimBlH2UKGgtaC9oMEsChZRoMmgMaDNoNmg4iGg5SxB1Ygb///////8JAAAACQAAAJUyAAAAAAAAAIwKZHVhbF9jb2VmX5RoKimBlH2UKGgtaC9oMEsBSwmGlGgyaAxoM2ghaDiIaDlLEHViDP///////////////0EOAN102Yc/VLmHn5BytT9xWtd+qUm+P3cgggUbFL6/xChx6cc2o782RcXxLbHNv1AK2UvOnuA/eNIFgDWW4L99NZbi1QrGP5UwAAAAAAAAAIwKaW50ZXJjZXB0X5RoKimBlH2UKGgtaC9oMEsBhZRoMmgMaDNoIWg4iGg5SxB1Yg7//////////////////27fwxQ6VCBAlSwAAAAAAAAAjAZfcHJvYkGUaCopgZR9lChoLWgvaDBLAIWUaDJoDGgzaCFoOIhoOUsQdWIC//+VLAAAAAAAAACMBl9wcm9iQpRoKimBlH2UKGgtaC9oMEsAhZRoMmgMaDNoIWg4iGg5SxB1Ygr/////////////lT8AAAAAAAAAjAtmaXRfc3RhdHVzX5RLAIwJX251bV9pdGVylGgqKYGUfZQoaC1oL2gwSwGFlGgyaAxoM2g2aDiIaDlLEHViB/////////8kAAAAlUQAAAAAAAAAjApzaGFwZV9maXRflEszSwKGlIwLX2ludGVyY2VwdF+UaCopgZR9lChoLWgvaDBLAYWUaDJoDGgzaCFoOIhoOUsQdWIO//////////////////9u38MUOlQgQJUzAAAAAAAAAIwLX2R1YWxfY29lZl+UaCopgZR9lChoLWgvaDBLAUsJhpRoMmgMaDNoIWg4iGg5SxB1Ygv//////////////0EOAN102Yc/VLmHn5BytT9xWtd+qUm+P3cgggUbFL6/xChx6cc2o782RcXxLbHNv1AK2UvOnuA/eNIFgDWW4L99NZbi1QrGP5UqAAAAAAAAAIwHbl9pdGVyX5RLJIwQX3NrbGVhcm5fdmVyc2lvbpSMBTEuNi4xlHViLg=="
+}
