@@ -4,7 +4,7 @@ from .classification_workflows import (
     classification_PIPE,
 )
 from .exploratory_preprocessing import Automated_Exploratory_Processor
-from .regression_workflows import BASIC_regression, regression_PIPE
+from .regression_workflows import BASIC_regression, regression_CV, regression_PIPE
 
 __all__ = [
     "Automated_Exploratory_Processor",
@@ -12,5 +12,6 @@ __all__ = [
     "classification_CV",
     "classification_PIPE",
     "BASIC_regression",
+    "regression_CV",
     "regression_PIPE",
 ]

@@ -260,6 +260,211 @@ class BASIC_regression:
 
 
 
+class regression_CV:
+
+    def __init__(self, X, y):
+        if X is None or y is None:
+            raise ValueError("Insert both X and y as input")
+
+        self.X = X
+        self.y = np.array(y).ravel()
+
+        self.model = None
+        self.ypred = None
+        self.best_estimator = None
+        self.best_score = None
+        self.gs = None
+        self.myparams = None
+        self.df = None
+
+    def data_clear_check(self):
+        self.df = pd.concat([pd.DataFrame(self.X), pd.Series(self.y, name='target')], axis=1)
+
+        print('-------------------')
+        print(self.df.isnull().sum())
+        print('-------------------')
+        print(self.df.isna().sum())
+        print('-------------------')
+        print(self.df.describe())
+
+    def plot_correlation(self, save=False):
+        if self.df is None:
+            self.data_clear_check()
+        yX_corr = self.df.corr(method='pearson')
+        yX_abs_corr = np.abs(yX_corr)
+
+        plt.figure(figsize=(10, 10))
+        sns.heatmap(yX_abs_corr, cmap='RdYlGn', square=True)
+        plt.title('Pearson Correlation Heat Map (absolute values)', fontsize=15, fontweight='bold')
+        if save:
+            plt.savefig("correlation.jpg", format='jpg')
+        plt.show()
+
+    def plot_pair_plot(self, hue_col='target', save=False):
+        if self.df is None:
+            self.data_clear_check()
+        pairplot = sns.pairplot(self.df, hue=hue_col, palette='coolwarm')
+        if save:
+            pairplot.savefig("pairplot.jpg", format='jpg')
+        plt.show()
+
+    def scaling(self, def_scaler='minmax'):
+        if def_scaler == 'minmax':
+            scaler = MinMaxScaler()
+        else:
+            scaler = def_scaler
+
+        self.X = scaler.fit_transform(self.X)
+        self.y = np.array(self.y).ravel()
+
+    def fitting(self, model, myparams=None, cv=5, scoring='neg_mean_absolute_percentage_error'):
+        self.model = model
+        self.myparams = myparams if myparams is not None else {}
+
+        self.gs = GridSearchCV(
+            self.model,
+            self.myparams,
+            cv=cv,
+            scoring=scoring,
+            return_train_score=True,
+            n_jobs=-1,
+        )
+        self.gs.fit(self.X, self.y)
+
+        self.best_estimator = self.gs.best_estimator_
+        self.best_score = self.gs.best_score_
+        self.ypred = cross_val_predict(self.best_estimator, self.X, self.y, cv=cv)
+
+        print("Regression model trained with GridSearchCV.")
+        print(f"Best score: {self.best_score:.4f}")
+
+    def best(self):
+        if self.gs is None:
+            raise ValueError("Model not trained yet. Call fitting() first.")
+
+        self.best_estimator = self.gs.best_estimator_
+        self.best_score = self.gs.best_score_
+        return self.best_estimator, self.best_score
+
+    def predicting(self, x_new):
+        if self.best_estimator is None:
+            raise ValueError("Best estimator not found. Call best() first.")
+        prediction = self.best_estimator.predict(x_new)
+        return prediction
+
+    def get_score(self, metric='all'):
+        if self.best_estimator is None or self.ypred is None:
+            raise ValueError("Model not trained yet. Call fitting() first.")
+
+        mae = mean_absolute_error(self.y, self.ypred)
+        if metric == 'mae':
+            return mae
+
+        mse = mean_squared_error(self.y, self.ypred)
+        if metric == 'mse':
+            return mse
+
+        rmse = np.sqrt(mse)
+        if metric == 'rmse':
+            return rmse
+
+        mape = mean_absolute_percentage_error(self.y, self.ypred)
+        if metric == 'mape':
+            return mape
+
+        r2 = r2_score(self.y, self.ypred)
+        if metric == 'r2':
+            return r2
+
+        print("Model Evaluation Metrics:")
+        print(f"  Mean Absolute Error (MAE):  {mae:.4f}")
+        print(f"  Mean Squared Error (MSE):   {mse:.4f}")
+        print(f"  Root Mean Squared Error (RMSE): {rmse:.4f}")
+        print(f"  Mean Absolute Percentage Error (MAPE): {mape:.4f}")
+        print(f"  R² Score: {r2:.4f}")
+
+        return {
+            "MAE": mae,
+            "MSE": mse,
+            "RMSE": rmse,
+            "MAPE": mape,
+            "R2": r2,
+        }
+
+    def plot_grid_search(self, save=False):
+        if self.gs is None:
+            raise ValueError("Model not trained yet. Call fitting() first.")
+        if self.myparams is None or len(self.myparams.keys()) != 2:
+            raise ValueError("Heatmap only supported when tuning exactly 2 parameters.")
+
+        key_params = list(self.myparams.keys())
+        grid_params_x = self.myparams[key_params[0]]
+        grid_params_y = self.myparams[key_params[1]]
+
+        df_results = pd.DataFrame(self.gs.cv_results_)
+        ar_scores = np.array(df_results['mean_test_score']).reshape(len(grid_params_y), len(grid_params_x))
+
+        plt.figure(figsize=(8, 6))
+        sns.heatmap(ar_scores, annot=True, fmt='.3f', cmap='coolwarm',
+                    xticklabels=grid_params_x, yticklabels=grid_params_y)
+        plt.title('Grid Search Heatmap (Regression)')
+        plt.xlabel(key_params[0])
+        plt.ylabel(key_params[1])
+        plt.tight_layout()
+
+        if save:
+            plt.savefig("grid_search_heatmap_regression.jpg", format='jpg')
+        plt.show()
+
+    def intercept(self):
+        if self.best_estimator is None:
+            raise ValueError("Best estimator not found. Call best() first.")
+        if not hasattr(self.best_estimator, "coef_") or not hasattr(self.best_estimator, "intercept_"):
+            raise AttributeError("This regression model does not have coef_ or intercept_ attributes.")
+
+        print("Intercept:")
+        print(self.best_estimator.intercept_)
+        print("\nCoefficients:")
+        print(self.best_estimator.coef_)
+
+    def plot_true_vs_predict(self, name_model="Model", save=False):
+        if self.ypred is None:
+            raise ValueError("Predictions not found. Call fitting() first.")
+
+        plt.figure(figsize=(8, 6))
+        plt.scatter(self.y, self.ypred, alpha=0.7, color='blue')
+        plt.plot([self.y.min(), self.y.max()], [self.y.min(), self.y.max()], 'r--', lw=2)
+        plt.xlabel("True Values")
+        plt.ylabel("Predicted Values")
+        plt.title(f"True vs Predicted ({name_model})")
+        plt.grid(True)
+
+        if save:
+            plt.savefig("true_vs_predict.jpg", format="jpg")
+        plt.show()
+
+    def plot_permutation_importance(self, save=False):
+        if self.best_estimator is None:
+            raise ValueError("Best estimator not found. Call best() first.")
+
+        result = permutation_importance(
+            self.best_estimator, self.X, self.y, n_repeats=10, random_state=42, n_jobs=2
+        )
+        perm_sorted_idx = result.importances_mean.argsort()
+
+        plt.figure(figsize=(8, 6))
+        plt.boxplot(result.importances[perm_sorted_idx].T, vert=False)
+        plt.yticks(range(len(perm_sorted_idx)), pd.DataFrame(self.X).columns[perm_sorted_idx])
+        plt.axvline(x=0, color="k", linestyle="--")
+        plt.xlabel("Permutation Importance (Decrease in Score)")
+        plt.title("Permutation Feature Importance (Regression)")
+        plt.tight_layout()
+
+        if save:
+            plt.savefig("permutation_importance_regression.jpg", format='jpg')
+        plt.show()
+
+
 class regression_PIPE:
 
     def __init__(self, X, y):

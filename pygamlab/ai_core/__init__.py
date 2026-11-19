@@ -7,6 +7,7 @@ from .auto_ml import (
     BASIC_regression,
     classification_CV,
     classification_PIPE,
+    regression_CV,
     regression_PIPE,
 )
 
@@ -20,6 +21,7 @@ __all__ = [
     "classification_CV",
     "classification_PIPE",
     "BASIC_regression",
+    "regression_CV",
     "regression_PIPE",
 ]
 
