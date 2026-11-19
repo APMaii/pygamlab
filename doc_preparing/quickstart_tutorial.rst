@@ -1826,7 +1826,7 @@ Example Usage
     
     📘 MODEL SUMMARY
     model_name: cu-nanocomposites-young-modulus-pipe-mlp
-    file_path: /Users/apm/anaconda3/envs/DL/lib/python3.10/site-packages/PyGamLab/ai_core/gam_models/cu-nanocomposites-young-modulus-pipe-mlp.gam_ai
+    file_path: /Users/apm/anaconda3/envs/DL/lib/python3.10/site-packages/pygamlab/ai_core/gam_models/cu-nanocomposites-young-modulus-pipe-mlp.gam_ai
     model_type: pipe
     description: The presence of vacancy defects in graphene negatively affects the structural behaviors of the composite beams to a certain degree. So, increasing the temperature & defects decrease the mechanical properties, Increasing the percentage of Graphene increase the mechanical properties.
     author_name: Shaoyu Zhao, Yingyan Zhang, Yihe Zhang et al.

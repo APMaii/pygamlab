@@ -33,10 +33,13 @@ Open `doc_build/index.html` and look through it. If the build fails, fix the pag
 ```bash
 rm -rf doc
 cp -a doc_build doc
+cp doc/index.html doc/documentation.html
 cp -a doc_preparing/extra/. doc/
 rm -rf doc_build
 ```
 
-`doc_preparing/extra/` puts back the pages Sphinx does not make: `index_en.html`, `index_fa.html`, and `quickstart_tutorial_fa.html`.
+`cp doc/index.html doc/documentation.html` keeps the API/docs homepage at `documentation.html`.
+
+`doc_preparing/extra/` puts back the custom pages Sphinx does not make or should not replace: `index.html`, `index_en.html`, `index_fa.html`, and `quickstart_tutorial_fa.html`.
 
 Do not commit `doc_build/`. Commit `doc/` and the new folder under `archives/`. A push to `main` publishes `doc/` through the GitHub Pages workflow.

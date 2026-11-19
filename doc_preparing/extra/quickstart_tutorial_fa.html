@@ -1542,7 +1542,7 @@ Face</strong> دارند، <strong>علوم مواد</strong> و <strong>فنا�
 <div class="line">- جزئیات نسخه‌گذاری و پیکربندی</div>
 </div>
 <p>می‌توانید به راحتی یک مدل را اینگونه بارگذاری کنید:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyGamLab.ai_core</span><span class="w"> </span><span class="kn">import</span> <span class="n">GAM_AI_MODEL</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pygamlab.ai_core</span><span class="w"> </span><span class="kn">import</span> <span class="n">GAM_AI_MODEL</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">GAM_AI_MODEL</span><span class="p">(</span><span class="s2">&quot;cu-nanocomposites-porosity-dt&quot;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
@@ -1558,7 +1558,7 @@ Face</strong> دارند، <strong>علوم مواد</strong> و <strong>فنا�
 <p>این کلاس یک خط لوله یادگیری ماشین سطح بالا برای مدیریت
 گردش کارهای end-to-end ارائه می‌دهد — از بارگذاری مدل‌ها و متادیتا تا انجام
 پیش‌بینی‌ها، تولید نمودارها و خلاصه‌سازی نتایج. مثال استفاده:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyGamLab.ai_core</span><span class="w"> </span><span class="kn">import</span> <span class="n">GAM_AI_WORKFLOW</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pygamlab.ai_core</span><span class="w"> </span><span class="kn">import</span> <span class="n">GAM_AI_WORKFLOW</span>
 
 <span class="n">workflow</span> <span class="o">=</span> <span class="n">GAM_AI_WORKFLOW</span><span class="p">(</span><span class="s2">&quot;cu-nanocomposites-porosity-dt&quot;</span><span class="p">)</span>
 <span class="n">workflow</span><span class="o">.</span><span class="n">get_GAM_AI_MODEL</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
@@ -1811,7 +1811,7 @@ Materials Cloud) برای دسترسی همگام‌سازی شده به مدل.
 <section id="id5">
 <h1>مثال استفاده<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h1>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#برای شروع گردش کار می‌توانید کلاس را import کنید</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PyGamLab.ai_core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gam_Ai_Workflow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygamlab.ai_core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gam_Ai_Workflow</span>
 
 <span class="n">workflow</span><span class="o">=</span><span class="n">Gam_Ai_Workflow</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;your_model_name_here&#39;</span><span class="p">)</span>
 
@@ -1824,7 +1824,7 @@ Materials Cloud) برای دسترسی همگام‌سازی شده به مدل.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## مثال استفاده</span>
 <span class="c1">#مثلاً می‌توانیم از مدل &#39;cu-nanocomposites-young-modulus-pipe-mlp&#39; استفاده کنیم</span>
 <span class="c1">#در واقع ایجاد شیء workflow و استفاده از متدهای آن آسان است</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PyGamLab.ai_core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gam_Ai_Workflow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygamlab.ai_core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gam_Ai_Workflow</span>
 <span class="n">workflow</span><span class="o">=</span><span class="n">Gam_Ai_Workflow</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;cu-nanocomposites-young-modulus-pipe-mlp&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1838,7 +1838,7 @@ Materials Cloud) برای دسترسی همگام‌سازی شده به مدل.
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>📘 MODEL SUMMARY
 model_name: cu-nanocomposites-young-modulus-pipe-mlp
-file_path: /Users/apm/anaconda3/envs/DL/lib/python3.10/site-packages/PyGamLab/ai_core/gam_models/cu-nanocomposites-young-modulus-pipe-mlp.gam_ai
+file_path: /Users/apm/anaconda3/envs/DL/lib/python3.10/site-packages/pygamlab/ai_core/gam_models/cu-nanocomposites-young-modulus-pipe-mlp.gam_ai
 model_type: pipe
 description: The presence of vacancy defects in graphene negatively affects the structural behaviors of the composite beams to a certain degree. So, increasing the temperature &amp; defects decrease the mechanical properties, Increasing the percentage of Graphene increase the mechanical properties.
 author_name: Shaoyu Zhao, Yingyan Zhang, Yihe Zhang et al.
@@ -1877,12 +1877,12 @@ ml_model: GridSearchCV(cv=5,
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">gam_ai_model</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;PyGamLab.ai_core.gam_ai.GAM_AI_MODEL&#39;&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pygamlab.ai_core.gam_ai.GAM_AI_MODEL&#39;&gt;
 </pre></div>
 </div>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#همچنین کلاس دیگری به نام GAM_AI_MODEL داریم</span>
 <span class="c1">#برای وارد کردن آن می‌توانید از این استفاده کنید</span>
-<span class="c1">#from PyGamLab.ai_core import GAM_AI_MODEL</span>
+<span class="c1">#from pygamlab.ai_core import GAM_AI_MODEL</span>
 <span class="c1">#فعلاً فقط summary دارد اما ویژگی‌های زیادی دارد</span>
 <span class="c1">#مثلاً</span>
 
