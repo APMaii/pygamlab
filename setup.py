@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name="PyGamLab",
+    name="pygamlab",
     version="2.0.0",
     author="Ali Pilehvar Meibody",
     author_email="alipilehvar1999@gmail.com",
@@ -21,6 +21,6 @@ setup(
     ],
     include_package_data=True,
     package_data={
-        "PyGamLab.ai_core": ["gam_models/*.gam_ai"],
+        "pygamlab.ai_core": ["gam_models/*.gam_ai"],
     },
 )

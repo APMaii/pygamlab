@@ -315,7 +315,7 @@ class Gam_Ai_Workflow:
 
         >>> gam_model = workflow.get_GAM_AI_MODEL()
         >>> type(gam_model)
-        <class 'PyGamLab.ai_core.gam_ai.GAM_AI_MODEL'>
+        <class 'pygamlab.ai_core.gam_ai.GAM_AI_MODEL'>
 
         >>> gam_model.summary()
         📘 MODEL METADATA SUMMARY
@@ -390,7 +390,7 @@ class GAM_AI_MODEL:
 
     Examples
     --------
-    >>> from PyGamLab.ai_core.gam_ai import GAM_AI_MODEL
+    >>> from pygamlab.ai_core.gam_ai import GAM_AI_MODEL
     >>> model = GAM_AI_MODEL("cu-nanocomposites-poisson-ratio-lr")
     ✅ Loaded GAM_AI_MODEL: 'cu-nanocomposites-poisson-ratio-lr'
 
