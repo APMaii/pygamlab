@@ -17,7 +17,7 @@ from sklearn.neural_network import MLPClassifier
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import cross_val_predict
+from sklearn.model_selection import cross_val_predict, KFold
 from sklearn.inspection import permutation_importance
 from sklearn.pipeline import Pipeline
 
@@ -481,6 +481,7 @@ class regression_PIPE:
         self.gs = None
         self.myparams = None
         self.pipe = None
+        self.cv_folds = None
 
 
     def data_clear_check(self):
@@ -567,6 +568,8 @@ class regression_PIPE:
         # ✅ Default hyperparameters (empty if none specified)
         self.myparams = myparams if myparams is not None else {}
 
+        # ✅ Store CV folds for later use in evaluation
+        self.cv_folds = cv
 
         # ✅ Run GridSearchCV
         self.gs = GridSearchCV(
@@ -586,7 +589,7 @@ class regression_PIPE:
 
         self.ypred = cross_val_predict(self.best_estimator, self.X, self.y)
 
-        print(f"✅ Regression model trained with GridSearchCV.")
+        print("✅ Regression model trained with GridSearchCV.")
         print(f"Best MAPE Score: {self.best_score:.4f}")
 
 
@@ -607,6 +610,115 @@ class regression_PIPE:
             raise ValueError("Best estimator not found. Call best() first.")
         prediction=self.best_estimator.predict(x_new)
         return prediction
+
+    def evaluate_cv_train_test_metrics(self, shuffle=False, random_state=42):
+        """
+        Calculate MAPE and MAE for both training and test sets using cross-validation.
+        Uses the same CV strategy as GridSearchCV to get metrics from CV results.
+        
+        Parameters:
+        -----------
+        shuffle : bool, default=False
+            Whether to shuffle data before splitting (matches GridSearchCV default)
+        random_state : int, default=42
+            Random state for reproducibility of CV splits
+        
+        Returns:
+        --------
+        dict : Dictionary containing MAPE and MAE for train and test sets from CV
+        """
+        if self.best_estimator is None:
+            raise ValueError("Best estimator not found. Call best() or fitting() first.")
+        
+        if self.cv_folds is None:
+            raise ValueError("CV folds not found. Call fitting() first.")
+        
+        # Create KFold object with same number of folds as used in GridSearchCV
+        # Default shuffle=False to match GridSearchCV behavior when cv is an integer
+        kfold = KFold(n_splits=self.cv_folds, shuffle=shuffle, random_state=random_state if shuffle else None)
+        
+        # Lists to store metrics for each fold
+        train_mape_list = []
+        train_mae_list = []
+        test_mape_list = []
+        test_mae_list = []
+        
+        # Perform cross-validation manually to get train and test predictions
+        for train_idx, test_idx in kfold.split(self.X):
+            X_train_fold = self.X[train_idx]
+            X_test_fold = self.X[test_idx]
+            y_train_fold = self.y[train_idx]
+            y_test_fold = self.y[test_idx]
+            
+            # Clone and fit the best estimator on training fold
+            from sklearn.base import clone
+            model_fold = clone(self.best_estimator)
+            model_fold.fit(X_train_fold, y_train_fold)
+            
+            # Predict on both training and test sets
+            y_train_pred = model_fold.predict(X_train_fold)
+            y_test_pred = model_fold.predict(X_test_fold)
+            
+            # Calculate metrics for training fold
+            train_mape = mean_absolute_percentage_error(y_train_fold, y_train_pred)
+            train_mae = mean_absolute_error(y_train_fold, y_train_pred)
+            
+            # Calculate metrics for test fold
+            test_mape = mean_absolute_percentage_error(y_test_fold, y_test_pred)
+            test_mae = mean_absolute_error(y_test_fold, y_test_pred)
+            
+            # Append to lists
+            train_mape_list.append(train_mape)
+            train_mae_list.append(train_mae)
+            test_mape_list.append(test_mape)
+            test_mae_list.append(test_mae)
+        
+        # Calculate mean across all folds
+        mean_train_mape = np.mean(train_mape_list)
+        mean_train_mae = np.mean(train_mae_list)
+        mean_test_mape = np.mean(test_mape_list)
+        mean_test_mae = np.mean(test_mae_list)
+        
+        # Calculate std across all folds (optional, for showing variability)
+        std_train_mape = np.std(train_mape_list)
+        std_train_mae = np.std(train_mae_list)
+        std_test_mape = np.std(test_mape_list)
+        std_test_mae = np.std(test_mae_list)
+        
+        # Print results
+        print("=" * 70)
+        print("CROSS-VALIDATION METRICS (from CV results)")
+        print("=" * 70)
+        print("TRAINING SET METRICS (averaged across CV folds):")
+        print(f"  MAPE (Mean Absolute Percentage Error): {mean_train_mape:.4f} ± {std_train_mape:.4f}")
+        print(f"  MAE (Mean Absolute Error):              {mean_train_mae:.4f} ± {std_train_mae:.4f}")
+        print("-" * 70)
+        print("TEST SET METRICS (averaged across CV folds):")
+        print(f"  MAPE (Mean Absolute Percentage Error): {mean_test_mape:.4f} ± {std_test_mape:.4f}")
+        print(f"  MAE (Mean Absolute Error):              {mean_test_mae:.4f} ± {std_test_mae:.4f}")
+        print("=" * 70)
+        
+        # Return as dictionary
+        metrics = {
+            'train': {
+                'MAPE_mean': mean_train_mape,
+                'MAPE_std': std_train_mape,
+                'MAE_mean': mean_train_mae,
+                'MAE_std': std_train_mae,
+                'MAPE_all_folds': train_mape_list,
+                'MAE_all_folds': train_mae_list
+            },
+            'test': {
+                'MAPE_mean': mean_test_mape,
+                'MAPE_std': std_test_mape,
+                'MAE_mean': mean_test_mae,
+                'MAE_std': std_test_mae,
+                'MAPE_all_folds': test_mape_list,
+                'MAE_all_folds': test_mae_list
+            }
+        }
+        
+        return metrics
 
 
     def plot_grid_search(self, save=False):
@@ -668,7 +780,7 @@ class regression_PIPE:
 
 
 
-    def plot_true_vs_predict(self, name_model="Model", save=False):
+    def plot_true_vs_predict(self, name_model="Model", save=False ,professional_plotting=False):
         """
         Plot True vs Predicted values for regression (using full dataset).
         Works with cross_val_predict results (no explicit y_test needed).
@@ -677,21 +789,79 @@ class regression_PIPE:
             raise ValueError("Predictions not found. Call predicting() first.")
         if self.y is None:
             raise ValueError("True values not found. Check initialization or fitting.")
+            
+        if professional_plotting ==True:
+            y_true = np.array(self.y).reshape(-1)
+            y_pred = np.array(self.ypred).reshape(-1)
 
-        plt.figure(figsize=(8, 6))
+            # Metrics
+            r2 = r2_score(y_true, y_pred)
+            mae = mean_absolute_error(y_true, y_pred)
+            mape= mean_absolute_percentage_error(y_true, y_pred)
 
-        # Scatter plot: True vs Predicted
-        plt.scatter(self.y, self.ypred, alpha=0.7, color='blue')
-        plt.plot([self.y.min(), self.y.max()],
-                [self.y.min(), self.y.max()], 'r--', lw=2)  # diagonal line
-        plt.xlabel("True Values")
-        plt.ylabel("Predicted Values")
-        plt.title(f"True vs Predicted ({name_model})")
-        plt.grid(True)
+            # Figure
+            plt.figure(figsize=(9, 7))
+            plt.style.use("seaborn-v0_8")
 
-        if save:
-            plt.savefig("true_vs_predict.jpg", format="jpg")
-        plt.show()
+            # Scatter plot
+            plt.scatter(y_true, y_pred, alpha=0.65, edgecolor="k", linewidth=0.5)
+
+            # Perfect prediction line
+            min_val = min(y_true.min(), y_pred.min())
+            max_val = max(y_true.max(), y_pred.max())
+            plt.plot([min_val, max_val], [min_val, max_val], "r--", lw=2, label="Ideal Prediction")
+
+            # Regression line
+            m, b = np.polyfit(y_true, y_pred, 1)
+            plt.plot(y_true, m * y_true + b, color="green", lw=2, label="Trend Line")
+
+            # Labels & Title
+            plt.xlabel("True Values", fontsize=12)
+            plt.ylabel("Predicted Values", fontsize=12)
+            plt.title(f"True vs Predicted — {name_model}", fontsize=14, fontweight="bold")
+
+            # Add metrics text box
+            text_box = (
+                f"MAE: {mae:.3f}\n"
+                f"MAPE: {mape:.3f}"
+            )
+            plt.gca().text(
+                0.05, 0.95, text_box, transform=plt.gca().transAxes,
+                fontsize=11, verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+            )
+
+            plt.legend()
+            plt.grid(True, alpha=0.3)
+
+            # Save plot if requested
+            if save:
+                file_name = f"true_vs_predicted_{name_model.replace(' ', '_')}.jpg"
+                plt.savefig(file_name, format="jpg", dpi=300, bbox_inches="tight")
+
+            plt.show()
+            
+            
+            
+        else:
+
+            plt.figure(figsize=(8, 6))
+    
+            # Scatter plot: True vs Predicted
+            plt.scatter(self.y, self.ypred, alpha=0.7, color='blue')
+            plt.plot([self.y.min(), self.y.max()],
+                    [self.y.min(), self.y.max()], 'r--', lw=2)  # diagonal line
+            plt.xlabel("True Values")
+            plt.ylabel("Predicted Values")
+            plt.title(f"True vs Predicted ({name_model})")
+            plt.grid(True)
+    
+            if save:
+                plt.savefig("true_vs_predict.jpg", format="jpg")
+            plt.show()
+        
+   
+    
 
     def plot_permutation_importance(self, save=False):
         """Plot permutation feature importance for regression models."""
@@ -715,6 +885,101 @@ class regression_PIPE:
         if save:
             plt.savefig("permutation_importance_regression.jpg", format='jpg')
             
+        plt.show()
+        
+    #it needs to be change and df 
+        
+        
+    def plot_3d_prediction_maps(self, df , feature_x, feature_y, feature_target, grid_size=40, save=False):
+        """
+        Create 3D surface, 3D scatter and heatmap for two features.
+        Works even if X and y were numpy arrays originally because df stores columns.
+    
+        Parameters
+        ----------
+        feature_x : str
+            Name of feature on X-axis (must be column in df)
+        feature_y : str
+            Name of feature on Y-axis
+        grid_size : int
+            Number of interpolation points
+        save : bool
+            Save figure as JPG
+        """
+    
+        if self.best_estimator is None:
+            raise ValueError("Train model first using fitting().")
+    
+        
+    
+        # Extract selected features
+        x_vals = df[feature_x].values
+        y_vals = df[feature_y].values
+        z_vals = df[feature_target].values
+    
+        # Build mesh grid
+        x_lin = np.linspace(x_vals.min(), x_vals.max(), grid_size)
+        y_lin = np.linspace(y_vals.min(), y_vals.max(), grid_size)
+    
+        xx, yy = np.meshgrid(x_lin, y_lin)
+    
+        # Prepare full X input for prediction
+        X_grid = pd.DataFrame(
+            np.zeros((grid_size * grid_size, df.shape[1] - 1)),
+            columns=df.drop(columns=[feature_target]).columns
+        )
+    
+        # Fill selected two columns with mesh
+        X_grid[feature_x] = xx.flatten()
+        X_grid[feature_y] = yy.flatten()
+    
+        # For other columns, fill with their mean
+        for col in X_grid.columns:
+            if col not in [feature_x, feature_y]:
+                X_grid[col] = df[col].mean()
+    
+        # Predict on entire grid
+        z_pred = self.best_estimator.predict(X_grid)
+        zz = z_pred.reshape(grid_size, grid_size)
+    
+        # --- PLOTTING ---
+        fig = plt.figure(figsize=(20, 6))
+    
+        # 1) 3D prediction surface
+        #ax1 = fig.add_subplot(1, 3, 1, projection="3d")
+        ax1 = fig.add_subplot(1, 2, 1, projection="3d")
+        surf = ax1.plot_surface(xx, yy, zz, cmap="plasma", alpha=0.85)
+        ax1.set_xlabel(feature_x)
+        ax1.set_ylabel(feature_y)
+        ax1.set_zlabel("Predicted Y")
+        ax1.set_title("3D Prediction Surface", fontsize=14)
+        fig.colorbar(surf, ax=ax1, shrink=0.6)
+    
+        # 2) 3D scatter of real data
+        '''
+        ax2 = fig.add_subplot(1, 3, 2, projection="3d")
+        sc = ax2.scatter(x_vals, y_vals, z_vals, c=z_vals, cmap="viridis", s=40, edgecolor="k")
+        ax2.set_xlabel(feature_x)
+        ax2.set_ylabel(feature_y)
+        ax2.set_zlabel("True Y")
+        ax2.set_title("3D Scatter (Real Data)", fontsize=14)
+        fig.colorbar(sc, ax=ax2, shrink=0.6)
+        '''
+    
+        # 3) 2D heatmap
+        #ax3 = fig.add_subplot(1, 3, 3)
+        ax3 = fig.add_subplot(1, 2, 2)
+        hm = ax3.contourf(xx, yy, zz, levels=40, cmap="plasma")
+        ax3.set_xlabel(feature_x)
+        ax3.set_ylabel(feature_y)
+        ax3.set_title("Prediction Heatmap", fontsize=14)
+        fig.colorbar(hm, ax=ax3)
+    
+        plt.tight_layout()
+    
+        if save:
+            plt.savefig("3d_prediction_maps.jpg", dpi=300, bbox_inches="tight")
+    
         plt.show()
 
 
