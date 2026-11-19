@@ -1,0 +1,1650 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="author" title="About these documents" href="../../../../about.html" /><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>PyGamLab.structures.Generators.two_d - PyGamLab 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">PyGamLab 2.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../../_static/logo_dark.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../../_static/logo_dark.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">PyGamLab 2.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules.html">🧩 Modules</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 🧩 Modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/structures.html">Structures Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/databases.html">Databases Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/ai_core.html">AI Core Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/data_analysis.html">Data_Analysis Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/constants.html">Constants Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/converters.html">Convertors Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules_/functions.html">Functions Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../examples.html">💡 Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 💡 Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples_/data_analysis_example.html">Data Analysis Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples_/structures_example.html">Structures Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples_/ai_workflow_example.html">AI Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../collaborate.html">Collaborate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About PyGamLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for PyGamLab.structures.Generators.two_d</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">..Primatom</span><span class="w"> </span><span class="kn">import</span> <span class="n">GAM_Atom</span> <span class="p">,</span> <span class="n">GAM_Bond</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase</span><span class="w"> </span><span class="kn">import</span> <span class="n">Atoms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Literal</span> <span class="p">,</span> <span class="n">List</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase.visualize</span><span class="w"> </span><span class="kn">import</span> <span class="n">view</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">write</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase.io.pov</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_bondpairs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase.build</span><span class="w"> </span><span class="kn">import</span> <span class="n">graphene</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase.build</span><span class="w"> </span><span class="kn">import</span> <span class="n">mx2</span>
+
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase.atoms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Atoms</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">ase</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ase</span><span class="w"> </span><span class="kn">import</span> <span class="n">Atoms</span>
+    <span class="n">HAS_ASE</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_ASE</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+
+
+
+<span class="n">LAYERED_MATERIALS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Group 6 TMDs (most stable in 2H phase)</span>
+    <span class="s1">&#39;mos2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;MoS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.160</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.15</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Molybdenum disulfide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;mose2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;MoSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.289</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.46</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Molybdenum diselenide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;mote2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;MoTe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.518</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.97</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Molybdenum ditelluride - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;ws2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;WS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.153</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.18</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Tungsten disulfide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;wse2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;WSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.282</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.49</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Tungsten diselenide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;wte2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;WTe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.496</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">7.04</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Tungsten ditelluride - semimetal&#39;</span>
+    <span class="p">},</span>
+    
+    <span class="c1"># Group 5 TMDs (can be metallic in 1T phase)</span>
+    <span class="s1">&#39;vs2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;VS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.160</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">5.76</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">,</span> <span class="s1">&#39;2H&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Vanadium disulfide - metallic&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;vse2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;VSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.355</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.10</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">,</span> <span class="s1">&#39;2H&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Vanadium diselenide - metallic&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;nbs2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;NbS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.313</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">5.985</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Niobium disulfide - metallic&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;nbse2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;NbSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.445</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.26</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Niobium diselenide - superconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;tas2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;TaS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.314</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">5.895</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Tantalum disulfide - metallic/CDW&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;tase2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;TaSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.436</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.25</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Tantalum diselenide - superconductor&#39;</span>
+    <span class="p">},</span>
+    
+    <span class="c1"># Group 4 TMDs</span>
+    <span class="s1">&#39;tis2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;TiS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.407</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">5.695</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanium disulfide - metallic&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;tise2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;TiSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.535</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.008</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanium diselenide - semimetal/CDW&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;zrs2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;ZrS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.658</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">5.83</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Zirconium disulfide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;zrse2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;ZrSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.77</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.13</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Zirconium diselenide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;hfs2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;HfS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.615</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">5.85</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Hafnium disulfide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;hfse2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;HfSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.743</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.15</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Hafnium diselenide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    
+    <span class="c1"># Group 7 TMDs</span>
+    <span class="s1">&#39;res2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;ReS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.144</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.05</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Rhenium disulfide - anisotropic semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;rese2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;ReSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.300</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.34</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Rhenium diselenide - anisotropic semiconductor&#39;</span>
+    <span class="p">},</span>
+    
+    <span class="c1"># Group 10 TMDs</span>
+    <span class="s1">&#39;pts2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;PtS2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.540</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">5.036</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Platinum disulfide - semiconductor&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;ptse2&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;PtSe2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.728</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">5.081</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Platinum diselenide - semimetal&#39;</span>
+    <span class="p">},</span>
+    
+    <span class="c1"># Metal halides</span>
+    <span class="s1">&#39;cri3&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;CrI3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">6.867</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.60</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Chromium triiodide - 2D ferromagnet&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;crbr3&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;CrBr3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">6.30</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.12</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Chromium tribromide - 2D ferromagnet&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;vi3&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;VI3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">6.86</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">6.74</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;2H&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2H&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Vanadium triiodide - 2D ferromagnet&#39;</span>
+    <span class="p">},</span>
+    
+    <span class="c1"># Other layered materials</span>
+    <span class="s1">&#39;bi2se3&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Bi2Se3&#39;</span><span class="p">,</span>  <span class="c1"># Simplified for mx2 function</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.138</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">9.54</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Bismuth selenide - topological insulator&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;bi2te3&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Bi2Te3&#39;</span><span class="p">,</span>  <span class="c1"># Simplified for mx2 function</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.386</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">10.15</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Bismuth telluride - topological insulator&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;sb2te3&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Sb2Te3&#39;</span><span class="p">,</span>  <span class="c1"># Simplified for mx2 function</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.264</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">10.33</span><span class="p">,</span>
+        <span class="s1">&#39;preferred_phase&#39;</span><span class="p">:</span> <span class="s1">&#39;1T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;stable_phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1T&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Antimony telluride - topological insulator&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+
+<span class="c1"># Material parameters database - all designed to work with the graphene function</span>
+<span class="n">NANOSHEET_MATERIALS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;graphene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">2.460</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Pure graphene - carbon honeycomb lattice&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;silicene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Si2&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.86</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.44</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Silicon analogue of graphene with buckling&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;germanene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Ge2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.02</span><span class="p">,</span> 
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.64</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Germanium analogue of graphene with buckling&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;stanene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Sn2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.67</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Tin analogue of graphene with buckling&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;plumbene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Pb2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.97</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Lead analogue of graphene with buckling&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;boron_nitride&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;BN&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">2.504</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Hexagonal boron nitride (white graphene)&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;aluminum_nitride&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;AlN&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.111</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Aluminum nitride honeycomb structure&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;gallium_nitride&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;GaN&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.189</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Gallium nitride honeycomb structure&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;phosphorene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;P2&#39;</span><span class="p">,</span>  <span class="c1"># Simplified to work with graphene function</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.314</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">1.05</span><span class="p">,</span>  <span class="c1"># Half the actual buckling for the graphene function</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Black phosphorus (simplified honeycomb approximation)&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;arsenene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;As2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.608</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">1.4</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Arsenic analogue of phosphorene&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;antimonene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Sb2&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.120</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">1.65</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Antimony analogue of phosphorene&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;bismuthene&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;Bi2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.54</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">1.86</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Bismuth analogue of phosphorene&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;beryllium_oxide&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;BeO&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">2.698</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Beryllium oxide honeycomb structure&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;zinc_oxide&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;ZnO&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">3.249</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Zinc oxide honeycomb structure with buckling&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;cadmium_sulfide&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;CdS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="mf">4.136</span><span class="p">,</span>
+        <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Cadmium sulfide honeycomb structure&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+
+<div class="viewcode-block" id="Nano_TwoD_Builder">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Nano_TwoD_Builder</span><span class="p">:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Comprehensive builder for 2D nanomaterials such as nanosheets, monolayers, and van der Waals heterostructures.</span>
+
+<span class="sd">    The `Nano_TwoD_Builder` class provides an advanced atomistic modeling framework </span>
+<span class="sd">    for constructing two-dimensional (2D) nanostructures, including:</span>
+
+<span class="sd">        - **Nanosheets:** elemental or binary 2D lattices (e.g., graphene, silicene, phosphorene)</span>
+<span class="sd">        - **Transition Metal Dichalcogenides (TMDs):** MX₂ layered compounds with tunable 1T/2H phases</span>
+<span class="sd">        - **Heterostructures:** stacked multilayer systems with controlled interlayer spacing</span>
+
+<span class="sd">    The builder supports both *honeycomb-like* (graphene family) and *layered* (TMD) topologies.</span>
+<span class="sd">    It integrates with ASE’s `graphene()` and `mx2()` generators and enables</span>
+<span class="sd">    direct conversion to GAM-compatible formats for downstream simulation pipelines.</span>
+
+<span class="sd">    Features</span>
+<span class="sd">    --------</span>
+<span class="sd">    - Generate 2D nanosheets and TMD monolayers</span>
+<span class="sd">    - Build van der Waals heterostructures from arbitrary combinations of layers</span>
+<span class="sd">    - Support for custom formulas, lattice constants, and layer thicknesses</span>
+<span class="sd">    - Predefined constructors for common 2D materials (graphene, MoS₂, WS₂, etc.)</span>
+<span class="sd">    - ASE-based export and visualization (XYZ, CIF, PDB)</span>
+<span class="sd">    - Structure translation and rotation operations</span>
+<span class="sd">    - GAM-compatible atom and bond representation</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    material : str</span>
+<span class="sd">        Name or symbol of the 2D material (e.g., &quot;graphene&quot;, &quot;MoS2&quot;, &quot;BN&quot;).</span>
+<span class="sd">    structure_type : {&#39;nanosheet&#39;, &#39;tmd&#39;}</span>
+<span class="sd">        Type of 2D nanostructure to build.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ASE_atoms : ase.Atoms</span>
+<span class="sd">        Underlying ASE structure representing the generated material.</span>
+<span class="sd">    atoms : list[GAM_Atom]</span>
+<span class="sd">        List of atoms in GAM-compatible format.</span>
+<span class="sd">    bonds : list[GAM_Bond]</span>
+<span class="sd">        Optional list of identified bonds.</span>
+<span class="sd">    layered_materials : dict</span>
+<span class="sd">        Database of transition metal dichalcogenides (TMDs) and related 2D materials.</span>
+<span class="sd">    nanosheet_materials : dict</span>
+<span class="sd">        Database of single-element or binary 2D sheet materials.</span>
+<span class="sd">    meta : dict</span>
+<span class="sd">        Metadata dictionary containing build parameters and structure details.</span>
+<span class="sd">    structure_type : str</span>
+<span class="sd">        Selected structure type (&#39;nanosheet&#39; or &#39;tmd&#39;).</span>
+<span class="sd">    material : str</span>
+<span class="sd">        Material name used for generation.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    create_layered_material(phase=&#39;2H&#39;, size=(10,10,1), vacuum=10.0, ...)</span>
+<span class="sd">        Build a TMD or layered 2D material (e.g., MoS₂, WSe₂) using ASE’s `mx2()` function.</span>
+<span class="sd">    create_nanosheet(size=(10,10,1), vacuum=10.0, ...)</span>
+<span class="sd">        Build a honeycomb-like nanosheet (e.g., graphene, silicene) using ASE’s `graphene()` function.</span>
+<span class="sd">    create_layered_heterostructure(materials_and_phases, layer_spacing=6.5, ...)</span>
+<span class="sd">        Stack multiple TMD layers with custom interlayer spacing.</span>
+<span class="sd">    create_nanosheet_heterostructure(materials, layer_spacing=3.4, ...)</span>
+<span class="sd">        Build van der Waals heterostructures combining 2D sheets (e.g., graphene/hBN).</span>
+<span class="sd">    create_custom_sheet(formula, lattice_constant, thickness=0.0, ...)</span>
+<span class="sd">        Define a custom 2D lattice from scratch.</span>
+<span class="sd">    list_layered_materials(category=None)</span>
+<span class="sd">        Display all available layered (TMD) materials in the internal database.</span>
+<span class="sd">    list_nanosheet_materials()</span>
+<span class="sd">        Display all available 2D sheet materials and their physical properties.</span>
+<span class="sd">    translate(dx, dy, dz=0.0)</span>
+<span class="sd">        Translate atomic coordinates in 3D space.</span>
+<span class="sd">    rotate(angle_deg, about_center=True)</span>
+<span class="sd">        Rotate the sheet around the z-axis (in-plane rotation).</span>
+<span class="sd">    copy()</span>
+<span class="sd">        Deep copy the atomic structure and metadata.</span>
+<span class="sd">    get_atoms()</span>
+<span class="sd">        Return a deep copy of all atoms as GAM_Atom objects.</span>
+<span class="sd">    get_positions()</span>
+<span class="sd">        Retrieve atomic positions as (x, y, z) tuples.</span>
+<span class="sd">    get_elements()</span>
+<span class="sd">        Return list of atomic symbols.</span>
+<span class="sd">    to_xyz(filename)</span>
+<span class="sd">        Export structure to `.xyz` file format.</span>
+<span class="sd">    to_ase()</span>
+<span class="sd">        Convert to an ASE `Atoms` object for external use.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The builder automatically selects between `graphene()` and `mx2()` constructors </span>
+<span class="sd">      based on the specified `structure_type`.</span>
+<span class="sd">    - Both nanosheet and layered materials can be stacked into heterostructures</span>
+<span class="sd">      with adjustable vacuum spacing and interlayer distances.</span>
+<span class="sd">    - Built-in materials include metallic, semiconducting, and superconducting 2D systems:</span>
+<span class="sd">      MoS₂, WS₂, MoSe₂, WSe₂, NbSe₂, TaSe₂, PtS₂, CrI₃, graphene, silicene, BN, phosphorene, etc.</span>
+<span class="sd">    - The `meta` dictionary records all parameters used in construction, </span>
+<span class="sd">      enabling reproducibility and dataset traceability.</span>
+<span class="sd">    - All units are expressed in Ångströms unless otherwise noted.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pygamlab import Nano_TwoD_Builder</span>
+
+<span class="sd">    &gt;&gt;&gt; # 1. Generate a graphene sheet</span>
+<span class="sd">    &gt;&gt;&gt; sheet = Nano_TwoD_Builder(material=&quot;graphene&quot;, structure_type=&quot;nanosheet&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; sheet.to_xyz(&quot;graphene.xyz&quot;)</span>
+
+<span class="sd">    &gt;&gt;&gt; # 2. Build a MoS2 monolayer in the 2H phase</span>
+<span class="sd">    &gt;&gt;&gt; tmd = Nano_TwoD_Builder(material=&quot;MoS2&quot;, structure_type=&quot;tmd&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; tmd.create_layered_material(phase=&#39;2H&#39;, size=(5,5,1), vacuum=15.0)</span>
+<span class="sd">    &gt;&gt;&gt; tmd.to_xyz(&quot;MoS2_2H.xyz&quot;)</span>
+
+<span class="sd">    &gt;&gt;&gt; # 3. Construct a van der Waals heterostructure: Graphene/hBN</span>
+<span class="sd">    &gt;&gt;&gt; het = Nano_TwoD_Builder(material=&quot;graphene&quot;, structure_type=&quot;nanosheet&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; het.create_nanosheet_heterostructure([&quot;graphene&quot;, &quot;boron_nitride&quot;], layer_spacing=3.35)</span>
+<span class="sd">    &gt;&gt;&gt; het.to_xyz(&quot;graphene_hbn_heterostructure.xyz&quot;)</span>
+
+<span class="sd">    &gt;&gt;&gt; # 4. Create a custom 2D material</span>
+<span class="sd">    &gt;&gt;&gt; custom = Nano_TwoD_Builder(material=&quot;CustomX&quot;, structure_type=&quot;nanosheet&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; custom.create_custom_sheet(formula=&quot;X2&quot;, lattice_constant=3.6, thickness=0.2)</span>
+<span class="sd">    &gt;&gt;&gt; custom.to_xyz(&quot;CustomX_sheet.xyz&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">material</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">structure_type</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GAM_Atom</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GAM_Bond</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">structure_type</span> <span class="o">=</span> <span class="n">structure_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">material</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span><span class="n">material</span><span class="p">,</span>
+        <span class="s1">&#39;structure_type&#39;</span><span class="p">:</span> <span class="n">structure_type</span><span class="p">}</span>
+
+
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">layered_materials</span> <span class="o">=</span> <span class="n">LAYERED_MATERIALS</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nanosheet_materials</span> <span class="o">=</span> <span class="n">NANOSHEET_MATERIALS</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">structure_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;nanosheet&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span> 
+
+
+        <span class="k">elif</span> <span class="n">structure_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;tmd&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span> 
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid structure type. Must be &#39;nanosheet&#39;, &#39;nanoribbon&#39;, or &#39;nanotube&#39;.&quot;</span><span class="p">)</span>
+
+
+
+<div class="viewcode-block" id="Nano_TwoD_Builder.create_layered_material">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.create_layered_material">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_layered_material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">phase</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                              <span class="n">vacuum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span>
+                              <span class="n">custom_formula</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">custom_lattice_constant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">custom_thickness</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atoms</span><span class="p">:</span>
+<span class="w">        </span>
+<span class="w">        </span>
+
+
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a layered material using the ASE mx2 function.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        material : str</span>
+<span class="sd">            Material name from database</span>
+<span class="sd">        phase : str, optional</span>
+<span class="sd">            Crystal phase (&#39;2H&#39; or &#39;1T&#39;). Uses preferred phase if None.</span>
+<span class="sd">        size : tuple</span>
+<span class="sd">            Supercell size (nx, ny, nz)</span>
+<span class="sd">        vacuum : float, optional</span>
+<span class="sd">            Vacuum spacing in z-direction</span>
+<span class="sd">        custom_formula : str, optional</span>
+<span class="sd">            Override default formula</span>
+<span class="sd">        custom_lattice_constant : float, optional</span>
+<span class="sd">            Override default lattice constant</span>
+<span class="sd">        custom_thickness : float, optional</span>
+<span class="sd">            Override default thickness</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Atoms</span>
+<span class="sd">            Layered material structure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">material_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">material_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layered_materials</span><span class="p">:</span>
+            <span class="n">available</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layered_materials</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Material &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2">&#39; not found. Available: </span><span class="si">{</span><span class="n">available</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="n">props</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layered_materials</span><span class="p">[</span><span class="n">material_key</span><span class="p">]</span>
+        
+        <span class="c1"># Determine phase</span>
+        <span class="k">if</span> <span class="n">phase</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">phase</span> <span class="o">=</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;preferred_phase&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">phase</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;stable_phases&#39;</span><span class="p">]:</span>
+            <span class="n">stable</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;stable_phases&#39;</span><span class="p">])</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Phase &#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&#39; may not be stable for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2">. &quot;</span>
+                         <span class="sa">f</span><span class="s2">&quot;Stable phases: </span><span class="si">{</span><span class="n">stable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Get parameters (with custom overrides)</span>
+        <span class="n">formula</span> <span class="o">=</span> <span class="n">custom_formula</span> <span class="ow">or</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;formula&#39;</span><span class="p">]</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">custom_lattice_constant</span> <span class="ow">or</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;lattice_constant&#39;</span><span class="p">]</span>
+        <span class="n">thickness</span> <span class="o">=</span> <span class="n">custom_thickness</span> <span class="ow">or</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;thickness&#39;</span><span class="p">]</span>
+        
+        <span class="c1"># Create structure using mx2 function</span>
+        <span class="n">atoms</span> <span class="o">=</span> <span class="n">mx2</span><span class="p">(</span>
+            <span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+            <span class="n">thickness</span><span class="o">=</span><span class="n">thickness</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;material&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="p">,</span>
+            <span class="s1">&#39;structure_type&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">structure_type</span><span class="p">,</span>
+            <span class="s1">&#39;phase&#39;</span><span class="p">:</span><span class="n">phase</span><span class="p">,</span>
+            <span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="n">size</span><span class="p">,</span>
+            <span class="s1">&#39;vacuum&#39;</span><span class="p">:</span> <span class="n">vacuum</span><span class="p">,</span>
+            <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="n">custom_formula</span><span class="p">,</span>
+            <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span> <span class="n">custom_lattice_constant</span><span class="p">,</span>
+            <span class="s1">&#39;thickness&#39;</span> <span class="p">:</span> <span class="n">custom_thickness</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">atoms</span></div>
+
+    
+    <span class="c1"># Convenience methods for common TMDs</span>
+<div class="viewcode-block" id="Nano_TwoD_Builder.mos2_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.mos2_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mos2_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create MoS2 sheet.&quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;mos2&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your material is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2"> and you want to create mos2, build this class again.&quot;</span><span class="p">)</span>
+            
+        <span class="c1">#self.ASE_atoms = self.create_layered_material(&#39;mos2&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+        <span class="c1">#return self.atoms</span>
+        <span class="c1">#return self.create_layered_material(&#39;mos2&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.ws2_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.ws2_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ws2_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;ws2&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your material is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2"> and you want to create ws2, build this class again.&quot;</span><span class="p">)</span>
+<span class="w">            </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create WS2 sheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span> <span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+        <span class="c1">#return self.atoms</span>
+        <span class="c1">#return self.create_layered_material(&#39;ws2&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.mose2_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.mose2_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mose2_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;mose2&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your material is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2"> and you want to create mose2, build this class again.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create MoSe2 sheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+        <span class="c1">#return self.atoms</span>
+        <span class="c1">#return self.create_layered_material(&#39;mose2&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.wse2_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.wse2_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wse2_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;wse2&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your material is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2"> and you want to create wse2, build this class again.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create WSe2 sheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+        <span class="c1">#return self.atoms</span>
+        <span class="c1">#return self.create_layered_material(&#39;wse2&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.nbse2_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.nbse2_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nbse2_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;nbse2&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your material is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2"> and you want to create nbse2, build this class again.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create NbSe2 sheet (superconductor).&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+        <span class="c1">#return self.atoms</span>
+        <span class="c1">#return self.create_layered_material(&#39;nbse2&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.tase2_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.tase2_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tase2_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;tase2&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your material is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2"> and you want to create tase2, build this class again.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create TaSe2 sheet (superconductor).&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+        <span class="c1">#return self.atoms</span>
+        <span class="c1">#return self.create_layered_material(&#39;tase2&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.pts2_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.pts2_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pts2_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;1T&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;pts2&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your material is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2"> and you want to create pts2, build this class again.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create PtS2 sheet (semiconductor).&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+        <span class="c1">#return self.atoms</span>
+        <span class="c1">#return self.create_layered_material(&#39;pts2&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.cri3_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.cri3_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cri3_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;2H&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;cris3&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your material is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2"> and you want to create cris3, build this class again.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create CrI3 sheet (2D ferromagnet).&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+        <span class="c1">#return self.atoms</span>
+        <span class="c1">#return self.create_layered_material(&#39;cri3&#39;, phase=phase, size=size, vacuum=vacuum)</span>
+    
+
+
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.create_layered_heterostructure">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.create_layered_heterostructure">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_layered_heterostructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                             <span class="n">materials_and_phases</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+                             <span class="n">layer_spacing</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">6.5</span><span class="p">,</span>
+                             <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                             <span class="n">vacuum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GAM_Atom</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a heterostructure from multiple layered materials.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        materials_and_phases : list</span>
+<span class="sd">            List of tuples: [(material, phase), ...] or list of material names</span>
+<span class="sd">        layer_spacing : float</span>
+<span class="sd">            Distance between layers</span>
+<span class="sd">        size : tuple</span>
+<span class="sd">            Supercell size</span>
+<span class="sd">        vacuum : float, optional</span>
+<span class="sd">            Total vacuum spacing</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Atoms</span>
+<span class="sd">            Heterostructure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">materials_and_phases</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Need at least 2 materials for heterostructure&quot;</span><span class="p">)</span>
+        
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">z_offsets</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">current_z</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">materials_and_phases</span><span class="p">):</span>
+            <span class="c1"># Handle both (material, phase) tuples and simple material names</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">material</span><span class="p">,</span> <span class="n">phase</span> <span class="o">=</span> <span class="n">item</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">material</span><span class="p">,</span> <span class="n">phase</span> <span class="o">=</span> <span class="n">item</span><span class="p">,</span> <span class="kc">None</span>
+            
+            <span class="c1"># Create layer</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">=</span><span class="n">material</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_layered_material</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+            <span class="n">z_offsets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_z</span><span class="p">)</span>
+            
+            <span class="c1"># Calculate next layer position</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">materials_and_phases</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">material_key</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">layer_thickness</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layered_materials</span><span class="p">[</span><span class="n">material_key</span><span class="p">][</span><span class="s1">&#39;thickness&#39;</span><span class="p">]</span>
+                <span class="n">current_z</span> <span class="o">+=</span> <span class="n">layer_thickness</span> <span class="o">+</span> <span class="n">layer_spacing</span>
+        
+        <span class="c1"># Combine layers</span>
+        <span class="n">all_positions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_symbols</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">layer</span><span class="p">,</span> <span class="n">z_offset</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">z_offsets</span><span class="p">):</span>
+            <span class="n">positions</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+            <span class="n">positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">z_offset</span>
+            <span class="n">all_positions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+            <span class="n">all_symbols</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">())</span>
+        
+        <span class="c1"># Create combined structure</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">total_height</span> <span class="o">=</span> <span class="n">current_z</span> <span class="o">+</span> <span class="p">(</span><span class="n">vacuum</span> <span class="k">if</span> <span class="n">vacuum</span> <span class="k">else</span> <span class="mf">15.0</span><span class="p">)</span>
+        <span class="n">cell</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">total_height</span>
+        
+        <span class="n">heterostructure</span> <span class="o">=</span> <span class="n">Atoms</span><span class="p">(</span>
+            <span class="n">symbols</span><span class="o">=</span><span class="n">all_symbols</span><span class="p">,</span>
+            <span class="n">positions</span><span class="o">=</span><span class="n">all_positions</span><span class="p">,</span>
+            <span class="n">cell</span><span class="o">=</span><span class="n">cell</span><span class="p">,</span>
+            <span class="n">pbc</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">vacuum</span><span class="p">:</span>
+            <span class="n">heterostructure</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">vacuum</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span><span class="n">heterostructure</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span>
+
+
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;materials_and_phases&#39;</span><span class="p">:</span><span class="n">materials_and_phases</span><span class="p">,</span>
+                   <span class="s1">&#39;structure_type&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">structure_type</span><span class="p">,</span>
+                   <span class="s1">&#39;layer_spacing&#39;</span><span class="p">:</span><span class="n">layer_spacing</span><span class="p">,</span>
+                   <span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="n">size</span><span class="p">,</span>
+                   <span class="s1">&#39;vacuum&#39;</span><span class="p">:</span><span class="n">vacuum</span><span class="p">}</span></div>
+
+        
+        
+        <span class="c1">#return self.atoms</span>
+    
+    
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.list_layered_materials">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.list_layered_materials">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_layered_materials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Display available materials.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        category : str, optional</span>
+<span class="sd">            Filter by category (&#39;tmd&#39;, &#39;halide&#39;, &#39;topological&#39;, etc.)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available Layered Materials (using ASE mx2 function):&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">props</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layered_materials</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">category</span> <span class="ow">and</span> <span class="n">category</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="k">continue</span>
+                
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Formula: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;formula&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Lattice constant: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;lattice_constant&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Thickness: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;thickness&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Preferred phase: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;preferred_phase&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Stable phases: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;stable_phases&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Description: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">()</span></div>
+
+    
+
+
+    
+
+
+
+   <span class="c1">#=====================      ====================   </span>
+   <span class="c1">#=====================     ====================  </span>
+   <span class="c1">#=====================     ====================  </span>
+   <span class="c1">#===================== Nnaosheet </span>
+   <span class="c1">#=====================     ====================  </span>
+   <span class="c1">#=====================     ====================  </span>
+   <span class="c1">#======================    ====================  </span>
+<div class="viewcode-block" id="Nano_TwoD_Builder.create_nanosheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.create_nanosheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_nanosheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                        <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                        <span class="n">vacuum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span>
+                        <span class="n">custom_formula</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">custom_lattice_constant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">custom_thickness</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atoms</span><span class="p">:</span>
+<span class="w">        </span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a nanosheet using the ASE graphene function with modified parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        material : str</span>
+<span class="sd">            Material name from the database</span>
+<span class="sd">        size : tuple</span>
+<span class="sd">            Supercell size (nx, ny, nz)</span>
+<span class="sd">        vacuum : float, optional</span>
+<span class="sd">            Vacuum spacing in z-direction</span>
+<span class="sd">        custom_formula : str, optional</span>
+<span class="sd">            Override the default formula</span>
+<span class="sd">        custom_lattice_constant : float, optional</span>
+<span class="sd">            Override the default lattice constant</span>
+<span class="sd">        custom_thickness : float, optional</span>
+<span class="sd">            Override the default thickness</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Atoms</span>
+<span class="sd">            ASE Atoms object of the nanosheet</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">material_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">material_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nanosheet_materials</span><span class="p">:</span>
+            <span class="n">available</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nanosheet_materials</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Material &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="si">}</span><span class="s2">&#39; not found. Available: </span><span class="si">{</span><span class="n">available</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Get material properties</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nanosheet_materials</span><span class="p">[</span><span class="n">material_key</span><span class="p">]</span>
+        
+        <span class="c1"># Use custom parameters if provided</span>
+        <span class="n">formula</span> <span class="o">=</span> <span class="n">custom_formula</span> <span class="ow">or</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;formula&#39;</span><span class="p">]</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">custom_lattice_constant</span> <span class="ow">or</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;lattice_constant&#39;</span><span class="p">]</span> 
+        <span class="n">thickness</span> <span class="o">=</span> <span class="n">custom_thickness</span> <span class="ow">or</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;thickness&#39;</span><span class="p">]</span>
+        
+        <span class="c1"># Call the original graphene function with modified parameters</span>
+        <span class="n">atoms</span> <span class="o">=</span> <span class="n">graphene</span><span class="p">(</span>
+            <span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+            <span class="n">thickness</span><span class="o">=</span><span class="n">thickness</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="p">,</span>
+                   <span class="s1">&#39;structure_type&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">structure_type</span><span class="p">,</span>
+                   <span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="n">size</span><span class="p">,</span>
+                   <span class="s1">&#39;vacuum&#39;</span><span class="p">:</span> <span class="n">vacuum</span><span class="p">,</span>
+                   <span class="s1">&#39;formula&#39;</span><span class="p">:</span><span class="n">custom_formula</span><span class="p">,</span>
+                   <span class="s1">&#39;lattice_constant&#39;</span><span class="p">:</span><span class="n">custom_lattice_constant</span><span class="p">,</span>
+                   <span class="s1">&#39;thickness&#39;</span><span class="p">:</span><span class="n">custom_thickness</span><span class="p">}</span>
+        
+        <span class="c1">#self.atoms=self._to_GAM_Atoms(self.ASE_atoms)</span>
+
+        <span class="k">return</span> <span class="n">atoms</span></div>
+
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.graphene_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.graphene_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">graphene_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create graphene nanosheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="s1">&#39;graphene&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+        
+        <span class="c1">#return self.atoms</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.silicene_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.silicene_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">silicene_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create silicene nanosheet.&quot;&quot;&quot;</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="s1">&#39;silicene&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+        <span class="c1">#return self.atoms   </span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.germanene_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.germanene_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">germanene_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create germanene nanosheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="s1">&#39;germanene&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+        <span class="c1">#return self.atoms </span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.stanene_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.stanene_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stanene_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create stanene nanosheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="s1">&#39;stanene&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+        <span class="c1">#return self.atoms </span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.boron_nitride_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.boron_nitride_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">boron_nitride_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create hexagonal boron nitride nanosheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="s1">&#39;boron_nitride&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+        <span class="c1">#return self.atoms </span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.phosphorene_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.phosphorene_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">phosphorene_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create phosphorene nanosheet (honeycomb approximation).&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="s1">&#39;phosphorene&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+        <span class="c1">#return self.atoms </span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.arsenene_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.arsenene_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">arsenene_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create arsenene nanosheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="s1">&#39;arsenene&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+        <span class="c1">#return self.atoms </span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.antimonene_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.antimonene_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">antimonene_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">vacuum</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create antimonene nanosheet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="s1">&#39;antimonene&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+        <span class="c1">#return self.atoms </span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.create_custom_sheet">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.create_custom_sheet">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_custom_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                          <span class="n">formula</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                          <span class="n">lattice_constant</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                          <span class="n">thickness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                          <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                          <span class="n">vacuum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GAM_Atom</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a custom nanosheet with specified parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        formula : str</span>
+<span class="sd">            Chemical formula (e.g., &#39;C2&#39;, &#39;Si2&#39;, &#39;BN&#39;)</span>
+<span class="sd">        lattice_constant : float</span>
+<span class="sd">            Lattice constant in Angstrom</span>
+<span class="sd">        thickness : float</span>
+<span class="sd">            Thickness/buckling parameter</span>
+<span class="sd">        size : tuple</span>
+<span class="sd">            Supercell size</span>
+<span class="sd">        vacuum : float, optional</span>
+<span class="sd">            Vacuum spacing</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Atoms</span>
+<span class="sd">            Custom nanosheet structure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="o">=</span><span class="n">graphene</span><span class="p">(</span>
+            <span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">lattice_constant</span><span class="p">,</span>
+            <span class="n">thickness</span><span class="o">=</span><span class="n">thickness</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">vacuum</span><span class="o">=</span><span class="n">vacuum</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span></div>
+
+
+
+
+        <span class="c1">#return self.atoms</span>
+        
+    
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.create_nanosheet_heterostructure">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.create_nanosheet_heterostructure">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_nanosheet_heterostructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                             <span class="n">materials</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+                             <span class="n">layer_spacing</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">3.4</span><span class="p">,</span>
+                             <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                             <span class="n">vacuum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GAM_Atom</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a heterostructure by stacking different materials.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        materials : list</span>
+<span class="sd">            List of material names to stack</span>
+<span class="sd">        layer_spacing : float</span>
+<span class="sd">            Distance between layers in Angstrom</span>
+<span class="sd">        size : tuple</span>
+<span class="sd">            Supercell size for each layer</span>
+<span class="sd">        vacuum : float, optional</span>
+<span class="sd">            Total vacuum spacing</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Atoms</span>
+<span class="sd">            Heterostructure combining multiple materials</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">materials</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Need at least 2 materials for heterostructure&quot;</span><span class="p">)</span>
+        
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">z_offsets</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">current_z</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">material</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">materials</span><span class="p">):</span>
+            <span class="c1"># Create layer without vacuum</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_nanosheet</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">vacuum</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+            <span class="n">z_offsets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_z</span><span class="p">)</span>
+            
+            <span class="c1"># Calculate next layer position</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">materials</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">layer_thickness</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nanosheet_materials</span><span class="p">[</span><span class="n">material</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)][</span><span class="s1">&#39;thickness&#39;</span><span class="p">]</span>
+                <span class="n">current_z</span> <span class="o">+=</span> <span class="nb">max</span><span class="p">(</span><span class="n">layer_thickness</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">+</span> <span class="n">layer_spacing</span>
+        
+        <span class="c1"># Combine all layers</span>
+        <span class="n">all_positions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_symbols</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">layer</span><span class="p">,</span> <span class="n">z_offset</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">z_offsets</span><span class="p">):</span>
+            <span class="n">positions</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+            <span class="n">positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">z_offset</span>
+            <span class="n">all_positions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+            <span class="n">all_symbols</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">())</span>
+        
+        <span class="c1"># Create new cell with appropriate z-dimension</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">total_height</span> <span class="o">=</span> <span class="n">current_z</span> <span class="o">+</span> <span class="p">(</span><span class="n">vacuum</span> <span class="k">if</span> <span class="n">vacuum</span> <span class="k">else</span> <span class="mf">10.0</span><span class="p">)</span>
+        <span class="n">cell</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">total_height</span>
+        
+        <span class="n">heterostructure</span> <span class="o">=</span> <span class="n">Atoms</span><span class="p">(</span>
+            <span class="n">symbols</span><span class="o">=</span><span class="n">all_symbols</span><span class="p">,</span>
+            <span class="n">positions</span><span class="o">=</span><span class="n">all_positions</span><span class="p">,</span>
+            <span class="n">cell</span><span class="o">=</span><span class="n">cell</span><span class="p">,</span>
+            <span class="n">pbc</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">vacuum</span><span class="p">:</span>
+            <span class="n">heterostructure</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">vacuum</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span> <span class="o">=</span> <span class="n">heterostructure</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;materials&#39;</span><span class="p">:</span> <span class="n">materials</span><span class="p">,</span>
+            <span class="s1">&#39;structure_type&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">structure_type</span><span class="p">,</span>
+            <span class="s1">&#39;layer_spacing&#39;</span><span class="p">:</span> <span class="n">layer_spacing</span><span class="p">,</span>
+            <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">size</span><span class="p">,</span>
+            <span class="s1">&#39;vacuum&#39;</span><span class="p">:</span> <span class="n">vacuum</span>
+        <span class="p">}</span></div>
+
+        
+        <span class="c1">#return self.atoms</span>
+    
+
+<div class="viewcode-block" id="Nano_TwoD_Builder.list_nanosheet_materials">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.list_nanosheet_materials">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_nanosheet_materials</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display all available materials and their properties.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available 2D Materials (using ASE graphene function):&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">props</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nanosheet_materials</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Formula: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;formula&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Lattice constant: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;lattice_constant&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Thickness/Buckling: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;thickness&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Description: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">()</span></div>
+
+            
+<div class="viewcode-block" id="Nano_TwoD_Builder.translate">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.translate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">dy</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">dz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Translate all atoms by (dx, dy, dz).&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">dz</span>
+        
+        <span class="c1"># Update ASE atoms positions as well</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">atom</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">):</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">position</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span><span class="p">])</span>
+
+        <span class="c1"># Update origin in metadata</span>
+        <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="p">(</span><span class="n">ox</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">dy</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span></div>
+
+        
+        <span class="c1">#return self.atoms</span>
+        
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.rotate">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.rotate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle_deg</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">about_center</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate structure about z-axis.&quot;&quot;&quot;</span>
+        <span class="n">angle_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">)</span>
+        <span class="n">cos_a</span><span class="p">,</span> <span class="n">sin_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
+        
+        <span class="c1"># Get center of mass</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">])</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">about_center</span><span class="p">:</span>
+            <span class="c1"># Rotate about center of mass</span>
+            <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+                <span class="n">x_rel</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">y_rel</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">atom</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x_rel</span> <span class="o">*</span> <span class="n">cos_a</span> <span class="o">-</span> <span class="n">y_rel</span> <span class="o">*</span> <span class="n">sin_a</span>
+                <span class="n">atom</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x_rel</span> <span class="o">*</span> <span class="n">sin_a</span> <span class="o">+</span> <span class="n">y_rel</span> <span class="o">*</span> <span class="n">cos_a</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Rotate about (0, 0)</span>
+            <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+                <span class="n">x_old</span><span class="p">,</span> <span class="n">y_old</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span>
+                <span class="n">atom</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x_old</span> <span class="o">*</span> <span class="n">cos_a</span> <span class="o">-</span> <span class="n">y_old</span> <span class="o">*</span> <span class="n">sin_a</span>
+                <span class="n">atom</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">x_old</span> <span class="o">*</span> <span class="n">sin_a</span> <span class="o">+</span> <span class="n">y_old</span> <span class="o">*</span> <span class="n">cos_a</span>
+        
+        <span class="c1"># Update ASE atoms positions as well</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">atom</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">):</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">x</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">y</span>
+            <span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">z</span>
+
+        <span class="c1"># Update rotation in metadata</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rotation</span> <span class="o">+</span> <span class="n">angle_deg</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;rotation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotation</span></div>
+
+        <span class="c1">#return self.atoms</span>
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.copy">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.copy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a deep copy of the structure.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span></div>
+
+    
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.get_atoms">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.get_atoms">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_atoms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a copy of the atoms in this molecule.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        List[str]</span>
+<span class="sd">            A list of atom symbols.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="Nano_TwoD_Builder.get_positions">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.get_positions">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return positions of all atoms as a list of (x, y, z) tuples.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Nano_TwoD_Builder.get_elements">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.get_elements">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return list of element symbols in the molecule.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">element</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span></div>
+
+    
+    
+
+    
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_xyz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the structure to a file.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        atoms : Atoms</span>
+<span class="sd">            ASE Atoms object to save</span>
+<span class="sd">        filename : str</span>
+<span class="sd">            Output filename</span>
+<span class="sd">        format : str</span>
+<span class="sd">            Output format &#39;xyz&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ASE_atoms</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;xyz&#39;</span><span class="p">)</span>
+        
+        
+        
+<div class="viewcode-block" id="Nano_TwoD_Builder.to_xyz">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.to_xyz">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_xyz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build (if needed) and save structure directly to XYZ file.&quot;&quot;&quot;</span>
+        
+        <span class="c1"># Build only when saving</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;built&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        
+        <span class="c1"># Prepare XYZ string directly</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">))]</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        comment_parts = []</span>
+<span class="sd">        for key, value in self.meta.items():</span>
+<span class="sd">            comment_parts.append(f&quot;{key}={value}&quot;)</span>
+<span class="sd">        lines.append(&quot;Silicene structure: &quot; + &quot;, &quot;.join(comment_parts))</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Generated by PyGamlab&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">element</span><span class="si">:</span><span class="s2">2s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">y</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">z</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Save directly</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span></div>
+
+        
+        
+
+<div class="viewcode-block" id="Nano_TwoD_Builder.to_ase">
+<a class="viewcode-back" href="../../../../modules_/structures.html#PyGamLab.structures.Nano_TwoD_Builder.to_ase">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_ase</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;ase.Atoms&#39;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Export structure to ASE Atoms object (if ASE is available).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            ASE Atoms object or None if ASE not available</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">HAS_ASE</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ASE not available. Install with: pip install ase&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Atoms</span><span class="p">()</span>
+        
+        <span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">element</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">position</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">]</span>
+        
+        <span class="n">atoms_obj</span> <span class="o">=</span> <span class="n">Atoms</span><span class="p">(</span><span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="n">positions</span><span class="p">)</span>
+        
+        <span class="c1"># Add metadata</span>
+        <span class="n">atoms_obj</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">)</span>
+        
+        <span class="c1">#or </span>
+        <span class="c1">#Just </span>
+        <span class="c1">#return self.ASE_atoms</span>
+        
+        <span class="k">return</span> <span class="n">atoms_obj</span></div>
+
+        
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">_to_GAM_Atoms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">atoms</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">GAM_Atom</span><span class="p">(</span>
+                <span class="nb">id</span><span class="o">=</span><span class="n">atom</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                <span class="n">element</span><span class="o">=</span><span class="n">atom</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">z</span><span class="o">=</span><span class="n">atom</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atoms</span>
+        <span class="p">]</span></div>
+
+    
+    
+    
+   
+
+
+
+
+
+
+
+
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Ali Pilehvar Meibody
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=79f5c508"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

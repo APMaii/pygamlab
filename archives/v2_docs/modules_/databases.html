@@ -1,0 +1,1417 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="../about.html" /><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="AI Core Module" href="ai_core.html" /><link rel="prev" title="Structures Module" href="structures.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Databases Module - PyGamLab 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">PyGamLab 2.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../_static/logo_dark.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../_static/logo_dark.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">PyGamLab 2.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting Started</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../modules.html">🧩 Modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 🧩 Modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="structures.html">Structures Module</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Databases Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai_core.html">AI Core Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_analysis.html">Data_Analysis Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Constants Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html">Convertors Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Functions Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples.html">💡 Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 💡 Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_/data_analysis_example.html">Data Analysis Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_/structures_example.html">Structures Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_/ai_workflow_example.html">AI Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collaborate.html">Collaborate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About PyGamLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="databases-module">
+<h1>Databases Module<a class="headerlink" href="#databases-module" title="Link to this heading">¶</a></h1>
+<p>Provides <strong>access to multiple materials databases</strong>.</p>
+<p>Supported databases:</p>
+<ul class="simple">
+<li><p>Materials Project (MP)</p></li>
+<li><p>AFLOW</p></li>
+<li><p>JARVIS</p></li>
+<li><p>Crystallography Open Database (COD)</p></li>
+</ul>
+<p>Available data:</p>
+<ul class="simple">
+<li><p>Mechanical, electronic, thermodynamic properties</p></li>
+<li><p>Structural and crystallographic information</p></li>
+<li><p>Chemical composition and symmetry</p></li>
+</ul>
+<section id="main-classes">
+<h2>Main Classes<a class="headerlink" href="#main-classes" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyGamLab.databases.</span></span><span class="sig-name descname"><span class="pre">GAM_Explorer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jarvis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dft_3d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Main_DB.html#GAM_Explorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Unified interface to explore material properties from multiple databases:
+Materials Project, COD (Crystallography Open Database), Jarvis (NIST), and AFLOW.</p>
+<p>This class allows searching and fetching electronic, mechanical, thermodynamic,
+and structural properties from a selected backend or from all backends simultaneously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> (<em>str</em><em>, </em><em>default='jarvis'</em>) – Backend database to use. Options are:
+‘material_project’, ‘cod’, ‘jarvis’, ‘aflow’, ‘all’.</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>default=60</em>) – Timeout in seconds for database queries (applies to COD).</p></li>
+<li><p><strong>api_key</strong> (<em>str</em><em>, </em><em>optional</em>) – API key required for Materials Project access.</p></li>
+<li><p><strong>dataset</strong> (<em>str</em><em>, </em><em>default='dft_3d'</em>) – Dataset to use when querying Jarvis.</p></li>
+<li><p><strong>max_results</strong> (<em>int</em><em>, </em><em>default=5</em>) – Maximum number of materials to return for search queries.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>default=10</em>) – Batch size for queries (applies to AFLOW).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer.backend">
+<span class="sig-name descname"><span class="pre">backend</span></span><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer.backend" title="Link to this definition">¶</a></dt>
+<dd><p>Normalized backend name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer._explorer">
+<span class="sig-name descname"><span class="pre">_explorer</span></span><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer._explorer" title="Link to this definition">¶</a></dt>
+<dd><p>Instance of the selected backend explorer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer.search_results">
+<span class="sig-name descname"><span class="pre">search_results</span></span><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer.search_results" title="Link to this definition">¶</a></dt>
+<dd><p>Stores results from the last search query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<p># Example 1: Using Jarvis backend to search and fetch properties
+&gt;&gt;&gt; gam = GAM_Explorer(backend=’jarvis’)
+&gt;&gt;&gt; results = gam.search_materials(formula=”MoS2”)
+&gt;&gt;&gt; electronic_props = gam.fetch_electronic_properties(gam_id=”JARVIS-123”)
+&gt;&gt;&gt; mechanical_props = gam.fetch_mechanical_properties(gam_id=”JARVIS-123”)
+&gt;&gt;&gt; thermo_props = gam.fetch_thermodynamic_properties(gam_id=”JARVIS-123”)
+&gt;&gt;&gt; structure = gam.fetch_structure(gam_id=”JARVIS-123”)
+&gt;&gt;&gt; all_data = gam.fetch_all_data(gam_id=”JARVIS-123”)</p>
+<p># Example 2: Using Materials Project backend
+&gt;&gt;&gt; gam_mp = GAM_Explorer(backend=’material_project’, api_key=”MP_API_KEY”)
+&gt;&gt;&gt; results_mp = gam_mp.search_materials(elements=[“Mo”,”S”])
+&gt;&gt;&gt; electronic_mp = gam_mp.fetch_electronic_properties(gam_id=”mp-123”)</p>
+<p># Example 3: Using AFLOW backend
+&gt;&gt;&gt; gam_aflow = GAM_Explorer(backend=’aflow’)
+&gt;&gt;&gt; results_aflow = gam_aflow.search_materials(species=”MoS2”)
+&gt;&gt;&gt; mechanical_aflow = gam_aflow.fetch_mechanical_properties(gam_id=”aflow-456”)</p>
+<p># Example 4: Using COD backend for structure data
+&gt;&gt;&gt; gam_cod = GAM_Explorer(backend=’cod’)
+&gt;&gt;&gt; results_cod = gam_cod.search_materials(formula=”MoS2”)
+&gt;&gt;&gt; structure_cod = gam_cod.fetch_structure(gam_id=”COD-789”)</p>
+<p># Example 5: Using all backends simultaneously
+&gt;&gt;&gt; gam_all = GAM_Explorer(backend=’all’, api_key=”MP_API_KEY”)
+&gt;&gt;&gt; results_all = gam_all.search_materials(formula=”MoS2”, elements=[“Mo”,”S”], species=”MoS2”, mp_ids=[“mp-123”])
+&gt;&gt;&gt; all_props = gam_all.fetch_all_data(mp_id=”mp-123”, juid=”JARVIS-123”, auid=”aflow-456”, code_id=”COD-789”)
+&gt;&gt;&gt; all_electronic = gam_all.fetch_electronic_properties(mp_id=”mp-123”, juid=”JARVIS-123”, auid=”aflow-456”)
+&gt;&gt;&gt; all_mechanical = gam_all.fetch_mechanical_properties(mp_id=”mp-123”, juid=”JARVIS-123”, auid=”aflow-456”)
+&gt;&gt;&gt; all_thermo = gam_all.fetch_thermodynamic_properties(mp_id=”mp-123”, juid=”JARVIS-123”, auid=”aflow-456”)
+&gt;&gt;&gt; all_structures = gam_all.fetch_structure(mp_id=”mp-123”, juid=”JARVIS-123”, auid=”aflow-456”, code_id=”COD-789”)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer.fetch_all_data">
+<span class="sig-name descname"><span class="pre">fetch_all_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gam_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mp_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">juid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Main_DB.html#GAM_Explorer.fetch_all_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer.fetch_all_data" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch all available properties (electronic, mechanical, thermodynamic, structure)
+for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gam_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Material ID for single backend (Jarvis, AFLOW, or Materials Project).</p></li>
+<li><p><strong>mp_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Materials Project ID (required when backend=’all’).</p></li>
+<li><p><strong>juid</strong> (<em>str</em><em>, </em><em>optional</em>) – Jarvis ID (required when backend=’all’).</p></li>
+<li><p><strong>auid</strong> (<em>str</em><em>, </em><em>optional</em>) – AFLOW ID (required when backend=’all’).</p></li>
+<li><p><strong>code_id</strong> (<em>str</em><em>, </em><em>optional</em>) – COD ID (required when backend=’all’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary of all properties. If backend=’all’, returns results
+from all backends; otherwise, returns results from the selected backend.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If required IDs are not provided.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;jarvis&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="n">gam_id</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;electronic_prop&#39;: {...}, &#39;mechanical_prop&#39;: {...}, &#39;thermo_prop&#39;: {...}, &#39;structure&#39;: {...}}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;MP_API_KEY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="n">mp_id</span><span class="o">=</span><span class="s2">&quot;mp-123&quot;</span><span class="p">,</span> <span class="n">juid</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">,</span> <span class="n">auid</span><span class="o">=</span><span class="s2">&quot;aflow-456&quot;</span><span class="p">,</span> <span class="n">code_id</span><span class="o">=</span><span class="s2">&quot;COD-789&quot;</span><span class="p">)</span>
+<span class="go">{&#39;Material Project&#39;: {...}, &#39;COD&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer.fetch_electronic_properties">
+<span class="sig-name descname"><span class="pre">fetch_electronic_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gam_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mp_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">juid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Main_DB.html#GAM_Explorer.fetch_electronic_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer.fetch_electronic_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch electronic properties for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gam_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Material ID for single backend (Jarvis, AFLOW, or Materials Project).</p></li>
+<li><p><strong>mp_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Materials Project ID (required when backend=’all’).</p></li>
+<li><p><strong>juid</strong> (<em>str</em><em>, </em><em>optional</em>) – Jarvis ID (required when backend=’all’).</p></li>
+<li><p><strong>auid</strong> (<em>str</em><em>, </em><em>optional</em>) – AFLOW ID (required when backend=’all’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Electronic properties of the material. Returns a dictionary containing
+results from multiple backends if backend=’all’. Returns None for COD backend.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If required IDs are not provided.</p></li>
+<li><p><strong>NotImplementedError</strong> – If COD backend is selected.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;jarvis&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="n">gam_id</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;band_gap&#39;: 1.5, &#39;eigenvalues&#39;: [...], ...}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;MP_API_KEY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="n">mp_id</span><span class="o">=</span><span class="s2">&quot;mp-123&quot;</span><span class="p">,</span> <span class="n">juid</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">,</span> <span class="n">auid</span><span class="o">=</span><span class="s2">&quot;aflow-456&quot;</span><span class="p">)</span>
+<span class="go">{&#39;Material Project&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}, &#39;COD&#39;: None}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer.fetch_mechanical_properties">
+<span class="sig-name descname"><span class="pre">fetch_mechanical_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gam_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mp_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">juid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Main_DB.html#GAM_Explorer.fetch_mechanical_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer.fetch_mechanical_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch mechanical properties for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gam_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Material ID for single backend (Jarvis, AFLOW, or Materials Project).</p></li>
+<li><p><strong>mp_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Materials Project ID (required when backend=’all’).</p></li>
+<li><p><strong>juid</strong> (<em>str</em><em>, </em><em>optional</em>) – Jarvis ID (required when backend=’all’).</p></li>
+<li><p><strong>auid</strong> (<em>str</em><em>, </em><em>optional</em>) – AFLOW ID (required when backend=’all’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mechanical properties of the material. Returns a dictionary containing
+results from multiple backends if backend=’all’. Returns None for COD backend.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If required IDs are not provided.</p></li>
+<li><p><strong>NotImplementedError</strong> – If COD backend is selected.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;jarvis&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="n">gam_id</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;bulk_modulus_reuss&#39;: 120.5, &#39;bulk_modulus_voigt&#39;: 123.0, ...}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;MP_API_KEY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="n">mp_id</span><span class="o">=</span><span class="s2">&quot;mp-123&quot;</span><span class="p">,</span> <span class="n">juid</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">,</span> <span class="n">auid</span><span class="o">=</span><span class="s2">&quot;aflow-456&quot;</span><span class="p">)</span>
+<span class="go">{&#39;Material Project&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}, &#39;COD&#39;: None}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer.fetch_structure">
+<span class="sig-name descname"><span class="pre">fetch_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gam_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mp_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">juid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Main_DB.html#GAM_Explorer.fetch_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer.fetch_structure" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch structural properties for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gam_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Material ID for single backend (Jarvis, AFLOW, or Materials Project).</p></li>
+<li><p><strong>mp_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Materials Project ID (required when backend=’all’).</p></li>
+<li><p><strong>juid</strong> (<em>str</em><em>, </em><em>optional</em>) – Jarvis ID (required when backend=’all’).</p></li>
+<li><p><strong>auid</strong> (<em>str</em><em>, </em><em>optional</em>) – AFLOW ID (required when backend=’all’).</p></li>
+<li><p><strong>code_id</strong> (<em>str</em><em>, </em><em>optional</em>) – COD ID (required when backend=’all’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Structural properties of the material. Returns a dictionary containing
+results from multiple backends if backend=’all’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If required IDs are not provided.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;jarvis&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">gam_id</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;spacegroup_relax&#39;: 194, &#39;Bravais_lattice_relax&#39;: &#39;hexagonal&#39;, ...}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;MP_API_KEY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">mp_id</span><span class="o">=</span><span class="s2">&quot;mp-123&quot;</span><span class="p">,</span> <span class="n">juid</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">,</span> <span class="n">auid</span><span class="o">=</span><span class="s2">&quot;aflow-456&quot;</span><span class="p">,</span> <span class="n">code_id</span><span class="o">=</span><span class="s2">&quot;COD-789&quot;</span><span class="p">)</span>
+<span class="go">{&#39;Material Project&#39;: {...}, &#39;COD&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer.fetch_thermodynamic_properties">
+<span class="sig-name descname"><span class="pre">fetch_thermodynamic_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gam_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mp_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">juid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Main_DB.html#GAM_Explorer.fetch_thermodynamic_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer.fetch_thermodynamic_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch thermodynamic properties for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gam_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Material ID for single backend (Jarvis, AFLOW, or Materials Project).</p></li>
+<li><p><strong>mp_id</strong> (<em>str</em><em>, </em><em>optional</em>) – Materials Project ID (required when backend=’all’).</p></li>
+<li><p><strong>juid</strong> (<em>str</em><em>, </em><em>optional</em>) – Jarvis ID (required when backend=’all’).</p></li>
+<li><p><strong>auid</strong> (<em>str</em><em>, </em><em>optional</em>) – AFLOW ID (required when backend=’all’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Thermodynamic properties of the material. Returns a dictionary containing
+results from multiple backends if backend=’all’. Returns None for COD backend.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If required IDs are not provided.</p></li>
+<li><p><strong>NotImplementedError</strong> – If COD backend is selected.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;jarvis&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="n">gam_id</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;enthalpy_formation_cell&#39;: -5.4, &#39;entropy_cell&#39;: 12.3, ...}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span> <span class="o">=</span> <span class="n">GAM_Explorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;MP_API_KEY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gam</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="n">mp_id</span><span class="o">=</span><span class="s2">&quot;mp-123&quot;</span><span class="p">,</span> <span class="n">juid</span><span class="o">=</span><span class="s2">&quot;JARVIS-123&quot;</span><span class="p">,</span> <span class="n">auid</span><span class="o">=</span><span class="s2">&quot;aflow-456&quot;</span><span class="p">)</span>
+<span class="go">{&#39;Material Project&#39;: {...}, &#39;Jarvis&#39;: {...}, &#39;Aflow&#39;: {...}, &#39;COD&#39;: None}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.GAM_Explorer.search_materials">
+<span class="sig-name descname"><span class="pre">search_materials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mp_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Main_DB.html#GAM_Explorer.search_materials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.GAM_Explorer.search_materials" title="Link to this definition">¶</a></dt>
+<dd><p>Search for materials using the selected backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formula</strong> (<em>str</em><em>, </em><em>optional</em>) – Chemical formula to search for.</p></li>
+<li><p><strong>elements</strong> (<em>list</em><em>, </em><em>optional</em>) – Elements to search for (only for Materials Project).</p></li>
+<li><p><strong>mp_ids</strong> (<em>list</em><em>, </em><em>optional</em>) – Materials Project IDs (only for Materials Project backend).</p></li>
+<li><p><strong>species</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>optional</em>) – Species for AFLOW backend.</p></li>
+<li><p><strong>description</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, returns detailed descriptions. Otherwise, only IDs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Search results. Dict is returned if backend=’all’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list or dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If backend-specific arguments are used incorrectly.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="database-specific-explorers">
+<h2>Database-Specific Explorers<a class="headerlink" href="#database-specific-explorers" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyGamLab.databases.</span></span><span class="sig-name descname"><span class="pre">Aflow_Explorer</span></span><a class="reference internal" href="../_modules/PyGamLab/databases/Aflow.html#Aflow_Explorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A unified interface to search and fetch various material properties from the AFLOW database.</p>
+<p>This class allows searching by species or chemical formula, and fetching electronic, mechanical,
+thermodynamic, and structural properties of materials using AFLOW keys.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer.all_entries">
+<span class="sig-name descname"><span class="pre">all_entries</span></span><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer.all_entries" title="Link to this definition">¶</a></dt>
+<dd><p>Stores the results of the latest search query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer.results">
+<span class="sig-name descname"><span class="pre">results</span></span><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer.results" title="Link to this definition">¶</a></dt>
+<dd><p>Stores the latest fetched data for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">Aflow_Explorer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;MoS2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="s2">&quot;aflow-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;formula&#39;: &#39;MoS2&#39;, &#39;bandgap&#39;: 1.23, ...}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="s2">&quot;aflow-123&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;electronic_prop&#39;</span><span class="p">][</span><span class="s1">&#39;bandgap&#39;</span><span class="p">]</span>
+<span class="go">1.23</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer.fetch_all_data">
+<span class="sig-name descname"><span class="pre">fetch_all_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Aflow.html#Aflow_Explorer.fetch_all_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer.fetch_all_data" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch all available data (electronic, mechanical, thermodynamic, structure) for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>auid</strong> (<em>str</em>) – AFLOW unique ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with keys: ‘electronic_prop’, ‘mechanical_prop’, ‘thermo_prop’, ‘structure’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="s2">&quot;aflow-123&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;electronic_prop&#39;</span><span class="p">][</span><span class="s1">&#39;bandgap&#39;</span><span class="p">]</span>
+<span class="go">1.23</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer.fetch_electronic_properties">
+<span class="sig-name descname"><span class="pre">fetch_electronic_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Aflow.html#Aflow_Explorer.fetch_electronic_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer.fetch_electronic_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch electronic properties for a given AFLOW AUID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>auid</strong> (<em>str</em>) – AFLOW unique ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing electronic properties such as bandgap, spin polarization, etc.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="s2">&quot;aflow-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;formula&#39;: &#39;MoS2&#39;, &#39;bandgap&#39;: 1.23, ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer.fetch_mechanical_properties">
+<span class="sig-name descname"><span class="pre">fetch_mechanical_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Aflow.html#Aflow_Explorer.fetch_mechanical_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer.fetch_mechanical_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch mechanical properties for a given AFLOW AUID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>auid</strong> (<em>str</em>) – AFLOW unique ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing bulk modulus, shear modulus, elastic tensors, etc.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer.fetch_structure">
+<span class="sig-name descname"><span class="pre">fetch_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Aflow.html#Aflow_Explorer.fetch_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer.fetch_structure" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch structural properties for a given AFLOW AUID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>auid</strong> (<em>str</em>) – AFLOW unique ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing lattice, space group, atomic positions, density, and valence info.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer.fetch_thermodynamic_properties">
+<span class="sig-name descname"><span class="pre">fetch_thermodynamic_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Aflow.html#Aflow_Explorer.fetch_thermodynamic_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer.fetch_thermodynamic_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch thermodynamic properties for a given AFLOW AUID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>auid</strong> (<em>str</em>) – AFLOW unique ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing Debye temperature, heat capacity, enthalpy, and related properties.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Aflow_Explorer.search_materials">
+<span class="sig-name descname"><span class="pre">search_materials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Aflow.html#Aflow_Explorer.search_materials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Aflow_Explorer.search_materials" title="Link to this definition">¶</a></dt>
+<dd><p>Search for materials in AFLOW by species or chemical formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>species</strong> (<em>str</em><em> or </em><em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Element(s) to search for.</p></li>
+<li><p><strong>formula</strong> (<em>str</em><em>, </em><em>optional</em>) – Chemical formula to search for.</p></li>
+<li><p><strong>max_results</strong> (<em>int</em><em>, </em><em>default 5</em>) – Maximum number of results to return.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>default 10</em>) – Number of entries retrieved per batch from AFLOW.</p></li>
+<li><p><strong>description</strong> (<em>bool</em><em>, </em><em>default True</em>) – If True, returns detailed information for each entry.
+If False, returns only AFLOW unique IDs (AUIDs).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of results containing AUID and optionally detailed description.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">Aflow_Explorer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;MoS2&quot;</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">[{&#39;auid&#39;: &#39;aflow-123&#39;, &#39;prototype&#39;: &#39;MoS2&#39;, &#39;spacegroup_relax&#39;: 187, ...}]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyGamLab.databases.</span></span><span class="sig-name descname"><span class="pre">COD_Explorer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/COD.html#COD_Explorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.COD_Explorer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python wrapper for the Crystallography Open Database (COD).</p>
+<p>Provides methods to search materials by chemical formula,
+retrieve COD IDs, and fetch crystallographic information files (CIFs).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><a class="headerlink" href="#PyGamLab.databases.COD_Explorer.timeout" title="Link to this definition">¶</a></dt>
+<dd><p>Request timeout in seconds for HTTP queries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer.url">
+<span class="sig-name descname"><span class="pre">url</span></span><a class="headerlink" href="#PyGamLab.databases.COD_Explorer.url" title="Link to this definition">¶</a></dt>
+<dd><p>Base URL of the COD website.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer.api_url">
+<span class="sig-name descname"><span class="pre">api_url</span></span><a class="headerlink" href="#PyGamLab.databases.COD_Explorer.api_url" title="Link to this definition">¶</a></dt>
+<dd><p>Endpoint URL for COD search queries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer.formula">
+<span class="sig-name descname"><span class="pre">formula</span></span><a class="headerlink" href="#PyGamLab.databases.COD_Explorer.formula" title="Link to this definition">¶</a></dt>
+<dd><p>Last processed chemical formula in COD format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer.all_elements">
+<span class="sig-name descname"><span class="pre">all_elements</span></span><a class="headerlink" href="#PyGamLab.databases.COD_Explorer.all_elements" title="Link to this definition">¶</a></dt>
+<dd><p>List of all recognized chemical elements (1- and 2-letter symbols).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">COD_Explorer</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="s2">&quot;TiO2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span>
+<span class="go">[900856, 900857, 901234]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structure</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">ids</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="p">[</span><span class="s1">&#39;cif&#39;</span><span class="p">][:</span><span class="mi">200</span><span class="p">])</span>  <span class="c1"># Print first 200 chars of CIF</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">all_elements</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['H',</span> <span class="pre">'He',</span> <span class="pre">'Li',</span> <span class="pre">'Be',</span> <span class="pre">'B',</span> <span class="pre">'C',</span> <span class="pre">'N',</span> <span class="pre">'O',</span> <span class="pre">'F',</span> <span class="pre">'Ne',</span> <span class="pre">'Na',</span> <span class="pre">'Mg',</span> <span class="pre">'Al',</span> <span class="pre">'Si',</span> <span class="pre">'P',</span> <span class="pre">'S',</span> <span class="pre">'Cl',</span> <span class="pre">'Ar',</span> <span class="pre">'K',</span> <span class="pre">'Ca',</span> <span class="pre">'Sc',</span> <span class="pre">'Ti',</span> <span class="pre">'V',</span> <span class="pre">'Cr',</span> <span class="pre">'Mn',</span> <span class="pre">'Fe',</span> <span class="pre">'Co',</span> <span class="pre">'Ni',</span> <span class="pre">'Cu',</span> <span class="pre">'Zn',</span> <span class="pre">'Ga',</span> <span class="pre">'Ge',</span> <span class="pre">'As',</span> <span class="pre">'Se',</span> <span class="pre">'Br',</span> <span class="pre">'Kr',</span> <span class="pre">'Rb',</span> <span class="pre">'Sr',</span> <span class="pre">'Y',</span> <span class="pre">'Zr',</span> <span class="pre">'Nb',</span> <span class="pre">'Mo',</span> <span class="pre">'Tc',</span> <span class="pre">'Ru',</span> <span class="pre">'Rh',</span> <span class="pre">'Pd',</span> <span class="pre">'Ag',</span> <span class="pre">'Cd',</span> <span class="pre">'In',</span> <span class="pre">'Sn',</span> <span class="pre">'Sb',</span> <span class="pre">'Te',</span> <span class="pre">'I',</span> <span class="pre">'Xe',</span> <span class="pre">'Cs',</span> <span class="pre">'Ba',</span> <span class="pre">'La',</span> <span class="pre">'Ce',</span> <span class="pre">'Pr',</span> <span class="pre">'Nd',</span> <span class="pre">'Pm',</span> <span class="pre">'Sm',</span> <span class="pre">'Eu',</span> <span class="pre">'Gd',</span> <span class="pre">'Tb',</span> <span class="pre">'Dy',</span> <span class="pre">'Ho',</span> <span class="pre">'Er',</span> <span class="pre">'Tm',</span> <span class="pre">'Yb',</span> <span class="pre">'Lu',</span> <span class="pre">'Hf',</span> <span class="pre">'Ta',</span> <span class="pre">'W',</span> <span class="pre">'Re',</span> <span class="pre">'Os',</span> <span class="pre">'Ir',</span> <span class="pre">'Pt',</span> <span class="pre">'Au',</span> <span class="pre">'Hg',</span> <span class="pre">'Tl',</span> <span class="pre">'Pb',</span> <span class="pre">'Bi',</span> <span class="pre">'Po',</span> <span class="pre">'At',</span> <span class="pre">'Rn',</span> <span class="pre">'Fr',</span> <span class="pre">'Ra',</span> <span class="pre">'Ac',</span> <span class="pre">'Th',</span> <span class="pre">'Pa',</span> <span class="pre">'U',</span> <span class="pre">'Np',</span> <span class="pre">'Pu',</span> <span class="pre">'Am',</span> <span class="pre">'Cm',</span> <span class="pre">'Bk',</span> <span class="pre">'Cf',</span> <span class="pre">'Es',</span> <span class="pre">'Fm',</span> <span class="pre">'Md',</span> <span class="pre">'No',</span> <span class="pre">'Lr',</span> <span class="pre">'Rf',</span> <span class="pre">'Db',</span> <span class="pre">'Sg',</span> <span class="pre">'Bh',</span> <span class="pre">'Hs',</span> <span class="pre">'Mt',</span> <span class="pre">'Ds',</span> <span class="pre">'Rg',</span> <span class="pre">'Cn',</span> <span class="pre">'Nh',</span> <span class="pre">'Fl',</span> <span class="pre">'Mc',</span> <span class="pre">'Lv',</span> <span class="pre">'Ts',</span> <span class="pre">'Og']</span></em><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer.fetch_all_data">
+<span class="sig-name descname"><span class="pre">fetch_all_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cod_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/COD.html#COD_Explorer.fetch_all_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.COD_Explorer.fetch_all_data" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch all available data for a given COD ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cod_id</strong> (<em>int</em>) – COD ID of the structure to fetch.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing:
+- ‘formula’: COD-formatted chemical formula
+- ‘cod_id’: COD ID of the structure
+- ‘cif’: Raw CIF content as a string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Currently identical to <cite>fetch_structure</cite> but designed for future expansion
+to include more metadata fields from COD.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">COD_Explorer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="mi">856789</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="go">dict_keys([&#39;formula&#39;, &#39;cod_id&#39;, &#39;cif&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer.fetch_structure">
+<span class="sig-name descname"><span class="pre">fetch_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cod_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/COD.html#COD_Explorer.fetch_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.COD_Explorer.fetch_structure" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch structure data for a given COD ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cod_id</strong> (<em>int</em>) – COD ID of the structure to fetch.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing:
+- ‘formula’: COD-formatted chemical formula
+- ‘cod_id’: COD ID of the structure
+- ‘cif’: Raw CIF content as a string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">COD_Explorer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="s2">&quot;TiO2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structure</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="n">ids</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="p">[</span><span class="s1">&#39;formula&#39;</span><span class="p">])</span>
+<span class="go">&#39;Ti O2&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.COD_Explorer.search_materials">
+<span class="sig-name descname"><span class="pre">search_materials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/COD.html#COD_Explorer.search_materials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.COD_Explorer.search_materials" title="Link to this definition">¶</a></dt>
+<dd><p>Search COD for materials matching a chemical formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>formula</strong> (<em>str</em>) – Chemical formula (e.g., ‘TiO2’, ‘C6H6’).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of COD IDs corresponding to structures matching the formula.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">COD_Explorer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="s2">&quot;C6H6&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+<span class="go">[123456, 123457]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyGamLab.databases.</span></span><span class="sig-name descname"><span class="pre">Jarvis_Explorer</span></span><a class="reference internal" href="../_modules/PyGamLab/databases/Jarvis.html#Jarvis_Explorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python interface for exploring the JARVIS-DFT dataset.</p>
+<p>This class allows searching materials by chemical formula,
+and retrieving electronic, mechanical, thermodynamic,
+and structural properties for entries.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer.all_entries">
+<span class="sig-name descname"><span class="pre">all_entries</span></span><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer.all_entries" title="Link to this definition">¶</a></dt>
+<dd><p>List of entries matching the last search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer.results">
+<span class="sig-name descname"><span class="pre">results</span></span><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer.results" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary storing electronic, mechanical, thermodynamic,
+structural, and metadata for the last fetched material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">Jarvis_Explorer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entries</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="s2">&quot;MoS2&quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;dft_3d&quot;</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entries</span>
+<span class="go">[{&#39;JID&#39;: &#39;JVASP-123&#39;, &#39;formula&#39;: &#39;MoS2&#39;, &#39;spg&#39;: &#39;P63/mmc&#39;, ...}, ...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="s2">&quot;JVASP-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;JID&#39;: &#39;JVASP-123&#39;, &#39;Formula&#39;: &#39;MoS2&#39;, &#39;optb88vdw_bandgap&#39;: 1.23, ...}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="s2">&quot;JVASP-123&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;electronic_prop&#39;</span><span class="p">][</span><span class="s1">&#39;optb88vdw_bandgap&#39;</span><span class="p">]</span>
+<span class="go">1.23</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer.fetch_all_data">
+<span class="sig-name descname"><span class="pre">fetch_all_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Jarvis.html#Jarvis_Explorer.fetch_all_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer.fetch_all_data" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch all available data (electronic, mechanical, thermodynamic, structural, metadata)
+for a given JARVIS ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jid</strong> (<em>str</em>) – JARVIS ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with keys:
+- electronic_prop
+- mechanical_prop
+- thermo_prop
+- structure
+- meta_data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="s2">&quot;JVASP-123&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;electronic_prop&#39;</span><span class="p">][</span><span class="s1">&#39;optb88vdw_bandgap&#39;</span><span class="p">]</span>
+<span class="go">1.23</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer.fetch_electronic_properties">
+<span class="sig-name descname"><span class="pre">fetch_electronic_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Jarvis.html#Jarvis_Explorer.fetch_electronic_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer.fetch_electronic_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve electronic properties for a given JARVIS ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jid</strong> (<em>str</em>) – JARVIS ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Electronic properties including bandgaps, effective masses,
+dielectric constants, magnetization, and superconducting Tc.
+Returns None if jid not found or search not performed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="s2">&quot;JVASP-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;JID&#39;: &#39;JVASP-123&#39;, &#39;Formula&#39;: &#39;MoS2&#39;, &#39;optb88vdw_bandgap&#39;: 1.23, ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer.fetch_mechanical_properties">
+<span class="sig-name descname"><span class="pre">fetch_mechanical_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Jarvis.html#Jarvis_Explorer.fetch_mechanical_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer.fetch_mechanical_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve mechanical/elastic properties for a given JARVIS ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jid</strong> (<em>str</em>) – JARVIS ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mechanical properties including elastic tensor, bulk modulus,
+shear modulus, Poisson ratio, and piezoelectric constants.
+Returns None if jid not found or search not performed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="s2">&quot;JVASP-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;JID&#39;: &#39;JVASP-123&#39;, &#39;Formula&#39;: &#39;MoS2&#39;, &#39;elastic_tensor&#39;: [...], ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer.fetch_structure">
+<span class="sig-name descname"><span class="pre">fetch_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Jarvis.html#Jarvis_Explorer.fetch_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer.fetch_structure" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve structural properties for a given JARVIS ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jid</strong> (<em>str</em>) – JARVIS ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Structural properties including space group, atoms, dimensionality,
+density, crystal type, and links to raw data files.
+Returns None if jid not found or search not performed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="s2">&quot;JVASP-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;JID&#39;: &#39;JVASP-123&#39;, &#39;Formula&#39;: &#39;MoS2&#39;, &#39;spg_number&#39;: 194, ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer.fetch_thermodynamic_properties">
+<span class="sig-name descname"><span class="pre">fetch_thermodynamic_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Jarvis.html#Jarvis_Explorer.fetch_thermodynamic_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer.fetch_thermodynamic_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve thermodynamic properties for a given JARVIS ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jid</strong> (<em>str</em>) – JARVIS ID of the material.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Thermodynamic properties including Seebeck coefficients,
+power factors, conductivity, heat capacities, Debye temperature,
+formation energy, and exfoliation energy.
+Returns None if jid not found or search not performed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="s2">&quot;JVASP-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;JID&#39;: &#39;JVASP-123&#39;, &#39;Formula&#39;: &#39;MoS2&#39;, &#39;n-Seebeck&#39;: 200, ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.Jarvis_Explorer.search_materials">
+<span class="sig-name descname"><span class="pre">search_materials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dft_3d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Jarvis.html#Jarvis_Explorer.search_materials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.Jarvis_Explorer.search_materials" title="Link to this definition">¶</a></dt>
+<dd><p>Search the JARVIS dataset for materials matching a chemical formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formula</strong> (<em>str</em><em>, </em><em>optional</em>) – Chemical formula to search for (e.g., “MoS2”). If None, returns all entries.</p></li>
+<li><p><strong>dataset</strong> (<em>str</em><em>, </em><em>default &quot;dft_3d&quot;</em>) – Name of the dataset to query.</p></li>
+<li><p><strong>max_results</strong> (<em>int</em><em>, </em><em>default 5</em>) – Maximum number of entries to return.</p></li>
+<li><p><strong>description</strong> (<em>bool</em><em>, </em><em>default True</em>) – If True, returns detailed description dictionaries for each entry.
+If False, returns only JIDs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>If description=True, returns a list of dicts containing basic material info:</dt><dd><ul class="simple">
+<li><p>JID</p></li>
+<li><p>formula</p></li>
+<li><p>space group</p></li>
+<li><p>bandgap</p></li>
+<li><p>formation energy</p></li>
+<li><p>density</p></li>
+<li><p>dimensionality</p></li>
+</ul>
+</dd>
+</dl>
+<p>If description=False, returns a list of JIDs.
+Returns None if no matches are found.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[dict] or list[str] or None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">Jarvis_Explorer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="s2">&quot;MoS2&quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;dft_3d&quot;</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;formula&#39;</span><span class="p">]</span>
+<span class="go">&#39;MoS2&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyGamLab.databases.</span></span><span class="sig-name descname"><span class="pre">MaterialsProject_Explorer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Material_projects.html#MaterialsProject_Explorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A unified interface to search and fetch various material properties from the Materials Project.</p>
+<p>This class allows searching by elements, chemical formula, or specific MP-IDs, and fetching
+electronic, mechanical, thermodynamic, and structural properties.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.api_key">
+<span class="sig-name descname"><span class="pre">api_key</span></span><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.api_key" title="Link to this definition">¶</a></dt>
+<dd><p>API key for accessing Materials Project (if required).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.mpr">
+<span class="sig-name descname"><span class="pre">mpr</span></span><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.mpr" title="Link to this definition">¶</a></dt>
+<dd><p>MPRester instance for querying the API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MPRester</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.results">
+<span class="sig-name descname"><span class="pre">results</span></span><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.results" title="Link to this definition">¶</a></dt>
+<dd><p>Stores the latest fetched data for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">MaterialsProject_Explorer</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;MoS2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="s2">&quot;mp-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;mp-id&#39;: &#39;mp-123&#39;, &#39;band_gap&#39;: 1.23, ...}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="s2">&quot;mp-123&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;electronic_prop&#39;</span><span class="p">][</span><span class="s1">&#39;band_gap&#39;</span><span class="p">]</span>
+<span class="go">1.23</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Material_projects.html#MaterialsProject_Explorer.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.close" title="Link to this definition">¶</a></dt>
+<dd><p>Close the underlying MPRester session.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.fetch_all_data">
+<span class="sig-name descname"><span class="pre">fetch_all_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mp_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Material_projects.html#MaterialsProject_Explorer.fetch_all_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.fetch_all_data" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch all available data (electronic, mechanical, thermodynamic, structure) for a material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mp_id</strong> (<em>str</em>) – Materials Project ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with keys: ‘electronic_prop’, ‘mechanical_prop’, ‘thermo_prop’, ‘structure’, ‘meta_data’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span> <span class="o">=</span> <span class="n">explorer</span><span class="o">.</span><span class="n">fetch_all_data</span><span class="p">(</span><span class="s2">&quot;mp-123&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_data</span><span class="p">[</span><span class="s1">&#39;electronic_prop&#39;</span><span class="p">][</span><span class="s1">&#39;band_gap&#39;</span><span class="p">]</span>
+<span class="go">1.23</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.fetch_electronic_properties">
+<span class="sig-name descname"><span class="pre">fetch_electronic_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mp_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Material_projects.html#MaterialsProject_Explorer.fetch_electronic_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.fetch_electronic_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch electronic properties for a given Materials Project ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mp_id</strong> (<em>str</em>) – Materials Project ID (e.g., “mp-123”).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Electronic properties including band structure, density of states, bandgap, etc.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_electronic_properties</span><span class="p">(</span><span class="s2">&quot;mp-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;mp-id&#39;: &#39;mp-123&#39;, &#39;band_gap&#39;: 1.23, &#39;DOS&#39;: {...}, ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.fetch_mechanical_properties">
+<span class="sig-name descname"><span class="pre">fetch_mechanical_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mp_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Material_projects.html#MaterialsProject_Explorer.fetch_mechanical_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.fetch_mechanical_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch mechanical properties for a given Materials Project ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mp_id</strong> (<em>str</em>) – Materials Project ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mechanical properties including elastic tensors, bulk/shear modulus, Poisson ratio.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_mechanical_properties</span><span class="p">(</span><span class="s2">&quot;mp-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;mp-id&#39;: &#39;mp-123&#39;, &#39;elastic_tensor&#39;: [...], ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.fetch_structure">
+<span class="sig-name descname"><span class="pre">fetch_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mp_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Material_projects.html#MaterialsProject_Explorer.fetch_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.fetch_structure" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch structural properties for a given Materials Project ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mp_id</strong> (<em>str</em>) – Materials Project ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Structure data in pymatgen format.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of dict or None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_structure</span><span class="p">(</span><span class="s2">&quot;mp-123&quot;</span><span class="p">)</span>
+<span class="go">[{&#39;structure_pymatgen&#39;: Structure(...)}]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.fetch_thermodynamic_properties">
+<span class="sig-name descname"><span class="pre">fetch_thermodynamic_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mp_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Material_projects.html#MaterialsProject_Explorer.fetch_thermodynamic_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.fetch_thermodynamic_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch thermodynamic properties for a given Materials Project ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mp_id</strong> (<em>str</em>) – Materials Project ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Thermodynamic properties including formation energy, heat capacities, etc.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">fetch_thermodynamic_properties</span><span class="p">(</span><span class="s2">&quot;mp-123&quot;</span><span class="p">)</span>
+<span class="go">{&#39;mp-id&#39;: &#39;mp-123&#39;, &#39;formation_energy_per_atom&#39;: -2.34, ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyGamLab.databases.MaterialsProject_Explorer.search_materials">
+<span class="sig-name descname"><span class="pre">search_materials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mp_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyGamLab/databases/Material_projects.html#MaterialsProject_Explorer.search_materials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#PyGamLab.databases.MaterialsProject_Explorer.search_materials" title="Link to this definition">¶</a></dt>
+<dd><p>Search for materials by elements, chemical formula, or MP-IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elements</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of chemical elements to search for (e.g., [“Mo”, “S”]).</p></li>
+<li><p><strong>formula</strong> (<em>str</em><em>, </em><em>optional</em>) – Chemical formula to search for (e.g., “MoS2”).</p></li>
+<li><p><strong>mp_ids</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of Materials Project IDs to search directly.</p></li>
+<li><p><strong>max_results</strong> (<em>int</em><em>, </em><em>default 5</em>) – Maximum number of results to return.</p></li>
+<li><p><strong>description</strong> (<em>bool</em><em>, </em><em>default True</em>) – If True, returns a list of dictionaries with basic material info.
+If False, returns only a list of material IDs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of material IDs or detailed descriptions for each result.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str] or list[dict]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span> <span class="o">=</span> <span class="n">MaterialsProject_Explorer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explorer</span><span class="o">.</span><span class="n">search_materials</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;MoS2&quot;</span><span class="p">)</span>
+<span class="go">[{&#39;mp-id&#39;: &#39;mp-123&#39;, &#39;system&#39;: &#39;Mo-S&#39;, &#39;band_gap (eV)&#39;: 1.23, ...}]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="ai_core.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">AI Core Module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="structures.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Structures Module</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Ali Pilehvar Meibody
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Databases Module</a><ul>
+<li><a class="reference internal" href="#main-classes">Main Classes</a></li>
+<li><a class="reference internal" href="#database-specific-explorers">Database-Specific Explorers</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=79f5c508"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

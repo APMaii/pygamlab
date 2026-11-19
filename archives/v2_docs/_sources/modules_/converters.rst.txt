@@ -1,0 +1,18 @@
+
+Convertors Module
+=================
+
+This module contains **unit conversion functions** used in science and engineering.
+
+Each function follows the `FirstUnit_To_SecondUnit()` format. Examples:
+
+- `Kelvin_To_Celsius(k)`
+- `Celsius_To_Kelvin(c)`
+- `Meter_To_Foot(m)`
+- `Coulomb_To_Electron_volt(q)`
+
+.. automodule:: PyGamLab.Converters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :noindex:

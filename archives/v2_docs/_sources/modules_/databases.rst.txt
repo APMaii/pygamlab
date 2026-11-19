@@ -1,0 +1,48 @@
+Databases Module
+================
+
+Provides **access to multiple materials databases**.
+
+Supported databases:
+
+- Materials Project (MP)
+- AFLOW
+- JARVIS
+- Crystallography Open Database (COD)
+
+Available data:
+
+- Mechanical, electronic, thermodynamic properties
+- Structural and crystallographic information
+- Chemical composition and symmetry
+
+Main Classes
+------------
+
+.. autoclass:: PyGamLab.databases.GAM_Explorer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Database-Specific Explorers
+---------------------------
+
+.. autoclass:: PyGamLab.databases.Aflow_Explorer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: PyGamLab.databases.COD_Explorer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: PyGamLab.databases.Jarvis_Explorer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: PyGamLab.databases.MaterialsProject_Explorer
+   :members:
+   :undoc-members:
+   :show-inheritance:
